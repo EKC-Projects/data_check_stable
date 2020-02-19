@@ -1,0 +1,1450 @@
+{
+    "context": [
+        {
+            "id": "generic",
+            "default": "yes",
+            "language": "en",
+            "country": "US",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "no",
+            "content": [
+                {
+                    "name": "Acc",
+                    "value": "Access"
+                },
+                {
+                    "name": "Acrs",
+                    "value": "Acres"
+                },
+                {
+                    "name": "Alcv",
+                    "value": "Alcove"
+                },
+                {
+                    "name": "Alwy",
+                    "value": "Alleyway"
+                },
+                {
+                    "name": "Aly",
+                    "value": "Alley"
+                },
+                {
+                    "name": "Ambl",
+                    "value": "Amble"
+                },
+                {
+                    "name": "Anx",
+                    "value": "Annex"
+                },
+                {
+                    "name": "Appr",
+                    "value": "Approach"
+                },
+                {
+                    "name": "Arc",
+                    "value": "Arcade"
+                },
+                {
+                    "name": "Artl",
+                    "value": "Arterial"
+                },
+                {
+                    "name": "Ave",
+                    "value": "Avenue"
+                },
+                {
+                    "name": "Bch",
+                    "value": "Beach"
+                },
+                {
+                    "name": "Bdy",
+                    "value": "Boundary"
+                },
+                {
+                    "name": "Bg",
+                    "value": "Burg"
+                },
+                {
+                    "name": "Bgs",
+                    "value": "Burgs"
+                },
+                {
+                    "name": "Blf",
+                    "value": "Bluff"
+                },
+                {
+                    "name": "Blfs",
+                    "value": "Bluffs"
+                },
+                {
+                    "name": "Blvd",
+                    "value": "Boulevard"
+                },
+                {
+                    "name": "Bnd",
+                    "value": "Bend"
+                },
+                {
+                    "name": "Br",
+                    "value": "Branch"
+                },
+                {
+                    "name": "Brg",
+                    "value": "Bridge"
+                },
+                {
+                    "name": "Brk",
+                    "value": "Brook"
+                },
+                {
+                    "name": "Brks",
+                    "value": "Brooks"
+                },
+                {
+                    "name": "Btm",
+                    "value": "Bottom"
+                },
+                {
+                    "name": "Byp",
+                    "value": "Bypass"
+                },
+                {
+                    "name": "Byps",
+                    "value": "Bypass"
+                },
+                {
+                    "name": "Byu",
+                    "value": "Bayou"
+                },
+                {
+                    "name": "Bywy",
+                    "value": "Byway"
+                },
+                {
+                    "name": "Calle",
+                    "value": "Kahyay"
+                },
+                {
+                    "name": "Cds",
+                    "value": "Cul-De-Sac"
+                },
+                {
+                    "name": "Chas",
+                    "value": "Chase"
+                },
+                {
+                    "name": "Chrt",
+                    "value": "Chart"
+                },
+                {
+                    "name": "Cir",
+                    "value": "Circle"
+                },
+                {
+                    "name": "Circt",
+                    "value": "Circuit"
+                },
+                {
+                    "name": "Cirs",
+                    "value": "Circles"
+                },
+                {
+                    "name": "Cirt",
+                    "value": "Circuit"
+                },
+                {
+                    "name": "Clb",
+                    "value": "Club"
+                },
+                {
+                    "name": "Clf",
+                    "value": "Cliff"
+                },
+                {
+                    "name": "Clfs",
+                    "value": "Cliffs"
+                },
+                {
+                    "name": "Clos",
+                    "value": "Close"
+                },
+                {
+                    "name": "Cmn",
+                    "value": "Common"
+                },
+                {
+                    "name": "Cmns",
+                    "value": "Commons"
+                },
+                {
+                    "name": "Cnrs",
+                    "value": "Corners"
+                },
+                {
+                    "name": "Cntr",
+                    "value": "Centre"
+                },
+                {
+                    "name": "Con",
+                    "value": "Concourse"
+                },
+                {
+                    "name": "Conc",
+                    "value": "Concession"
+                },
+                {
+                    "name": "Conn",
+                    "value": "Connector"
+                },
+                {
+                    "name": "Cor",
+                    "value": "Corner"
+                },
+                {
+                    "name": "Cors",
+                    "value": "Corners"
+                },
+                {
+                    "name": "Cp",
+                    "value": "Camp"
+                },
+                {
+                    "name": "Cpe",
+                    "value": "Cape"
+                },
+                {
+                    "name": "Cps",
+                    "value": "Copse"
+                },
+                {
+                    "name": "Crcs",
+                    "value": "Circus"
+                },
+                {
+                    "name": "Cres",
+                    "value": "Crescent"
+                },
+                {
+                    "name": "Crft",
+                    "value": "Croft"
+                },
+                {
+                    "name": "Crk",
+                    "value": "Creek"
+                },
+                {
+                    "name": "Crnrs",
+                    "value": "Corners"
+                },
+                {
+                    "name": "Crse",
+                    "value": "Course"
+                },
+                {
+                    "name": "Crss",
+                    "value": "Cross"
+                },
+                {
+                    "name": "Crst",
+                    "value": "Crest"
+                },
+                {
+                    "name": "Crt",
+                    "value": "Court"
+                },
+                {
+                    "name": "Cswy",
+                    "value": "Causeway"
+                },
+                {
+                    "name": "Ct",
+                    "value": "Court"
+                },
+                {
+                    "name": "Ctr",
+                    "value": "Center"
+                },
+                {
+                    "name": "Cts",
+                    "value": "Courts"
+                },
+                {
+                    "name": "Curv",
+                    "value": "Curve"
+                },
+                {
+                    "name": "Cutt",
+                    "value": "Cutting"
+                },
+                {
+                    "name": "Cv",
+                    "value": "Cove"
+                },
+                {
+                    "name": "Cvs",
+                    "value": "Coves"
+                },
+                {
+                    "name": "Cyn",
+                    "value": "Canyon"
+                },
+                {
+                    "name": "Divers",
+                    "value": "Diversion"
+                },
+                {
+                    "name": "Dl",
+                    "value": "Dale"
+                },
+                {
+                    "name": "Dm",
+                    "value": "Dam"
+                },
+                {
+                    "name": "Dr",
+                    "value": "Drive"
+                },
+                {
+                    "name": "Drs",
+                    "value": "Drives"
+                },
+                {
+                    "name": "Drwy",
+                    "value": "Driveway"
+                },
+                {
+                    "name": "Dv",
+                    "value": "Divide"
+                },
+                {
+                    "name": "Dvsn",
+                    "value": "Diversion"
+                },
+                {
+                    "name": "Dwns",
+                    "value": "Downs"
+                },
+                {
+                    "name": "Elb",
+                    "value": "Elbow"
+                },
+                {
+                    "name": "Ent",
+                    "value": "Entrance"
+                },
+                {
+                    "name": "Espl",
+                    "value": "Esplanade"
+                },
+                {
+                    "name": "Est",
+                    "value": "Estates"
+                },
+                {
+                    "name": "Este",
+                    "value": "Estate"
+                },
+                {
+                    "name": "Ests",
+                    "value": "Estates"
+                },
+                {
+                    "name": "Exp",
+                    "value": "Express"
+                },
+                {
+                    "name": "Expy",
+                    "value": "Expressway"
+                },
+                {
+                    "name": "Ext",
+                    "value": "Extension"
+                },
+                {
+                    "name": "Exten",
+                    "value": "Extension"
+                },
+                {
+                    "name": "Exts",
+                    "value": "Extensions"
+                },
+                {
+                    "name": "Fawy",
+                    "value": "Fairway"
+                },
+                {
+                    "name": "Fld",
+                    "value": "Field"
+                },
+                {
+                    "name": "Flds",
+                    "value": "Fields"
+                },
+                {
+                    "name": "Fls",
+                    "value": "Falls"
+                },
+                {
+                    "name": "Flt",
+                    "value": "Flat"
+                },
+                {
+                    "name": "Flts",
+                    "value": "Flats"
+                },
+                {
+                    "name": "Folw",
+                    "value": "Follow"
+                },
+                {
+                    "name": "Frd",
+                    "value": "Ford"
+                },
+                {
+                    "name": "Frg",
+                    "value": "Forge"
+                },
+                {
+                    "name": "Frk",
+                    "value": "Fork"
+                },
+                {
+                    "name": "Frks",
+                    "value": "Forks"
+                },
+                {
+                    "name": "Frnt",
+                    "value": "Front"
+                },
+                {
+                    "name": "Frst",
+                    "value": "Forest"
+                },
+                {
+                    "name": "Fry",
+                    "value": "Ferry"
+                },
+                {
+                    "name": "Ft",
+                    "value": "Fort"
+                },
+                {
+                    "name": "Fwy",
+                    "value": "Freeway"
+                },
+                {
+                    "name": "Gdn",
+                    "value": "Garden"
+                },
+                {
+                    "name": "Gdns",
+                    "value": "Gardens"
+                },
+                {
+                    "name": "Glad",
+                    "value": "Glade"
+                },
+                {
+                    "name": "Gln",
+                    "value": "Glen"
+                },
+                {
+                    "name": "Gra",
+                    "value": "Grange"
+                },
+                {
+                    "name": "Grds",
+                    "value": "Grounds"
+                },
+                {
+                    "name": "Grn",
+                    "value": "Green"
+                },
+                {
+                    "name": "Grnds",
+                    "value": "Grounds"
+                },
+                {
+                    "name": "Grns",
+                    "value": "Greens"
+                },
+                {
+                    "name": "Grv",
+                    "value": "Grove"
+                },
+                {
+                    "name": "Grvs",
+                    "value": "Groves"
+                },
+                {
+                    "name": "Gtwy",
+                    "value": "Gateway"
+                },
+                {
+                    "name": "Harbr",
+                    "value": "Harbour"
+                },
+                {
+                    "name": "Hbr",
+                    "value": "Harbor"
+                },
+                {
+                    "name": "Hghlds",
+                    "value": "Highlands"
+                },
+                {
+                    "name": "Hiln",
+                    "value": "Highlands"
+                },
+                {
+                    "name": "Hird",
+                    "value": "Highroad"
+                },
+                {
+                    "name": "Hl",
+                    "value": "Hill"
+                },
+                {
+                    "name": "Hls",
+                    "value": "Hills"
+                },
+                {
+                    "name": "Holw",
+                    "value": "Hollow"
+                },
+                {
+                    "name": "Hrbr",
+                    "value": "Harbour"
+                },
+                {
+                    "name": "Hth",
+                    "value": "Heath"
+                },
+                {
+                    "name": "Hts",
+                    "value": "Heights"
+                },
+                {
+                    "name": "Hvn",
+                    "value": "Haven"
+                },
+                {
+                    "name": "Hwy",
+                    "value": "Highway"
+                },
+                {
+                    "name": "Inlt",
+                    "value": "Inlet"
+                },
+                {
+                    "name": "Intr",
+                    "value": "Interchange"
+                },
+                {
+                    "name": "Is",
+                    "value": "Island"
+                },
+                {
+                    "name": "Iss",
+                    "value": "Islands"
+                },
+                {
+                    "name": "Jct",
+                    "value": "Junction"
+                },
+                {
+                    "name": "Knl",
+                    "value": "Knoll"
+                },
+                {
+                    "name": "Knls",
+                    "value": "Knolls"
+                },
+                {
+                    "name": "Ky",
+                    "value": "Key"
+                },
+                {
+                    "name": "Kys",
+                    "value": "Keys"
+                },
+                {
+                    "name": "Landng",
+                    "value": "Landing"
+                },
+                {
+                    "name": "Lck",
+                    "value": "Lock"
+                },
+                {
+                    "name": "Lcks",
+                    "value": "Locks"
+                },
+                {
+                    "name": "Ldg",
+                    "value": "Lodge"
+                },
+                {
+                    "name": "Lf",
+                    "value": "Loaf"
+                },
+                {
+                    "name": "Lgt",
+                    "value": "Light"
+                },
+                {
+                    "name": "Lgts",
+                    "value": "Lights"
+                },
+                {
+                    "name": "Lk",
+                    "value": "Lake"
+                },
+                {
+                    "name": "Lkot",
+                    "value": "Lookout"
+                },
+                {
+                    "name": "Lkout",
+                    "value": "Lookout"
+                },
+                {
+                    "name": "Lks",
+                    "value": "Lakes"
+                },
+                {
+                    "name": "Lmts",
+                    "value": "Limits"
+                },
+                {
+                    "name": "Ln",
+                    "value": "Lane"
+                },
+                {
+                    "name": "Lndg",
+                    "value": "Landing"
+                },
+                {
+                    "name": "Mdw",
+                    "value": "Meadow"
+                },
+                {
+                    "name": "Mdws",
+                    "value": "Meadows"
+                },
+                {
+                    "name": "Ml",
+                    "value": "Mill"
+                },
+                {
+                    "name": "Mls",
+                    "value": "Mills"
+                },
+                {
+                    "name": "Mndr",
+                    "value": "Meander"
+                },
+                {
+                    "name": "Mnr",
+                    "value": "Manor"
+                },
+                {
+                    "name": "Mnrs",
+                    "value": "Manors"
+                },
+                {
+                    "name": "Msn",
+                    "value": "Mission"
+                },
+                {
+                    "name": "Mt",
+                    "value": "Mount"
+                },
+                {
+                    "name": "Mtn",
+                    "value": "Mountain"
+                },
+                {
+                    "name": "Mtwy",
+                    "value": "Motorway"
+                },
+                {
+                    "name": "Nck",
+                    "value": "Neck"
+                },
+                {
+                    "name": "Opas",
+                    "value": "Overpass"
+                },
+                {
+                    "name": "Orch",
+                    "value": "Orchard"
+                },
+                {
+                    "name": "Otlk",
+                    "value": "Outlook"
+                },
+                {
+                    "name": "Pde",
+                    "value": "Parade"
+                },
+                {
+                    "name": "Pk",
+                    "value": "Park"
+                },
+                {
+                    "name": "Pkt",
+                    "value": "Pocket"
+                },
+                {
+                    "name": "Pkwy",
+                    "value": "Parkway"
+                },
+                {
+                    "name": "Pky",
+                    "value": "Parkway"
+                },
+                {
+                    "name": "Pl",
+                    "value": "Place"
+                },
+                {
+                    "name": "Plat",
+                    "value": "Plateau"
+                },
+                {
+                    "name": "Pln",
+                    "value": "Plain"
+                },
+                {
+                    "name": "Plns",
+                    "value": "Plains"
+                },
+                {
+                    "name": "Plz",
+                    "value": "Plaza"
+                },
+                {
+                    "name": "Pne",
+                    "value": "Pine"
+                },
+                {
+                    "name": "Pnes",
+                    "value": "Pines"
+                },
+                {
+                    "name": "Pr",
+                    "value": "Prairie"
+                },
+                {
+                    "name": "Prom",
+                    "value": "Promenade"
+                },
+                {
+                    "name": "Prt",
+                    "value": "Port"
+                },
+                {
+                    "name": "Psge",
+                    "value": "Passage"
+                },
+                {
+                    "name": "Pt",
+                    "value": "Point"
+                },
+                {
+                    "name": "Pts",
+                    "value": "Points"
+                },
+                {
+                    "name": "Ptway",
+                    "value": "Pathway"
+                },
+                {
+                    "name": "Ptwy",
+                    "value": "Pathway"
+                },
+                {
+                    "name": "Pvt",
+                    "value": "Private"
+                },
+                {
+                    "name": "Qdrt",
+                    "value": "Quadrant"
+                },
+                {
+                    "name": "Qys",
+                    "value": "Quays"
+                },
+                {
+                    "name": "Radl",
+                    "value": "Radial"
+                },
+                {
+                    "name": "Rch",
+                    "value": "Reach"
+                },
+                {
+                    "name": "Rd",
+                    "value": "Road"
+                },
+                {
+                    "name": "Rdg",
+                    "value": "Ridge"
+                },
+                {
+                    "name": "Rdgs",
+                    "value": "Ridges"
+                },
+                {
+                    "name": "Rds",
+                    "value": "Roads"
+                },
+                {
+                    "name": "Rdwy",
+                    "value": "Roadway"
+                },
+                {
+                    "name": "Rg",
+                    "value": "Range"
+                },
+                {
+                    "name": "Riv",
+                    "value": "River"
+                },
+                {
+                    "name": "Rmbl",
+                    "value": "Ramble"
+                },
+                {
+                    "name": "Rnch",
+                    "value": "Ranch"
+                },
+                {
+                    "name": "Rnge",
+                    "value": "Range"
+                },
+                {
+                    "name": "Rpd",
+                    "value": "Rapid"
+                },
+                {
+                    "name": "Rpds",
+                    "value": "Rapids"
+                },
+                {
+                    "name": "Rst",
+                    "value": "Rest"
+                },
+                {
+                    "name": "Rte",
+                    "value": "Route"
+                },
+                {
+                    "name": "Rtt",
+                    "value": "Retreat"
+                },
+                {
+                    "name": "Sdrd",
+                    "value": "Sideroad"
+                },
+                {
+                    "name": "Shl",
+                    "value": "Shoal"
+                },
+                {
+                    "name": "Shls",
+                    "value": "Shoals"
+                },
+                {
+                    "name": "Shr",
+                    "value": "Shore"
+                },
+                {
+                    "name": "Shrs",
+                    "value": "Shores"
+                },
+                {
+                    "name": "Skwy",
+                    "value": "Skyway"
+                },
+                {
+                    "name": "Smt",
+                    "value": "Summit"
+                },
+                {
+                    "name": "Spg",
+                    "value": "Spring"
+                },
+                {
+                    "name": "Spgs",
+                    "value": "Springs"
+                },
+                {
+                    "name": "Sq",
+                    "value": "Square"
+                },
+                {
+                    "name": "Sqs",
+                    "value": "Squares"
+                },
+                {
+                    "name": "St",
+                    "value": "Street"
+                },
+                {
+                    "name": "Sta",
+                    "value": "Station"
+                },
+                {
+                    "name": "Stps",
+                    "value": "Steps"
+                },
+                {
+                    "name": "Str",
+                    "value": "Stairs"
+                },
+                {
+                    "name": "Stra",
+                    "value": "Stravenue"
+                },
+                {
+                    "name": "Strm",
+                    "value": "Stream"
+                },
+                {
+                    "name": "Sts",
+                    "value": "Streets"
+                },
+                {
+                    "name": "Subd",
+                    "value": "Subdivision"
+                },
+                {
+                    "name": "Subdiv",
+                    "value": "Subdivision"
+                },
+                {
+                    "name": "Svwy",
+                    "value": "Serviceway"
+                },
+                {
+                    "name": "Tabt",
+                    "value": "Turnabout"
+                },
+                {
+                    "name": "Ter",
+                    "value": "Terrace"
+                },
+                {
+                    "name": "Terr",
+                    "value": "Terrace"
+                },
+                {
+                    "name": "Thkt",
+                    "value": "Thicket"
+                },
+                {
+                    "name": "Thwy",
+                    "value": "Throughway"
+                },
+                {
+                    "name": "Tlin",
+                    "value": "Townline"
+                },
+                {
+                    "name": "Tline",
+                    "value": "Townline"
+                },
+                {
+                    "name": "Tlpk",
+                    "value": "Trailer Park"
+                },
+                {
+                    "name": "Tlwy",
+                    "value": "Tollway"
+                },
+                {
+                    "name": "Tpke",
+                    "value": "Turnpike"
+                },
+                {
+                    "name": "Trak",
+                    "value": "Track"
+                },
+                {
+                    "name": "Trce",
+                    "value": "Trace"
+                },
+                {
+                    "name": "Trfy",
+                    "value": "Trafficway"
+                },
+                {
+                    "name": "Trk",
+                    "value": "Track"
+                },
+                {
+                    "name": "Trl",
+                    "value": "Trail"
+                },
+                {
+                    "name": "Trlr",
+                    "value": "Trailer"
+                },
+                {
+                    "name": "Trnabt",
+                    "value": "Turnabout"
+                },
+                {
+                    "name": "Trwy",
+                    "value": "Throughway"
+                },
+                {
+                    "name": "Tunl",
+                    "value": "Tunnel"
+                },
+                {
+                    "name": "Twrs",
+                    "value": "Towers"
+                },
+                {
+                    "name": "Un",
+                    "value": "Union"
+                },
+                {
+                    "name": "Upas",
+                    "value": "Underpass"
+                },
+                {
+                    "name": "Viad",
+                    "value": "Viaduct"
+                },
+                {
+                    "name": "Villge",
+                    "value": "Village"
+                },
+                {
+                    "name": "Vis",
+                    "value": "Vista"
+                },
+                {
+                    "name": "Vl",
+                    "value": "Ville"
+                },
+                {
+                    "name": "Vlg",
+                    "value": "Village"
+                },
+                {
+                    "name": "Vlgs",
+                    "value": "Villages"
+                },
+                {
+                    "name": "Vls",
+                    "value": "Villas"
+                },
+                {
+                    "name": "Vly",
+                    "value": "Valley"
+                },
+                {
+                    "name": "Vw",
+                    "value": "View"
+                },
+                {
+                    "name": "Vws",
+                    "value": "Views"
+                },
+                {
+                    "name": "Wds",
+                    "value": "Woods"
+                },
+                {
+                    "name": "Whrf",
+                    "value": "Wharf"
+                },
+                {
+                    "name": "Wkwy",
+                    "value": "Walkway"
+                },
+                {
+                    "name": "Wl",
+                    "value": "Well"
+                },
+                {
+                    "name": "Wls",
+                    "value": "Wells"
+                },
+                {
+                    "name": "Xing",
+                    "value": "Crossing"
+                },
+                {
+                    "name": "Xrd",
+                    "value": "Crossroad"
+                },
+                {
+                    "name": "Xrds",
+                    "value": "Crossroads"
+                },
+                {
+                    "name": "E",
+                    "value": "East"
+                },
+                {
+                    "name": "N",
+                    "value": "North"
+                },
+                {
+                    "name": "NE",
+                    "value": "Northeast"
+                },
+                {
+                    "name": "NW",
+                    "value": "Northwest"
+                },
+                {
+                    "name": "S",
+                    "value": "South"
+                },
+                {
+                    "name": "SE",
+                    "value": "Southeast"
+                },
+                {
+                    "name": "SW",
+                    "value": "Southwest"
+                },
+                {
+                    "name": "W",
+                    "value": "West"
+                }
+            ]
+        },
+        {
+            "id": "StateAbbreviations",
+            "default": "no",
+            "language": "en",
+            "country": "US",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "yes",
+            "content": [
+                {
+                    "name": "AB",
+                    "value": "Alberta"
+                },
+                {
+                    "name": "AK",
+                    "value": "Alaska"
+                },
+                {
+                    "name": "AL",
+                    "value": "Alabama"
+                },
+                {
+                    "name": "AR",
+                    "value": "Arkansas"
+                },
+                {
+                    "name": "AUT",
+                    "value": "Autoroute"
+                },
+                {
+                    "name": "AZ",
+                    "value": "Arizona"
+                },
+                {
+                    "name": "BIA",
+                    "value": "Indian Route"
+                },
+                {
+                    "name": "BC",
+                    "value": "B.C."
+                },
+                {
+                    "name": "CA",
+                    "value": "California"
+                },
+                {
+                    "name": "CO",
+                    "value": "Colorado"
+                },
+                {
+                    "name": "CR",
+                    "value": "County Road"
+                },
+                {
+                    "name": "CT",
+                    "value": "Connecticut"
+                },
+                {
+                    "name": "DC",
+                    "value": "D.C."
+                },
+                {
+                    "name": "DE",
+                    "value": "Delaware"
+                },
+                {
+                    "name": "DR",
+                    "value": "District Road"
+                },
+                {
+                    "name": "FL",
+                    "value": "Florida"
+                },
+                {
+                    "name": "FM",
+                    "value": "F.M."
+                },
+                {
+                    "name": "GA",
+                    "value": "Georgia"
+                },
+                {
+                    "name": "GU",
+                    "value": "Guam"
+                },
+                {
+                    "name": "HI",
+                    "value": "Hawaii"
+                },
+                {
+                    "name": "IA",
+                    "value": "Iowa"
+                },
+                {
+                    "name": "ID",
+                    "value": "Idaho"
+                },
+                {
+                    "name": "IL",
+                    "value": "Illinois"
+                },
+                {
+                    "name": "IN",
+                    "value": "Indiana"
+                },
+                {
+                    "name": "KS",
+                    "value": "Kansas"
+                },
+                {
+                    "name": "KY",
+                    "value": "Kentucky"
+                },
+                {
+                    "name": "LA",
+                    "value": "Louisiana"
+                },
+                {
+                    "name": "MA",
+                    "value": "Massachusetts"
+                },
+                {
+                    "name": "MB",
+                    "value": "Manitoba"
+                },
+                {
+                    "name": "MD",
+                    "value": "Maryland"
+                },
+                {
+                    "name": "ME",
+                    "value": "Maine"
+                },
+                {
+                    "name": "MI",
+                    "value": "Michigan"
+                },
+                {
+                    "name": "MN",
+                    "value": "Minnesota"
+                },
+                {
+                    "name": "MO",
+                    "value": "Missouri"
+                },
+                {
+                    "name": "MS",
+                    "value": "Mississippi"
+                },
+                {
+                    "name": "MT",
+                    "value": "Montana"
+                },
+                {
+                    "name": "NB",
+                    "value": "N.B."
+                },
+                {
+                    "name": "NC",
+                    "value": "N.C."
+                },
+                {
+                    "name": "ND",
+                    "value": "N.D."
+                },
+                {
+                    "name": "NF",
+                    "value": "National Forest"
+                },
+                {
+                    "name": "NH",
+                    "value": "New Hampshire"
+                },
+                {
+                    "name": "NJ",
+                    "value": "New Jersey"
+                },
+                {
+                    "name": "NL",
+                    "value": "N.L."
+                },
+                {
+                    "name": "NM",
+                    "value": "New Mexico"
+                },
+                {
+                    "name": "NS",
+                    "value": "N.S."
+                },
+                {
+                    "name": "NT",
+                    "value": "N.W.T."
+                },
+                {
+                    "name": "NU",
+                    "value": "Nunavut"
+                },
+                {
+                    "name": "NV",
+                    "value": "Nevada"
+                },
+                {
+                    "name": "NY",
+                    "value": "New York"
+                },
+                {
+                    "name": "OH",
+                    "value": "Ohio"
+                },
+                {
+                    "name": "OK",
+                    "value": "Oklahoma"
+                },
+                {
+                    "name": "ON",
+                    "value": "Ontario"
+                },
+                {
+                    "name": "OR",
+                    "value": "Oregon"
+                },
+                {
+                    "name": "PA",
+                    "value": "Pennsylvania"
+                },
+                {
+                    "name": "PE",
+                    "value": "P.E.I."
+                },
+                {
+                    "name": "PR",
+                    "value": "Puerto Rico"
+                },
+                {
+                    "name": "QC",
+                    "value": "Quebec"
+                },
+                {
+                    "name": "RI",
+                    "value": "Rhode Island"
+                },
+                {
+                    "name": "RM",
+                    "value": "R.M."
+                },
+                {
+                    "name": "RT",
+                    "value": "Route"
+                },
+                {
+                    "name": "RTE",
+                    "value": "Route"
+                },
+                {
+                    "name": "SC",
+                    "value": "S.C."
+                },
+                {
+                    "name": "SD",
+                    "value": "S.D."
+                },
+                {
+                    "name": "SK",
+                    "value": "Saskatchewan"
+                },
+                {
+                    "name": "SR",
+                    "value": "State Route"
+                },
+                {
+                    "name": "TC",
+                    "value": "Trans Canada"
+                },
+                {
+                    "name": "TN",
+                    "value": "Tennessee"
+                },
+                {
+                    "name": "TX",
+                    "value": "Texas"
+                },
+                {
+                    "name": "US",
+                    "value": "U.S."
+                },
+                {
+                    "name": "UT",
+                    "value": "Utah"
+                },
+                {
+                    "name": "VA",
+                    "value": "Virginia"
+                },
+                {
+                    "name": "VI",
+                    "value": "V.I."
+                },
+                {
+                    "name": "VT",
+                    "value": "Vermont"
+                },
+                {
+                    "name": "WA",
+                    "value": "Washington"
+                },
+                {
+                    "name": "WI",
+                    "value": "Wisconsin"
+                },
+                {
+                    "name": "WV",
+                    "value": "West Virginia"
+                },
+                {
+                    "name": "WY",
+                    "value": "Wyoming"
+                },
+                {
+                    "name": "YT",
+                    "value": "Yukon"
+                }
+            ]
+        }
+    ]
+}

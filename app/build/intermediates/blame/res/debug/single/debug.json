@@ -1,0 +1,1714 @@
+[
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_clear_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_clear_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_create_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_create_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_photo_camera_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_photo_camera_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_filter_b_and_w_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_filter_b_and_w_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_videocam_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_videocam_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_service_location2.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_service_location2.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\menu_main_menu.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\menu\\main_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_stars_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_stars_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_layers_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_layers_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_location_pin.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\location_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_pause.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_pause.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_change_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_change_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_book_mark_layout.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\book_mark_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_file_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_file_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_offline.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_offline.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_save.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_save.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_play_circle.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\play_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_enter_from_right.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\enter_from_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_fullscreen_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_fullscreen_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_save_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_save_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_navigation_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_navigation_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_add_point.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_add_point.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_videocam_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_videocam_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_more_vert_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_more_vert_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_enter_from_left.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\enter_from_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_pin.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_keyboard_arrow_down_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_keyboard_arrow_down_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ruler.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ruler.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_add.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_add.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_fullscreen_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_fullscreen_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ruler.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ruler.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_edit_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_edit_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_content_discard.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_content_discard.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_arrow_back_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_arrow_back_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_station.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\fragment_station.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_pressed.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\bg_button_pressed.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_play_circle.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\play_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_language_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_language_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_keyboard_arrow_down_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_keyboard_arrow_down_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_save.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_save.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_settings_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_settings_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_online.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_online.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_layers_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_layers_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_service_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_service_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_email_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_email_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_arrow_back_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_arrow_back_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_pause.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_pause.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_my_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_my_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_filter_b_and_w_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_filter_b_and_w_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_redo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_redo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_satellite_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_satellite_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_layers_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_layers_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_linear_scale_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_linear_scale_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_btnlogin.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\selector_btnlogin.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_add.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_add.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_add_polygon.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_add_polygon.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_linear_scale_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_linear_scale_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_save.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_save.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ruler.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ruler.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_pin.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_edit_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_edit_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_play_circle_outline_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_play_circle_outline_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_language_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_language_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_compass.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_compass.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_email_black_24dp.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_email_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_search_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_search_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_fullscreen_exit_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_fullscreen_exit_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_show_bookmarks.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\dialog_show_bookmarks.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_perm_media_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_perm_media_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_record_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_record_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_fullscreen_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_fullscreen_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_pause.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_pause.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_navigation_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_navigation_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_filter_b_and_w_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_filter_b_and_w_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_bookmark_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_bookmark_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\xml\\network_security_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_record_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_record_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_undo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_undo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_create_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_create_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_undo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_undo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_fullscreen_exit_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_fullscreen_exit_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_new_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_new_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_directions_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_directions_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_settings_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_settings_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_update_btn_background.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\update_btn_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_layers_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_layers_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_farsi_slogn.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\farsi_slogn.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_layout_animation_fall_down.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\layout_animation_fall_down.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_file_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_file_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_compass.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_compass.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_speaker_notes_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_speaker_notes_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_play.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_play.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_videocam_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_videocam_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_clear_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_clear_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_content_discard.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_content_discard.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo_3.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\logo_3.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_add_a_photo_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_add_a_photo_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_linear_scale_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_linear_scale_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_magnify.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\magnify.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_fullscreen_exit_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_fullscreen_exit_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_directions_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_directions_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_attach_file_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_attach_file_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_sync.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_sync.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_lock_black_24dp.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_lock_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_lock_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_lock_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_magnify.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-ldpi\\magnify.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_clear_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_clear_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_add_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_add_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_ic_dist_box.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\rounded_ic_dist_box.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_pin.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_delete_forever_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_delete_forever_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_language_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_language_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_service_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_service_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_lock_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_lock_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_pin.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_add_a_photo_black_24dp.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_add_a_photo_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_template_background.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\template_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_email_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_email_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_satellite_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_satellite_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_my_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_my_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_close_circle_outline.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\close_circle_outline.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_stars_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_stars_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_clear.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_clear.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_fullscreen_exit_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_fullscreen_exit_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_delete_forever_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_delete_forever_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_marker_64.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\ic_marker_64.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_add_line.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_add_line.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_local_db_name.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\dialog_local_db_name.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_edit_template.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_edit_template.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_videocam_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_videocam_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_clear.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_clear.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_cloud_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_cloud_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_new_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_new_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_layers_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_layers_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_pause.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_pause.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_map_select_point_bottom_sheet.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\map_select_point_bottom_sheet.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_more_vert_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_more_vert_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_add_polygon.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_add_polygon.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_service_location2.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_service_location2.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_clear_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_clear_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_station_dialog_layout.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\station_dialog_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_mapmarker.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\mapmarker.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_navigation_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_navigation_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_save_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_save_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_online.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_online.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_fragment_edit.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\menu\\menu_fragment_edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_add_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_fullscreen_exit_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_fullscreen_exit_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_more_vert_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_more_vert_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_edit_feature.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\fragment_edit_feature.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_fullscreen_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_fullscreen_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_language_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_language_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-hdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_compass.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_compass.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_lock_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_lock_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_clear.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_clear.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_add.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_add.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_gcs_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_gcs_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_add_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_photo_camera_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_photo_camera_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_redo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_redo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_zoom_out.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\zoom_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_speaker_notes_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_speaker_notes_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_add_line.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_add_line.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_my_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_my_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_undo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_undo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_out_down.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\slide_out_down.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_exit_to_left.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\exit_to_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo2.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\logo2.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_videocam_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_videocam_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_arrow_back_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_arrow_back_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_offline.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_offline.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_custom_edittext_border_background.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\custom_edittext_border_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_farsi_slogn.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\farsi_slogn.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ruler.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ruler.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_base_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_base_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_offline_rv_row_item.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\offline_rv_row_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_perm_media_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_perm_media_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_service_location2.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_service_location2.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_keyboard_arrow_down_black_24dp.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_keyboard_arrow_down_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_save_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_save_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_attach_file_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_attach_file_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_offline.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_offline.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_layers_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_layers_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_magnify.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\magnify.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo_2.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\logo_2.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_attach_file_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_attach_file_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_perm_media_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_perm_media_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_marker_48.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\ic_marker_48.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_base_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_base_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_play_circle_outline_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_play_circle_outline_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_sync.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_sync.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_add_line.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_add_line.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_change_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_change_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_cloud_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_cloud_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_add_point.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_add_point.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_record_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_record_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_layers_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_layers_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_play_circle_outline_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_play_circle_outline_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_keyboard_arrow_down_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_keyboard_arrow_down_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_service_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_service_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_edit_template.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_edit_template.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_user_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_user_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_save.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_save.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_edit_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_edit_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_search_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_search_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_play.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_play.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_photo_camera_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_photo_camera_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_file_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_file_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_attach_file_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_attach_file_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_compass.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_compass.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_record_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_record_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_content_discard.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_content_discard.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_email_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_email_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_settings_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_settings_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_arrow_back_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_arrow_back_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_compass.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_compass.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_undo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_undo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add_circle_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_add_circle_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_cloud_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_cloud_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_pin.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_my_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_my_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_action_add_shape.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\menu\\menu_action_add_shape.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_file_upload_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_file_upload_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_lock_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_lock_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_layers_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_layers_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_play.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_play.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_offline.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_offline.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_base_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_base_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_a_photo_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_add_a_photo_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_farsi_slogn.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\farsi_slogn.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_edit_template.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_edit_template.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_speaker_notes_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_speaker_notes_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_satellite_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_satellite_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xhdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_mapmarker.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\mapmarker.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_add_point.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_add_point.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_file_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_file_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_home_check_data.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\activity_home_check_data.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ruler.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ruler.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_add_polygon.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_add_polygon.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_circle_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_add_circle_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_cloud_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_cloud_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_auto_re_closer.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\fragment_auto_re_closer.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_my_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_my_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_magnify.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\magnify.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_stars_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_stars_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_navigation_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_navigation_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_base_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_base_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_sync.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_sync.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_keyboard_arrow_down_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_keyboard_arrow_down_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_lock_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_lock_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_fullscreen_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_fullscreen_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_add_a_photo_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_add_a_photo_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_linear_scale_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_linear_scale_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_pin.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_pin.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_new_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_new_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_play_circle.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\play_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_edit_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_edit_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_linear_scale_black_24dp.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_linear_scale_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_more_vert_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_more_vert_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\border.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_attach_file_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_attach_file_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_in_down.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\slide_in_down.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_search_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_search_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_service_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_service_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_play_circle.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\play_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_perm_media_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_perm_media_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_edit_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_edit_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_service_point.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\rounded_service_point.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_service_location2.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_service_location2.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_custom_purple_bordered_bg.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\custom_purple_bordered_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_pin.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_ic_poles.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\rounded_ic_poles.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_content_discard.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_content_discard.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_search_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_search_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_delete_forever_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_delete_forever_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_language_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_language_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_add_circle_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_add_circle_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_filter_b_and_w_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_filter_b_and_w_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_stars_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_stars_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_linear_scale_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_linear_scale_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_custom_white_rounded_bg.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\custom_white_rounded_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_navigate.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\activity_navigate.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_redo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_redo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_farsi_slogn.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\farsi_slogn.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_service_location2.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_service_location2.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_clear_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_clear_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_ic_substation.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\rounded_ic_substation.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_substation.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\fragment_substation.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_ic_rmu.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\rounded_ic_rmu.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_stars_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_stars_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_add_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_add_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_directions_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_directions_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_linear_scale_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_linear_scale_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add_a_photo_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_add_a_photo_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_content_edit.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_content_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_online.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_online.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_item_animation_fall_down.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\item_animation_fall_down.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_mapmarker.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\mapmarker.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_add_polygon.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_add_polygon.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_save_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_save_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_filter_b_and_w_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_filter_b_and_w_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_arrow_back_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_arrow_back_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_create_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_create_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_create_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_create_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_farsi_slogn.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\farsi_slogn.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_redo.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_redo.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_new_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_new_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_service_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_service_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_create_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_create_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_email_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_email_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_email_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_email_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_cloud_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_cloud_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_compass.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\bg_compass.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_custom_check_data_navigate_bg.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\custom_check_data_navigate_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_layers_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_layers_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_in_up.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\slide_in_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_play_circle_outline_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_play_circle_outline_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_lock_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_lock_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_compass_bg_layer.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\compass_bg_layer.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_content_edit.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_content_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_play_circle.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\play_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_online.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_online.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_change_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_change_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_gcs_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_gcs_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_a_photo_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_add_a_photo_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_file_upload_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_file_upload_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_more_vert_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_more_vert_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_add_point.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_add_point.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_gcs_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_gcs_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_add_circle_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_add_circle_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_mapmarker.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\mapmarker.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_add_line.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_add_line.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_navigation_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_navigation_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_delete_forever_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_delete_forever_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_perm_media_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_perm_media_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_delete_forever_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_delete_forever_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_directions_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_directions_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_bookmark_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_bookmark_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_gcs_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_gcs_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_user_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_user_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_speaker_notes_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_speaker_notes_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_add.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_add.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_out_up.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\slide_out_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_photo_camera_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_photo_camera_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_magnify.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\magnify.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_search_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_search_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_file_upload_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_file_upload_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_magnify.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\magnify.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_file_download_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_file_download_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_add_a_photo_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_add_a_photo_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_gcs_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_gcs_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_bookmark_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_bookmark_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_edit_template.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_action_edit_template.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_play.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_play.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_bookmark.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\layout\\item_bookmark.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_directions_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_directions_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_sync.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_sync.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_change_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_change_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_file_upload_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_file_upload_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_user_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_user_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_new_feature.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_new_feature.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_gcs_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-mdpi\\ic_gcs_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_circle_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_add_circle_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_keyboard_arrow_down_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_keyboard_arrow_down_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_settings_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_settings_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\xml_device_filter.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\xml\\device_filter.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_keyboard_arrow_down_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_keyboard_arrow_down_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_user_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_user_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_ocl_meter.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\rounded_ocl_meter.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\anim_exit_to_right.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\anim\\exit_to_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_mapmarker.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\mapmarker.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_content_edit.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_content_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_file_upload_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_file_upload_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_bookmark_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_bookmark_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_location_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\ic_add_location_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_satellite_map.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_satellite_map.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_audio.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_audio.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_email_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_email_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_user_location.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_user_location.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_photo_camera_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_photo_camera_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_settings_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_settings_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cancel_btn_background.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable\\cancel_btn_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_save_white_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_save_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_bg_button_unpressed.xml.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-mdpi\\bg_button_unpressed.xml"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_play_circle_outline_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxhdpi\\ic_play_circle_outline_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_bookmark_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_bookmark_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_speaker_notes_black_24dp.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_speaker_notes_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_clear.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-hdpi\\ic_action_clear.png"
+    },
+    {
+        "merged": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_content_edit.png.flat",
+        "source": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_content_edit.png"
+    }
+]

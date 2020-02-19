@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4faff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_24sdp"
+            android:paddingTop="@dimen/_12sdp">
+
+            <TextView
+                android:id="@+id/substation_frag_X_Y_Coordinates_lbl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/x_y_coordinates"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/substation_frag_X_Y_Coordinates_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_X_Y_Coordinates_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_grid_station_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/substation_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_X_Y_Coordinates_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_substation_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_grid_station_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_grid_station_name_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/substation_type_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_substation_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_substation_type_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_grid_station_name_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_voltage_level_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/unit_substation_serial_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_substation_type_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_substation_serial_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_voltage_level_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_No_of_transformers_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/No_of_transformers_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_substation_serial_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_No_of_transformers_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_No_of_transformers_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_No_of_switchgears_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/No_of_switchgears_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_No_of_transformers_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_No_of_switchgears_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_No_of_switchgears_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_No_of_LVDB_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/No_of_LVDB_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_No_of_switchgears_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_No_of_LVDB_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_No_of_LVDB_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_Substation_room_type_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Substation_room_type_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_No_of_LVDB_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_Substation_room_type_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Substation_room_type_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_Left_S_S_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Left_S_S_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Substation_room_type_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_Left_S_S_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Left_S_S_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_Right_S_S_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Right_S_S_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Left_S_S_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_Right_S_S_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Right_S_S_lbl" />
+
+
+            <TextView
+                android:id="@+id/substation_frag_voltage_of_equipment__primary_s_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Voltage_of_equipment__primary_s_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Right_S_S_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_Voltage_of_equipment__primary_s_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_voltage_of_equipment__primary_s_lbl" />
+
+            <TextView
+                android:id="@+id/substation_frag_Total_KVA_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Total_KVA_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Voltage_of_equipment__primary_s_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_Total_KVA_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Total_KVA_lbl" />
+
+
+            <TextView
+                android:id="@+id/substation_frag_Manufacture_of_equipment_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Manufacture_of_equipment_lbl"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Total_KVA_sp" />
+
+            <Spinner
+                android:id="@+id/substation_frag_Manufacture_of_equipment_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Manufacture_of_equipment_lbl" />
+
+            <EditText
+                android:id="@+id/substation_frag_notes_et"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/custom_edittext_border_background"
+                android:gravity="start"
+                android:hint="@string/notes_hint"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_Manufacture_of_equipment_sp"
+                android:autofillHints="" />
+
+
+            <Button
+                android:id="@+id/substation_frag_save_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/update_btn_background"
+                android:elevation="4dp"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/substation_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_notes_et"
+                tools:targetApi="lollipop" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

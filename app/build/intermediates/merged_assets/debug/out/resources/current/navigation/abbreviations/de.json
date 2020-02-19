@@ -1,0 +1,26 @@
+{
+    "context": [
+        {
+            "id": "generic",
+            "default": "yes",
+            "language": "de",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "no",
+            "content": [
+            ]
+        },
+        {
+            "id": "StateAbbreviations",
+            "default": "no",
+            "language": "de",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "yes",
+            "content": [
+            ]
+        }
+    ]
+}

@@ -1,0 +1,233 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name">SEC Data Check</string>
+
+    <string name="app_package_name" translatable="false">com.sec.datacheck.fileprovider</string>
+    <string name="home">Home</string>
+    <string name="loading_location">Loading Location…</string>
+    <string name="map_not_loaded">Map Not Loaded</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="loading">Loading…</string>
+    <string name="connection_error">Connection error, Try again</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="wrong_username_or_password">Wrong user name or password</string>
+    <string name="action_go_offline">Work in offline mode</string>
+    <string name="action_go_online">Work in online mode</string>
+    <string name="action_edit">Edit</string>
+    <string name="out_side_extent">You Out Side extent</string>
+    <string name="undo">Undo</string>
+    <string name="discard">Discard</string>
+    <string name="save">Save</string>
+    <string name="sync">Sync</string>
+    <string name="show_templates">Show templates</string>
+    <string name="delete_current_offline_map">Do you want to delete your previously downloaded map?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="notes">Notes:</string>
+
+    <!--Ali Ussama Update-->
+    <string name="BaseMap" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_AllMap/MapServer</string>
+    <string name="BaseMap2" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/MapServer</string>
+
+    <string name="gcs_feature_server" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer</string>
+    <string name="gcs_feature_server_test" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer</string>
+
+    <string name="point_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/0</string>
+    <string name="line_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/1</string>
+    <string name="polygon_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/2</string>
+    <string name="index_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/3</string>
+
+    <!--        <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/0</string>-->
+    <!--        <string name="FCL_POLES" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/1</string>-->
+    <!--        <string name="FCL_RMU" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/2</string>-->
+    <!--        <string name="FCL_Substation" translatable="false">192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/3</string>-->
+    <!--        <string name="OCL_METER" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/4</string>-->
+    <!--        <string name="Service_Point" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/5</string>-->
+
+    <!--        <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/0</string>-->
+    <!--        <string name="FCL_POLES" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/1</string>-->
+    <!--        <string name="FCL_RMU" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/2</string>-->
+    <!--        <string name="FCL_Substation" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/3</string>-->
+    <!--        <string name="OCL_METER" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/4</string>-->
+    <!--        <string name="Service_Point" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/5</string>-->
+    <!--        <string name="Surveyor" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/6</string>-->
+
+    <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/0</string>
+    <string name="FCL_POLES" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/1</string>
+    <string name="FCL_RMU" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/2</string>
+    <string name="FCL_Substation" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/3</string>
+    <string name="OCL_METER" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/4</string>
+    <string name="Service_Point" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/5</string>
+    <string name="Surveyor" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/6</string>
+
+    <!--        <string name="stations" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/EKC/EKC_CheckData/FeatureServer/0</string>-->
+    <!--    <string name="stations" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_CheckData/FeatureServer/0</string>-->
+    <string name="auto_recloser" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/0</string>
+    <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/13</string>
+    <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/14</string>
+
+    <!--Ali Ussama Update-->
+
+    <string name="GcsSatellite" translatable="false">http://54.187.60.111/arcgis/rest/services/GCS_Cahced/MapServer</string>
+
+    <string name="MapServiceEnglishToken" translatable="false">dXIpr8oo9tCaCrniBW4dT_sAGlcX8I3tyOK5eNaGJAo.</string>
+    <string name="MapServiceArabicToken" translatable="false">dXIpr8oo9tCaCrniBW4dT_sAGlcX8I3tyOK5eNaGJAo.</string>
+    <string name="FeatureServiceToken" translatable="false">TMEE6lqp0mvBmoZkPeeLpb0TCLvOd6RIzXVr1oU5_JA.</string>
+    <string name="GcsSatelliteToken" translatable="false">RxmJJAGcbuNb_T4lafPuguHIKAfrYVila_DhIkbE9mA.</string>
+
+    <string name="FCL_DISTRIBUTIONBOX_layer_name" translatable="false">EKC_Collector.DBO.FCL_DISTRIBUTIONBOX</string>
+    <string name="FCL_POLES_layer_name" translatable="false">EKC_Collector.DBO.FCL_POLES</string>
+    <string name="FCL_RMU_layer_name" translatable="false">EKC_Collector.DBO.FCL_RMU</string>
+    <string name="FCL_Substation_layer_name" translatable="false">EKC_Collector.DBO.FCL_Substation</string>
+    <string name="OCL_METER_layer_name" translatable="false">EKC_Collector.DBO.OCL_METER</string>
+    <string name="Service_Point_layer_name" translatable="false">EKC_Collector.DBO.Service_Point</string>
+
+    <string name="point_feature_layer_name" translatable="false">GeoNames</string>
+    <string name="line_feature_layer_name" translatable="false">NameExtendLine</string>
+    <string name="polygon_feature_layer_name" translatable="false">NameExtendArea</string>
+    <string name="working_area_feature_layer_services" translatable="false"> http://54.187.60.111/arcgis/rest/services/GCS_Collector_26_7_2017/FeatureServer/7</string>
+
+    <string name="dialog_connection_failed_title"> Error downloading</string>
+    <string name="connection_failed">Connection Failed, Please try again</string>
+    <string name="action_add_new_feature_online">Add New Service</string>
+    <string name="tap_on_map_to_add">Tap on Map to add</string>
+    <string name="delete_feature">Delete Service</string>
+    <string name="are_you_sure">Are You Sure ?</string>
+    <string name="gps_not_enabled">GPS Not Enabled</string>
+    <string name="enable_gps_now">Enable Now From Settings ?</string>
+    <string name="settings">Settings</string>
+    <string name="accept_permission">You Must accept permission</string>
+    <string name="exit">Exit</string>
+    <string name="exit_without_saving">Exit without saving ?</string>
+    <string name="enter_required_fields_and_save">Enter required fields and Save"</string>
+    <string name="try_again"> Try again</string>
+    <string name="dialog_bookmark_title">Add New Bookmark</string>
+    <string name="dialog_bookmark_add">Add</string>
+    <string name="dialog_bookmark_cancel">Cancel</string>
+    <string name="no_title">Enter Title</string>
+    <string name="bookmark_added">Bookmark Added Successfully</string>
+    <string name="bookmark_not_added">Can not add bookmark</string>
+    <string name="no_bookmarks">No bookmarks found</string>
+    <string name="dialog_show_bookmarks_title">My Bookmarks</string>
+    <string name="menu_add_bookmark">Add bookmark</string>
+    <string name="menu_show_bookmarks">Show bookmarks</string>
+    <string name="title">Title</string>
+    <string name="download_another_version">Offline version found, Download another version or load the predownloaded</string>
+    <string name="no_offline_version">You do not have Offline Version</string>
+    <string name="preview">Load</string>
+    <string name="download">Download</string>
+    <string name="no_service_found">No service found in this area</string>
+    <string name="attachment_offline_error">Cannot add attachment,Please Download Another Local Version</string>
+    <string name="sync_completed">Sync Completed</string>
+    <string name="error_in_adding_feature">Error in adding service</string>
+    <string name="download_map_again">Please, Re-download the map again</string>
+    <string name="sync_before_online">If you made any work on offline map you must Sync with Server.\n Sync Now ?</string>
+    <string name="add_attachment">Add Attachment</string>
+    <string name="camera">Open Camera</string>
+    <string name="gallery">Open Gallery</string>
+    <string name="record_audio">Record Audio</string>
+    <string name="record_video">Record Video</string>
+    <string name="delete">Delete</string>
+    <string name="change_location">Change Location</string>
+    <string name="attachments">Attachments</string>
+    <string name="attributes">Attributes</string>
+    <string name="search">Search By City</string>
+    <string name="draw_area_to_download">Draw Area To Download</string>
+    <string name="download_current_map_area">Download Current Map Area</string>
+    <string name="load_previous_downloaded_map">Load Previous Downloaded Map</string>
+    <string name="logout">Logout</string>
+    <string name="delete_attachment">Delete Attachment</string>
+    <string name="no_attachment">No Attachments</string>
+    <string name="permission_record">Please Accept permission to add record</string>
+    <string name="permission_gallery">Please Accept permission to add from gallery</string>
+    <string name="delete_service">Delete Service</string>
+    <string name="video_size">Video Exceed 30MB</string>
+    <string name="change_video_setting">Change video quality from settings</string>
+    <string name="name_validation">You must enter a name!</string>
+    <string name="zoom_more">Please, Zoom In More</string>
+    <string name="clear">Clear</string>
+    <string name="draw_on_map">Please, Draw On Map</string>
+    <string name="ok">OK</string>
+    <string name="gps_setting">Open GPS or Change GPS Mode to High Accuracy</string>
+    <string name="no_working_area">No Working Area For You</string>
+    <string name="recording_audio">Press and hold to start recording.</string>
+    <string name="permission_camera">Please accept permission to open camera</string>
+    <string name="map_not_loaded_yet">Map not loaded</string>
+    <string name="choose_index_to_work">Choose Index to work on</string>
+    <string name="enter_index">Enter Index</string>
+
+
+    <string name="New_Drawed_Featur_ids" translatable="false" tools:ignore="MissingTranslation">New_Drawed_Featur_ids</string>
+    <string name="feature_point_layer" translatable="false">الطبقه النقطية</string>
+    <string name="feature_line_layer" translatable="false">الطبقه الخطية</string>
+    <string name="feature_area_layer" translatable="false">الطبقه المساحية</string>
+    <string name="menu_go_offline_mode">Go offline mode</string>
+    <string name="menu_go_online_mode">Go online mode</string>
+    <string name="loading_file" translatable="false">جاري تحميل المف…</string>
+    <string name="type" translatable="false">النوع</string>
+    <string name="object_id" translatable="false">Object ID:</string>
+    <string name="dummy_objectID" translatable="false">123564</string>
+    <string name="more_info"><![CDATA[More Info >>]]></string>
+    <string name="distribution_box_lbl">FCL DISTRIBUTION BOX</string>
+    <string name="fcl_poles_lbl">FCL POLES</string>
+    <string name="fcl_rmu_lbl">FCL RMU</string>
+    <string name="fcl_substation_lbl">FCL Substation</string>
+    <string name="ocl_meter">OCL METER</string>
+    <string name="service_point">Service Point</string>
+    <string name="please_wait">Please Wait, Loading</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="overflow">overflow</string>
+    <string name="required">مطلوب</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="edit_point">Edit Selected Point</string>
+    <string name="Add_point">Create New Point</string>
+    <string name="error_cannot_add_to_feature_table">Error, Can\'t Add</string>
+    <string name="feature_added">Feature Added Successfully!</string>
+    <string name="enter_database_name">Enter Database Name</string>
+    <string name="please_open_gps_location">Please Open GPS Location.</string>
+    <string name="network_connection_failed">Network Connection Failed!, please try again</string>
+    <string name="please_your_network_connect">Please check your network connection and try again</string>
+    <string name="enter_bookmark_name">Bookmark Title</string>
+    <string name="deleted_successfully">Point deleted successfully!</string>
+    <string name="failed_to_deleted">Failed to delete feature, try again</string>
+    <string name="updated_successfuly">Updated successfully</string>
+    <string name="data_collector">SEC Data Collector</string>
+    <string name="data_check">SEC Data Check</string>
+    <string name="code_lbl">الكود</string>
+    <string name="device_no_lbl">رقم الجهاز</string>
+    <string name="not_valid_area">"أنت خارج منطقة عملك "</string>
+    <string name="sign_in">Sign In</string>
+    <string name="code">Code</string>
+    <string name="surveyor_code">Surveyor Code</string>
+    <string name="x_y_coordinates">X Y Coordinates 2 points</string>
+    <string name="substation_lbl">Substation</string>
+    <string name="substation_type_lbl">Substation type</string>
+    <string name="unit_substation_serial_lbl">Unit_Substation_serial</string>
+    <string name="notes_hint">Notes</string>
+    <string name="No_of_transformers_lbl">No_of_transformers</string>
+    <string name="No_of_switchgears_lbl">No_of_switchgears</string>
+    <string name="No_of_LVDB_lbl">No_of_LVDB</string>
+    <string name="Substation_room_type_lbl">Substation_room_type</string>
+    <string name="Left_S_S_lbl">Left_S_S</string>
+    <string name="Right_S_S_lbl">Right_S_S</string>
+    <string name="Voltage_of_equipment__primary_s_lbl">Voltage_of_equipment__primary_s</string>
+    <string name="Total_KVA_lbl">Total_KVA</string>
+    <string name="Manufacture_of_equipment_lbl">Manufacture_of_equipment</string>
+    <string name="failed_to_update">Failed to update feature, try again</string>
+    <string name="x_y_coordinates_4_points">X_Y_Coordinates_4_points</string>
+    <string name="Grid_Station_lbl">Grid_Station</string>
+    <string name="Grid_Station_Name_lbl">Grid_Station_Name</string>
+    <string name="Voltage_Level__132_33__132_13_8_lbl">Voltage_Level__132_33__132_13_8</string>
+    <string name="grid_station">Grid_Station</string>
+    <string name="x_y_coordinates_1_points">X_Y_Coordinates_1_points</string>
+    <string name="Auto_Recloser_No_lbl">Auto_Recloser_No</string>
+    <string name="Ratio_Amp_lbl">Ratio_Amp</string>
+    <string name="Type_Inside__S_S__Feeder_lbl">Type_Inside__S_S__Feeder</string>
+    <string name="Electricity_Status_lbl">Electricity_Status</string>
+    <string name="EVoltage_lbl">Voltage</string>
+</resources>
