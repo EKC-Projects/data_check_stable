@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\537ca972a88c673f4b33a2a7b7e54449\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\ea1185e5c2bfc8e0288d195a3c19ddad\material-1.2.0-alpha02\AndroidManifest.xml:17:1-24:12
 MERGED from [com.jsibbold:zoomage:1.2.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\986ed0ae786043d16b0a91b8b0e41234\jetified-zoomage-1.2.0\AndroidManifest.xml:2:1-12:12
@@ -12,7 +12,7 @@ MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] C:\Users\AliOsama\.gr
 MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\51d27c4c1043b49db798cbe12b9f54d0\jetified-library-1.4.2\AndroidManifest.xml:6:1-16:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\07332a44be6cb37bd266dfc65819e30c\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\5322c960eaa3131bd350b430084e3afd\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
-MERGED from [com.esri.arcgisruntime:arcgis-android:100.6.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\7a012c9f9478bb0f1d4d12e1f2c0fcc5\jetified-arcgis-android-100.6.0\AndroidManifest.xml:2:1-10:12
+MERGED from [com.esri.arcgisruntime:arcgis-android:100.7.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\272b0a66b1be86fd775b3098df114683\jetified-arcgis-android-100.7.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\790eef19ceb7e739a6f3c164a188f48f\jetified-fab-1.6.4\AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\84bafc4d2885af301f0bff5a5400fb54\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:2:1-14:12
@@ -28,6 +28,7 @@ MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\AliOsam
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\361cf020e568753a65d6bd82b4965a4c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\ef5709c88243ae400f4346dd50466e1d\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\1f0afbbff362ef5b209b222adb5e7a35\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\270bfed8cbf4c7f824fe6aaeac246204\browser-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\b435bf17dca8147070f0321c3a8066ce\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\d7a90fae225d31bb528d1d66cef189fa\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-rc01] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\d57a3682540792f995bee6954037e8bb\coordinatorlayout-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
@@ -50,32 +51,32 @@ MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\AliOsama\.grad
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\503ba85d29acc2a92bb71683bdba9f67\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\04ea3b7a73d93828255d66a3f5389271\exifinterface-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\0389d07f752a93bf4bcf20f4572ee6c8\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\600fab8abeffb7e4d39113aec910bb96\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\727ca2c1bb534049fcabc9fa17c5cdd8\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\6870966c7bdcbf34556874fd1986ea94\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\c7216d8abd596d86e298ee6e0934b933\print-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\600fab8abeffb7e4d39113aec910bb96\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\904d08baba89ef8fe3bec29921e1d383\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\9df68f9a35c7b5e1170c1bc662d8ff35\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\129f19ac7a38ccdab7c274f14e96c7a1\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\387228202a3807dac41c97625aea7d69\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\77d46a977fbd5cdfba940c0ff4d54215\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\a3960bbba283ac49b93aa5bf42904411\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
+INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
 	package
 		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:4:5-32
 		INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
 		INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-79:12
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:1-72:12
 		INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:2:11-69
@@ -138,7 +139,7 @@ ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\And
 	android:required
 		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:24:9-32
 application
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:26:5-77:19
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:26:5-70:19
 MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\ea1185e5c2bfc8e0288d195a3c19ddad\material-1.2.0-alpha02\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\ea1185e5c2bfc8e0288d195a3c19ddad\material-1.2.0-alpha02\AndroidManifest.xml:22:5-20
 MERGED from [com.afollestad.material-dialogs:commons:0.9.6.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\4a25d4a1e5ef79c3c6bfd334057a2c5a\jetified-commons-0.9.6.0\AndroidManifest.xml:12:5-20
@@ -187,82 +188,66 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Al
 		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:34:9-44
 	android:name
 		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:27:9-90
-activity#com.sec.datacheck.collector.view.activities.login.LoginActivity
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:36:9-37:71
-	android:theme
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:37:13-69
-	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:36:19-97
 activity#com.sec.datacheck.NavigateActivity
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:38:9-41:63
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:37:9-40:63
 	android:configChanges
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:40:13-93
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:39:13-93
 	android:theme
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:41:13-60
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:40:13-60
 	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:39:13-62
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:38:13-62
 activity#com.sec.datacheck.splash.SplashActivity
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:42:9-51:20
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:41:9-50:20
 	android:configChanges
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:44:13-93
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:43:13-93
 	android:theme
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:45:13-60
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:44:13-60
 	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:43:13-67
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:42:13-67
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:13-50:29
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:45:13-49:29
 	android:label
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:28-58
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:45:28-58
 action#android.intent.action.MAIN
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:47:17-69
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:17-69
 	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:47:25-66
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:49:17-77
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:48:17-77
 	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:49:27-74
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:48:27-74
 provider#androidx.core.content.FileProvider
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:53:9-64:20
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:52:9-63:20
 	android:grantUriPermissions
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:58:13-47
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:57:13-47
 	android:enabled
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:56:13-35
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:55:13-35
 	android:authorities
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:55:13-59
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:54:13-59
 	android:exported
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:57:13-37
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:54:13-62
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:53:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:59:13-63:54
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:58:13-62:54
 	android:resource
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:63:17-51
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:62:17-51
 	android:enabled
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:61:17-39
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:60:17-39
 	android:exported
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:62:17-40
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:61:17-40
 	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:60:17-67
-activity#com.sec.datacheck.collector.view.activities.map.MapActivity
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:66:9-70:46
-	android:label
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:69:13-41
-	android:configChanges
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:68:13-93
-	android:theme
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:70:13-44
-	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:67:13-87
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:59:17-67
 activity#com.sec.datacheck.checkdata.view.activities.map.MapActivity
-ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:72:9-76:46
+ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:65:9-69:46
 	android:label
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:75:13-41
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:68:13-41
 	android:configChanges
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:74:13-93
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:67:13-93
 	android:theme
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:76:13-44
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:69:13-44
 	android:name
-		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:73:13-87
+		ADDED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:66:13-87
 uses-sdk
 INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml
@@ -283,8 +268,8 @@ MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\AliOsama\.gradle\cache
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\07332a44be6cb37bd266dfc65819e30c\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\5322c960eaa3131bd350b430084e3afd\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\5322c960eaa3131bd350b430084e3afd\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
-MERGED from [com.esri.arcgisruntime:arcgis-android:100.6.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\7a012c9f9478bb0f1d4d12e1f2c0fcc5\jetified-arcgis-android-100.6.0\AndroidManifest.xml:6:5-8:41
-MERGED from [com.esri.arcgisruntime:arcgis-android:100.6.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\7a012c9f9478bb0f1d4d12e1f2c0fcc5\jetified-arcgis-android-100.6.0\AndroidManifest.xml:6:5-8:41
+MERGED from [com.esri.arcgisruntime:arcgis-android:100.7.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\272b0a66b1be86fd775b3098df114683\jetified-arcgis-android-100.7.0\AndroidManifest.xml:6:5-8:41
+MERGED from [com.esri.arcgisruntime:arcgis-android:100.7.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\272b0a66b1be86fd775b3098df114683\jetified-arcgis-android-100.7.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\790eef19ceb7e739a6f3c164a188f48f\jetified-fab-1.6.4\AndroidManifest.xml:8:5-10:41
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\790eef19ceb7e739a6f3c164a188f48f\jetified-fab-1.6.4\AndroidManifest.xml:8:5-10:41
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\84bafc4d2885af301f0bff5a5400fb54\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
@@ -315,6 +300,8 @@ MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\AliOsama\.gradle\caches\
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\ef5709c88243ae400f4346dd50466e1d\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\1f0afbbff362ef5b209b222adb5e7a35\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\1f0afbbff362ef5b209b222adb5e7a35\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\270bfed8cbf4c7f824fe6aaeac246204\browser-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\270bfed8cbf4c7f824fe6aaeac246204\browser-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\b435bf17dca8147070f0321c3a8066ce\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\b435bf17dca8147070f0321c3a8066ce\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\d7a90fae225d31bb528d1d66cef189fa\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
@@ -359,14 +346,14 @@ MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\AliOsama\.grad
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\04ea3b7a73d93828255d66a3f5389271\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\0389d07f752a93bf4bcf20f4572ee6c8\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\0389d07f752a93bf4bcf20f4572ee6c8\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\600fab8abeffb7e4d39113aec910bb96\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\600fab8abeffb7e4d39113aec910bb96\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\727ca2c1bb534049fcabc9fa17c5cdd8\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\727ca2c1bb534049fcabc9fa17c5cdd8\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\6870966c7bdcbf34556874fd1986ea94\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\6870966c7bdcbf34556874fd1986ea94\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\c7216d8abd596d86e298ee6e0934b933\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\c7216d8abd596d86e298ee6e0934b933\print-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\600fab8abeffb7e4d39113aec910bb96\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\600fab8abeffb7e4d39113aec910bb96\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\904d08baba89ef8fe3bec29921e1d383\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\904d08baba89ef8fe3bec29921e1d383\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\9df68f9a35c7b5e1170c1bc662d8ff35\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44

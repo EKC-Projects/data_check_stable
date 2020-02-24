@@ -30,7 +30,7 @@
         android:required="true" />
 
     <application
-        android:name="com.sec.datacheck.collector.model.models.DataCollectionApplication"
+        android:name="com.sec.datacheck.checkdata.model.models.DataCollectionApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -38,11 +38,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="false"
+        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity
-            android:name="com.sec.datacheck.collector.view.activities.login.LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.sec.datacheck.NavigateActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
@@ -71,11 +69,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity
-            android:name="com.sec.datacheck.collector.view.activities.map.MapActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
-            android:label="@string/home"
-            android:theme="@style/AppTheme" />
         <activity
             android:name="com.sec.datacheck.checkdata.view.activities.map.MapActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"

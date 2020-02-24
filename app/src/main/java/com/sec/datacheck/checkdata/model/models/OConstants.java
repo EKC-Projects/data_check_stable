@@ -16,6 +16,17 @@ public class OConstants {
 
     public static final String LAYER_SERVICE_POINT = "EKC_Collector.DBO.Service_Point";
 
+    public static final String LAYER_AutoReCloser = "Auto_Re_closer";
+
+    public static final String LAYER_FuseCutOut = "Fuse_Cut_Out";
+
+    public static final String LAYER_LinkBox = "Link_Box";
+
+    public static final String LAYER_Station= "Station";
+
+    public static final String LAYER_Substation = "Substation";
+
+
     public static HashMap<String, String> dist_box_domain, fcl_poles_domain, fcl_rmu_domain, fcl_substation_domain, ocl_meter_domain, service_point_domain;
 
     public static HashMap<String, String> getDistBoxDomain() {

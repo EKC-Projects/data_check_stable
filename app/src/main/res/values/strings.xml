@@ -32,7 +32,8 @@
     <string name="BaseMap2" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/MapServer</string>
 
     <string name="gcs_feature_server" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer</string>
-    <string name="gcs_feature_server_test" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer</string>
+<!--    <string name="gcs_feature_server_test" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer</string>-->
+    <string name="gcs_feature_server_test" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer</string>
 
     <string name="point_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/0</string>
     <string name="line_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/1</string>
@@ -65,8 +66,24 @@
     <!--        <string name="stations" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/EKC/EKC_CheckData/FeatureServer/0</string>-->
     <!--    <string name="stations" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_CheckData/FeatureServer/0</string>-->
     <string name="auto_recloser" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/0</string>
+    <string name="fuse_cut_out" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/1</string>
+    <string name="link_box" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/2</string>
+    <string name="load_Breaker_Switch_LBS_33_13_KV" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/3</string>
+    <string name="l_V_distribution_Box" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/4</string>
+    <string name="l_V_distribution_Panel" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/5</string>
+    <string name="MCCB_LVP_Circuits_Record" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/6</string>
+    <string name="Meter" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/7</string>
+    <string name="Mini_pillar" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/8</string>
+    <string name="MV_Metering" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/9</string>
+    <string name="OH_Lines" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/10</string>
+    <string name="Pole" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/11</string>
+    <string name="Sectionlizer" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/12</string>
     <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/13</string>
     <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/14</string>
+    <string name="SVC_Static_VAR_Compensator" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/15</string>
+    <string name="Switchgear" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/16</string>
+    <string name="Transformer" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/17</string>
+    <string name="Voltage_regulator" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/18</string>
 
     <!--Ali Ussama Update-->
 
@@ -230,4 +247,13 @@
     <string name="Type_Inside__S_S__Feeder_lbl">Type_Inside__S_S__Feeder</string>
     <string name="Electricity_Status_lbl">Electricity_Status</string>
     <string name="EVoltage_lbl">Voltage</string>
+    <string name="Fuse_Cut_Out_No_lbl">Fuse Cut Out No</string>
+    <string name="Type_lbl">Type</string>
+    <string name="Electricity_Status__Open_Close_lbl">Electricity Status Open Close</string>
+    <string name="Link_Box_lbl">Link Box</string>
+    <string name="Total_no__of_Link_Box_in_the_CK_lbl">Total_no__of_Link_Box_in_the_CK</string>
+    <string name="link_box_distribution_Panel_lbl">link_box_distribution_Panel</string>
+    <string name="Auto_Recloser_lbl">Auto – Re-closer</string>
+    <string name="Fuse_Cut_Out_lbl">Fuse Cut Out</string>
+    <string name="station">Station</string>
 </resources>

@@ -305,7 +305,11 @@ public class StationFragment extends Fragment implements View.OnClickListener{
             stationModel.setVoltage_Level__132_33__132_13_8(voltageLevelSpinner.getSelectedItemPosition() + 1);
 
             stationModel.setNotes(note);
-            mPresenter.updateStationOnline(mSelectedResult, stationModel);
+            if (mOnlineData) {
+                mPresenter.updateStationOnline(mSelectedResult, stationModel);
+            }else{
+                mPresenter.updateStationOffline(mSelectedResult, stationModel);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

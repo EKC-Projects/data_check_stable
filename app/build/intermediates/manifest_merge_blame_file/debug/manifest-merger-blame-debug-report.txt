@@ -60,8 +60,8 @@
 29-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:24:9-32
 30
 31    <application
-31-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:26:5-77:19
-32        android:name="com.sec.datacheck.collector.model.models.DataCollectionApplication"
+31-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:26:5-70:19
+32        android:name="com.sec.datacheck.checkdata.model.models.DataCollectionApplication"
 32-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:27:9-90
 33        android:allowBackup="true"
 33-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:28:9-35
@@ -76,114 +76,99 @@
 38-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:31:9-48
 39        android:supportsRtl="false"
 39-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:32:9-36
-40        android:theme="@style/AppTheme"
-40-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:33:9-40
-41        android:usesCleartextTraffic="true" >
-41-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:34:9-44
-42        <activity
-42-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:36:9-37:71
-43            android:name="com.sec.datacheck.collector.view.activities.login.LoginActivity"
-43-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:36:19-97
-44            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-44-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:37:13-69
-45        <activity
-45-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:38:9-41:63
-46            android:name="com.sec.datacheck.NavigateActivity"
-46-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:39:13-62
-47            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
-47-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:40:13-93
-48            android:theme="@style/Theme.Design.NoActionBar" />
-48-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:41:13-60
-49        <activity
-49-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:42:9-51:20
-50            android:name="com.sec.datacheck.splash.SplashActivity"
-50-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:43:13-67
-51            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
-51-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:44:13-93
-52            android:theme="@style/Theme.Design.NoActionBar" >
-52-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:45:13-60
-53            <intent-filter android:label="singleInstance" >
-53-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:13-50:29
-53-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:28-58
-54                <action android:name="android.intent.action.MAIN" />
-54-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:47:17-69
-54-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:47:25-66
-55
-56                <category android:name="android.intent.category.LAUNCHER" />
-56-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:49:17-77
-56-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:49:27-74
-57            </intent-filter>
-58        </activity>
-59
-60        <provider
-60-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:53:9-64:20
-61            android:name="androidx.core.content.FileProvider"
-61-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:54:13-62
-62            android:authorities="@string/app_package_name"
-62-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:55:13-59
-63            android:enabled="true"
-63-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:56:13-35
-64            android:exported="false"
-64-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:57:13-37
-65            android:grantUriPermissions="true" >
-65-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:58:13-47
-66            <meta-data
-66-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:59:13-63:54
-67                android:name="android.support.FILE_PROVIDER_PATHS"
-67-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:60:17-67
-68                android:enabled="true"
-68-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:61:17-39
-69                android:exported="true"
-69-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:62:17-40
-70                android:resource="@xml/file_paths" />
-70-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:63:17-51
-71        </provider>
-72
-73        <activity
-73-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:66:9-70:46
-74            android:name="com.sec.datacheck.collector.view.activities.map.MapActivity"
-74-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:67:13-87
-75            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
-75-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:68:13-93
-76            android:label="@string/home"
-76-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:69:13-41
-77            android:theme="@style/AppTheme" />
-77-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:70:13-44
-78        <activity
-78-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:72:9-76:46
-79            android:name="com.sec.datacheck.checkdata.view.activities.map.MapActivity"
-79-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:73:13-87
-80            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
-80-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:74:13-93
-81            android:label="@string/home"
-81-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:75:13-41
-82            android:theme="@style/AppTheme" />
-82-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:76:13-44
-83
-84        <provider
-84-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
-85            android:name="com.squareup.picasso.PicassoProvider"
-85-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
-86            android:authorities="com.sec.datacheck.com.squareup.picasso"
-86-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
-87            android:exported="false" />
-87-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
-88
-89        <activity
-89-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-90            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-90-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-91            android:exported="false"
-91-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-92            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-92-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-93
-94        <meta-data
-94-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\361cf020e568753a65d6bd82b4965a4c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-95            android:name="com.google.android.gms.version"
-95-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\361cf020e568753a65d6bd82b4965a4c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-96            android:value="@integer/google_play_services_version" />
-96-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\361cf020e568753a65d6bd82b4965a4c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-97    </application>
-98
-99</manifest>
+40        android:testOnly="true"
+41        android:theme="@style/AppTheme"
+41-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:33:9-40
+42        android:usesCleartextTraffic="true" >
+42-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:34:9-44
+43        <activity
+43-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:37:9-40:63
+44            android:name="com.sec.datacheck.NavigateActivity"
+44-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:38:13-62
+45            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
+45-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:39:13-93
+46            android:theme="@style/Theme.Design.NoActionBar" />
+46-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:40:13-60
+47        <activity
+47-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:41:9-50:20
+48            android:name="com.sec.datacheck.splash.SplashActivity"
+48-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:42:13-67
+49            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
+49-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:43:13-93
+50            android:theme="@style/Theme.Design.NoActionBar" >
+50-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:44:13-60
+51            <intent-filter android:label="singleInstance" >
+51-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:45:13-49:29
+51-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:45:28-58
+52                <action android:name="android.intent.action.MAIN" />
+52-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:17-69
+52-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:46:25-66
+53
+54                <category android:name="android.intent.category.LAUNCHER" />
+54-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:48:17-77
+54-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:48:27-74
+55            </intent-filter>
+56        </activity>
+57
+58        <provider
+58-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:52:9-63:20
+59            android:name="androidx.core.content.FileProvider"
+59-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:53:13-62
+60            android:authorities="@string/app_package_name"
+60-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:54:13-59
+61            android:enabled="true"
+61-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:55:13-35
+62            android:exported="false"
+62-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:56:13-37
+63            android:grantUriPermissions="true" >
+63-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:57:13-47
+64            <meta-data
+64-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:58:13-62:54
+65                android:name="android.support.FILE_PROVIDER_PATHS"
+65-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:59:17-67
+66                android:enabled="true"
+66-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:60:17-39
+67                android:exported="true"
+67-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:61:17-40
+68                android:resource="@xml/file_paths" />
+68-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:62:17-51
+69        </provider>
+70
+71        <activity
+71-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:65:9-69:46
+72            android:name="com.sec.datacheck.checkdata.view.activities.map.MapActivity"
+72-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:66:13-87
+73            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
+73-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:67:13-93
+74            android:label="@string/home"
+74-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:68:13-41
+75            android:theme="@style/AppTheme" />
+75-->C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\src\main\AndroidManifest.xml:69:13-44
+76
+77        <provider
+77-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+78            android:name="com.squareup.picasso.PicassoProvider"
+78-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+79            android:authorities="com.sec.datacheck.com.squareup.picasso"
+79-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+80            android:exported="false" />
+80-->[com.squareup.picasso:picasso:2.71828] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\390438abe1beafc0c8e51471c2c2d7d6\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+81
+82        <activity
+82-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+83            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+83-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+84            android:exported="false"
+84-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+85            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+85-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\37383a8296aa9a5584b69bd957dc1095\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+86
+87        <meta-data
+87-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\361cf020e568753a65d6bd82b4965a4c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+88            android:name="com.google.android.gms.version"
+88-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\361cf020e568753a65d6bd82b4965a4c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+89            android:value="@integer/google_play_services_version" />
+89-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\AliOsama\.gradle\caches\transforms-2\files-2.1\361cf020e568753a65d6bd82b4965a4c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+90    </application>
+91
+92</manifest>

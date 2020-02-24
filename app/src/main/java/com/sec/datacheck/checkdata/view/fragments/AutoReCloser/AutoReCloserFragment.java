@@ -1,12 +1,6 @@
 package com.sec.datacheck.checkdata.view.fragments.AutoReCloser;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.Fragment;
+
 import com.esri.arcgisruntime.data.ArcGISFeature;
 import com.esri.arcgisruntime.data.CodedValue;
 import com.esri.arcgisruntime.data.CodedValueDomain;
@@ -29,8 +28,7 @@ import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.sec.datacheck.R;
 import com.sec.datacheck.checkdata.model.models.Columns;
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult;
-import com.sec.datacheck.checkdata.view.POJO.AutoReCloser;
-import com.sec.datacheck.checkdata.view.POJO.StationModel;
+import com.sec.datacheck.checkdata.view.POJO.AutoReCloserModel;
 import com.sec.datacheck.checkdata.view.activities.map.MapActivity;
 import com.sec.datacheck.checkdata.view.activities.map.MapPresenter;
 import com.sec.datacheck.checkdata.view.utils.Utilities;
@@ -49,7 +47,7 @@ import butterknife.ButterKnife;
  */
 public class AutoReCloserFragment extends Fragment implements View.OnClickListener {
 
-    private static final String TAG = "StationFragment";
+    private static final String TAG = "AutoReCloserFragment";
     @BindView(R.id.auto_re_closer_frag_x_y_coordinates_1_points_sp)
     Spinner X_Y_CoordinatesSpinner_1_pointsSpinner;
 
@@ -131,7 +129,14 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
         try {
             ButterKnife.bind(this, view);
             setHasOptionsMenu(true);
-            loadFeature();
+            if (mCurrent.onlineData) {
+                loadFeature();
+            } else {
+                selectedLayer = mSelectedResult.getFeatureLayer();
+                selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
+                selectedFeature = mSelectedResult.getFeature();
+                init();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -260,7 +265,13 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             ArrayList<String> typesList = new ArrayList<>();
             ArrayList<String> codeList = new ArrayList<>();
 
-            CodedValueDomain typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
+
+            CodedValueDomain typeDomain ;
+            if(mCurrent.onlineData) {
+                typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
+            }else{
+                typeDomain = (CodedValueDomain) mSelectedResult.getGeodatabaseFeatureTable().getField(columnName).getDomain();
+            }
             List<CodedValue> codedValues = typeDomain.getCodedValues();
 
             for (CodedValue codedValue : codedValues) {
@@ -273,10 +284,10 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             int code = 0;
 
             try {
-                if (selectedFeature.getAttributes() == null){
+                if (selectedFeature.getAttributes() == null) {
                     Log.i(TAG, "initSpinner(): selectedFeature.getAttributes() == null");
 
-                }else if (selectedFeature.getAttributes().get(columnName) == null){
+                } else if (selectedFeature.getAttributes().get(columnName) == null) {
                     Log.i(TAG, "initSpinner(): selectedFeature.getAttributes().get(columnName) == null");
 
                 }
@@ -307,7 +318,7 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             Utilities.showLoadingDialog(mCurrent);
             String note = notes.getText() != null ? notes.getText().toString() : "";
 
-            AutoReCloser autReCloserModel = new AutoReCloser();
+            AutoReCloserModel autReCloserModel = new AutoReCloserModel();
             autReCloserModel.setX_Y_Coordinates_1_points(X_Y_CoordinatesSpinner_1_pointsSpinner.getSelectedItemPosition() + 1);
             autReCloserModel.setAuto_Recloser_No(autoReCloserNoSpinner.getSelectedItemPosition() + 1);
             autReCloserModel.setRatio_Amp(rationAmpSpinner.getSelectedItemPosition() + 1);
@@ -316,7 +327,11 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             autReCloserModel.setVoltage(voltageLevelSpinner.getSelectedItemPosition() + 1);
 
             autReCloserModel.setNotes(note);
-            mPresenter.updateAutoReCloserOnline(mSelectedResult, autReCloserModel);
+            if (mCurrent.onlineData) {
+                mPresenter.updateAutoReCloserOnline(mSelectedResult, autReCloserModel);
+            } else {
+                mPresenter.updateAutoReCloserOffline(mSelectedResult, autReCloserModel);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

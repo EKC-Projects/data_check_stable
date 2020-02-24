@@ -392,7 +392,12 @@ public class SubStationFragment extends Fragment implements AdapterView.OnItemSe
             substationModel.setTotal_KVA(totalKVASpinner.getSelectedItemPosition() + 1);
             substationModel.setManufacture_of_equipment(totalKVASpinner.getSelectedItemPosition() + 1);
             substationModel.setNotes(note);
-            mPresenter.updateSubStationOnline(mSelectedResult, substationModel);
+
+            if (mCurrent.onlineData) {
+                mPresenter.updateSubStationOnline(mSelectedResult, substationModel);
+            }else{
+                mPresenter.updateSubStationOffline(mSelectedResult, substationModel);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

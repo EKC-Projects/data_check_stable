@@ -35,7 +35,9 @@ import com.sec.datacheck.checkdata.model.models.Columns;
 import com.sec.datacheck.checkdata.model.models.DataCollectionApplication;
 import com.sec.datacheck.checkdata.model.models.OConstants;
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult;
-import com.sec.datacheck.checkdata.view.POJO.AutoReCloser;
+import com.sec.datacheck.checkdata.view.POJO.AutoReCloserModel;
+import com.sec.datacheck.checkdata.view.POJO.FuseCutOutModel;
+import com.sec.datacheck.checkdata.view.POJO.LinkBoxModel;
 import com.sec.datacheck.checkdata.view.POJO.StationModel;
 import com.sec.datacheck.checkdata.view.POJO.SubstationModel;
 import com.sec.datacheck.checkdata.view.utils.Utilities;
@@ -50,7 +52,7 @@ import java.util.concurrent.ExecutionException;
 public class MapPresenter {
 
     private static final String ROOT_GEO_DATABASE_PATH = "geodatabase";
-    private final String IMAGE_FOLDER_NAME = "AJC_Collector";
+    private final String IMAGE_FOLDER_NAME = "SEC_Data_Check";
     private final String TAG = "MapPresenter";
     private MapPresenterListener listener;
     private MapActivity mCurrent;
@@ -216,6 +218,57 @@ public class MapPresenter {
                             }
                         } else {
                             Log.e(TAG, "queryOffline(): No states found ");
+                            listener.onQueryOffline(mOnlineQueryResults, mFeatureLayer, point);
+
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void queryCheckDataOffline(ArrayList<OnlineQueryResult> mOnlineQueryResults, Point point, SpatialReference sp, GeodatabaseFeatureTable mGeodatabaseFeatureTable, FeatureLayer mFeatureLayer) {
+        try {
+            Log.i(TAG, "queryCheckDataOffline(): is Called ");
+
+
+            QueryParameters query = QueryConfig.getQuery(point, sp, true);
+
+            final ListenableFuture<FeatureQueryResult> future = mGeodatabaseFeatureTable.queryFeaturesAsync(query);
+            future.addDoneListener(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        // call get on the future to get the result
+                        FeatureQueryResult result = future.get();
+                        // check there are some results
+                        Iterator<Feature> resultIterator = result.iterator();
+                        if (resultIterator.hasNext()) {
+                            while (resultIterator.hasNext()) {
+                                // get the extent of the first feature in the result to zoom to
+
+                                Feature feature = resultIterator.next();
+                                OnlineQueryResult mOnlineQueryResult = new OnlineQueryResult();
+                                mOnlineQueryResult.setFeatureOffline(feature);
+                                mOnlineQueryResult.setGeodatabaseFeatureTable(mGeodatabaseFeatureTable);
+                                mOnlineQueryResult.setFeatureLayer(mFeatureLayer);
+                                mOnlineQueryResult.setObjectID(String.valueOf(feature.getAttributes().get(Columns.ObjectID)));
+                                // select the feature
+//                        mFeatureLayer.selectFeature(feature);
+                                Log.i(TAG, "queryCheckDataOffline(): Feature founded with id = " + feature.getAttributes().get(Columns.ObjectID));
+
+                                mOnlineQueryResults.add(mOnlineQueryResult);
+                            }
+                            if (listener != null) {
+                                listener.onQueryOffline(mOnlineQueryResults, mFeatureLayer, point);
+                            }
+                        } else {
+                            Log.e(TAG, "queryCheckDataOffline(): No states found ");
                             listener.onQueryOffline(mOnlineQueryResults, mFeatureLayer, point);
 
                         }
@@ -655,25 +708,43 @@ public class MapPresenter {
                     }
                 });
 
-                if (OConstants.LAYER_DISTRIBUTION_BOX.contains(geodatabaseFeatureTables.getTableName())) {
-                    mCurrent.FCL_DistributionBoxTableOffline = geodatabaseFeatureTables;
-                    mCurrent.FCL_DistributionBoxLayer = featureLayer;
-                } else if (OConstants.LAYER_POLES.contains(geodatabaseFeatureTables.getTableName())) {
-                    mCurrent.FCL_POLESTableOffline = geodatabaseFeatureTables;
-                    mCurrent.FCL_POLES_Layer = featureLayer;
-                } else if (OConstants.LAYER_RMU.contains(geodatabaseFeatureTables.getTableName())) {
-                    mCurrent.FCL_RMUTableOffline = geodatabaseFeatureTables;
-                    mCurrent.FCL_RMU_Layer = featureLayer;
-                } else if (OConstants.LAYER_SUB_STATION.contains(geodatabaseFeatureTables.getTableName())) {
-                    mCurrent.FCL_SubstationTableOffline = geodatabaseFeatureTables;
-                    mCurrent.FCL_Substation_Layer = featureLayer;
-                } else if (OConstants.LAYER_OCL_METER.contains(geodatabaseFeatureTables.getTableName())) {
-                    mCurrent.OCL_METERTableOffline = geodatabaseFeatureTables;
-                    mCurrent.OCL_METER_Layer = featureLayer;
-                } else if (OConstants.LAYER_SERVICE_POINT.contains(geodatabaseFeatureTables.getTableName())) {
-                    mCurrent.ServicePointTableOffline = geodatabaseFeatureTables;
-                    mCurrent.ServicePoint_Layer = featureLayer;
+//                if (OConstants.LAYER_DISTRIBUTION_BOX.contains(geodatabaseFeatureTables.getTableName())) {
+//                    mCurrent.FCL_DistributionBoxTableOffline = geodatabaseFeatureTables;
+//                    mCurrent.FCL_DistributionBoxLayer = featureLayer;
+//                } else if (OConstants.LAYER_POLES.contains(geodatabaseFeatureTables.getTableName())) {
+//                    mCurrent.FCL_POLESTableOffline = geodatabaseFeatureTables;
+//                    mCurrent.FCL_POLES_Layer = featureLayer;
+//                } else if (OConstants.LAYER_RMU.contains(geodatabaseFeatureTables.getTableName())) {
+//                    mCurrent.FCL_RMUTableOffline = geodatabaseFeatureTables;
+//                    mCurrent.FCL_RMU_Layer = featureLayer;
+//                } else if (OConstants.LAYER_SUB_STATION.contains(geodatabaseFeatureTables.getTableName())) {
+//                    mCurrent.FCL_SubstationTableOffline = geodatabaseFeatureTables;
+//                    mCurrent.FCL_Substation_Layer = featureLayer;
+//                } else if (OConstants.LAYER_OCL_METER.contains(geodatabaseFeatureTables.getTableName())) {
+//                    mCurrent.OCL_METERTableOffline = geodatabaseFeatureTables;
+//                    mCurrent.OCL_METER_Layer = featureLayer;
+//                } else if (OConstants.LAYER_SERVICE_POINT.contains(geodatabaseFeatureTables.getTableName())) {
+//                    mCurrent.ServicePointTableOffline = geodatabaseFeatureTables;
+//                    mCurrent.ServicePoint_Layer = featureLayer;
+//                }
+
+                if (OConstants.LAYER_AutoReCloser.contains(geodatabaseFeatureTables.getTableName())) {
+                    mCurrent.autoReCloserOfflineTable = geodatabaseFeatureTables;
+                    mCurrent.autoReCloserLayer = featureLayer;
+                } else if (OConstants.LAYER_FuseCutOut.contains(geodatabaseFeatureTables.getTableName())) {
+                    mCurrent.fuseCutOutOfflineTable = geodatabaseFeatureTables;
+                    mCurrent.fuseCutOutLayer = featureLayer;
+                } else if (OConstants.LAYER_LinkBox.contains(geodatabaseFeatureTables.getTableName())) {
+                    mCurrent.linkBoxOfflineTable = geodatabaseFeatureTables;
+                    mCurrent.linkBoxLayer = featureLayer;
+                } else if (OConstants.LAYER_Station.contains(geodatabaseFeatureTables.getTableName())) {
+                    mCurrent.stationOfflineTable = geodatabaseFeatureTables;
+                    mCurrent.stationLayer = featureLayer;
+                } else if (OConstants.LAYER_Substation.contains(geodatabaseFeatureTables.getTableName())) {
+                    mCurrent.substationOfflineTable = geodatabaseFeatureTables;
+                    mCurrent.substationLayer = featureLayer;
                 }
+
                 mCurrent.onlineData = false;
             }
 
@@ -716,54 +787,101 @@ public class MapPresenter {
 
                                         Log.i(TAG, "addLocalLayers(): gdb Feature Table has geometry");
 
-                                        if (OConstants.LAYER_DISTRIBUTION_BOX.contains(gdbFeatureTable.getTableName())) {
-                                            mCurrent.FCL_DistributionBoxLayer = new FeatureLayer(gdbFeatureTable);
-                                            mCurrent.FCL_DistributionBoxTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_DistributionBoxLayer.getFeatureTable());
-                                            map.getOperationalLayers().add(mCurrent.FCL_DistributionBoxLayer);
+//                                        if (OConstants.LAYER_DISTRIBUTION_BOX.contains(gdbFeatureTable.getTableName())) {
+//                                            mCurrent.FCL_DistributionBoxLayer = new FeatureLayer(gdbFeatureTable);
+//                                            mCurrent.FCL_DistributionBoxTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_DistributionBoxLayer.getFeatureTable());
+//                                            map.getOperationalLayers().add(mCurrent.FCL_DistributionBoxLayer);
+//
+//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_DistributionBoxTableOffline.getTableName());
+//
+//                                        } else if (OConstants.LAYER_POLES.contains(gdbFeatureTable.getTableName())) {
+//
+//                                            mCurrent.FCL_POLES_Layer = new FeatureLayer(gdbFeatureTable);
+//                                            mCurrent.FCL_POLESTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_POLES_Layer.getFeatureTable());
+//                                            map.getOperationalLayers().add(mCurrent.FCL_POLES_Layer);
+//
+//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_POLES_ServiceTable.getTableName());
+//
+//                                        } else if (OConstants.LAYER_RMU.contains(gdbFeatureTable.getTableName())) {
+//                                            mCurrent.FCL_RMU_Layer = new FeatureLayer(gdbFeatureTable);
+//                                            mCurrent.FCL_RMUTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_RMU_Layer.getFeatureTable());
+//                                            map.getOperationalLayers().add(mCurrent.FCL_RMU_Layer);
+//
+//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_RMUTableOffline.getTableName());
+//
+//                                        } else if (OConstants.LAYER_SUB_STATION.contains(gdbFeatureTable.getTableName())) {
+//                                            mCurrent.FCL_Substation_Layer = new FeatureLayer(gdbFeatureTable);
+//                                            mCurrent.FCL_SubstationTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_Substation_Layer.getFeatureTable());
+//                                            map.getOperationalLayers().add(mCurrent.FCL_Substation_Layer);
+//
+//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_SubstationTableOffline.getTableName());
+//
+//                                        } else if (OConstants.LAYER_OCL_METER.contains(gdbFeatureTable.getTableName())) {
+//                                            mCurrent.OCL_METER_Layer = new FeatureLayer(gdbFeatureTable);
+//                                            mCurrent.OCL_METERTableOffline = ((GeodatabaseFeatureTable) mCurrent.OCL_METER_Layer.getFeatureTable());
+//                                            map.getOperationalLayers().add(mCurrent.OCL_METER_Layer);
+//
+//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.OCL_METERTableOffline.getTableName());
+//
+//                                        } else if (OConstants.LAYER_SERVICE_POINT.contains(gdbFeatureTable.getTableName())) {
+//
+//                                            setLayerAndTable(mCurrent.ServicePoint_Layer, mCurrent.ServicePointTableOffline, gdbFeatureTable,map);
+//
+//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.ServicePointTableOffline.getTableName());
+//
+//                                        }
+                                        Log.i(TAG, "addLocalLayers(): gdbFeatureTable is " + gdbFeatureTable.getTableName());
 
-                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_DistributionBoxTableOffline.getTableName());
+                                        if (OConstants.LAYER_AutoReCloser.matches(gdbFeatureTable.getTableName())) {
+                                            mCurrent.autoReCloserLayer = new FeatureLayer(gdbFeatureTable);
+                                            mCurrent.autoReCloserOfflineTable = ((GeodatabaseFeatureTable) mCurrent.autoReCloserLayer.getFeatureTable());
+                                            map.getOperationalLayers().add(mCurrent.autoReCloserLayer);
 
-                                        } else if (OConstants.LAYER_POLES.contains(gdbFeatureTable.getTableName())) {
+//                                            setLayerAndTable(mCurrent.autoReCloserLayer, mCurrent.autoReCloserOfflineTable, gdbFeatureTable,map);
 
-                                            mCurrent.FCL_POLES_Layer = new FeatureLayer(gdbFeatureTable);
-                                            mCurrent.FCL_POLESTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_POLES_Layer.getFeatureTable());
-                                            map.getOperationalLayers().add(mCurrent.FCL_POLES_Layer);
+                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.autoReCloserOfflineTable.getTableName());
 
-                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_POLES_ServiceTable.getTableName());
+                                        }else  if (OConstants.LAYER_FuseCutOut.matches(gdbFeatureTable.getTableName())) {
+                                            mCurrent.fuseCutOutLayer = new FeatureLayer(gdbFeatureTable);
+                                            mCurrent.fuseCutOutOfflineTable = ((GeodatabaseFeatureTable) mCurrent.fuseCutOutLayer.getFeatureTable());
+                                            map.getOperationalLayers().add(mCurrent.fuseCutOutLayer);
 
-                                        } else if (OConstants.LAYER_RMU.contains(gdbFeatureTable.getTableName())) {
-                                            mCurrent.FCL_RMU_Layer = new FeatureLayer(gdbFeatureTable);
-                                            mCurrent.FCL_RMUTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_RMU_Layer.getFeatureTable());
-                                            map.getOperationalLayers().add(mCurrent.FCL_RMU_Layer);
+//                                            setLayerAndTable(mCurrent.fuseCutOutLayer, mCurrent.fuseCutOutOfflineTable, gdbFeatureTable,map);
 
-                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_RMUTableOffline.getTableName());
+                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.fuseCutOutOfflineTable.getTableName());
 
-                                        } else if (OConstants.LAYER_SUB_STATION.contains(gdbFeatureTable.getTableName())) {
-                                            mCurrent.FCL_Substation_Layer = new FeatureLayer(gdbFeatureTable);
-                                            mCurrent.FCL_SubstationTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_Substation_Layer.getFeatureTable());
-                                            map.getOperationalLayers().add(mCurrent.FCL_Substation_Layer);
+                                        }else  if (OConstants.LAYER_LinkBox.matches(gdbFeatureTable.getTableName())) {
 
-                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_SubstationTableOffline.getTableName());
+                                            mCurrent.linkBoxLayer = new FeatureLayer(gdbFeatureTable);
+                                            mCurrent.linkBoxOfflineTable = ((GeodatabaseFeatureTable) mCurrent.linkBoxLayer.getFeatureTable());
+                                            map.getOperationalLayers().add(mCurrent.linkBoxLayer);
 
-                                        } else if (OConstants.LAYER_OCL_METER.contains(gdbFeatureTable.getTableName())) {
-                                            mCurrent.OCL_METER_Layer = new FeatureLayer(gdbFeatureTable);
-                                            mCurrent.OCL_METERTableOffline = ((GeodatabaseFeatureTable) mCurrent.OCL_METER_Layer.getFeatureTable());
-                                            map.getOperationalLayers().add(mCurrent.OCL_METER_Layer);
+//                                            setLayerAndTable(mCurrent.linkBoxLayer, mCurrent.linkBoxOfflineTable, gdbFeatureTable,map);
 
-                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.OCL_METERTableOffline.getTableName());
+                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.linkBoxOfflineTable.getTableName());
 
-                                        } else if (OConstants.LAYER_SERVICE_POINT.contains(gdbFeatureTable.getTableName())) {
-                                            mCurrent.ServicePoint_Layer = new FeatureLayer(gdbFeatureTable);
-                                            mCurrent.ServicePointTableOffline = ((GeodatabaseFeatureTable) mCurrent.ServicePoint_Layer.getFeatureTable());
-                                            map.getOperationalLayers().add(mCurrent.ServicePoint_Layer);
+                                        }else  if (OConstants.LAYER_Station.matches(gdbFeatureTable.getTableName())) {
 
-                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.ServicePointTableOffline.getTableName());
+                                            mCurrent.stationLayer = new FeatureLayer(gdbFeatureTable);
+                                            mCurrent.stationOfflineTable = ((GeodatabaseFeatureTable) mCurrent.stationLayer.getFeatureTable());
+                                            map.getOperationalLayers().add(mCurrent.stationLayer);
+
+//                                            setLayerAndTable(mCurrent.stationLayer, mCurrent.stationOfflineTable, gdbFeatureTable,map);
+
+                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.stationOfflineTable.getTableName());
+
+                                        }else  if (OConstants.LAYER_Substation.matches(gdbFeatureTable.getTableName())) {
+
+                                            mCurrent.substationLayer = new FeatureLayer(gdbFeatureTable);
+                                            mCurrent.substationOfflineTable = ((GeodatabaseFeatureTable) mCurrent.substationLayer.getFeatureTable());
+                                            map.getOperationalLayers().add(mCurrent.substationLayer);
+
+//                                            setLayerAndTable(mCurrent.substationLayer, mCurrent.substationOfflineTable, gdbFeatureTable,map);
+
+                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.substationOfflineTable.getTableName());
 
                                         }
-
                                         mapView.setMap(map);
-
-
                                     }
 
 //                                    Envelope mapExtent = null;
@@ -830,6 +948,12 @@ public class MapPresenter {
             Log.i(TAG, "Error in adding feature layers from Local Geo Database");
             e.printStackTrace();
         }
+    }
+
+    private void setLayerAndTable(FeatureLayer layer, GeodatabaseFeatureTable table, GeodatabaseFeatureTable gdbFeatureTable, ArcGISMap map) {
+        layer = new FeatureLayer(gdbFeatureTable);
+        table = ((GeodatabaseFeatureTable) layer.getFeatureTable());
+        map.getOperationalLayers().add(layer);
     }
 
     private void zoomToArea(String title) {
@@ -1060,7 +1184,7 @@ public class MapPresenter {
         }
     }
 
-    public void updateAutoReCloserOnline(OnlineQueryResult result, AutoReCloser autoReCloserModel) {
+    public void updateAutoReCloserOnline(OnlineQueryResult result, AutoReCloserModel autoReCloserModel) {
         try {
             Log.i(TAG, "updateStationOnline(): is Called ");
             final FeatureLayer featureLayer = result.getServiceFeatureTable().getFeatureLayer();
@@ -1126,6 +1250,427 @@ public class MapPresenter {
 //            e.printStackTrace();
             listener.onUpdateFeature(false, e);
             listener.hideFragmentFromActivity();
+        }
+    }
+
+    public void updateFuseCutOutOnline(OnlineQueryResult result, FuseCutOutModel fuseCutOutModel) {
+        try {
+            Log.i(TAG, "updateStationOnline(): is Called ");
+            final FeatureLayer featureLayer = result.getServiceFeatureTable().getFeatureLayer();
+            featureLayer.selectFeature(result.getFeature());
+
+            final ListenableFuture<FeatureQueryResult> selected = featureLayer.getSelectedFeaturesAsync();
+            FeatureQueryResult features = null;
+            try {
+                features = selected.get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // check there is at least one selected feature
+            if (!features.iterator().hasNext()) {
+                Log.e(TAG, "updateStationOnline(): No selected features");
+            }
+
+            // get the first selected feature and load it
+            final ArcGISFeature feature = (ArcGISFeature) features.iterator().next();
+            feature.loadAsync();
+
+            feature.addDoneLoadingListener(() -> {
+                // now feature is loaded we can update it; change attribute and geometry (here the point geometry is moved North)
+                try {
+                    Map<String, Object> attr = feature.getAttributes();
+                    for (String key : attr.keySet()) {
+                        try {
+
+                            Log.i(TAG, "updateStationOnline(): " + key + " = " + attr.get(key));
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    feature.getAttributes().put(Columns.FuseCutOut.X_Y_Coordinates_1_points, fuseCutOutModel.getX_Y_Coordinates_1_points());
+                    feature.getAttributes().put(Columns.FuseCutOut.Fuse_Cut_Out_No, fuseCutOutModel.getFuse_Cut_Out_No());
+                    feature.getAttributes().put(Columns.FuseCutOut.Ratio_Amp, fuseCutOutModel.getRatio_Amp());
+                    feature.getAttributes().put(Columns.FuseCutOut.Type, fuseCutOutModel.getType());
+                    feature.getAttributes().put(Columns.FuseCutOut.Electricity_Status__Open_Close, fuseCutOutModel.getElectricity_Status__Open_Close());
+                    feature.getAttributes().put(Columns.FuseCutOut.Voltage, fuseCutOutModel.getVoltage());
+                    feature.getAttributes().put(Columns.FuseCutOut.Notes, fuseCutOutModel.getNotes());
+
+                    result.getServiceFeatureTable().updateFeatureAsync(feature).get();
+
+                    if (result.getServiceFeatureTable() instanceof ServiceFeatureTable) {
+                        ServiceFeatureTable serviceFeatureTable = (ServiceFeatureTable) result.getServiceFeatureTable();
+
+                        // can call getUpdatedFeaturesCountAsync to verify number of updates to be applied before calling applyEditsAsync
+
+                        final List<FeatureEditResult> featureEditResults = serviceFeatureTable.applyEditsAsync().get();
+                        listener.onUpdateFeature(true, null);
+                        listener.hideFragmentFromActivity();
+
+                    }
+                } catch (Exception e) {
+//                    e.printStackTrace();
+                    listener.onUpdateFeature(false, e);
+                    listener.hideFragmentFromActivity();
+                }
+            });
+        } catch (Exception e) {
+//            e.printStackTrace();
+            listener.onUpdateFeature(false, e);
+            listener.hideFragmentFromActivity();
+        }
+    }
+
+    public void updateLinkBoxOnline(OnlineQueryResult result, LinkBoxModel linkBoxModel) {
+        try {
+            Log.i(TAG, "updateStationOnline(): is Called ");
+            final FeatureLayer featureLayer = result.getServiceFeatureTable().getFeatureLayer();
+            featureLayer.selectFeature(result.getFeature());
+
+            final ListenableFuture<FeatureQueryResult> selected = featureLayer.getSelectedFeaturesAsync();
+            FeatureQueryResult features = null;
+            try {
+                features = selected.get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // check there is at least one selected feature
+            if (!features.iterator().hasNext()) {
+                Log.e(TAG, "updateStationOnline(): No selected features");
+            }
+
+            // get the first selected feature and load it
+            final ArcGISFeature feature = (ArcGISFeature) features.iterator().next();
+            feature.loadAsync();
+
+            feature.addDoneLoadingListener(() -> {
+                // now feature is loaded we can update it; change attribute and geometry (here the point geometry is moved North)
+                try {
+                    Map<String, Object> attr = feature.getAttributes();
+                    for (String key : attr.keySet()) {
+                        try {
+
+                            Log.i(TAG, "updateStationOnline(): " + key + " = " + attr.get(key));
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    feature.getAttributes().put(Columns.LinkBox.X_Y_Coordinates_1_points, linkBoxModel.getX_Y_Coordinates_1_points());
+                    feature.getAttributes().put(Columns.LinkBox.Type, linkBoxModel.getType());
+                    feature.getAttributes().put(Columns.LinkBox.Link_Box, linkBoxModel.getLink_Box());
+                    feature.getAttributes().put(Columns.LinkBox.Total_no__of_Link_Box_in_the_CK, linkBoxModel.getTotal_no__of_Link_Box_in_the_CK());
+                    feature.getAttributes().put(Columns.LinkBox.link_box_distribution_Panel, linkBoxModel.getLink_box_distribution_Panel());
+                    feature.getAttributes().put(Columns.LinkBox.Notes, linkBoxModel.getNotes());
+
+                    result.getServiceFeatureTable().updateFeatureAsync(feature).get();
+
+                    if (result.getServiceFeatureTable() instanceof ServiceFeatureTable) {
+                        ServiceFeatureTable serviceFeatureTable = (ServiceFeatureTable) result.getServiceFeatureTable();
+
+                        // can call getUpdatedFeaturesCountAsync to verify number of updates to be applied before calling applyEditsAsync
+
+                        final List<FeatureEditResult> featureEditResults = serviceFeatureTable.applyEditsAsync().get();
+                        listener.onUpdateFeature(true, null);
+                        listener.hideFragmentFromActivity();
+
+                    }
+                } catch (Exception e) {
+//                    e.printStackTrace();
+                    listener.onUpdateFeature(false, e);
+                    listener.hideFragmentFromActivity();
+                }
+            });
+        } catch (Exception e) {
+//            e.printStackTrace();
+            listener.onUpdateFeature(false, e);
+            listener.hideFragmentFromActivity();
+        }
+    }
+
+    public void updateSubStationOffline(OnlineQueryResult result, SubstationModel substationModel) {
+        try {
+            Log.i(TAG, "updateFeatureOffline(): is called");
+
+            final FeatureLayer featureLayer = result.getGeodatabaseFeatureTable().getFeatureLayer();
+            featureLayer.selectFeature(result.getFeatureOffline());
+
+            final ListenableFuture<FeatureQueryResult> selected = featureLayer.getSelectedFeaturesAsync();
+            FeatureQueryResult features = null;
+            try {
+                features = selected.get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+
+            // check there is at least one selected feature
+            if (!features.iterator().hasNext()) {
+                Log.e(TAG, "No selected features");
+            }
+
+            // get the first selected feature and load it
+            final Feature feature = features.iterator().next();
+
+            // now feature is loaded we can update it; change attribute and geometry (here the point geometry is moved North)
+            try {
+                feature.getAttributes().put(Columns.SUBSTATION.X_Y_Coordinates_2_points, substationModel.getX_Y_Coordinates_2_points());
+                feature.getAttributes().put(Columns.SUBSTATION.Substation, substationModel.getSubstation());
+                feature.getAttributes().put(Columns.SUBSTATION.Substation_type, substationModel.getSubstation_type());
+                feature.getAttributes().put(Columns.SUBSTATION.Unit_Substation_serial, substationModel.getUnit_Substation_serial());
+                feature.getAttributes().put(Columns.SUBSTATION.No_of_transformers, substationModel.getNo_of_transformers());
+                feature.getAttributes().put(Columns.SUBSTATION.No_of_switchgears, substationModel.getNo_of_switchgears());
+                feature.getAttributes().put(Columns.SUBSTATION.No_of_LVDB, substationModel.getNo_of_LVDB());
+                feature.getAttributes().put(Columns.SUBSTATION.Substation_room_type, substationModel.getSubstation_room_type());
+                feature.getAttributes().put(Columns.SUBSTATION.Left_S_S, substationModel.getLeft_S_S());
+                feature.getAttributes().put(Columns.SUBSTATION.Right_S_S, substationModel.getRight_S_S());
+                feature.getAttributes().put(Columns.SUBSTATION.Voltage_of_equipment__primary_s, substationModel.getVoltage_of_equipment__primary_s());
+                feature.getAttributes().put(Columns.SUBSTATION.Total_KVA, substationModel.getTotal_KVA());
+                feature.getAttributes().put(Columns.SUBSTATION.Manufacture_of_equipment, substationModel.getManufacture_of_equipment());
+                feature.getAttributes().put(Columns.SUBSTATION.Notes, substationModel.getNotes());
+
+
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable calling update Feature Async");
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable name = " + result.getGeodatabaseFeatureTable().getTableName());
+                result.getGeodatabaseFeatureTable().updateFeatureAsync(feature).addDoneListener(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "updateFeatureOffline(): Feature Updated");
+                        listener.hideFragmentFromActivity();
+
+                    }
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Utilities.dismissLoadingDialog();
+        }
+    }
+
+    public void updateStationOffline(OnlineQueryResult result, StationModel stationModel) {
+        try {
+            Log.i(TAG, "updateFeatureOffline(): is called");
+
+            final FeatureLayer featureLayer = result.getGeodatabaseFeatureTable().getFeatureLayer();
+            featureLayer.selectFeature(result.getFeatureOffline());
+
+            final ListenableFuture<FeatureQueryResult> selected = featureLayer.getSelectedFeaturesAsync();
+            FeatureQueryResult features = null;
+            try {
+                features = selected.get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+
+            // check there is at least one selected feature
+            if (!features.iterator().hasNext()) {
+                Log.e(TAG, "No selected features");
+            }
+
+            // get the first selected feature and load it
+            final Feature feature = features.iterator().next();
+
+            // now feature is loaded we can update it; change attribute and geometry (here the point geometry is moved North)
+            try {
+                feature.getAttributes().put(Columns.STATION.X_Y_Coordinates_4_points, stationModel.getX_Y_Coordinates_4_points());
+                feature.getAttributes().put(Columns.STATION.Grid_Station, stationModel.getGrid_Station());
+                feature.getAttributes().put(Columns.STATION.Grid_Station_Name, stationModel.getGrid_Station_Name());
+                feature.getAttributes().put(Columns.STATION.Voltage_Level__132_33__132_13_8, stationModel.getVoltage_Level__132_33__132_13_8());
+                feature.getAttributes().put(Columns.STATION.Notes, stationModel.getNotes());
+
+
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable calling update Feature Async");
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable name = " + result.getGeodatabaseFeatureTable().getTableName());
+                result.getGeodatabaseFeatureTable().updateFeatureAsync(feature).addDoneListener(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "updateFeatureOffline(): Feature Updated");
+                        listener.hideFragmentFromActivity();
+
+                    }
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Utilities.dismissLoadingDialog();
+        }
+    }
+
+    public void updateAutoReCloserOffline(OnlineQueryResult result, AutoReCloserModel autoReCloserModel) {
+        try {
+            Log.i(TAG, "updateFeatureOffline(): is called");
+
+            final FeatureLayer featureLayer = result.getGeodatabaseFeatureTable().getFeatureLayer();
+            featureLayer.selectFeature(result.getFeatureOffline());
+
+            final ListenableFuture<FeatureQueryResult> selected = featureLayer.getSelectedFeaturesAsync();
+            FeatureQueryResult features = null;
+            try {
+                features = selected.get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+
+            // check there is at least one selected feature
+            if (!features.iterator().hasNext()) {
+                Log.e(TAG, "No selected features");
+            }
+
+            // get the first selected feature and load it
+            final Feature feature = features.iterator().next();
+
+            // now feature is loaded we can update it; change attribute and geometry (here the point geometry is moved North)
+            try {
+                feature.getAttributes().put(Columns.AutoReCloser.X_Y_Coordinates_1_points, autoReCloserModel.getX_Y_Coordinates_1_points());
+                feature.getAttributes().put(Columns.AutoReCloser.Auto_Recloser_No, autoReCloserModel.getAuto_Recloser_No());
+                feature.getAttributes().put(Columns.AutoReCloser.Ratio_Amp, autoReCloserModel.getRatio_Amp());
+                feature.getAttributes().put(Columns.AutoReCloser.Type_Inside__S_S__Feeder, autoReCloserModel.getType_Inside__S_S__Feeder());
+                feature.getAttributes().put(Columns.AutoReCloser.Electricity_Status, autoReCloserModel.getElectricity_Status());
+                feature.getAttributes().put(Columns.AutoReCloser.Voltage, autoReCloserModel.getVoltage());
+                feature.getAttributes().put(Columns.AutoReCloser.Notes, autoReCloserModel.getNotes());
+
+
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable calling update Feature Async");
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable name = " + result.getGeodatabaseFeatureTable().getTableName());
+                result.getGeodatabaseFeatureTable().updateFeatureAsync(feature).addDoneListener(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "updateFeatureOffline(): Feature Updated");
+                        listener.hideFragmentFromActivity();
+
+                    }
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Utilities.dismissLoadingDialog();
+        }
+    }
+
+    public void updateFuseCutOutOffline(OnlineQueryResult result, FuseCutOutModel fuseCutOutModel) {
+        try {
+            Log.i(TAG, "updateFeatureOffline(): is called");
+
+            final FeatureLayer featureLayer = result.getGeodatabaseFeatureTable().getFeatureLayer();
+            featureLayer.selectFeature(result.getFeatureOffline());
+
+            final ListenableFuture<FeatureQueryResult> selected = featureLayer.getSelectedFeaturesAsync();
+            FeatureQueryResult features = null;
+            try {
+                features = selected.get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+
+            // check there is at least one selected feature
+            if (!features.iterator().hasNext()) {
+                Log.e(TAG, "No selected features");
+            }
+
+            // get the first selected feature and load it
+            final Feature feature = features.iterator().next();
+
+            // now feature is loaded we can update it; change attribute and geometry (here the point geometry is moved North)
+            try {
+                feature.getAttributes().put(Columns.FuseCutOut.X_Y_Coordinates_1_points, fuseCutOutModel.getX_Y_Coordinates_1_points());
+                feature.getAttributes().put(Columns.FuseCutOut.Fuse_Cut_Out_No, fuseCutOutModel.getFuse_Cut_Out_No());
+                feature.getAttributes().put(Columns.FuseCutOut.Ratio_Amp, fuseCutOutModel.getRatio_Amp());
+                feature.getAttributes().put(Columns.FuseCutOut.Type, fuseCutOutModel.getType());
+                feature.getAttributes().put(Columns.FuseCutOut.Electricity_Status__Open_Close, fuseCutOutModel.getElectricity_Status__Open_Close());
+                feature.getAttributes().put(Columns.FuseCutOut.Voltage, fuseCutOutModel.getVoltage());
+                feature.getAttributes().put(Columns.FuseCutOut.Notes, fuseCutOutModel.getNotes());
+
+
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable calling update Feature Async");
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable name = " + result.getGeodatabaseFeatureTable().getTableName());
+                result.getGeodatabaseFeatureTable().updateFeatureAsync(feature).addDoneListener(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "updateFeatureOffline(): Feature Updated");
+                        listener.hideFragmentFromActivity();
+
+                    }
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Utilities.dismissLoadingDialog();
+        }
+    }
+
+    public void updateLinkBoxOffline(OnlineQueryResult result, LinkBoxModel linkBoxModel) {
+        try {
+            Log.i(TAG, "updateFeatureOffline(): is called");
+
+            final FeatureLayer featureLayer = result.getGeodatabaseFeatureTable().getFeatureLayer();
+            featureLayer.selectFeature(result.getFeatureOffline());
+
+            final ListenableFuture<FeatureQueryResult> selected = featureLayer.getSelectedFeaturesAsync();
+            FeatureQueryResult features = null;
+            try {
+                features = selected.get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+
+            // check there is at least one selected feature
+            if (!features.iterator().hasNext()) {
+                Log.e(TAG, "No selected features");
+            }
+
+            // get the first selected feature and load it
+            final Feature feature = features.iterator().next();
+
+            // now feature is loaded we can update it; change attribute and geometry (here the point geometry is moved North)
+            try {
+                feature.getAttributes().put(Columns.LinkBox.X_Y_Coordinates_1_points, linkBoxModel.getX_Y_Coordinates_1_points());
+                feature.getAttributes().put(Columns.LinkBox.Type, linkBoxModel.getType());
+                feature.getAttributes().put(Columns.LinkBox.Link_Box, linkBoxModel.getLink_Box());
+                feature.getAttributes().put(Columns.LinkBox.Total_no__of_Link_Box_in_the_CK, linkBoxModel.getTotal_no__of_Link_Box_in_the_CK());
+                feature.getAttributes().put(Columns.LinkBox.link_box_distribution_Panel, linkBoxModel.getLink_box_distribution_Panel());
+                feature.getAttributes().put(Columns.LinkBox.Notes, linkBoxModel.getNotes());
+
+
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable calling update Feature Async");
+                Log.i(TAG, "updateFeatureOffline(): getGeodatabaseFeatureTable name = " + result.getGeodatabaseFeatureTable().getTableName());
+                result.getGeodatabaseFeatureTable().updateFeatureAsync(feature).addDoneListener(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "updateFeatureOffline(): Feature Updated");
+                        listener.hideFragmentFromActivity();
+
+                    }
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Utilities.dismissLoadingDialog();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Utilities.dismissLoadingDialog();
         }
     }
 

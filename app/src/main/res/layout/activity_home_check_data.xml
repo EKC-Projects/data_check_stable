@@ -279,57 +279,64 @@
 
                 <TextView
                     android:id="@+id/tv_new_point"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/rounded_ic_dist_box"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/distribution_box_lbl" />
-
-                <TextView
-                    android:id="@+id/tv_edit_point"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_poles"
-                    android:drawablePadding="10dp"
-                    android:gravity="start"
-                    android:text="@string/fcl_poles_lbl" />
-
-                <TextView
-                    android:id="@+id/tv_gcs_point"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_rmu"
-                    android:drawablePadding="10dp"
-                    android:gravity="start"
-                    android:text="@string/fcl_rmu_lbl" />
+                    android:textSize="12sp"
+                    android:text="@string/Auto_Recloser_lbl" />
 
                 <TextView
                     android:id="@+id/tv_new_line"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_substation"
+                    android:drawableEnd="@drawable/rounded_ic_poles"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/fcl_substation_lbl" />
+                    android:textSize="12sp"
+                    android:text="@string/Fuse_Cut_Out_lbl" />
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_new_polygon"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableEnd="@drawable/rounded_ic_rmu"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:gravity="start"-->
+<!--                    android:text="@string/service_point" />-->
 
                 <TextView
                     android:id="@+id/tv_edit_line"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ocl_meter"
+                    android:drawableEnd="@drawable/rounded_ic_rmu"
                     android:drawablePadding="10dp"
+                    android:textSize="12sp"
                     android:gravity="start"
-                    android:text="@string/ocl_meter" />
+                    android:text="@string/Link_Box_lbl" />
 
                 <TextView
-                    android:id="@+id/tv_new_polygon"
+                    android:id="@+id/tv_edit_point"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_service_point"
+                    android:drawableEnd="@drawable/rounded_ic_station"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/service_point" />
+                    android:textSize="12sp"
+                    android:text="@string/station" />
+
+                <TextView
+                    android:id="@+id/tv_gcs_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_substation"
+                    android:drawablePadding="10dp"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:text="@string/substation_lbl" />
+
 
             </LinearLayout>
         </LinearLayout>
