@@ -26,6 +26,7 @@ public class OConstants {
     public static final String LAYER_MV_Metering = "MV_Metering";
     public static final String LAYER_POLE = "Pole";
     public static final String LAYER_OH_LINES = "OH_LINES";
+    public static final String  LVDistributionPanel = " LV_Distribution_Panel";
 
 
 

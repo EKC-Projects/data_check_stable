@@ -287,4 +287,14 @@
     <string name="MV_Metering_text">MV Metering</string>
     <string name="OH_Lines_text">OH/Lines</string>
     <string name="pole_text">Pole</string>
+    <string name="type_of_the_lv_panel">Type_of_the_LV_panel</string>
+    <string name="total_no_of_feeders">total_no_of_feeders</string>
+    <string name="Total_no_of_used_feeders" >Total_no_of_used_feeders </string>
+    <string name="total_no_of_spare_feeders">Total_no__of_Spare_feeders</string>
+    <string name="main_cables_type">Main_cables_type</string>
+    <string name="number_of_outgoing_cables">Number_of_outgoing_cables</string>
+    <string name="current_rating">Current_Rating</string>
+    <string name="manufacture_of_equipment">Manufacture_of_equipment</string>
+    <string name="feeders_Panel_distribution">Feeders_Panel_distribution</string>
+    <string name="voltage_of_equipment">voltage_of_equipment</string>
 </resources>

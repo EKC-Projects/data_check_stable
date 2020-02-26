@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4faff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_24sdp">
+
+            <TextView
+                android:id="@+id/type_of_the_lv_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/type_of_the_lv_panel"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/type_of_the_lv_panel_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type_of_the_lv_panel" />
+
+            <TextView
+                android:id="@+id/total_no_of_feeders"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/total_no_of_feeders"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/type_of_the_lv_panel_sp" />
+
+            <Spinner
+                android:id="@+id/total_no_of_feeders_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/total_no_of_feeders" />
+
+            <TextView
+                android:id="@+id/Total_no_of_used_feeders"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Total_no_of_used_feeders"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/total_no_of_feeders_sp" />
+
+            <Spinner
+                    android:id="@+id/total_no_of_used_feeders_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/Total_no_of_used_feeders" />
+
+            <TextView
+                android:id="@+id/total_no_of_spare_feeders"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/total_no_of_spare_feeders"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/total_no_of_used_feeders_sp" />
+
+            <Spinner
+                android:id="@+id/total_no__of_spare_feeders_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/total_no_of_spare_feeders" />
+
+            <TextView
+                android:id="@+id/main_cables_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/main_cables_type"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/total_no__of_spare_feeders_sp" />
+
+            <Spinner
+                android:id="@+id/main_cables_type_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/main_cables_type" />
+
+            <TextView
+                android:id="@+id/number_of_outgoing_cables"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/number_of_outgoing_cables"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/main_cables_type_sp" />
+
+            <Spinner
+                android:id="@+id/number_of_outgoing_cables_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/number_of_outgoing_cables" />
+
+            <TextView
+                android:id="@+id/current_rating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/current_rating"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/number_of_outgoing_cables_sp" />
+
+            <Spinner
+                android:id="@+id/current_rating_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/current_rating" />
+
+            <TextView
+                android:id="@+id/voltage_of_equipment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/voltage_of_equipment"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/current_rating_sp" />
+
+            <Spinner
+                    android:id="@+id/voltage_of_equipment_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/voltage_of_equipment" />
+
+            <TextView
+                android:id="@+id/manufacture_of_equipment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/manufacture_of_equipment"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/voltage_of_equipment_sp" />
+
+            <Spinner
+                android:id="@+id/manufacture_of_equipment_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/manufacture_of_equipment" />
+
+            <TextView
+                android:id="@+id/feeders_Panel_distribution"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/feeders_Panel_distribution"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel"
+                app:layout_constraintTop_toBottomOf="@+id/manufacture_of_equipment_sp" />
+
+            <Spinner
+                android:id="@+id/feeders_Panel_distribution_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/feeders_Panel_distribution" />
+
+
+            <EditText
+                android:id="@+id/lv_distribution_panel_frag_notes_et"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:background="@drawable/custom_edittext_border_background"
+                android:gravity="start"
+                android:hint="@string/notes_hint"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/feeders_Panel_distribution_sp" />
+
+
+            <Button
+                android:id="@+id/lv_distribution_panel_frag_save_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/update_btn_background"
+                android:elevation="4dp"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintStart_toStartOf="@+id/type_of_the_lv_panel_sp"
+                app:layout_constraintTop_toBottomOf="@+id/lv_distribution_panel_frag_notes_et"
+                tools:targetApi="lollipop" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

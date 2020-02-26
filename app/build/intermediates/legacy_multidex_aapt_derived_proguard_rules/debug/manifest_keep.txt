@@ -1,4 +1,0 @@
-# Referenced at C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:31
--keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at C:\Users\AliOsama\AndroidStudioProjects\SecDataCheck\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:31
--keep class com.sec.datacheck.checkdata.model.models.DataCollectionApplication { <init>(); }

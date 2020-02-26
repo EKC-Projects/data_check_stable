@@ -13,6 +13,22 @@ public class Columns {
 
     public static String ObjectID = "OBJECTID";
 
+
+    public static class  LVDistributionPanel{
+        public static String Type_of_the_LV_panel="Type_of_the_LV_panel";
+        public static String Total_no_of_feeders="Total_no_of_feeders";
+        public static String Total_no_of_used_feeders="Total_no_of_used_feeders";
+        public static String Total_no__of_Spare_feeders="Total_no__of_Spare_feeders";
+        public static String Main_cables_type ="Main_cables_type";
+        public static String Number_of_outgoing_cables="Number_of_outgoing_cables";
+        public static String Current_Rating="Current_Rating";
+        public static String Voltage_of_equipment="Voltage_of_equipment";
+        public static String Manufacture_of_equipment="Manufacture_of_equipment";
+        public static String Feeders_Panel_distribution="Feeders_Panel_distribution";
+        public static String Notes="Notes";
+    }
+
+
     public static class SUBSTATION {
         public static String X_Y_Coordinates_2_points = "X_Y_Coordinates_2_points";
         public static String Substation = "Substation";

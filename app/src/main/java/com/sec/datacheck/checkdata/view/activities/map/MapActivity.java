@@ -79,6 +79,7 @@ import com.sec.datacheck.checkdata.view.callbacks.mapCallbacks.SingleTapListener
 import com.sec.datacheck.checkdata.view.fragments.AutoReCloser.AutoReCloserFragment;
 import com.sec.datacheck.checkdata.view.fragments.EditFeatureFragment;
 import com.sec.datacheck.checkdata.view.fragments.FuseCutOutFragment.FuseCutOutFragment;
+import com.sec.datacheck.checkdata.view.fragments.LVDistributionPanel.LVDistributionPanelFragment;
 import com.sec.datacheck.checkdata.view.fragments.LinkBox.LinkBoxFragment;
 import com.sec.datacheck.checkdata.view.fragments.Meter.MeterFragment;
 import com.sec.datacheck.checkdata.view.fragments.MvMetering.MvMeteringFragment;
@@ -215,7 +216,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
     ServiceFeatureTable substationTable, stationTable, autoReCloserTable, fuseCutOutTable, linkBoxTable, LoadBreakerSwitchTable, LVDistributionBoxTable, LVDistributionPanelTable, MCCB_LVP_Circuits_RecordTable, MeterTable,
             MiniPillarTable, MV_MeteringTable, OH_LinesTable, PoleTable, SectionlizerTable, SVC_StaticVarCompensatorTable, SwitchGearTable, TransformerTable, VoltageRegulatorTable;
-    GeodatabaseFeatureTable substationOfflineTable, stationOfflineTable, autoReCloserOfflineTable, fuseCutOutOfflineTable, linkBoxOfflineTable, mvMeteringOfflineTable,poleOfflineTable,OHLineOfflineTable,MeterOfflineTable;
+    GeodatabaseFeatureTable substationOfflineTable, stationOfflineTable, autoReCloserOfflineTable, fuseCutOutOfflineTable, linkBoxOfflineTable, mvMeteringOfflineTable, poleOfflineTable, OHLineOfflineTable, MeterOfflineTable, LVDistributionPanelOfflineTable;
     FeatureLayer substationLayer, stationLayer, autoReCloserLayer, fuseCutOutLayer, linkBoxLayer, LoadBreakerSwitchLayer, LVDistributionBoxLayer, LVDistributionPanelLayer, MCCB_LVP_Circuits_RecordLayer, MeterLayer,
             MiniPillarLayer, MV_MeteringLayer, OH_LinesLayer, PoleLayer, SectionlizerLayer, SVC_StaticVarCompensatorLayer, SwitchGearLayer, TransformerLayer, VoltageRegulatorLayer;
 
@@ -231,6 +232,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     PoleFragment poleFragment;
     OHLineFragment ohLineFragment;
     MeterFragment meterFragment;
+    LVDistributionPanelFragment lvDistributionPanelFragment;
     private boolean isShowingLayerInfo;
     private boolean queryStatus = false;
     private boolean isFragmentShown = false;
@@ -559,7 +561,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                     }
 
                     mMatrix.reset();
-                    mMatrix.postRotate(-(float) mapView.getRotation(), mBitmap.getHeight() / 2, mBitmap.getWidth() / 2);
+                    mMatrix.postRotate(-mapView.getRotation(), mBitmap.getHeight() / 2, mBitmap.getWidth() / 2);
                     mCompass.setImageMatrix(mMatrix);
                 }
             });
@@ -591,7 +593,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                         boolean completed = viewpointSetFuture.get();
                         if (completed) {
                             Log.i(TAG, "Rotation completed successfully");
-                            mMatrix.postRotate(-(float) mapView.getRotation(), mBitmap.getHeight() / 2, mBitmap.getWidth() / 2);
+                            mMatrix.postRotate(-mapView.getRotation(), mBitmap.getHeight() / 2, mBitmap.getWidth() / 2);
                             mCompass.setImageMatrix(mMatrix);
                         }
                     } catch (InterruptedException e) {
@@ -808,10 +810,12 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             } else if (selectedResult.getFeatureLayer().getName().matches(OH_LinesLayer.getName())) {
                 ohLineFragment = OHLineFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
                 showCheckDataEditFragment(ohLineFragment);
-            }
-            else if (selectedResult.getFeatureLayer().getName().matches(MeterLayer.getName())) {
+            } else if (selectedResult.getFeatureLayer().getName().matches(MeterLayer.getName())) {
                 meterFragment = MeterFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
                 showCheckDataEditFragment(meterFragment);
+            } else if (selectedResult.getFeatureLayer().getName().matches(LVDistributionPanelLayer.getName())) {
+                lvDistributionPanelFragment = LVDistributionPanelFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
+                showCheckDataEditFragment(lvDistributionPanelFragment);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1250,7 +1254,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             builder.setTitle(getString(R.string.dialog_show_bookmarks_title));
             dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_show_bookmarks, null, false);
 
-            ListView listView = (ListView) dialogView.findViewById(R.id.lvBookmarks);
+            ListView listView = dialogView.findViewById(R.id.lvBookmarks);
 
 
             builder.setView(dialogView);
@@ -1577,12 +1581,12 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             } else if (featureLayer.equals(OH_LinesLayer)) {
                 Log.i(TAG, "onQueryOnline(): featureLayer is OH_LinesLayer layer");
                 presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), MeterTable, MeterLayer);
-            }
-            else if (featureLayer.equals(MeterLayer)){
+            } else if (featureLayer.equals(MeterLayer)) {
                 Log.i(TAG, "onQueryOnline(): featureLayer is MeterLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), LVDistributionPanelTable, LVDistributionPanelLayer);
+            } else if (featureLayer.equals(LVDistributionPanelLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is LVDistributionPanelLayer layer");
                 showQueryResult(results, point);
-
-
             }
 
 
@@ -1627,9 +1631,8 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
         } else if (featureLayer.equals(MV_MeteringLayer)) {
             Log.i(TAG, "onQueryOffline(): featureLayer is MV_MeteringLayer layer");
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(),poleOfflineTable, PoleLayer);
-        }
-        else if (featureLayer.equals(PoleLayer)) {
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), poleOfflineTable, PoleLayer);
+        } else if (featureLayer.equals(PoleLayer)) {
             Log.i(TAG, "onQueryOffline(): featureLayer is PoleLayer layer");
 
             presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), OHLineOfflineTable, OH_LinesLayer);
@@ -1637,9 +1640,12 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             Log.i(TAG, "onQueryOffline(): featureLayer is OH_LinesLayer layer");
 
             presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), MeterOfflineTable, MeterLayer);
-        }
-        else if (featureLayer.equals(MeterLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is OH_LinesLayer layer");
+        } else if (featureLayer.equals(MeterLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is MeterLayer layer");
+
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), LVDistributionPanelOfflineTable, LVDistributionPanelLayer);
+        } else if (featureLayer.equals(LVDistributionPanelLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is LVDistributionPanelLayer layer");
 
             showOfflineQueryResult(results, point);
         }
@@ -1763,7 +1769,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 Log.i(TAG, "showOnlineQueryResult(): listQueryResults size = " + results.size());
 
 
-                runOnUiThread((Runnable) () -> {
+                runOnUiThread(() -> {
                     try {
                         double shortestDistance = 1000000000;
                         for (OnlineQueryResult result : results) {
@@ -1801,7 +1807,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                         }
                         if (selectedResult != null) {
 
-                            graphicsOverlay.getGraphics().add(new Graphic((Point) selectedResult.getFeatureOffline().getGeometry(), pictureMarkerSymbol));
+                            graphicsOverlay.getGraphics().add(new Graphic(selectedResult.getFeatureOffline().getGeometry(), pictureMarkerSymbol));
 
                             Utilities.dismissLoadingDialog();
                             mAddPointLayout.setVisibility(View.GONE);
@@ -1840,7 +1846,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 Log.i(TAG, "processSelectQueryResultOnline(): listQueryResults size = " + results.size());
 
 
-                runOnUiThread((Runnable) () -> {
+                runOnUiThread(() -> {
                     try {
                         double shortestDistance = 1000000000;
                         for (OnlineQueryResult result : results) {
@@ -1876,7 +1882,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 //                                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pin);
 //                                BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
 
-                            graphicsOverlay.getGraphics().add(new Graphic((Point) selectedResult.getFeature().getGeometry(), pictureMarkerSymbol));
+                            graphicsOverlay.getGraphics().add(new Graphic(selectedResult.getFeature().getGeometry(), pictureMarkerSymbol));
                             selectedResult.getFeature().loadAsync();
                             selectedResult.getFeature().addDoneLoadingListener(new Runnable() {
                                 @Override
@@ -2171,7 +2177,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             drawGraphicLayer.getGraphics().add(line);
 
             for (Point point : pointCollection) {
-                drawGraphicLayer.getGraphics().add(new Graphic((Point) point, pictureMarkerSymbol));
+                drawGraphicLayer.getGraphics().add(new Graphic(point, pictureMarkerSymbol));
             }
 
             if (pointCollection.size() == 2) {
