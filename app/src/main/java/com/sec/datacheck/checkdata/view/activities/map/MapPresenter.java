@@ -760,8 +760,7 @@ public class MapPresenter {
                 } else if (OConstants.LAYER_Meter.contains(geodatabaseFeatureTables.getTableName())) {
                     mCurrent.MeterOfflineTable = geodatabaseFeatureTables;
                     mCurrent.MeterLayer = featureLayer;
-                }
-                else if (OConstants.LAYER_LV_Distribution_Panel.contains(geodatabaseFeatureTables.getTableName())) {
+                } else if (OConstants.LAYER_LV_Distribution_Panel.contains(geodatabaseFeatureTables.getTableName())) {
                     mCurrent.LVDistributionPanelOfflineTable = geodatabaseFeatureTables;
                     mCurrent.LVDistributionPanelLayer = featureLayer;
                 }

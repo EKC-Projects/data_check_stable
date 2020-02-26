@@ -10,7 +10,6 @@
         android:layout_height="match_parent">
 
 
-
         <com.esri.arcgisruntime.mapping.view.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
@@ -60,8 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_16sdp"
-            android:layout_marginRight="@dimen/_16sdp"
             android:layout_marginTop="16dp"
+            android:layout_marginRight="@dimen/_16sdp"
             android:src="@drawable/ic_compass"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rlLatLong" />
@@ -86,13 +85,16 @@
             style="@style/floating_action_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_12sdp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
             android:layoutDirection="locale"
             android:padding="0dp"
             android:src="@drawable/ic_add_location_white_24dp"
             app:borderWidth="0dp"
             app:elevation="0dp"
-            app:layout_constraintStart_toStartOf="@+id/fabFullScreen"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fabFullScreen"
             app:menu_animationDelayPerItem="55"
             app:menu_backgroundColor="@android:color/transparent"
@@ -127,26 +129,26 @@
                 android:id="@+id/fab_measure_area"
                 style="@style/MenuButtonsStyle"
                 android:src="@drawable/rounded_ic_poles"
-                app:fab_label="Area"
                 android:visibility="gone"
+                app:fab_label="Area"
                 app:fab_size="mini" />
 
         </com.github.clans.fab.FloatingActionMenu>
 
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/fabMeasure"-->
-<!--            style="@style/floating_action_button"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_marginBottom="@dimen/activity_vertical_margin"-->
-<!--            android:src="@drawable/ruler"-->
-<!--            app:borderWidth="0dp"-->
-<!--            app:elevation="0dp"-->
-<!--            app:fabSize="normal"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/fabLocation"-->
-<!--            app:layout_constraintEnd_toEndOf="parent" />-->
+        <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--            android:id="@+id/fabMeasure"-->
+        <!--            style="@style/floating_action_button"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+        <!--            android:src="@drawable/ruler"-->
+        <!--            app:borderWidth="0dp"-->
+        <!--            app:elevation="0dp"-->
+        <!--            app:fabSize="normal"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/fabLocation"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent" />-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabLocation"
@@ -165,7 +167,6 @@
 
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/fab_general"
-            android:visibility="gone"
             style="@style/floating_action_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -174,6 +175,7 @@
             android:layoutDirection="locale"
             android:padding="0dp"
             android:src="@drawable/ic_add_location_white_24dp"
+            android:visibility="gone"
             app:borderWidth="0dp"
             app:elevation="0dp"
             app:layout_constraintBottom_toTopOf="@+id/fabLocation"
@@ -277,11 +279,11 @@
                 android:focusable="true"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/tv_new_point"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/rounded_ic_dist_box"
                     android:drawablePadding="10dp"
@@ -317,6 +319,16 @@
                     android:drawablePadding="10dp"
                     android:gravity="start"
                     android:text="@string/Link_Box_lbl"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_lv_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_lv_panel"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/lv_distribution_panel"
                     android:textSize="12sp" />
 
                 <TextView
@@ -467,7 +479,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Adding bottom sheet after main content -->
-    <include layout="@layout/map_select_point_bottom_sheet"
-        android:visibility="visible"/>
+    <include
+        layout="@layout/map_select_point_bottom_sheet"
+        android:visibility="visible" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

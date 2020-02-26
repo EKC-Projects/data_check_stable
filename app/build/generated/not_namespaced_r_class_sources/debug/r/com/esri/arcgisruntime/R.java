@@ -41,10 +41,10 @@ public final class R {
         public static final int browser_actions_divider_color = 0x7f05002d;
         public static final int browser_actions_text_color = 0x7f05002e;
         public static final int browser_actions_title_color = 0x7f05002f;
-        public static final int notification_action_color_filter = 0x7f0500d0;
-        public static final int notification_icon_bg_color = 0x7f0500d1;
-        public static final int ripple_material_light = 0x7f0500e1;
-        public static final int secondary_text_default_material_light = 0x7f0500e3;
+        public static final int notification_action_color_filter = 0x7f0500d1;
+        public static final int notification_icon_bg_color = 0x7f0500d2;
+        public static final int ripple_material_light = 0x7f0500e2;
+        public static final int secondary_text_default_material_light = 0x7f0500e4;
     }
     public static final class dimen {
         private dimen() {}
@@ -2184,7 +2184,7 @@ public final class R {
         public static final int arcgisruntime_self_signed_dialog_untrusted_title = 0x7f0f0839;
         public static final int arcgisruntime_sketcheditor_callout_clear = 0x7f0f083a;
         public static final int arcgisruntime_sketcheditor_callout_remove_vertex = 0x7f0f083b;
-        public static final int status_bar_notification_info_overflow = 0x7f0f0923;
+        public static final int status_bar_notification_info_overflow = 0x7f0f0924;
     }
     public static final class style {
         private style() {}

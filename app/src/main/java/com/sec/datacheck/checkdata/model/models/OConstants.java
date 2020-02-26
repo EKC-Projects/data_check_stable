@@ -16,7 +16,7 @@ public class OConstants {
 
     public static final String LAYER_SERVICE_POINT = "EKC_Collector.DBO.Service_Point";
 
-    public static final String LAYER_AutoReCloser = "Auto_Re_closer";
+    public static final String LAYER_AutoReCloser = "OH_P_D";
     public static final String LAYER_FuseCutOut = "Fuse_Cut_Out";
     public static final String LAYER_LinkBox = "Link_Box";
     public static final String LAYER_Load_Breaker_Switch_LBS__33__13_8__KV = "Load_Breaker_Switch_LBS__33__13_8__KV";

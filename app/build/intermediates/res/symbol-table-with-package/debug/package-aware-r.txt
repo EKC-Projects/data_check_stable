@@ -1009,6 +1009,7 @@ color green
 color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color lv_panel_color
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -2562,6 +2563,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable play_circle
 drawable rounded_ic_dist_box
+drawable rounded_ic_lv_panel
 drawable rounded_ic_meter
 drawable rounded_ic_mv_metering
 drawable rounded_ic_oh_lines
@@ -3184,6 +3186,7 @@ id tvLatLong
 id tv_edit_line
 id tv_edit_point
 id tv_gcs_point
+id tv_lv_panel
 id tv_meter
 id tv_more_layer_info
 id tv_mv_metering
@@ -5637,6 +5640,7 @@ string loading_file
 string loading_location
 string login
 string logout
+string lv_distribution_panel
 string main_cables_type
 string manufacture
 string manufacture_of_equipment

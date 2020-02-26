@@ -242,7 +242,7 @@
     <string name="Voltage_Level__132_33__132_13_8_lbl">Voltage_Level__132_33__132_13_8</string>
     <string name="grid_station">Grid_Station</string>
     <string name="x_y_coordinates_1_points">X_Y_Coordinates_1_points</string>
-    <string name="Auto_Recloser_No_lbl">Auto_Recloser_No</string>
+    <string name="Auto_Recloser_No_lbl">No</string>
     <string name="Ratio_Amp_lbl">Ratio_Amp</string>
     <string name="Type_Inside__S_S__Feeder_lbl">Type_Inside__S_S__Feeder</string>
     <string name="Electricity_Status_lbl">Electricity_Status</string>
@@ -253,7 +253,7 @@
     <string name="Link_Box_lbl">Link Box</string>
     <string name="Total_no__of_Link_Box_in_the_CK_lbl">Total_no__of_Link_Box_in_the_CK</string>
     <string name="link_box_distribution_Panel_lbl">link_box_distribution_Panel</string>
-    <string name="Auto_Recloser_lbl">Auto – Re-closer</string>
+    <string name="Auto_Recloser_lbl">OH P D</string>
     <string name="Fuse_Cut_Out_lbl">Fuse Cut Out</string>
     <string name="station">Station</string>
     <string name="type_of_the_equipment">Type_of_the_equipment</string>
@@ -297,4 +297,5 @@
     <string name="manufacture_of_equipment">Manufacture_of_equipment</string>
     <string name="feeders_Panel_distribution">Feeders_Panel_distribution</string>
     <string name="voltage_of_equipment">voltage_of_equipment</string>
+    <string name="lv_distribution_panel">LV Distribution Panel</string>
 </resources>

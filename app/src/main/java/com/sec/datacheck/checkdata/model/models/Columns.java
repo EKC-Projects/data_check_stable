@@ -56,7 +56,7 @@ public class Columns {
 
     public static class AutoReCloser {
         public static String X_Y_Coordinates_1_points = "X_Y_Coordinates_1_points";
-        public static String Auto_Recloser_No = "Auto_Recloser_No";
+        public static String Auto_Recloser_No = "No";
         public static String Ratio_Amp = "Ratio_Amp";
         public static String Type_Inside__S_S__Feeder = "Type_Inside__S_S__Feeder";
         public static String Electricity_Status = "Electricity_Status";
@@ -173,7 +173,7 @@ public class Columns {
 
     public static class Sectionlizer {
         public static String X_Y_Coordinates_1_points = "X_Y_Coordinates_1_points";
-        public static String Sectionlizer_No = "Sectionlizer_No";
+        public static String Sectionlizer_No = "No";
         public static String Ratio_Amp = "Ratio_Amp";
         public static String Direction_to_pole_No = "Direction_to_pole_No";
         public static String Electricity_Status = "Electricity_Status";
