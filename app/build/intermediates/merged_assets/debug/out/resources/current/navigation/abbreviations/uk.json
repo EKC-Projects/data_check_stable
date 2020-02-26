@@ -1,0 +1,26 @@
+{
+    "context": [
+        {
+            "id": "generic",
+            "default": "yes",
+            "language": "uk",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "no",
+            "content": [
+            ]
+        },
+        {
+            "id": "StateAbbreviations",
+            "default": "no",
+            "language": "uk",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "yes",
+            "content": [
+            ]
+        }
+    ]
+}

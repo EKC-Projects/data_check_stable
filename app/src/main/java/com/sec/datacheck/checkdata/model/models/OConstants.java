@@ -17,23 +17,24 @@ public class OConstants {
     public static final String LAYER_SERVICE_POINT = "EKC_Collector.DBO.Service_Point";
 
     public static final String LAYER_AutoReCloser = "Auto_Re_closer";
-
     public static final String LAYER_FuseCutOut = "Fuse_Cut_Out";
-    public static final String LAYER_Meter = "Meter";
-
     public static final String LAYER_LinkBox = "Link_Box";
-
+    public static final String LAYER_Load_Breaker_Switch_LBS__33__13_8__KV = "Load_Breaker_Switch_LBS__33__13_8__KV";
+    public static final String LAYER_LV_Distribution_Box = "LV_Distribution_Box";
+    public static final String LAYER_LV_Distribution_Panel = "LV_Distribution_Panel";
+    public static final String LAYER_MCCB_LVP_Circuits_Record = "MCCB_LVP_Circuits_Record";
+    public static final String LAYER_Meter = "Meter";
+    public static final String LAYER_Mini_pillar = "Mini_pillar";
     public static final String LAYER_MV_Metering = "MV_Metering";
+    public static final String LAYER_OH_LINES = "OH_Lines";
     public static final String LAYER_POLE = "Pole";
-    public static final String LAYER_OH_LINES = "OH_LINES";
-    public static final String  LVDistributionPanel = " LV_Distribution_Panel";
-
-
-
-    public static final String LAYER_Station= "Station";
-
+    public static final String LAYER_Sectionlizer = "Sectionlizer";
+    public static final String LAYER_Station = "Station";
     public static final String LAYER_Substation = "Substation";
-
+    public static final String LAYER_SVC__Static_VAR_Compensator = "SVC__Static_VAR_Compensator";
+    public static final String LAYER_Switchgear = "Switchgear";
+    public static final String LAYER_Transformer = "Transformer";
+    public static final String LAYER_Voltage_regulator = "Voltage_regulator";
 
     public static HashMap<String, String> dist_box_domain, fcl_poles_domain, fcl_rmu_domain, fcl_substation_domain, ocl_meter_domain, service_point_domain;
 

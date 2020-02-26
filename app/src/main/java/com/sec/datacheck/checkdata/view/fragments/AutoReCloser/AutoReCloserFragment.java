@@ -131,15 +131,26 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             setHasOptionsMenu(true);
             if (mCurrent.onlineData) {
                 loadFeature();
-            } else {
-                selectedLayer = mSelectedResult.getFeatureLayer();
-                selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
-                selectedFeature = mSelectedResult.getFeature();
-                init();
             }
+            else {
+                loadFeatureOffline();
 
+            }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void loadFeatureOffline() {
+        try {
+            selectedLayer = mSelectedResult.getFeatureLayer();
+            selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
+            selectedFeature = mSelectedResult.getFeatureOffline();
+
+
+            init();
+        }catch (Exception e){
+            e.getStackTrace();
         }
     }
 
@@ -266,13 +277,16 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             ArrayList<String> codeList = new ArrayList<>();
 
 
-            CodedValueDomain typeDomain ;
-            if(mCurrent.onlineData) {
+            CodedValueDomain typeDomain;
+            List<CodedValue> codedValues;
+            if (mCurrent.onlineData) {
                 typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
-            }else{
+                codedValues = typeDomain.getCodedValues();
+            } else {
                 typeDomain = (CodedValueDomain) mSelectedResult.getGeodatabaseFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
             }
-            List<CodedValue> codedValues = typeDomain.getCodedValues();
+
 
             for (CodedValue codedValue : codedValues) {
                 typesList.add(codedValue.getName());

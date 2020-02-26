@@ -1,0 +1,139 @@
+{
+    "context": [
+        {
+            "id": "generic",
+            "default": "yes",
+            "language": "fr",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "no",
+            "content": [
+                {
+                    "name": "Aut",
+                    "value": "Autoroute"
+                },
+                {
+                    "name": "Av",
+                    "value": "Avenue"
+                },
+                {
+                    "name": "Boul",
+                    "value": "Boulevard"
+                },
+                {
+                    "name": "C",
+                    "value": "Centre"
+                },
+                {
+                    "name": "Car",
+                    "value": "Carré"
+                },
+                {
+                    "name": "Carref",
+                    "value": "Carrefour"
+                },
+                {
+                    "name": "Ch",
+                    "value": "Chemin"
+                },
+                {
+                    "name": "Circt",
+                    "value": "Circuit"
+                },
+                {
+                    "name": "Crois",
+                    "value": "Croissant"
+                },
+                {
+                    "name": "Espl",
+                    "value": "Esplanade"
+                },
+                {
+                    "name": "Imp",
+                    "value": "Impasse"
+                },
+                {
+                    "name": "Pass",
+                    "value": "Passage"
+                },
+                {
+                    "name": "Plat",
+                    "value": "Plateau"
+                },
+                {
+                    "name": "Prom",
+                    "value": "Promenade"
+                },
+                {
+                    "name": "Rdpt",
+                    "value": "Rond-point"
+                },
+                {
+                    "name": "Rle",
+                    "value": "Ruelle"
+                },
+                {
+                    "name": "Rte",
+                    "value": "Route"
+                },
+                {
+                    "name": "Sent",
+                    "value": "Sentier"
+                },
+                {
+                    "name": "Tsse",
+                    "value": "Terrasse"
+                },
+                {
+                    "name": "Villge",
+                    "value": "Village"
+                },
+                {
+                    "name": "E",
+                    "value": "Est"
+                },
+                {
+                    "name": "N",
+                    "value": "Nord"
+                },
+                {
+                    "name": "NE",
+                    "value": "Nord Est"
+                },
+                {
+                    "name": "NO",
+                    "value": "Nord Ouest"
+                },
+                {
+                    "name": "O",
+                    "value": "Ouest"
+                },
+                {
+                    "name": "S",
+                    "value": "Sud"
+                },
+                {
+                    "name": "SE",
+                    "value": "Sud Est"
+                },
+                {
+                    "name": "SO",
+                    "value": "Sud Ouest"
+                }
+            ]
+        },
+        {
+            "id": "StateAbbreviations",
+            "default": "no",
+            "language": "fr",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "yes",
+            "content": [
+                
+            ]
+        }
+    ]
+}

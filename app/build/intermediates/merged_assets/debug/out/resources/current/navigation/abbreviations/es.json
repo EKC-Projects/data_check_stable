@@ -1,0 +1,83 @@
+{
+    "context": [
+        {
+            "id": "generic",
+            "default": "yes",
+            "language": "es",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "no",
+            "content": [
+                {
+                    "name": "E",
+                    "value": "Este"
+                },
+                {
+                    "name": "N",
+                    "value": "Norte"
+                },
+                {
+                    "name": "NE",
+                    "value": "Nord Este"
+                },
+                {
+                    "name": "NO",
+                    "value": "Nor Oeste"
+                },
+                {
+                    "name": "NOte",
+                    "value": "Nororiente"
+                },
+                {
+                    "name": "NP",
+                    "value": "Norponiente"
+                },
+                {
+                    "name": "O",
+                    "value": "Oeste"
+                },
+                {
+                    "name": "Ote",
+                    "value": "Oriente"
+                },
+                {
+                    "name": "P",
+                    "value": "Poniente"
+                },
+                {
+                    "name": "S",
+                    "value": "Sur"
+                },
+                {
+                    "name": "SE",
+                    "value": "Sud Este"
+                },
+                {
+                    "name": "SO",
+                    "value": "Sud Oeste"
+                },
+                {
+                    "name": "SOte",
+                    "value": "Suroriente"
+                },
+                {
+                    "name": "SP",
+                    "value": "Surponiente"
+                }
+            ]
+        },
+        {
+            "id": "StateAbbreviations",
+            "default": "no",
+            "language": "es",
+            "country": "",
+            "delimiters": " ().,",
+            "skipCharacters": "\\\/-",
+            "caseSensitive": "yes",
+            "content": [
+                
+            ]
+        }
+    ]
+}

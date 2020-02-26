@@ -127,16 +127,27 @@ public class LVDistributionPanelFragment extends Fragment implements View.OnClic
             if (mCurrent.onlineData) {
                 loadFeature();
             } else {
-                selectedLayer = mSelectedResult.getFeatureLayer();
-                selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
-                selectedFeature = mSelectedResult.getFeature();
-                init();
-            }
+                loadFeatureOffline();
 
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void loadFeatureOffline() {
+        try {
+            selectedLayer = mSelectedResult.getFeatureLayer();
+            selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
+            selectedFeature = mSelectedResult.getFeatureOffline();
+
+
+            init();
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+    }
+
 
     private void loadFeature() {
         try {

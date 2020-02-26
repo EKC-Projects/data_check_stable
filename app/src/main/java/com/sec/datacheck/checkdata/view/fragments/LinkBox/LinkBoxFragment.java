@@ -127,12 +127,32 @@ public class LinkBoxFragment extends Fragment implements View.OnClickListener {
         try {
             ButterKnife.bind(this, view);
             setHasOptionsMenu(true);
-            loadFeature();
 
+            if (mCurrent.onlineData) {
+                loadFeature();
+            }
+            else {
+                loadFeatureOffline();
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void loadFeatureOffline() {
+        try {
+            selectedLayer = mSelectedResult.getFeatureLayer();
+            selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
+            selectedFeature = mSelectedResult.getFeatureOffline();
+
+
+            init();
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+    }
+
 
     private void loadFeature() {
         try {
@@ -255,8 +275,15 @@ public class LinkBoxFragment extends Fragment implements View.OnClickListener {
             ArrayList<String> typesList = new ArrayList<>();
             ArrayList<String> codeList = new ArrayList<>();
 
-            CodedValueDomain typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
-            List<CodedValue> codedValues = typeDomain.getCodedValues();
+            CodedValueDomain typeDomain;
+            List<CodedValue> codedValues;
+            if (mCurrent.onlineData) {
+                typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
+            }else{
+                typeDomain = (CodedValueDomain) mSelectedResult.getGeodatabaseFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
+            }
 
             for (CodedValue codedValue : codedValues) {
                 typesList.add(codedValue.getName());

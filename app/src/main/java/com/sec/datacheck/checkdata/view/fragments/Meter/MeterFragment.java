@@ -28,7 +28,6 @@ import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.sec.datacheck.R;
 import com.sec.datacheck.checkdata.model.models.Columns;
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult;
-import com.sec.datacheck.checkdata.view.POJO.LinkBoxModel;
 import com.sec.datacheck.checkdata.view.POJO.MeterModel;
 import com.sec.datacheck.checkdata.view.activities.map.MapActivity;
 import com.sec.datacheck.checkdata.view.activities.map.MapPresenter;
@@ -130,11 +129,29 @@ public class MeterFragment extends Fragment implements View.OnClickListener {
         try {
             ButterKnife.bind(this, view);
             setHasOptionsMenu(true);
-            loadFeature();
+            if (mCurrent.onlineData) {
+                loadFeature();
+            }
+            else {
+            loadFeatureOffline();
 
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void loadFeatureOffline() {
+    try {
+        selectedLayer = mSelectedResult.getFeatureLayer();
+        selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
+        selectedFeature = mSelectedResult.getFeatureOffline();
+
+
+        init();
+    }catch (Exception e){
+        e.getStackTrace();
+    }
     }
 
     private void loadFeature() {
@@ -228,11 +245,6 @@ public class MeterFragment extends Fragment implements View.OnClickListener {
         try {
 
 
-
-
-
-
-
             initSpinner(X_Y_CoordinatesSpinner, Columns.Meter.X_Y_Coordinates_1_points);
             initSpinner(backerSize, Columns.Meter.Backer__Size);
             initSpinner(C_T_ratio, Columns.Meter.C_T_Ratio);
@@ -254,6 +266,7 @@ public class MeterFragment extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
     }
+
     private void initNotes(EditText notes, String notes1) {
         try {
             String note = (String) selectedFeature.getAttributes().get(notes1);
@@ -270,9 +283,15 @@ public class MeterFragment extends Fragment implements View.OnClickListener {
         try {
             ArrayList<String> typesList = new ArrayList<>();
             ArrayList<String> codeList = new ArrayList<>();
-
-            CodedValueDomain typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
-            List<CodedValue> codedValues = typeDomain.getCodedValues();
+            CodedValueDomain typeDomain;
+            List<CodedValue> codedValues;
+            if (mCurrent.onlineData) {
+                typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
+            }else{
+                typeDomain = (CodedValueDomain) mSelectedResult.getGeodatabaseFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
+            }
 
             for (CodedValue codedValue : codedValues) {
                 typesList.add(codedValue.getName());
@@ -302,6 +321,7 @@ public class MeterFragment extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
     }
+
     @Override
     public void onClick(View v) {
         try {
