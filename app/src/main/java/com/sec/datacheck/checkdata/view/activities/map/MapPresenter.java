@@ -806,49 +806,6 @@ public class MapPresenter {
 
                                         Log.i(TAG, "addLocalLayers(): gdb Feature Table has geometry");
 
-//                                        if (OConstants.LAYER_DISTRIBUTION_BOX.contains(gdbFeatureTable.getTableName())) {
-//                                            mCurrent.FCL_DistributionBoxLayer = new FeatureLayer(gdbFeatureTable);
-//                                            mCurrent.FCL_DistributionBoxTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_DistributionBoxLayer.getFeatureTable());
-//                                            map.getOperationalLayers().add(mCurrent.FCL_DistributionBoxLayer);
-//
-//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_DistributionBoxTableOffline.getTableName());
-//
-//                                        } else if (OConstants.LAYER_POLES.contains(gdbFeatureTable.getTableName())) {
-//
-//                                            mCurrent.FCL_POLES_Layer = new FeatureLayer(gdbFeatureTable);
-//                                            mCurrent.FCL_POLESTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_POLES_Layer.getFeatureTable());
-//                                            map.getOperationalLayers().add(mCurrent.FCL_POLES_Layer);
-//
-//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_POLES_ServiceTable.getTableName());
-//
-//                                        } else if (OConstants.LAYER_RMU.contains(gdbFeatureTable.getTableName())) {
-//                                            mCurrent.FCL_RMU_Layer = new FeatureLayer(gdbFeatureTable);
-//                                            mCurrent.FCL_RMUTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_RMU_Layer.getFeatureTable());
-//                                            map.getOperationalLayers().add(mCurrent.FCL_RMU_Layer);
-//
-//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_RMUTableOffline.getTableName());
-//
-//                                        } else if (OConstants.LAYER_SUB_STATION.contains(gdbFeatureTable.getTableName())) {
-//                                            mCurrent.FCL_Substation_Layer = new FeatureLayer(gdbFeatureTable);
-//                                            mCurrent.FCL_SubstationTableOffline = ((GeodatabaseFeatureTable) mCurrent.FCL_Substation_Layer.getFeatureTable());
-//                                            map.getOperationalLayers().add(mCurrent.FCL_Substation_Layer);
-//
-//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.FCL_SubstationTableOffline.getTableName());
-//
-//                                        } else if (OConstants.LAYER_OCL_METER.contains(gdbFeatureTable.getTableName())) {
-//                                            mCurrent.OCL_METER_Layer = new FeatureLayer(gdbFeatureTable);
-//                                            mCurrent.OCL_METERTableOffline = ((GeodatabaseFeatureTable) mCurrent.OCL_METER_Layer.getFeatureTable());
-//                                            map.getOperationalLayers().add(mCurrent.OCL_METER_Layer);
-//
-//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.OCL_METERTableOffline.getTableName());
-//
-//                                        } else if (OConstants.LAYER_SERVICE_POINT.contains(gdbFeatureTable.getTableName())) {
-//
-//                                            setLayerAndTable(mCurrent.ServicePoint_Layer, mCurrent.ServicePointTableOffline, gdbFeatureTable,map);
-//
-//                                            Log.i(TAG, "addLocalLayers(): LayerName is " + mCurrent.ServicePointTableOffline.getTableName());
-//
-//                                        }
                                         Log.i(TAG, "addLocalLayers(): gdbFeatureTable is " + gdbFeatureTable.getTableName());
 
                                         if (OConstants.LAYER_AutoReCloser.matches(gdbFeatureTable.getTableName())) {

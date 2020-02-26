@@ -155,8 +155,15 @@ public class SubStationFragment extends Fragment implements AdapterView.OnItemSe
         try {
             ButterKnife.bind(this, view);
             setHasOptionsMenu(true);
-            loadFeature();
 
+            if (mCurrent.onlineData) {
+                loadFeature();
+            } else {
+                selectedLayer = mSelectedResult.getFeatureLayer();
+                selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
+                selectedFeature = mSelectedResult.getFeature();
+                init();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -290,8 +297,15 @@ public class SubStationFragment extends Fragment implements AdapterView.OnItemSe
             ArrayList<String> typesList = new ArrayList<>();
             ArrayList<String> codeList = new ArrayList<>();
 
-            CodedValueDomain typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
-            List<CodedValue> codedValues = typeDomain.getCodedValues();
+            CodedValueDomain typeDomain;
+            List<CodedValue> codedValues;
+            if (mCurrent.onlineData) {
+                typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
+            }else{
+                typeDomain = (CodedValueDomain) mSelectedResult.getGeodatabaseFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
+            }
 
             for (CodedValue codedValue : codedValues) {
                 typesList.add(codedValue.getName());

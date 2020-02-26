@@ -292,7 +292,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             initMap();
 
-            intFab();
+            intFabLocation();
 
             tvMoreLayerInfo.setOnClickListener(this);
             fabFullScreen.setOnClickListener(this);
@@ -362,11 +362,10 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         }
     }
 
-    private void intFab() {
+    private void intFabLocation() {
         try {
 
             fabLocation.setOnClickListener(this);
-//            fabMeasure.setOnClickListener(this);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -640,9 +639,9 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                         grantResults[0] == PackageManager.PERMISSION_GRANTED) || (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION) &&
                         grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     showDeviceLocation();
-                } /*else {
+                } else {
                     Utilities.showToast(mCurrent, getString(R.string.please_open_gps_location));
-                }*/
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -671,11 +670,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             }
         } else if (v.equals(mUpdateBtn)) {
             sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-//            if (graphicsOverlay != null && graphicsOverlay.getGraphics() != null) {
-//                graphicsOverlay.getGraphics().clear();
-//
-//                showEditFragment(selectedResult);
-//            }
             showEditReviewFragment();
         } else if (v.equals(mCancelBtn)) {
             sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
@@ -687,65 +681,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             initMapRotation();
 
         }
-//        else if (v.equals(fabDistributionBox)) {
-//            fabGeneral.close(true);
-//
-//            drawShape = true;
-//            selectedResult = new OnlineQueryResult();
-//            selectedResult.setGeodatabaseFeatureTable(FCL_DistributionBoxTableOffline);
-//            selectedResult.setServiceFeatureTable(FCL_DistributionBox_ServiceTable);
-//            selectedResult.setFeatureLayer(FCL_DistributionBoxLayer);
-//        } else if (v.equals(fabPoles)) {
-//            fabGeneral.close(true);
-//
-//            drawShape = true;
-//            selectedResult = new OnlineQueryResult();
-//            selectedResult.setGeodatabaseFeatureTable(FCL_POLESTableOffline);
-//            selectedResult.setServiceFeatureTable(FCL_POLES_ServiceTable);
-//            selectedResult.setFeatureLayer(FCL_POLES_Layer);
-//
-//        } else if (v.equals(fabRMU)) {
-//            fabGeneral.close(true);
-//
-//            drawShape = true;
-//            selectedResult = new OnlineQueryResult();
-//            selectedResult.setGeodatabaseFeatureTable(FCL_RMUTableOffline);
-//            selectedResult.setServiceFeatureTable(FCL_RMU_ServiceTable);
-//            selectedResult.setFeatureLayer(FCL_RMU_Layer);
-//
-//        } else if (v.equals(fabSubStation)) {
-//            fabGeneral.close(true);
-//
-//            drawShape = true;
-//            selectedResult = new OnlineQueryResult();
-//            selectedResult.setGeodatabaseFeatureTable(FCL_SubstationTableOffline);
-//            selectedResult.setServiceFeatureTable(FCL_Substation_ServiceTable);
-//            selectedResult.setFeatureLayer(FCL_Substation_Layer);
-//
-//        } else if (v.equals(fabOCLMeter)) {
-//            fabGeneral.close(true);
-//
-//            drawShape = true;
-//            selectedResult = new OnlineQueryResult();
-//            selectedResult.setGeodatabaseFeatureTable(OCL_METERTableOffline);
-//            selectedResult.setServiceFeatureTable(OCL_METER_ServiceTable);
-//            selectedResult.setFeatureLayer(OCL_METER_Layer);
-//
-//        } else if (v.equals(fabServicePoint)) {
-//            fabGeneral.close(true);
-//
-//            drawShape = true;
-//            selectedResult = new OnlineQueryResult();
-//            selectedResult.setGeodatabaseFeatureTable(ServicePointTableOffline);
-//            selectedResult.setServiceFeatureTable(ServicePoint_ServiceTable);
-//            selectedResult.setFeatureLayer(ServicePoint_Layer);
-//
-//        } else if (v.equals(mCreatePointBtn)) {
-//            createPoint();
-//        } else if (v.equals(mCancelCreatePointBtn)) {
-//            cancelCreatePoint();
-//        }
-//
         else if (v.equals(fabMeasureDistance)) {
             handleFabMeasureAction();
             mFabMeasureMenu.close(true);
@@ -808,8 +743,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             } else if (selectedResult.getFeatureLayer().getName().matches(OH_LinesLayer.getName())) {
                 ohLineFragment = OHLineFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
                 showCheckDataEditFragment(ohLineFragment);
-            }
-            else if (selectedResult.getFeatureLayer().getName().matches(MeterLayer.getName())) {
+            } else if (selectedResult.getFeatureLayer().getName().matches(MeterLayer.getName())) {
                 meterFragment = MeterFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
                 showCheckDataEditFragment(meterFragment);
             }

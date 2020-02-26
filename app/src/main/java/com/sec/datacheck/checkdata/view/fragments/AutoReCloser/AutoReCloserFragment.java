@@ -266,13 +266,16 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             ArrayList<String> codeList = new ArrayList<>();
 
 
-            CodedValueDomain typeDomain ;
-            if(mCurrent.onlineData) {
+            CodedValueDomain typeDomain;
+            List<CodedValue> codedValues;
+            if (mCurrent.onlineData) {
                 typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
-            }else{
+                codedValues = typeDomain.getCodedValues();
+            } else {
                 typeDomain = (CodedValueDomain) mSelectedResult.getGeodatabaseFeatureTable().getField(columnName).getDomain();
+                codedValues = typeDomain.getCodedValues();
             }
-            List<CodedValue> codedValues = typeDomain.getCodedValues();
+
 
             for (CodedValue codedValue : codedValues) {
                 typesList.add(codedValue.getName());
