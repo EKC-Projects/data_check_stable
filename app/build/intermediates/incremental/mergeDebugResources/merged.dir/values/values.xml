@@ -262,6 +262,7 @@
     <bool name="abc_allow_stacked_button_bar">false</bool>
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
     <bool name="mtrl_btn_textappearance_all_caps">true</bool>
+    <color name="OH_Lines">#CCCCCC</color>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
@@ -373,6 +374,7 @@
     <color name="md_edittext_error">#DD2C00</color>
     <color name="md_material_blue_600">#2196F3</color>
     <color name="md_material_blue_800">#1565C0</color>
+    <color name="meter_color">#FF73DF</color>
     <color name="mtrl_btn_text_color_disabled">#61000000</color>
     <color name="mtrl_btn_transparent_bg_color">#00ffffff</color>
     <color name="mtrl_scrim_color">#52000000</color>
@@ -381,11 +383,13 @@
     <color name="mtrl_textinput_filled_box_default_background_color">#0A000000</color>
     <color name="mtrl_textinput_focused_box_stroke_color">#00000000</color>
     <color name="mtrl_textinput_hovered_box_stroke_color">#DE000000</color>
+    <color name="mv_metering_color">#730000</color>
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
     <color name="notification_material_background_media_default_color">#ff424242</color>
     <color name="orange">#ff9800</color>
     <color name="orangeDark">#c66900</color>
+    <color name="pole_color">#898944</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>
@@ -1703,11 +1707,15 @@
     <string name="Grid_Station_lbl">Grid_Station</string>
     <string name="Left_S_S_lbl">Left_S_S</string>
     <string name="Link_Box_lbl">Link Box</string>
+    <string name="Location_Type__Section_Middle_E">Location_Type__Section_Middle_E</string>
     <string name="MCCB_LVP_Circuits_Record" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/6</string>
     <string name="MV_Metering" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/9</string>
+    <string name="MV_Metering_text">MV Metering</string>
+    <string name="Manufacture_of_equipment">Manufacture Of Equipment</string>
     <string name="Manufacture_of_equipment_lbl">Manufacture_of_equipment</string>
     <string name="MapServiceArabicToken" translatable="false">dXIpr8oo9tCaCrniBW4dT_sAGlcX8I3tyOK5eNaGJAo.</string>
     <string name="MapServiceEnglishToken" translatable="false">dXIpr8oo9tCaCrniBW4dT_sAGlcX8I3tyOK5eNaGJAo.</string>
+    <string name="Martial_Type__Wooden_Steel">Martial_Type__Wooden_Steel</string>
     <string name="Meter" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/7</string>
     <string name="Mini_pillar" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/8</string>
     <string name="New_Drawed_Featur_ids" ns2:ignore="MissingTranslation" translatable="false">New_Drawed_Featur_ids</string>
@@ -1717,13 +1725,18 @@
     <string name="OCL_METER" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/4</string>
     <string name="OCL_METER_layer_name" translatable="false">EKC_Collector.DBO.OCL_METER</string>
     <string name="OH_Lines" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/10</string>
+    <string name="OH_Lines_text">OH/Lines</string>
     <string name="Pole" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/11</string>
+    <string name="Pole_No">Pole_No</string>
+    <string name="Pole_height">Pole_height</string>
     <string name="Ratio_Amp_lbl">Ratio_Amp</string>
     <string name="Right_S_S_lbl">Right_S_S</string>
     <string name="SVC_Static_VAR_Compensator" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/15</string>
     <string name="Sectionlizer" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/12</string>
     <string name="Service_Point" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/5</string>
     <string name="Service_Point_layer_name" translatable="false">EKC_Collector.DBO.Service_Point</string>
+    <string name="Size">Size</string>
+    <string name="Soil_Type__Rock_Normal_City">Soil_Type__Rock_Normal_City</string>
     <string name="Substation_room_type_lbl">Substation_room_type</string>
     <string name="Surveyor" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/6</string>
     <string name="Switchgear" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/16</string>
@@ -3781,9 +3794,11 @@
     <string name="attachments">Attachments</string>
     <string name="attributes">Attributes</string>
     <string name="auto_recloser" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/0</string>
+    <string name="backer_size">Backer__Size</string>
     <string name="bookmark_added">Bookmark Added Successfully</string>
     <string name="bookmark_not_added">Can not add bookmark</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="c_t_ratio">C_T_Ratio</string>
     <string name="camera">Open Camera</string>
     <string name="cancel">Cancel</string>
     <string name="change_location">Change Location</string>
@@ -3817,6 +3832,7 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="connection_error">Connection error, Try again</string>
     <string name="connection_failed">Connection Failed, Please try again</string>
+    <string name="customer_type">Customer_Type</string>
     <string name="data_check">SEC Data Check</string>
     <string name="data_collector">SEC Data Collector</string>
     <string name="delete">Delete</string>
@@ -3841,6 +3857,7 @@
     <string name="draw_on_map">Please, Draw On Map</string>
     <string name="dummy_objectID" translatable="false">123564</string>
     <string name="edit_point">Edit Selected Point</string>
+    <string name="electricity_status">Electricity_Status</string>
     <string name="enable_gps_now">Enable Now From Settings ?</string>
     <string name="enter_bookmark_name">Bookmark Title</string>
     <string name="enter_database_name">Enter Database Name</string>
@@ -3888,8 +3905,10 @@
     <string name="loading_location">Loading Location…</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+    <string name="manufacture">Manufacture</string>
     <string name="map_not_loaded">Map Not Loaded</string>
     <string name="map_not_loaded_yet">Map not loaded</string>
+    <string name="martial_type">Martial_Type</string>
     <string name="md_back_label">Back</string>
     <string name="md_cancel_label">Cancel</string>
     <string name="md_choose_label">Choose</string>
@@ -3902,6 +3921,12 @@
     <string name="menu_go_offline_mode">Go offline mode</string>
     <string name="menu_go_online_mode">Go online mode</string>
     <string name="menu_show_bookmarks">Show bookmarks</string>
+    <string name="meter_box_type__single_double_q">Meter_Box_Type__single_double_q</string>
+    <string name="meter_frag_Serial_No">Serial_No</string>
+    <string name="meter_text">Meter</string>
+    <string name="meter_type__sort_digital_mechan">Meter_Type__Sort_Digital_Mechan</string>
+    <string name="meter_work_type_normal_c_t">Meter_Work_Type__Normal___C_T__</string>
+    <string name="meter_x_y_coordinates">X_Y_Coordinates_1_points</string>
     <string name="more_info"><![CDATA[More Info >>]]></string>
     <string description="Content description for new notification (no number count) [CHAR_LIMIT=NONE]" name="mtrl_badge_numberless_content_description">New notification</string>
     <string description="Content description for a close icon that lets the user remove content from the screen" name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
@@ -3937,6 +3962,7 @@
     <string description="a11y string to indicate this button switches the user to choosing a day [CHAR_LIMIT=NONE]" name="mtrl_picker_toggle_to_day_selection">Tap to switch to selecting a day</string>
     <string description="a11y string to indicate this button changes the input mode to a text field [CHAR_LIMIT=NONE]" name="mtrl_picker_toggle_to_text_input_mode">Switch to text input mode</string>
     <string description="a11y string to indicate this button switches the user to choosing a year [CHAR_LIMIT=NONE]" name="mtrl_picker_toggle_to_year_selection">Tap to switch to selecting a year</string>
+    <string name="mv_metering_equipment">Equipment</string>
     <string name="name_validation">You must enter a name!</string>
     <string name="network_connection_failed">Network Connection Failed!, please try again</string>
     <string name="new_folder">New Folder</string>
@@ -3944,6 +3970,7 @@
     <string name="no_attachment">No Attachments</string>
     <string name="no_bookmarks">No bookmarks found</string>
     <string name="no_internet">No internet connection</string>
+    <string name="no_of_lines">No_of_lines</string>
     <string name="no_offline_version">You do not have Offline Version</string>
     <string name="no_service_found">No service found in this area</string>
     <string name="no_title">Enter Title</string>
@@ -3970,6 +3997,7 @@
     <string name="please_your_network_connect">Please check your network connection and try again</string>
     <string name="point_feature_layer_name" translatable="false">GeoNames</string>
     <string name="point_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/0</string>
+    <string name="pole_text">Pole</string>
     <string name="polygon_feature_layer_name" translatable="false">NameExtendArea</string>
     <string name="polygon_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/2</string>
     <string name="preview">Load</string>
@@ -3984,10 +4012,14 @@
     <string name="settings">Settings</string>
     <string name="show_templates">Show templates</string>
     <string name="sign_in">Sign In</string>
+    <string name="smart">Smart</string>
     <string name="station">Station</string>
     <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/13</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="subscription_no">Subscription_No</string>
+    <string name="substation_feeder_no">Substation_Feeder_No</string>
     <string name="substation_lbl">Substation</string>
+    <string name="substation_no">Substation_No</string>
     <string name="substation_type_lbl">Substation type</string>
     <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/14</string>
     <string name="surveyor_code">Surveyor Code</string>
@@ -3998,12 +4030,15 @@
     <string name="title">Title</string>
     <string name="try_again"> Try again</string>
     <string name="type" translatable="false">النوع</string>
+    <string name="type_of_the_equipment">Type_of_the_equipment</string>
     <string name="undo">Undo</string>
     <string name="unit_substation_serial_lbl">Unit_Substation_serial</string>
     <string name="update">Update</string>
     <string name="updated_successfuly">Updated successfully</string>
     <string name="user_name">User Name</string>
     <string name="video_size">Video Exceed 30MB</string>
+    <string name="voltage">Voltage</string>
+    <string name="voltage_type__mv_lv">Voltage_Type__MV_LV</string>
     <string name="working_area_feature_layer_services" translatable="false"> http://54.187.60.111/arcgis/rest/services/GCS_Collector_26_7_2017/FeatureServer/7</string>
     <string name="wrong_username_or_password">Wrong user name or password</string>
     <string name="x_y_coordinates">X Y Coordinates 2 points</string>

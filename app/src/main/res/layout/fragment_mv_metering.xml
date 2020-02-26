@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f4faff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_24sdp">
+
+            <TextView
+                android:id="@+id/mv_metering_Type_of_the_equipment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/type_of_the_equipment"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/mv_metering_frag_Type_of_the_equipment_1_points_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mv_metering_Type_of_the_equipment" />
+
+            <TextView
+
+                android:id="@+id/mv_metering_equipment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/mv_metering_equipment"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintStart_toStartOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintTop_toBottomOf="@+id/mv_metering_frag_Type_of_the_equipment_1_points_sp" />
+
+            <Spinner
+                android:id="@+id/mv_metering_frag_equipment_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintStart_toStartOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintTop_toBottomOf="@+id/mv_metering_equipment" />
+
+            <TextView
+
+                android:id="@+id/fragment_mv_metering_Manufacture_of_equipment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Manufacture_of_equipment"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintStart_toStartOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintTop_toBottomOf="@+id/mv_metering_frag_equipment_sp" />
+
+            <Spinner
+                android:id="@+id/mv_metering_frag_manufacture_of_equipment_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintStart_toStartOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_mv_metering_Manufacture_of_equipment" />
+
+
+
+
+            <EditText
+                android:id="@+id/mv_metering_frag_notes_et"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/custom_edittext_border_background"
+                android:gravity="start"
+                android:hint="@string/notes_hint"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintStart_toStartOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintTop_toBottomOf="@+id/mv_metering_frag_manufacture_of_equipment_sp" />
+
+
+            <Button
+                android:id="@+id/mv_metering_frag_save_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/update_btn_background"
+                android:elevation="4dp"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintStart_toStartOf="@+id/mv_metering_Type_of_the_equipment"
+                app:layout_constraintTop_toBottomOf="@+id/mv_metering_frag_notes_et"
+                tools:targetApi="lollipop" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

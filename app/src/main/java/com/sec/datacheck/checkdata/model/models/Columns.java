@@ -138,6 +138,7 @@ public class Columns {
 
     public static class OH_Lines {
         public static String Size = "Size";
+        public static String Martial_Type="Martial_Type";
         public static String Voltage = "Voltage";
         public static String Electricity_Status = "Electricity_Status";
         public static String No_of_lines = "No_of_lines";

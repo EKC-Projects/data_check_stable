@@ -248,6 +248,7 @@
             android:layout_below="@id/rlLatLong"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:animateLayoutChanges="true"
             android:background="@drawable/border"
             android:clickable="true"
             android:focusable="true"
@@ -262,6 +263,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:baselineAligned="false"
                 android:text="@string/more_info"
                 android:textColor="#ee3836"
                 android:textStyle="bold" />
@@ -284,8 +286,8 @@
                     android:drawableEnd="@drawable/rounded_ic_dist_box"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:textSize="12sp"
-                    android:text="@string/Auto_Recloser_lbl" />
+                    android:text="@string/Auto_Recloser_lbl"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_new_line"
@@ -294,18 +296,18 @@
                     android:drawableEnd="@drawable/rounded_ic_poles"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:textSize="12sp"
-                    android:text="@string/Fuse_Cut_Out_lbl" />
+                    android:text="@string/Fuse_Cut_Out_lbl"
+                    android:textSize="12sp" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tv_new_polygon"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:drawableEnd="@drawable/rounded_ic_rmu"-->
-<!--                    android:drawablePadding="10dp"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:gravity="start"-->
-<!--                    android:text="@string/service_point" />-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_new_polygon"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:drawableEnd="@drawable/rounded_ic_rmu"-->
+                <!--                    android:drawablePadding="10dp"-->
+                <!--                    android:textSize="12sp"-->
+                <!--                    android:gravity="start"-->
+                <!--                    android:text="@string/service_point" />-->
 
                 <TextView
                     android:id="@+id/tv_edit_line"
@@ -313,9 +315,9 @@
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/rounded_ic_rmu"
                     android:drawablePadding="10dp"
-                    android:textSize="12sp"
                     android:gravity="start"
-                    android:text="@string/Link_Box_lbl" />
+                    android:text="@string/Link_Box_lbl"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_edit_point"
@@ -324,8 +326,8 @@
                     android:drawableEnd="@drawable/rounded_ic_station"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:textSize="12sp"
-                    android:text="@string/station" />
+                    android:text="@string/station"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_gcs_point"
@@ -333,9 +335,49 @@
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/rounded_ic_substation"
                     android:drawablePadding="10dp"
-                    android:textSize="12sp"
                     android:gravity="start"
-                    android:text="@string/substation_lbl" />
+                    android:text="@string/substation_lbl"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_meter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_meter"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/meter_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_mv_metering"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_mv_metering"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/MV_Metering_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_oh_lines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_oh_lines"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/OH_Lines_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_poles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_pole"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/pole_text"
+                    android:textSize="12sp" />
 
 
             </LinearLayout>

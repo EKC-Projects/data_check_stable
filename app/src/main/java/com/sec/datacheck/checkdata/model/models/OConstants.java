@@ -19,8 +19,15 @@ public class OConstants {
     public static final String LAYER_AutoReCloser = "Auto_Re_closer";
 
     public static final String LAYER_FuseCutOut = "Fuse_Cut_Out";
+    public static final String LAYER_Meter = "Meter";
 
     public static final String LAYER_LinkBox = "Link_Box";
+
+    public static final String LAYER_MV_Metering = "MV_Metering";
+    public static final String LAYER_POLE = "Pole";
+    public static final String LAYER_OH_LINES = "OH_LINES";
+
+
 
     public static final String LAYER_Station= "Station";
 

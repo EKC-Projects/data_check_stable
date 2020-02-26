@@ -80,6 +80,10 @@ import com.sec.datacheck.checkdata.view.fragments.AutoReCloser.AutoReCloserFragm
 import com.sec.datacheck.checkdata.view.fragments.EditFeatureFragment;
 import com.sec.datacheck.checkdata.view.fragments.FuseCutOutFragment.FuseCutOutFragment;
 import com.sec.datacheck.checkdata.view.fragments.LinkBox.LinkBoxFragment;
+import com.sec.datacheck.checkdata.view.fragments.Meter.MeterFragment;
+import com.sec.datacheck.checkdata.view.fragments.MvMetering.MvMeteringFragment;
+import com.sec.datacheck.checkdata.view.fragments.OHLine.OHLineFragment;
+import com.sec.datacheck.checkdata.view.fragments.Pole.PoleFragment;
 import com.sec.datacheck.checkdata.view.fragments.StationFragment.StationFragment;
 import com.sec.datacheck.checkdata.view.fragments.SubstationFragment.SubStationFragment;
 import com.sec.datacheck.checkdata.view.utils.Utilities;
@@ -98,113 +102,43 @@ import butterknife.ButterKnife;
 public class MapActivity extends AppCompatActivity implements SingleTapListener, View.OnClickListener, MapPresenterListener {
 
 
-    private static final String TAG = "MapActivity";
     public static final String DOWNLOAD_GEO_DATABASE = "DOWNLOAD_GEO_DATABASE";
+    public static final String POLYLINE = "PolyLine";
+    public static final String POLYGON = "Polygon";
+    private static final String TAG = "MapActivity";
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST = 2;
-
+    final int MY_LOCATION_REQUEST_CODE = 2;
     @BindView(R.id.mapView)
     public MapView mapView;
-
     @BindView(R.id.rlFragment)
     public RelativeLayout rlFragment;
-
     @BindView(R.id.fab_general)
     public FloatingActionMenu fabGeneral;
-
     @BindView(R.id.fab_add_distribution_box)
     public com.github.clans.fab.FloatingActionButton fabDistributionBox;
-
     @BindView(R.id.fab_add_poles)
     public com.github.clans.fab.FloatingActionButton fabPoles;
-
     @BindView(R.id.fab_add_rmu)
     public com.github.clans.fab.FloatingActionButton fabRMU;
 
+    //    @BindView(R.id.fabMeasure)
+//    public FloatingActionButton fabMeasure;
     @BindView(R.id.fab_add_sub_station)
     public com.github.clans.fab.FloatingActionButton fabSubStation;
-
     @BindView(R.id.fab_add_ocl_meter)
     public com.github.clans.fab.FloatingActionButton fabOCLMeter;
-
     @BindView(R.id.fab_add_service_point)
     public com.github.clans.fab.FloatingActionButton fabServicePoint;
-
-//    @BindView(R.id.fabMeasure)
-//    public FloatingActionButton fabMeasure;
-
     @BindView(R.id.fabLocation)
     public FloatingActionButton fabLocation;
-
     @BindView(R.id.fabFullScreen)
     public FloatingActionButton fabFullScreen;
-
-    @BindView(R.id.fab_measure)
-    FloatingActionMenu mFabMeasureMenu;
-
     @BindView(R.id.fab_measure_distance)
     public com.github.clans.fab.FloatingActionButton fabMeasureDistance;
-
     @BindView(R.id.fab_measure_area)
     public com.github.clans.fab.FloatingActionButton fabMeasureArea;
-
-    @BindView(R.id.linear_layers_info)
-    LinearLayout mapLegend;
-
-    @BindView(R.id.tvLatLong)
-    TextView tvLatLong;
-
-    @BindView(R.id.tv_more_layer_info)
-    TextView tvMoreLayerInfo;
-
-    @BindView(R.id.linear_layers_details)
-    LinearLayout mapLegendContainer;
-
     @BindView(R.id.compass)
     public ImageView mCompass;
-
-    @BindView(R.id.map_layout)
-    ConstraintLayout mConstraintLayout;
-
-    @BindView(R.id.bottom_sheet)
-    LinearLayout mBottomSheet;
-
-    @BindView(R.id.update_btn)
-    Button mUpdateBtn;
-
-    @BindView(R.id.cancel_btn)
-    Button mCancelBtn;
-
-    @BindView(R.id.add_btn)
-    Button mCreatePointBtn;
-
-    @BindView(R.id.cancel_button)
-    Button mCancelCreatePointBtn;
-
-    @BindView(R.id.edit_point_bottom_sheet_container)
-    LinearLayout mEditPointLayout;
-
-    @BindView(R.id.add_point_bottom_sheet_container)
-    LinearLayout mAddPointLayout;
-
-    @BindView(R.id.measure_info)
-    LinearLayout mMeasureLayerInfo;
-
-    @BindView(R.id.measure_function_in_meter_lbl)
-    TextView mMeasureInMeterLbl;
-
-    @BindView(R.id.measure_function_value_in_meter_lbl)
-    TextView mMeasureValueInMeterLbl;
-
-    @BindView(R.id.measure_function_in_km_lbl)
-    TextView mMeasureInKMLbl;
-
-    @BindView(R.id.measure_function_value_in_km_lbl)
-    TextView mMeasureValueInKMLbl;
-
-
-    Point pointToAdd;
-
-    BottomSheetBehavior sheetBehavior;
     public MenuItem menuItemOnline;
     public MenuItem menuItemLoad;
     public MenuItem menuItemSync;
@@ -213,25 +147,64 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     public MenuItem menuItemGoOfflineMode;
     public MenuItem menuItemGoOnlineMode;
     public MenuItem menuItemOverflow;
-
-    //    EditInFeatureFragment editInFeatureFragment;
-    View dialogView;
-    private boolean isShowingLayerInfo;
-    Polygon poly;
-    ActionMode drawToolsActionMode;
     public Matrix mMatrix;
     public Bitmap mBitmap;
+    public boolean drawShape = false;
+    public boolean onlineData = true;
+    public int currentOfflineVersion;
+    public String currentOfflineVersionTitle;
+    public String shapeType;
+    @BindView(R.id.fab_measure)
+    FloatingActionMenu mFabMeasureMenu;
+    @BindView(R.id.linear_layers_info)
+    LinearLayout mapLegend;
+    @BindView(R.id.tvLatLong)
+    TextView tvLatLong;
+    @BindView(R.id.tv_more_layer_info)
+    TextView tvMoreLayerInfo;
+    @BindView(R.id.linear_layers_details)
+    LinearLayout mapLegendContainer;
+    @BindView(R.id.map_layout)
+    ConstraintLayout mConstraintLayout;
+    @BindView(R.id.bottom_sheet)
+    LinearLayout mBottomSheet;
+    @BindView(R.id.update_btn)
+    Button mUpdateBtn;
+    @BindView(R.id.cancel_btn)
+    Button mCancelBtn;
+    @BindView(R.id.add_btn)
+    Button mCreatePointBtn;
+    @BindView(R.id.cancel_button)
+    Button mCancelCreatePointBtn;
+    @BindView(R.id.edit_point_bottom_sheet_container)
+    LinearLayout mEditPointLayout;
+    @BindView(R.id.add_point_bottom_sheet_container)
+    LinearLayout mAddPointLayout;
+    @BindView(R.id.measure_info)
+    LinearLayout mMeasureLayerInfo;
+    @BindView(R.id.measure_function_in_meter_lbl)
+    TextView mMeasureInMeterLbl;
+    @BindView(R.id.measure_function_value_in_meter_lbl)
+    TextView mMeasureValueInMeterLbl;
+    @BindView(R.id.measure_function_in_km_lbl)
+    TextView mMeasureInKMLbl;
+    @BindView(R.id.measure_function_value_in_km_lbl)
+    TextView mMeasureValueInKMLbl;
+    Point pointToAdd;
+    BottomSheetBehavior sheetBehavior;
+    //    EditInFeatureFragment editInFeatureFragment;
+    View dialogView;
+    Polygon poly;
+    ActionMode drawToolsActionMode;
     LocationManager manager;
     Geometry workingAreaGeometry;
     MapActivity mCurrent;
     MapSingleTapListener mapSingleTapListener;
+//    FeatureLayer FCL_DistributionBoxLayer, FCL_POLES_Layer, FCL_RMU_Layer, FCL_Substation_Layer, OCL_METER_Layer, ServicePoint_Layer;
+//    ServiceFeatureTable FCL_DistributionBox_ServiceTable, FCL_POLES_ServiceTable, FCL_RMU_ServiceTable, FCL_Substation_ServiceTable, OCL_METER_ServiceTable, ServicePoint_ServiceTable;
+//    GeodatabaseFeatureTable FCL_DistributionBoxTableOffline, FCL_POLESTableOffline, FCL_RMUTableOffline, FCL_SubstationTableOffline, OCL_METERTableOffline, ServicePointTableOffline;
 
-    final int MY_LOCATION_REQUEST_CODE = 2;
 
-    FeatureLayer FCL_DistributionBoxLayer, FCL_POLES_Layer, FCL_RMU_Layer, FCL_Substation_Layer, OCL_METER_Layer, ServicePoint_Layer;
-    ServiceFeatureTable FCL_DistributionBox_ServiceTable, FCL_POLES_ServiceTable, FCL_RMU_ServiceTable, FCL_Substation_ServiceTable, OCL_METER_ServiceTable, ServicePoint_ServiceTable;
-
-    GeodatabaseFeatureTable FCL_DistributionBoxTableOffline, FCL_POLESTableOffline, FCL_RMUTableOffline, FCL_SubstationTableOffline, OCL_METERTableOffline, ServicePointTableOffline;
     GraphicsOverlay graphicsOverlay, drawGraphicLayer;
     PictureMarkerSymbol pictureMarkerSymbol;
     ArcGISMap baseMap;
@@ -239,39 +212,35 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     OnlineQueryResult selectedResult;
     Point mCurrentLocation;
 
+
     ServiceFeatureTable substationTable, stationTable, autoReCloserTable, fuseCutOutTable, linkBoxTable, LoadBreakerSwitchTable, LVDistributionBoxTable, LVDistributionPanelTable, MCCB_LVP_Circuits_RecordTable, MeterTable,
             MiniPillarTable, MV_MeteringTable, OH_LinesTable, PoleTable, SectionlizerTable, SVC_StaticVarCompensatorTable, SwitchGearTable, TransformerTable, VoltageRegulatorTable;
-
-    GeodatabaseFeatureTable substationOfflineTable, stationOfflineTable, autoReCloserOfflineTable, fuseCutOutOfflineTable, linkBoxOfflineTable;
+    GeodatabaseFeatureTable substationOfflineTable, stationOfflineTable, autoReCloserOfflineTable, fuseCutOutOfflineTable, linkBoxOfflineTable, mvMeteringOfflineTable,poleOfflineTable,OHLineOfflineTable,MeterOfflineTable;
     FeatureLayer substationLayer, stationLayer, autoReCloserLayer, fuseCutOutLayer, linkBoxLayer, LoadBreakerSwitchLayer, LVDistributionBoxLayer, LVDistributionPanelLayer, MCCB_LVP_Circuits_RecordLayer, MeterLayer,
             MiniPillarLayer, MV_MeteringLayer, OH_LinesLayer, PoleLayer, SectionlizerLayer, SVC_StaticVarCompensatorLayer, SwitchGearLayer, TransformerLayer, VoltageRegulatorLayer;
 
-    public boolean drawShape = false;
-    public boolean onlineData = true;
+
+    PointCollection pointCollection;
+    Point lastPointStep;
+    SubStationFragment substationFragment;
+    StationFragment stationFragment;
+    AutoReCloserFragment autoReCloserFragment;
+    FuseCutOutFragment fuseCutOutFragment;
+    LinkBoxFragment linkBoxFragment;
+    MvMeteringFragment mvMeteringFragment;
+    PoleFragment poleFragment;
+    OHLineFragment ohLineFragment;
+    MeterFragment meterFragment;
+    private boolean isShowingLayerInfo;
     private boolean queryStatus = false;
     private boolean isFragmentShown = false;
     private FragmentManager fragmentManager;
     private boolean isFullScreenMode = false;
     private boolean isInDrawMood;
     private String localDatabaseTitle;
-    public int currentOfflineVersion;
-    public String currentOfflineVersionTitle;
     private boolean syncAndGoOnline;
     private Point startPoint, endPoint;
-
-    public static final String POLYLINE = "PolyLine";
-    public static final String POLYGON = "Polygon";
-    public String shapeType;
-
-    PointCollection pointCollection;
-    Point lastPointStep;
     private boolean drawMeasure = false;
-
-    SubStationFragment substationFragment;
-    StationFragment stationFragment;
-    AutoReCloserFragment autoReCloserFragment;
-    FuseCutOutFragment fuseCutOutFragment;
-    LinkBoxFragment linkBoxFragment;
 
     @Override
     protected void onResume() {
@@ -474,12 +443,12 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             VoltageRegulatorTable = new ServiceFeatureTable(getString(R.string.Voltage_regulator));
 
             // create the feature layer using the service feature table
-            FCL_DistributionBoxLayer = new FeatureLayer(FCL_DistributionBox_ServiceTable);
-            FCL_POLES_Layer = new FeatureLayer(FCL_POLES_ServiceTable);
-            FCL_RMU_Layer = new FeatureLayer(FCL_RMU_ServiceTable);
-            FCL_Substation_Layer = new FeatureLayer(FCL_Substation_ServiceTable);
-            OCL_METER_Layer = new FeatureLayer(OCL_METER_ServiceTable);
-            ServicePoint_Layer = new FeatureLayer(ServicePoint_ServiceTable);
+//          FCL_DistributionBoxLayer = new FeatureLayer(FCL_DistributionBox_ServiceTable);
+//            FCL_POLES_Layer = new FeatureLayer(FCL_POLES_ServiceTable);
+//            FCL_RMU_Layer = new FeatureLayer(FCL_RMU_ServiceTable);
+//            FCL_Substation_Layer = new FeatureLayer(FCL_Substation_ServiceTable);
+//            OCL_METER_Layer = new FeatureLayer(OCL_METER_ServiceTable);
+//            ServicePoint_Layer = new FeatureLayer(ServicePoint_ServiceTable);
 
             autoReCloserLayer = new FeatureLayer(autoReCloserTable);
             substationLayer = new FeatureLayer(substationTable);
@@ -585,7 +554,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                         double accuracy = locationChangedEvent.getLocation().getHorizontalAccuracy();
                         int mAccuracy = (int) (accuracy * 100);
                         accuracy = (double) mAccuracy / 100;
-                        String latLang = "Lat: " + Utilities.round(mCurrentLocation.getX(),5) + " Lan: " + Utilities.round(mCurrentLocation.getY(),5) + " Accuracy = " + accuracy;
+                        String latLang = "Lat: " + Utilities.round(mCurrentLocation.getX(), 5) + " Lan: " + Utilities.round(mCurrentLocation.getY(), 5) + " Accuracy = " + accuracy;
                         tvLatLong.setText(latLang);
                     }
 
@@ -683,6 +652,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     @Override
     public void onClick(View v) {
 
+
         if (v.equals(fabLocation)) {
             if (mCurrentLocation != null) {
                 zoomToCurrentLocation();
@@ -716,64 +686,67 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             initMapRotation();
 
-        } else if (v.equals(fabDistributionBox)) {
-            fabGeneral.close(true);
-
-            drawShape = true;
-            selectedResult = new OnlineQueryResult();
-            selectedResult.setGeodatabaseFeatureTable(FCL_DistributionBoxTableOffline);
-            selectedResult.setServiceFeatureTable(FCL_DistributionBox_ServiceTable);
-            selectedResult.setFeatureLayer(FCL_DistributionBoxLayer);
-        } else if (v.equals(fabPoles)) {
-            fabGeneral.close(true);
-
-            drawShape = true;
-            selectedResult = new OnlineQueryResult();
-            selectedResult.setGeodatabaseFeatureTable(FCL_POLESTableOffline);
-            selectedResult.setServiceFeatureTable(FCL_POLES_ServiceTable);
-            selectedResult.setFeatureLayer(FCL_POLES_Layer);
-
-        } else if (v.equals(fabRMU)) {
-            fabGeneral.close(true);
-
-            drawShape = true;
-            selectedResult = new OnlineQueryResult();
-            selectedResult.setGeodatabaseFeatureTable(FCL_RMUTableOffline);
-            selectedResult.setServiceFeatureTable(FCL_RMU_ServiceTable);
-            selectedResult.setFeatureLayer(FCL_RMU_Layer);
-
-        } else if (v.equals(fabSubStation)) {
-            fabGeneral.close(true);
-
-            drawShape = true;
-            selectedResult = new OnlineQueryResult();
-            selectedResult.setGeodatabaseFeatureTable(FCL_SubstationTableOffline);
-            selectedResult.setServiceFeatureTable(FCL_Substation_ServiceTable);
-            selectedResult.setFeatureLayer(FCL_Substation_Layer);
-
-        } else if (v.equals(fabOCLMeter)) {
-            fabGeneral.close(true);
-
-            drawShape = true;
-            selectedResult = new OnlineQueryResult();
-            selectedResult.setGeodatabaseFeatureTable(OCL_METERTableOffline);
-            selectedResult.setServiceFeatureTable(OCL_METER_ServiceTable);
-            selectedResult.setFeatureLayer(OCL_METER_Layer);
-
-        } else if (v.equals(fabServicePoint)) {
-            fabGeneral.close(true);
-
-            drawShape = true;
-            selectedResult = new OnlineQueryResult();
-            selectedResult.setGeodatabaseFeatureTable(ServicePointTableOffline);
-            selectedResult.setServiceFeatureTable(ServicePoint_ServiceTable);
-            selectedResult.setFeatureLayer(ServicePoint_Layer);
-
-        } else if (v.equals(mCreatePointBtn)) {
-            createPoint();
-        } else if (v.equals(mCancelCreatePointBtn)) {
-            cancelCreatePoint();
-        } else if (v.equals(fabMeasureDistance)) {
+        }
+//        else if (v.equals(fabDistributionBox)) {
+//            fabGeneral.close(true);
+//
+//            drawShape = true;
+//            selectedResult = new OnlineQueryResult();
+//            selectedResult.setGeodatabaseFeatureTable(FCL_DistributionBoxTableOffline);
+//            selectedResult.setServiceFeatureTable(FCL_DistributionBox_ServiceTable);
+//            selectedResult.setFeatureLayer(FCL_DistributionBoxLayer);
+//        } else if (v.equals(fabPoles)) {
+//            fabGeneral.close(true);
+//
+//            drawShape = true;
+//            selectedResult = new OnlineQueryResult();
+//            selectedResult.setGeodatabaseFeatureTable(FCL_POLESTableOffline);
+//            selectedResult.setServiceFeatureTable(FCL_POLES_ServiceTable);
+//            selectedResult.setFeatureLayer(FCL_POLES_Layer);
+//
+//        } else if (v.equals(fabRMU)) {
+//            fabGeneral.close(true);
+//
+//            drawShape = true;
+//            selectedResult = new OnlineQueryResult();
+//            selectedResult.setGeodatabaseFeatureTable(FCL_RMUTableOffline);
+//            selectedResult.setServiceFeatureTable(FCL_RMU_ServiceTable);
+//            selectedResult.setFeatureLayer(FCL_RMU_Layer);
+//
+//        } else if (v.equals(fabSubStation)) {
+//            fabGeneral.close(true);
+//
+//            drawShape = true;
+//            selectedResult = new OnlineQueryResult();
+//            selectedResult.setGeodatabaseFeatureTable(FCL_SubstationTableOffline);
+//            selectedResult.setServiceFeatureTable(FCL_Substation_ServiceTable);
+//            selectedResult.setFeatureLayer(FCL_Substation_Layer);
+//
+//        } else if (v.equals(fabOCLMeter)) {
+//            fabGeneral.close(true);
+//
+//            drawShape = true;
+//            selectedResult = new OnlineQueryResult();
+//            selectedResult.setGeodatabaseFeatureTable(OCL_METERTableOffline);
+//            selectedResult.setServiceFeatureTable(OCL_METER_ServiceTable);
+//            selectedResult.setFeatureLayer(OCL_METER_Layer);
+//
+//        } else if (v.equals(fabServicePoint)) {
+//            fabGeneral.close(true);
+//
+//            drawShape = true;
+//            selectedResult = new OnlineQueryResult();
+//            selectedResult.setGeodatabaseFeatureTable(ServicePointTableOffline);
+//            selectedResult.setServiceFeatureTable(ServicePoint_ServiceTable);
+//            selectedResult.setFeatureLayer(ServicePoint_Layer);
+//
+//        } else if (v.equals(mCreatePointBtn)) {
+//            createPoint();
+//        } else if (v.equals(mCancelCreatePointBtn)) {
+//            cancelCreatePoint();
+//        }
+//
+        else if (v.equals(fabMeasureDistance)) {
             handleFabMeasureAction();
             mFabMeasureMenu.close(true);
             drawMeasure = true;
@@ -826,6 +799,19 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             } else if (selectedResult.getFeatureLayer().getName().matches(linkBoxLayer.getName())) {
                 linkBoxFragment = LinkBoxFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
                 showCheckDataEditFragment(linkBoxFragment);
+            } else if (selectedResult.getFeatureLayer().getName().matches(MV_MeteringLayer.getName())) {
+                mvMeteringFragment = MvMeteringFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
+                showCheckDataEditFragment(mvMeteringFragment);
+            } else if (selectedResult.getFeatureLayer().getName().matches(PoleLayer.getName())) {
+                poleFragment = PoleFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
+                showCheckDataEditFragment(poleFragment);
+            } else if (selectedResult.getFeatureLayer().getName().matches(OH_LinesLayer.getName())) {
+                ohLineFragment = OHLineFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
+                showCheckDataEditFragment(ohLineFragment);
+            }
+            else if (selectedResult.getFeatureLayer().getName().matches(MeterLayer.getName())) {
+                meterFragment = MeterFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
+                showCheckDataEditFragment(meterFragment);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1576,8 +1562,30 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             } else if (featureLayer.equals(fuseCutOutLayer)) {
                 Log.i(TAG, "onQueryOnline(): featureLayer is fuseCutOutLayer layer");
-                showQueryResult(results, point);
+
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), MV_MeteringTable, MV_MeteringLayer);
+
+            } else if (featureLayer.equals(MV_MeteringLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is fuseCutOutLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), PoleTable, PoleLayer);
+
+            } else if (featureLayer.equals(PoleLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is PoleLayer layer");
+
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), OH_LinesTable, OH_LinesLayer);
+
+            } else if (featureLayer.equals(OH_LinesLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is OH_LinesLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), MeterTable, MeterLayer);
             }
+            else if (featureLayer.equals(MeterLayer)){
+                Log.i(TAG, "onQueryOnline(): featureLayer is MeterLayer layer");
+                showQueryResult(results, point);
+
+
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1615,6 +1623,24 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
         } else if (featureLayer.equals(fuseCutOutLayer)) {
             Log.i(TAG, "onQueryOffline(): featureLayer is fuseCutOutLayer layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), mvMeteringOfflineTable, MV_MeteringLayer);
+
+        } else if (featureLayer.equals(MV_MeteringLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is MV_MeteringLayer layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(),poleOfflineTable, PoleLayer);
+        }
+        else if (featureLayer.equals(PoleLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is PoleLayer layer");
+
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), OHLineOfflineTable, OH_LinesLayer);
+        } else if (featureLayer.equals(OH_LinesLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is OH_LinesLayer layer");
+
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), MeterOfflineTable, MeterLayer);
+        }
+        else if (featureLayer.equals(MeterLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is OH_LinesLayer layer");
+
             showOfflineQueryResult(results, point);
         }
     }

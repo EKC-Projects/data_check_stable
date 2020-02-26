@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\AliOsama\\AndroidStudioProjects\\SecDataCheck\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "outputFile": "E:\\proudactionProjects\\SEC_Collector\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\AliOsama\\.gradle\\caches\\transforms-2\\files-2.1\\04c12936eca3dbfb8c626931df2a85f9\\jetified-core-0.9.6.0\\res\\values-v11\\values-v11.xml",
+                    "source": "C:\\Users\\padmin\\.gradle\\caches\\transforms-2\\files-2.1\\eb17d11d7a9dafcaadbf93ec2b2d5e6a\\jetified-core-0.9.6.0\\res\\values-v11\\values-v11.xml",
                     "from": {
                         "startLines": "2,19",
                         "startColumns": "4,4",

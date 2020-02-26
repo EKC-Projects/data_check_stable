@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f4faff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_24sdp">
+
+            <TextView
+                android:id="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/x_y_coordinates_1_points"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/pole_frag_x_y_coordinates_1_points_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_x_y_coordinates_1_points_lbl" />
+
+            <TextView
+                android:id="@+id/pole_frag_pole_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Pole_No"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_x_y_coordinates_1_points_sp" />
+
+            <Spinner
+                android:id="@+id/pole_frag_pole_no_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_pole_no" />
+
+            <TextView
+                android:id="@+id/pole_frag_location_type__section_middle_e"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Location_Type__Section_Middle_E"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_pole_no_sp" />
+
+            <Spinner
+                android:id="@+id/pole_frag_location_type__section_middle_e_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_location_type__section_middle_e" />
+
+            <TextView
+                android:id="@+id/pole_frag_martial_type__wooden_steel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Martial_Type__Wooden_Steel"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_location_type__section_middle_e_sp" />
+
+            <Spinner
+                android:id="@+id/pole_frag_martial_type__wooden_steel_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_martial_type__wooden_steel" />
+
+            <TextView
+                android:id="@+id/pole_frag_soil_type__rock_normal_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Soil_Type__Rock_Normal_City"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_martial_type__wooden_steel_sp" />
+
+            <Spinner
+                android:id="@+id/pole_frag_soil_type__rock_normal_city_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_soil_type__rock_normal_city" />
+
+            <TextView
+                android:id="@+id/auto_re_closer_frag_Voltage_lbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/Pole_height"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_soil_type__rock_normal_city_sp" />
+
+            <Spinner
+                android:id="@+id/pole_frag_pole_height_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/auto_re_closer_frag_Voltage_lbl" />
+
+
+            <EditText
+                android:id="@+id/pole_frag_notes_et"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/custom_edittext_border_background"
+                android:gravity="start"
+                android:hint="@string/notes_hint"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_pole_height_sp" />
+
+
+            <Button
+                android:id="@+id/pole_frag_save_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/update_btn_background"
+                android:elevation="4dp"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintStart_toStartOf="@+id/pole_frag_x_y_coordinates_1_points_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/pole_frag_notes_et"
+                tools:targetApi="lollipop" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

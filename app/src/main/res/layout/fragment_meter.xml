@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4faff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_24sdp"
+            android:paddingTop="@dimen/_12sdp">
+
+            <TextView
+                android:id="@+id/meter_x_y_coordinates_1_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/meter_x_y_coordinates"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/meter_frag_X_Y_Coordinates_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meter_x_y_coordinates_1_points" />
+
+            <TextView
+                android:id="@+id/meter_frag_Serial_No"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/meter_frag_Serial_No"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_X_Y_Coordinates_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_Serial_No_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_Serial_No" />
+
+            <TextView
+                android:id="@+id/meter_frag_subscription_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/subscription_no"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_Serial_No_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_subscription_no_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_subscription_no" />
+
+            <TextView
+                android:id="@+id/meter_frag_voltage_type__mv_lv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/voltage_type__mv_lv"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_subscription_no_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_voltage_type__mv_lv_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_voltage_type__mv_lv" />
+
+            <TextView
+                android:id="@+id/meter_frag_meter_type__sort_digital_mechan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/meter_type__sort_digital_mechan"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_voltage_type__mv_lv_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_meter_type__sort_digital_mechan_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_meter_type__sort_digital_mechan" />
+
+            <TextView
+                android:id="@+id/meter_frag_meter_work_type_normal_c_t"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/meter_work_type_normal_c_t"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_meter_type__sort_digital_mechan_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_meter_work_type_normal_c_t_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_meter_work_type_normal_c_t" />
+
+            <TextView
+                android:id="@+id/meter_frag_meter_box_type__single_double_q"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/meter_box_type__single_double_q"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_meter_work_type_normal_c_t_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_meter_box_type__single_double_q_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_meter_box_type__single_double_q" />
+
+            <TextView
+                android:id="@+id/meter_frag_substation_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/substation_no"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_meter_box_type__single_double_q_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_substation_no_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_substation_no" />
+
+            <TextView
+                android:id="@+id/meter_frag_substation_feeder_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/substation_feeder_no"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_substation_no_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_substation_feeder_no_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_substation_feeder_no" />
+
+            <TextView
+                android:id="@+id/meter_frag_c_t_ratio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/c_t_ratio"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_substation_feeder_no_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_c_t_ratio_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_c_t_ratio" />
+
+
+            <TextView
+                android:id="@+id/meter_frag_manufacture"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/manufacture"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_c_t_ratio_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_manufacture_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_manufacture" />
+
+            <TextView
+                android:id="@+id/meter_frag_backer_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/backer_size"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_manufacture_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_backer_size_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_backer_size" />
+
+
+            <TextView
+                android:id="@+id/meter_frag_smart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/smart"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_backer_size_sp" />
+
+            <Spinner
+                    android:id="@+id/meter_frag_smart_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_smart" />
+            <TextView
+                android:id="@+id/meter_frag_customer_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/customer_type"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintStart_toStartOf="@+id/meter_x_y_coordinates_1_points"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_smart_sp" />
+
+            <Spinner
+                android:id="@+id/meter_frag_customer_type_sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext_border_background"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_customer_type" />
+
+            <EditText
+                android:id="@+id/substation_frag_notes_et"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/custom_edittext_border_background"
+                android:gravity="start"
+                android:hint="@string/notes_hint"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/meter_frag_customer_type_sp"
+                android:autofillHints="" />
+
+
+            <Button
+                android:id="@+id/substation_frag_save_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/update_btn_background"
+                android:elevation="4dp"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintStart_toStartOf="@+id/meter_frag_X_Y_Coordinates_sp"
+                app:layout_constraintTop_toBottomOf="@+id/substation_frag_notes_et"
+                tools:targetApi="lollipop" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

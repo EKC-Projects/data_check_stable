@@ -47,80 +47,80 @@ public class SubStationFragment extends Fragment implements AdapterView.OnItemSe
 
     private static final String TAG = "SubstationFragment";
 
-    @BindView(R.id.substation_frag_X_Y_Coordinates_sp)
-    Spinner X_Y_CoordinatesSpinner;
+        @BindView(R.id.substation_frag_X_Y_Coordinates_sp)
+        Spinner X_Y_CoordinatesSpinner;
 
-    @BindView(R.id.substation_frag_substation_sp)
-    Spinner substationSpinner;
+        @BindView(R.id.substation_frag_substation_sp)
+        Spinner substationSpinner;
 
-    @BindView(R.id.substation_frag_substation_type_sp)
-    Spinner substationTypeSpinner;
+        @BindView(R.id.substation_frag_substation_type_sp)
+        Spinner substationTypeSpinner;
 
-    @BindView(R.id.substation_frag_substation_serial_sp)
-    Spinner unitSubstationSerialSpinner;
+        @BindView(R.id.substation_frag_substation_serial_sp)
+        Spinner unitSubstationSerialSpinner;
 
-    @BindView(R.id.substation_frag_No_of_transformers_sp)
-    Spinner noOfTransformersSpinner;
+        @BindView(R.id.substation_frag_No_of_transformers_sp)
+        Spinner noOfTransformersSpinner;
 
-    @BindView(R.id.substation_frag_No_of_switchgears_sp)
-    Spinner noOfSwitchGearsSpinner;
+        @BindView(R.id.substation_frag_No_of_switchgears_sp)
+        Spinner noOfSwitchGearsSpinner;
 
-    @BindView(R.id.substation_frag_No_of_LVDB_sp)
-    Spinner noOfLVDBSpinner;
+        @BindView(R.id.substation_frag_No_of_LVDB_sp)
+        Spinner noOfLVDBSpinner;
 
-    @BindView(R.id.substation_frag_Substation_room_type_sp)
-    Spinner substationRoomTypeSpinner;
+        @BindView(R.id.substation_frag_Substation_room_type_sp)
+        Spinner substationRoomTypeSpinner;
 
-    @BindView(R.id.substation_frag_Left_S_S_sp)
-    Spinner leftSSSpinner;
+        @BindView(R.id.substation_frag_Left_S_S_sp)
+        Spinner leftSSSpinner;
 
-    @BindView(R.id.substation_frag_Right_S_S_sp)
-    Spinner rightSSSpinner;
+        @BindView(R.id.substation_frag_Right_S_S_sp)
+        Spinner rightSSSpinner;
 
-    @BindView(R.id.substation_frag_Voltage_of_equipment__primary_s_sp)
-    Spinner voltageOfEquipmentPrimarySSpinner;
+        @BindView(R.id.substation_frag_Voltage_of_equipment__primary_s_sp)
+        Spinner voltageOfEquipmentPrimarySSpinner;
 
-    @BindView(R.id.substation_frag_Total_KVA_sp)
-    Spinner totalKVASpinner;
+        @BindView(R.id.substation_frag_Total_KVA_sp)
+        Spinner totalKVASpinner;
 
-    @BindView(R.id.substation_frag_Manufacture_of_equipment_sp)
-    Spinner manufactureOfEquipmentSpinner;
+        @BindView(R.id.substation_frag_Manufacture_of_equipment_sp)
+        Spinner manufactureOfEquipmentSpinner;
 
-    @BindView(R.id.substation_frag_notes_et)
-    EditText notes;
+        @BindView(R.id.substation_frag_notes_et)
+        EditText notes;
 
-    @BindView(R.id.substation_frag_save_btn)
-    Button saveBtn;
+        @BindView(R.id.substation_frag_save_btn)
+        Button saveBtn;
 
-    private static MapActivity mCurrent;
-    private static MapPresenter mPresenter;
-    private static OnlineQueryResult mSelectedResult;
+        private static MapActivity mCurrent;
+        private static MapPresenter mPresenter;
+        private static OnlineQueryResult mSelectedResult;
 
-    private Feature selectedFeature;
-    private FeatureLayer selectedLayer;
-    private FeatureTable selectedTable;
-    private GeodatabaseFeatureTable selectedOfflineFeatureTable;
-    private String objectID;
-    private static boolean mOnlineData;
+        private Feature selectedFeature;
+        private FeatureLayer selectedLayer;
+        private FeatureTable selectedTable;
+        private GeodatabaseFeatureTable selectedOfflineFeatureTable;
+        private String objectID;
+        private static boolean mOnlineData;
 
-    private Map<String, String> types = null;
-    private ArrayList<String> typesList = null;
-    private List<CodedValue> codedValues;
-    private CodedValueDomain typeDomain;
-    private HashMap<String, String> codeValue;
-    private ArrayList<String> codeList;
-    private File mFileTemp;
-    private static String TEMP_PHOTO_FILE_NAME;
-    private static final int REQUEST_CODE_GALLERY = 1;
-    private static final int REQUEST_CODE_TAKE_PICTURE = 2;
-    private static final int WRITE_EXTERNAL_STORAGE = 3;
-    private static final int READ_EXTERNAL_STORAGE = 4;
-    private static final int REQUEST_CODE_VIDEO = 5;
-    private static final int REQUEST_CODE_AUDIO = 6;
-    private final String IMAGE_FOLDER_NAME = "AJC_Collector";
+        private Map<String, String> types = null;
+        private ArrayList<String> typesList = null;
+        private List<CodedValue> codedValues;
+        private CodedValueDomain typeDomain;
+        private HashMap<String, String> codeValue;
+        private ArrayList<String> codeList;
+        private File mFileTemp;
+        private static String TEMP_PHOTO_FILE_NAME;
+        private static final int REQUEST_CODE_GALLERY = 1;
+        private static final int REQUEST_CODE_TAKE_PICTURE = 2;
+        private static final int WRITE_EXTERNAL_STORAGE = 3;
+        private static final int READ_EXTERNAL_STORAGE = 4;
+        private static final int REQUEST_CODE_VIDEO = 5;
+        private static final int REQUEST_CODE_AUDIO = 6;
+        private final String IMAGE_FOLDER_NAME = "AJC_Collector";
 
-    private static final String JPG = "jpg";
-    private static final String MP4 = "mp4";
+        private static final String JPG = "jpg";
+        private static final String MP4 = "mp4";
 
     public SubStationFragment() {
         // Required empty public constructor
@@ -191,7 +191,7 @@ public class SubStationFragment extends Fragment implements AdapterView.OnItemSe
 //                    if ((count + 2) == attr.size()) {
 //                        loadFeature();
 //                    } else {
-                        init();
+                    init();
 //                    }
                 } catch (Exception e) {
                     e.printStackTrace();

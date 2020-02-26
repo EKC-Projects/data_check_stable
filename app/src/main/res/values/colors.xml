@@ -29,6 +29,10 @@
 
     <color name="station_color">#44656B</color>
     <color name="substation_color">#F57AB6</color>
+    <color name="meter_color">#FF73DF</color>
+    <color name="mv_metering_color">#730000</color>
+    <color name="OH_Lines">#CCCCCC</color>
+    <color name="pole_color">#898944</color>
     <color name="grey">#707070</color>
 
 </resources>
