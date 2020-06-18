@@ -147,7 +147,6 @@ public class AutoReCloserFragment extends Fragment implements View.OnClickListen
             selectedOfflineFeatureTable = mSelectedResult.getGeodatabaseFeatureTable();
             selectedFeature = mSelectedResult.getFeatureOffline();
 
-
             init();
         }catch (Exception e){
             e.getStackTrace();

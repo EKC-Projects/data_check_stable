@@ -25,65 +25,35 @@
     <string name="delete_current_offline_map">Do you want to delete your previously downloaded map?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="n_a">N / A</string>
     <string name="notes">Notes:</string>
 
     <!--Ali Ussama Update-->
     <string name="BaseMap" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_AllMap/MapServer</string>
     <string name="BaseMap2" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/MapServer</string>
 
-    <string name="gcs_feature_server" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer</string>
-<!--    <string name="gcs_feature_server_test" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer</string>-->
-    <string name="gcs_feature_server_test" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer</string>
+    <string name="gcs_feature_server" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/</string>
 
     <string name="point_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/0</string>
     <string name="line_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/1</string>
     <string name="polygon_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/2</string>
     <string name="index_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/3</string>
 
-    <!--        <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/0</string>-->
-    <!--        <string name="FCL_POLES" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/1</string>-->
-    <!--        <string name="FCL_RMU" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/2</string>-->
-    <!--        <string name="FCL_Substation" translatable="false">192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/3</string>-->
-    <!--        <string name="OCL_METER" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/4</string>-->
-    <!--        <string name="Service_Point" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_Collector/FeatureServer/5</string>-->
-
-    <!--        <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/0</string>-->
-    <!--        <string name="FCL_POLES" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/1</string>-->
-    <!--        <string name="FCL_RMU" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/2</string>-->
-    <!--        <string name="FCL_Substation" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/3</string>-->
-    <!--        <string name="OCL_METER" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/4</string>-->
-    <!--        <string name="Service_Point" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/5</string>-->
-    <!--        <string name="Surveyor" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/6</string>-->
-
-    <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/0</string>
-    <string name="FCL_POLES" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/1</string>
-    <string name="FCL_RMU" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/2</string>
-    <string name="FCL_Substation" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/3</string>
-    <string name="OCL_METER" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/4</string>
-    <string name="Service_Point" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/5</string>
-    <string name="Surveyor" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/TEST/TEST_EKC/FeatureServer/6</string>
-
-    <!--        <string name="stations" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/EKC/EKC_CheckData/FeatureServer/0</string>-->
-    <!--    <string name="stations" translatable="false">http://192.168.1.13:6080/arcgis/rest/services/EKC/EKC_CheckData/FeatureServer/0</string>-->
-    <string name="auto_recloser" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/0</string>
-    <string name="fuse_cut_out" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/1</string>
-    <string name="link_box" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/2</string>
-    <string name="load_Breaker_Switch_LBS_33_13_KV" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/3</string>
-    <string name="l_V_distribution_Box" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/4</string>
-    <string name="l_V_distribution_Panel" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/5</string>
-    <string name="MCCB_LVP_Circuits_Record" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/6</string>
-    <string name="Meter" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/7</string>
-    <string name="Mini_pillar" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/8</string>
-    <string name="MV_Metering" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/9</string>
-    <string name="OH_Lines" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/10</string>
-    <string name="Pole" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/11</string>
-    <string name="Sectionlizer" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/12</string>
-    <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/13</string>
-    <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/14</string>
-    <string name="SVC_Static_VAR_Compensator" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/15</string>
-    <string name="Switchgear" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/16</string>
-    <string name="Transformer" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/17</string>
-    <string name="Voltage_regulator" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/Check_Data/FeatureServer/18</string>
+    <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/0</string>
+    <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/1</string>
+    <string name="TRANSFORMER" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/2</string>
+    <string name="RING_MAIN_UNIT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/3</string>
+    <string name="FCL_POLES" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/4</string>
+    <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/5</string>
+    <string name="VOLTAGE_REGULATOR" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/6</string>
+    <string name="SERVICE_POINT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/7</string>
+    <string name="SWITCH" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/8</string>
+    <string name="FUSE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/9</string>
+    <string name="DYNAMIC_PROTECTIVE_DEVICE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/10</string>
+    <string name="mv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/11</string>
+    <string name="lv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/12</string>
+    <string name="lvdb_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/13</string>
+    <string name="switch_gear_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/14</string>
 
     <!--Ali Ussama Update-->
 
@@ -94,8 +64,8 @@
     <string name="FeatureServiceToken" translatable="false">TMEE6lqp0mvBmoZkPeeLpb0TCLvOd6RIzXVr1oU5_JA.</string>
     <string name="GcsSatelliteToken" translatable="false">RxmJJAGcbuNb_T4lafPuguHIKAfrYVila_DhIkbE9mA.</string>
 
-    <string name="FCL_DISTRIBUTIONBOX_layer_name" translatable="false">EKC_Collector.DBO.FCL_DISTRIBUTIONBOX</string>
-    <string name="FCL_POLES_layer_name" translatable="false">EKC_Collector.DBO.FCL_POLES</string>
+    <string name="DISTRIBUTIONBOX_layer_name" translatable="false">DISTRIBUTION_BOX</string>
+    <string name="POLES_layer_name" translatable="false">POLES</string>
     <string name="FCL_RMU_layer_name" translatable="false">EKC_Collector.DBO.FCL_RMU</string>
     <string name="FCL_Substation_layer_name" translatable="false">EKC_Collector.DBO.FCL_Substation</string>
     <string name="OCL_METER_layer_name" translatable="false">EKC_Collector.DBO.OCL_METER</string>
@@ -289,7 +259,7 @@
     <string name="pole_text">Pole</string>
     <string name="type_of_the_lv_panel">Type_of_the_LV_panel</string>
     <string name="total_no_of_feeders">total_no_of_feeders</string>
-    <string name="Total_no_of_used_feeders" >Total_no_of_used_feeders </string>
+    <string name="Total_no_of_used_feeders">Total_no_of_used_feeders </string>
     <string name="total_no_of_spare_feeders">Total_no__of_Spare_feeders</string>
     <string name="main_cables_type">Main_cables_type</string>
     <string name="number_of_outgoing_cables">Number_of_outgoing_cables</string>
@@ -298,4 +268,19 @@
     <string name="feeders_Panel_distribution">Feeders_Panel_distribution</string>
     <string name="voltage_of_equipment">voltage_of_equipment</string>
     <string name="lv_distribution_panel">LV Distribution Panel</string>
+    <string name="please_cancel_and_select_again">Please cancel and select again</string>
+    <string name="naa">NAA</string>
+    <string name="null_">Null</string>
+    <string name="objectid">OBJECTID</string>
+    <string name="edit_feature">Edit Feature</string>
+    <string name="DYNAMIC_PROTECTIVE_DEVICE_layer_name">DYNAMIC_PROTECTIVE_DEVICE</string>
+    <string name="FUSE_layer_name">FUSE</string>
+    <string name="LV_OH_CABLE_layer_name">LV_OH_CABLE</string>
+    <string name="LVDB_AREA_layer_name">LVDB_AREA</string>
+    <string name="MV_OH_CABLE_layer_name">MV_OH_CABLE</string>
+    <string name="RING_MAIN_UNIT_layer_name">RING_MAIN_UNIT</string>
+    <string name="VOLTAGE_REGULATOR_layer_name">VOLTAGE_REGULATOR</string>
+    <string name="SWITCHGEAR_AREA_layer_name">SWITCHGEAR_AREA</string>
+    <string name="transformers_layer_name">TRANSFORMER</string>
+    <string name="switch_layer_name">SWITCH</string>
 </resources>

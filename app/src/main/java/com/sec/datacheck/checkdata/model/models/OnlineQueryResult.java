@@ -20,6 +20,8 @@ public class OnlineQueryResult {
 
     private String objectID;
 
+    private String featureType;
+
     public OnlineQueryResult() {
     }
 
@@ -69,5 +71,13 @@ public class OnlineQueryResult {
 
     public void setFeatureOffline(Feature featureOffline) {
         this.featureOffline = featureOffline;
+    }
+
+    public String getFeatureType() {
+        return featureType;
+    }
+
+    public void setFeatureType(String featureType) {
+        this.featureType = featureType;
     }
 }

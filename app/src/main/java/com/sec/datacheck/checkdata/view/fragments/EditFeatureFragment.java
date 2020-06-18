@@ -310,75 +310,6 @@ public class EditFeatureFragment extends Fragment implements View.OnClickListene
         }
     }
 
-    private void loadImages() {
-        try {
-            String pointFolderName = "";
-            if (mCurrent.onlineData) {
-                pointFolderName = (selectedLayer.getName().split("\\.")[2]);
-                Log.i(TAG, "loadImages(): layer name = " + pointFolderName);
-            } else {
-                pointFolderName = (selectedLayer.getName());
-                Log.i(TAG, "loadImages(): layer name = " + pointFolderName);
-            }
-
-
-            Date d = new Date();
-            String date = new SimpleDateFormat("dd_MM_yyyy", Locale.ENGLISH).format(d);
-
-            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + File.separator + "AJC_Collector_COMPRESSED_Images" + File.separator;
-//            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + File.separator + IMAGE_FOLDER_NAME + File.separator;
-            Log.i(TAG, "loadImages(): path = " + path);
-            File folder = new File(path);
-            if (folder.exists()) {
-                File[] allFiles = folder.listFiles(new FilenameFilter() {
-                    public boolean accept(File dir, String name) {
-                        return (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png"));
-                    }
-                });
-                Log.i(TAG, "loadImages(): images count = " + allFiles.length);
-
-                for (File file : allFiles) {
-                    if (file.getPath().contains(mSelectedResult.getObjectID())) {
-                        Log.i(TAG, "loadImages(): image path = " + file.getPath() + " contains objectID = " + mSelectedResult.getObjectID());
-                        adapterData.add(file);
-                    } else {
-                        Log.i(TAG, "loadImages(): image path = " + file.getPath() + " doesn't contains objectID = " + mSelectedResult.getObjectID());
-                    }
-                }
-
-                for (File file : adapterData) {
-                    Log.i(TAG, "loadImages(): image path = " + file.getPath());
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private File[] getFolders(File path) {
-        return path.listFiles();
-    }
-
-    private void requestPermission() {
-        try {
-            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE);
-            }
-
-            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_TAKE_PICTURE);
-            }
-
-            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL_STORAGE);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private void setViewsWithData() {
         try {
             if (mCurrent.drawShape) {
@@ -485,6 +416,75 @@ public class EditFeatureFragment extends Fragment implements View.OnClickListene
                     break;
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadImages() {
+        try {
+            String pointFolderName = "";
+            if (mCurrent.onlineData) {
+                pointFolderName = (selectedLayer.getName().split("\\.")[2]);
+                Log.i(TAG, "loadImages(): layer name = " + pointFolderName);
+            } else {
+                pointFolderName = (selectedLayer.getName());
+                Log.i(TAG, "loadImages(): layer name = " + pointFolderName);
+            }
+
+
+            Date d = new Date();
+            String date = new SimpleDateFormat("dd_MM_yyyy", Locale.ENGLISH).format(d);
+
+            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + File.separator + "AJC_Collector_COMPRESSED_Images" + File.separator;
+//            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + File.separator + IMAGE_FOLDER_NAME + File.separator;
+            Log.i(TAG, "loadImages(): path = " + path);
+            File folder = new File(path);
+            if (folder.exists()) {
+                File[] allFiles = folder.listFiles(new FilenameFilter() {
+                    public boolean accept(File dir, String name) {
+                        return (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png"));
+                    }
+                });
+                Log.i(TAG, "loadImages(): images count = " + allFiles.length);
+
+                for (File file : allFiles) {
+                    if (file.getPath().contains(mSelectedResult.getObjectID())) {
+                        Log.i(TAG, "loadImages(): image path = " + file.getPath() + " contains objectID = " + mSelectedResult.getObjectID());
+                        adapterData.add(file);
+                    } else {
+                        Log.i(TAG, "loadImages(): image path = " + file.getPath() + " doesn't contains objectID = " + mSelectedResult.getObjectID());
+                    }
+                }
+
+                for (File file : adapterData) {
+                    Log.i(TAG, "loadImages(): image path = " + file.getPath());
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private File[] getFolders(File path) {
+        return path.listFiles();
+    }
+
+    private void requestPermission() {
+        try {
+            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE);
+            }
+
+            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_TAKE_PICTURE);
+            }
+
+            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL_STORAGE);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

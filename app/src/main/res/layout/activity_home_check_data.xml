@@ -279,7 +279,26 @@
                 android:focusable="true"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:visibility="visible">
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/tv_edit_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_dynamic_protection_device"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/DYNAMIC_PROTECTIVE_DEVICE_layer_name"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_oh_lines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_voltage_regulator"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/VOLTAGE_REGULATOR_layer_name"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_new_point"
@@ -288,48 +307,61 @@
                     android:drawableEnd="@drawable/rounded_ic_dist_box"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/Auto_Recloser_lbl"
+                    android:text="@string/DISTRIBUTIONBOX_layer_name"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_meter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_ring_main_unit"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/RING_MAIN_UNIT_layer_name"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_tranformers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_transformer"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/transformers_layer_name"
                     android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_new_line"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_poles"
-                    android:drawablePadding="10dp"
-                    android:gravity="start"
-                    android:text="@string/Fuse_Cut_Out_lbl"
-                    android:textSize="12sp" />
-
-                <!--                <TextView-->
-                <!--                    android:id="@+id/tv_new_polygon"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:drawableEnd="@drawable/rounded_ic_rmu"-->
-                <!--                    android:drawablePadding="10dp"-->
-                <!--                    android:textSize="12sp"-->
-                <!--                    android:gravity="start"-->
-                <!--                    android:text="@string/service_point" />-->
-
-                <TextView
-                    android:id="@+id/tv_edit_line"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/rounded_ic_rmu"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/Link_Box_lbl"
+                    android:text="@string/POLES_layer_name"
+                    android:textSize="12sp" />
+
+
+
+                <TextView
+                    android:id="@+id/tv_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_swtich"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/switch_layer_name"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tv_lv_panel"
+                    android:id="@+id/tv_new_polygon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_lv_panel"
+                    android:drawableEnd="@drawable/rounded_ic_meter"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/lv_distribution_panel"
+                    android:text="@string/FUSE_layer_name"
                     android:textSize="12sp" />
+
 
                 <TextView
                     android:id="@+id/tv_edit_point"
@@ -351,44 +383,56 @@
                     android:text="@string/substation_lbl"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/tv_meter"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_meter"
-                    android:drawablePadding="10dp"
-                    android:gravity="start"
-                    android:text="@string/meter_text"
-                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_mv_metering"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_mv_metering"
+                    android:drawableEnd="@drawable/rounded_ic_service_point"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/MV_Metering_text"
+                    android:text="@string/service_point"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_lv_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_lv_oh_cable"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/LV_OH_CABLE_layer_name"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tv_oh_lines"
+                    android:id="@+id/tv_edit_point_"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_oh_lines"
+                    android:drawableEnd="@drawable/rounded_ic_mv_oh_cable"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/OH_Lines_text"
+                    android:text="@string/MV_OH_CABLE_layer_name"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_lvdb_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rounded_ic_lvdb_area"
+                    android:drawablePadding="10dp"
+                    android:gravity="start"
+                    android:text="@string/LVDB_AREA_layer_name"
                     android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_poles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/rounded_ic_pole"
+                    android:drawableEnd="@drawable/rounded_ic_swtich_gear_area"
                     android:drawablePadding="10dp"
                     android:gravity="start"
-                    android:text="@string/pole_text"
+                    android:text="@string/SWITCHGEAR_AREA_layer_name"
                     android:textSize="12sp" />
 
 
@@ -481,6 +525,6 @@
     <!-- Adding bottom sheet after main content -->
     <include
         layout="@layout/map_select_point_bottom_sheet"
-        android:visibility="visible" />
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

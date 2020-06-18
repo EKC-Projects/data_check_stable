@@ -13,6 +13,7 @@ public class Columns {
 
     public static String ObjectID = "OBJECTID";
 
+    public static String Notes="Note";
 
     public static class  LVDistributionPanel{
         public static String Type_of_the_LV_panel="Type_of_the_LV_panel";

@@ -11,7 +11,7 @@ public class QueryConfig {
 
         QueryParameters query = new QueryParameters();
 
-        Envelope geometry = new Envelope(point, 20.0, 20.0);
+        Envelope geometry = new Envelope(point, 5.0, 5.0);
         // make search case insensitive
         query.setWhereClause("1=1");
         // call select features

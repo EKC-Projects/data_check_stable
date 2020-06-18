@@ -31,11 +31,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.esri.arcgisruntime.concurrent.ListenableFuture;
@@ -75,18 +78,10 @@ import com.sec.datacheck.checkdata.model.models.DataCollectionApplication;
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult;
 import com.sec.datacheck.checkdata.view.activities.MapSingleTapListener;
 import com.sec.datacheck.checkdata.view.adapter.BookMarkAdapter;
+import com.sec.datacheck.checkdata.view.adapter.MultiResultRecAdapter;
 import com.sec.datacheck.checkdata.view.callbacks.mapCallbacks.SingleTapListener;
-import com.sec.datacheck.checkdata.view.fragments.AutoReCloser.AutoReCloserFragment;
 import com.sec.datacheck.checkdata.view.fragments.EditFeatureFragment;
-import com.sec.datacheck.checkdata.view.fragments.FuseCutOutFragment.FuseCutOutFragment;
-import com.sec.datacheck.checkdata.view.fragments.LVDistributionPanel.LVDistributionPanelFragment;
-import com.sec.datacheck.checkdata.view.fragments.LinkBox.LinkBoxFragment;
-import com.sec.datacheck.checkdata.view.fragments.Meter.MeterFragment;
-import com.sec.datacheck.checkdata.view.fragments.MvMetering.MvMeteringFragment;
-import com.sec.datacheck.checkdata.view.fragments.OHLine.OHLineFragment;
-import com.sec.datacheck.checkdata.view.fragments.Pole.PoleFragment;
-import com.sec.datacheck.checkdata.view.fragments.StationFragment.StationFragment;
-import com.sec.datacheck.checkdata.view.fragments.SubstationFragment.SubStationFragment;
+import com.sec.datacheck.checkdata.view.fragments.updateFragment.UpdateFragment;
 import com.sec.datacheck.checkdata.view.utils.Utilities;
 
 import java.util.ArrayList;
@@ -100,15 +95,18 @@ import java.util.concurrent.ExecutionException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MapActivity extends AppCompatActivity implements SingleTapListener, View.OnClickListener, MapPresenterListener {
+public class MapActivity extends AppCompatActivity implements SingleTapListener, View.OnClickListener, MapPresenterListener, MultiResultRecAdapter.MultiResultListener {
 
 
     public static final String DOWNLOAD_GEO_DATABASE = "DOWNLOAD_GEO_DATABASE";
+    public static final String POINT = "Point";
     public static final String POLYLINE = "PolyLine";
     public static final String POLYGON = "Polygon";
     private static final String TAG = "MapActivity";
+
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST = 2;
     final int MY_LOCATION_REQUEST_CODE = 2;
+
     @BindView(R.id.mapView)
     public MapView mapView;
     @BindView(R.id.rlFragment)
@@ -155,6 +153,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     public int currentOfflineVersion;
     public String currentOfflineVersionTitle;
     public String shapeType;
+
     @BindView(R.id.fab_measure)
     FloatingActionMenu mFabMeasureMenu;
     @BindView(R.id.linear_layers_info)
@@ -167,6 +166,19 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     LinearLayout mapLegendContainer;
     @BindView(R.id.map_layout)
     ConstraintLayout mConstraintLayout;
+
+    @BindView(R.id.measure_info)
+    LinearLayout mMeasureLayerInfo;
+    @BindView(R.id.measure_function_in_meter_lbl)
+    TextView mMeasureInMeterLbl;
+    @BindView(R.id.measure_function_value_in_meter_lbl)
+    TextView mMeasureValueInMeterLbl;
+    @BindView(R.id.measure_function_in_km_lbl)
+    TextView mMeasureInKMLbl;
+    @BindView(R.id.measure_function_value_in_km_lbl)
+    TextView mMeasureValueInKMLbl;
+
+
     @BindView(R.id.bottom_sheet)
     LinearLayout mBottomSheet;
     @BindView(R.id.update_btn)
@@ -181,16 +193,17 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     LinearLayout mEditPointLayout;
     @BindView(R.id.add_point_bottom_sheet_container)
     LinearLayout mAddPointLayout;
-    @BindView(R.id.measure_info)
-    LinearLayout mMeasureLayerInfo;
-    @BindView(R.id.measure_function_in_meter_lbl)
-    TextView mMeasureInMeterLbl;
-    @BindView(R.id.measure_function_value_in_meter_lbl)
-    TextView mMeasureValueInMeterLbl;
-    @BindView(R.id.measure_function_in_km_lbl)
-    TextView mMeasureInKMLbl;
-    @BindView(R.id.measure_function_value_in_km_lbl)
-    TextView mMeasureValueInKMLbl;
+
+    //Multi Result Container
+    @BindView(R.id.map_select_bottom_sheet_edit_multi_result_container)
+    CardView mMultiResultContainer;
+
+    @BindView(R.id.map_select_bottom_sheet_multi_result_close_iv)
+    ImageView mMultiResultCloseIV;
+
+    @BindView(R.id.map_select_bottom_sheet_multi_result_recyclerview)
+    RecyclerView mMultiResultRecyclerView;
+
     Point pointToAdd;
     BottomSheetBehavior sheetBehavior;
     //    EditInFeatureFragment editInFeatureFragment;
@@ -201,10 +214,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     Geometry workingAreaGeometry;
     MapActivity mCurrent;
     MapSingleTapListener mapSingleTapListener;
-//    FeatureLayer FCL_DistributionBoxLayer, FCL_POLES_Layer, FCL_RMU_Layer, FCL_Substation_Layer, OCL_METER_Layer, ServicePoint_Layer;
-//    ServiceFeatureTable FCL_DistributionBox_ServiceTable, FCL_POLES_ServiceTable, FCL_RMU_ServiceTable, FCL_Substation_ServiceTable, OCL_METER_ServiceTable, ServicePoint_ServiceTable;
-//    GeodatabaseFeatureTable FCL_DistributionBoxTableOffline, FCL_POLESTableOffline, FCL_RMUTableOffline, FCL_SubstationTableOffline, OCL_METERTableOffline, ServicePointTableOffline;
-
 
     GraphicsOverlay graphicsOverlay, drawGraphicLayer;
     PictureMarkerSymbol pictureMarkerSymbol;
@@ -213,26 +222,24 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     OnlineQueryResult selectedResult;
     Point mCurrentLocation;
 
+    //TODO Last Update
+    public ServiceFeatureTable substationTable, stationTable, LvOhCableTable, MvOhCableTable, LvdbAreaTable, SwitchgearAreaTable, FCL_DistributionBoxTable, FCL_POLESTable,
+            DynamicProtectiveDeviceTable, FuseTable, TransFormersTable, RingMainUnitTable, VoltageRegulatorTable, ServicePointTable, SwitchTable;
 
-    ServiceFeatureTable substationTable, stationTable, autoReCloserTable, fuseCutOutTable, linkBoxTable, LoadBreakerSwitchTable, LVDistributionBoxTable, LVDistributionPanelTable, MCCB_LVP_Circuits_RecordTable, MeterTable,
-            MiniPillarTable, MV_MeteringTable, OH_LinesTable, PoleTable, SectionlizerTable, SVC_StaticVarCompensatorTable, SwitchGearTable, TransformerTable, VoltageRegulatorTable;
-    GeodatabaseFeatureTable substationOfflineTable, stationOfflineTable, autoReCloserOfflineTable, fuseCutOutOfflineTable, linkBoxOfflineTable, mvMeteringOfflineTable, poleOfflineTable, OHLineOfflineTable, MeterOfflineTable, LVDistributionPanelOfflineTable;
-    FeatureLayer substationLayer, stationLayer, autoReCloserLayer, fuseCutOutLayer, linkBoxLayer, LoadBreakerSwitchLayer, LVDistributionBoxLayer, LVDistributionPanelLayer, MCCB_LVP_Circuits_RecordLayer, MeterLayer,
-            MiniPillarLayer, MV_MeteringLayer, OH_LinesLayer, PoleLayer, SectionlizerLayer, SVC_StaticVarCompensatorLayer, SwitchGearLayer, TransformerLayer, VoltageRegulatorLayer;
+    public FeatureLayer substationLayer, stationLayer, LvOhCableLayer, MvOhCableLayer, LvdbAreaLayer, SwitchgearAreaLayer, FCL_DistributionBoxLayer, FCL_POLES_Layer,
+            DynamicProtectiveDeviceLayer, FuseLayer, TransFormersLayer, RingMainUnitLayer, VoltageRegulatorLayer, ServicePointLayer, SwitchLayer;
+
+    public GeodatabaseFeatureTable substationOfflineTable, stationOfflineTable, LvOhCableOfflineTable, MvOhCableOfflineTable, LvdbAreaOfflineTable, switchgearAreaOfflineTable,
+            FCL_DistributionBoxOfflineTable, FCL_POLESOfflineTable, DynamicProtectiveDeviceOfflineTable, FuseOfflineTable, TransFormersOfflineTable, RingMainUnitOfflineTable,
+            VoltageRegulatorOfflineTable, ServicePointOfflineTable, SwitchOfflineTable;
 
 
     PointCollection pointCollection;
     Point lastPointStep;
-    SubStationFragment substationFragment;
-    StationFragment stationFragment;
-    AutoReCloserFragment autoReCloserFragment;
-    FuseCutOutFragment fuseCutOutFragment;
-    LinkBoxFragment linkBoxFragment;
-    MvMeteringFragment mvMeteringFragment;
-    PoleFragment poleFragment;
-    OHLineFragment ohLineFragment;
-    MeterFragment meterFragment;
-    LVDistributionPanelFragment lvDistributionPanelFragment;
+
+    UpdateFragment updateFragment;
+    MultiResultRecAdapter mMultiResultRecAdapter;
+
     private boolean isShowingLayerInfo;
     private boolean queryStatus = false;
     private boolean isFragmentShown = false;
@@ -279,10 +286,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             fragmentManager = getSupportFragmentManager();
 
-            sheetBehavior = BottomSheetBehavior.from(mBottomSheet);
-            sheetBehavior.setPeekHeight(150, true);
-            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-//            mBottomSheet.setVisibility(View.GONE);
 
             mCompass.setScaleType(ImageView.ScaleType.MATRIX);
             mMatrix = new Matrix();
@@ -339,12 +342,22 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
     private void initSheetBehavior() {
         try {
+            sheetBehavior = BottomSheetBehavior.from(mBottomSheet);
+            sheetBehavior.setPeekHeight(150, true);
+            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+//            mBottomSheet.setVisibility(View.GONE);
+
             mCancelBtn.setOnClickListener(this);
             mUpdateBtn.setOnClickListener(this);
+
             /**
              * bottom sheet state change listener
              * we are changing button text when sheet changed state
              * */
+
+            sheetBehavior.setHideable(true);
+            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+
             sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
                 @Override
                 public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -412,88 +425,76 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     private void initOnlineLayers(ArcGISMap baseMap, MapView mapView) {
         try {
 
-            // create feature layer with its service feature table
-            // create the service feature table
-//
-//            FCL_DistributionBox_ServiceTable = new ServiceFeatureTable(getString(R.string.FCL_DISTRIBUTIONBOX));
-//            FCL_POLES_ServiceTable = new ServiceFeatureTable(getString(R.string.FCL_POLES));
-//            FCL_RMU_ServiceTable = new ServiceFeatureTable(getString(R.string.FCL_RMU));
-//            FCL_Substation_ServiceTable = new ServiceFeatureTable(getString(R.string.FCL_Substation));
-//            OCL_METER_ServiceTable = new ServiceFeatureTable(getString(R.string.OCL_METER));
-//            ServicePoint_ServiceTable = new ServiceFeatureTable(getString(R.string.Service_Point));
-
-            autoReCloserTable = new ServiceFeatureTable(getString(R.string.auto_recloser));
-            fuseCutOutTable = new ServiceFeatureTable(getString(R.string.fuse_cut_out));
-            substationTable = new ServiceFeatureTable(getString(R.string.substations));
-            stationTable = new ServiceFeatureTable(getString(R.string.stations));
-
-            linkBoxTable = new ServiceFeatureTable(getString(R.string.link_box));
-            LoadBreakerSwitchTable = new ServiceFeatureTable(getString(R.string.load_Breaker_Switch_LBS_33_13_KV));
-            LVDistributionBoxTable = new ServiceFeatureTable(getString(R.string.l_V_distribution_Box));
-            LVDistributionPanelTable = new ServiceFeatureTable(getString(R.string.l_V_distribution_Panel));
-            MCCB_LVP_Circuits_RecordTable = new ServiceFeatureTable(getString(R.string.MCCB_LVP_Circuits_Record));
-            MeterTable = new ServiceFeatureTable(getString(R.string.Meter));
-            MiniPillarTable = new ServiceFeatureTable(getString(R.string.Mini_pillar));
-            MV_MeteringTable = new ServiceFeatureTable(getString(R.string.MV_Metering));
-            OH_LinesTable = new ServiceFeatureTable(getString(R.string.OH_Lines));
-            PoleTable = new ServiceFeatureTable(getString(R.string.Pole));
-            SectionlizerTable = new ServiceFeatureTable(getString(R.string.Sectionlizer));
-            SVC_StaticVarCompensatorTable = new ServiceFeatureTable(getString(R.string.SVC_Static_VAR_Compensator));
-            SwitchGearTable = new ServiceFeatureTable(getString(R.string.Switchgear));
-            TransformerTable = new ServiceFeatureTable(getString(R.string.Transformer));
-            VoltageRegulatorTable = new ServiceFeatureTable(getString(R.string.Voltage_regulator));
-
             // create the feature layer using the service feature table
-//          FCL_DistributionBoxLayer = new FeatureLayer(FCL_DistributionBox_ServiceTable);
-//            FCL_POLES_Layer = new FeatureLayer(FCL_POLES_ServiceTable);
-//            FCL_RMU_Layer = new FeatureLayer(FCL_RMU_ServiceTable);
-//            FCL_Substation_Layer = new FeatureLayer(FCL_Substation_ServiceTable);
-//            OCL_METER_Layer = new FeatureLayer(OCL_METER_ServiceTable);
-//            ServicePoint_Layer = new FeatureLayer(ServicePoint_ServiceTable);
-
-            autoReCloserLayer = new FeatureLayer(autoReCloserTable);
-            substationLayer = new FeatureLayer(substationTable);
+            stationTable = new ServiceFeatureTable(getString(R.string.stations));
             stationLayer = new FeatureLayer(stationTable);
-            fuseCutOutLayer = new FeatureLayer(fuseCutOutTable);
 
-            linkBoxLayer = new FeatureLayer(linkBoxTable);
-            LoadBreakerSwitchLayer = new FeatureLayer(LoadBreakerSwitchTable);
-            LVDistributionBoxLayer = new FeatureLayer(LVDistributionBoxTable);
-            LVDistributionPanelLayer = new FeatureLayer(LVDistributionPanelTable);
-            MCCB_LVP_Circuits_RecordLayer = new FeatureLayer(MCCB_LVP_Circuits_RecordTable);
-            MeterLayer = new FeatureLayer(MeterTable);
-            MiniPillarLayer = new FeatureLayer(MiniPillarTable);
-            MV_MeteringLayer = new FeatureLayer(MV_MeteringTable);
-            OH_LinesLayer = new FeatureLayer(OH_LinesTable);
-            PoleLayer = new FeatureLayer(PoleTable);
-            SectionlizerLayer = new FeatureLayer(SectionlizerTable);
-            SVC_StaticVarCompensatorLayer = new FeatureLayer(SVC_StaticVarCompensatorTable);
-            SwitchGearLayer = new FeatureLayer(SwitchGearTable);
-            TransformerLayer = new FeatureLayer(TransformerTable);
+            substationTable = new ServiceFeatureTable(getString(R.string.substations));
+            substationLayer = new FeatureLayer(substationTable);
+
+            FCL_DistributionBoxTable = new ServiceFeatureTable(getString(R.string.FCL_DISTRIBUTIONBOX));
+            FCL_DistributionBoxLayer = new FeatureLayer(FCL_DistributionBoxTable);
+
+            DynamicProtectiveDeviceTable = new ServiceFeatureTable(getString(R.string.DYNAMIC_PROTECTIVE_DEVICE));
+            DynamicProtectiveDeviceLayer = new FeatureLayer(DynamicProtectiveDeviceTable);
+
+            FuseTable = new ServiceFeatureTable(getString(R.string.FUSE));
+            FuseLayer = new FeatureLayer(FuseTable);
+
+            FCL_POLESTable = new ServiceFeatureTable(getString(R.string.FCL_POLES));
+            FCL_POLES_Layer = new FeatureLayer(FCL_POLESTable);
+
+            LvOhCableTable = new ServiceFeatureTable(getString(R.string.lv_oh_cable));
+            LvOhCableLayer = new FeatureLayer(LvOhCableTable);
+
+            MvOhCableTable = new ServiceFeatureTable(getString(R.string.mv_oh_cable));
+            MvOhCableLayer = new FeatureLayer(MvOhCableTable);
+
+            LvdbAreaTable = new ServiceFeatureTable(getString(R.string.lvdb_area));
+            LvdbAreaLayer = new FeatureLayer(LvdbAreaTable);
+
+            SwitchgearAreaTable = new ServiceFeatureTable(getString(R.string.switch_gear_area));
+            SwitchgearAreaLayer = new FeatureLayer(SwitchgearAreaTable);
+
+            TransFormersTable = new ServiceFeatureTable(getString(R.string.TRANSFORMER));
+            TransFormersLayer = new FeatureLayer(TransFormersTable);
+
+            RingMainUnitTable = new ServiceFeatureTable(getString(R.string.RING_MAIN_UNIT));
+            RingMainUnitLayer = new FeatureLayer(RingMainUnitTable);
+
+            VoltageRegulatorTable = new ServiceFeatureTable(getString(R.string.VOLTAGE_REGULATOR));
             VoltageRegulatorLayer = new FeatureLayer(VoltageRegulatorTable);
+
+            ServicePointTable = new ServiceFeatureTable(getString(R.string.SERVICE_POINT));
+            ServicePointLayer = new FeatureLayer(ServicePointTable);
+
+            SwitchTable = new ServiceFeatureTable(getString(R.string.SWITCH));
+            SwitchLayer = new FeatureLayer(SwitchTable);
 
             // add the layer to the map
 
-            baseMap.getOperationalLayers().add(autoReCloserLayer);
-            baseMap.getOperationalLayers().add(fuseCutOutLayer);
-            baseMap.getOperationalLayers().add(substationLayer);
+            baseMap.getOperationalLayers().add(LvdbAreaLayer);
+            baseMap.getOperationalLayers().add(SwitchgearAreaLayer);
+
+            baseMap.getOperationalLayers().add(LvOhCableLayer);
+            baseMap.getOperationalLayers().add(MvOhCableLayer);
+
             baseMap.getOperationalLayers().add(stationLayer);
+            baseMap.getOperationalLayers().add(substationLayer);
+            baseMap.getOperationalLayers().add(FCL_DistributionBoxLayer);
+            baseMap.getOperationalLayers().add(DynamicProtectiveDeviceLayer);
 
-            baseMap.getOperationalLayers().add(linkBoxLayer);
-            baseMap.getOperationalLayers().add(LoadBreakerSwitchLayer);
-            baseMap.getOperationalLayers().add(LVDistributionBoxLayer);
-            baseMap.getOperationalLayers().add(LVDistributionPanelLayer);
-            baseMap.getOperationalLayers().add(MCCB_LVP_Circuits_RecordLayer);
-            baseMap.getOperationalLayers().add(MeterLayer);
-            baseMap.getOperationalLayers().add(MiniPillarLayer);
-            baseMap.getOperationalLayers().add(MV_MeteringLayer);
-            baseMap.getOperationalLayers().add(OH_LinesLayer);
-            baseMap.getOperationalLayers().add(PoleLayer);
-            baseMap.getOperationalLayers().add(SVC_StaticVarCompensatorLayer);
-            baseMap.getOperationalLayers().add(SwitchGearLayer);
-            baseMap.getOperationalLayers().add(TransformerLayer);
+            baseMap.getOperationalLayers().add(FuseLayer);
+            baseMap.getOperationalLayers().add(FCL_POLES_Layer);
+            baseMap.getOperationalLayers().add(TransFormersLayer);
+            baseMap.getOperationalLayers().add(RingMainUnitLayer);
+
             baseMap.getOperationalLayers().add(VoltageRegulatorLayer);
+            baseMap.getOperationalLayers().add(ServicePointLayer);
+            baseMap.getOperationalLayers().add(SwitchLayer);
 
+            baseMap.setMinScale(110000000);
+            baseMap.setMaxScale(100);
 
             // set the map to be displayed in the mapView
             mapView.setMap(baseMap);
@@ -674,20 +675,33 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
             showEditReviewFragment();
         } else if (v.equals(mCancelBtn)) {
-            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-            if (graphicsOverlay != null && graphicsOverlay.getGraphics() != null) {
-                graphicsOverlay.getGraphics().clear();
-            }
+            handleCancelBtn();
         } else if (v.equals(mCompass)) {
 
             initMapRotation();
 
-        }
-        else if (v.equals(fabMeasureDistance)) {
+        } else if (v.equals(fabMeasureDistance)) {
             handleFabMeasureAction();
             mFabMeasureMenu.close(true);
             drawMeasure = true;
             shapeType = POLYLINE;
+        }
+    }
+
+    private void handleCancelBtn() {
+        try {
+//            graphicsOverlay.getGraphics().clear();
+            selectedResult.getFeatureLayer().clearSelection();
+
+            selectedResult = null;
+            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+            if (graphicsOverlay != null && graphicsOverlay.getGraphics() != null) {
+                graphicsOverlay.getGraphics().clear();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -708,7 +722,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             mAddPointLayout.setVisibility(View.VISIBLE);
             mEditPointLayout.setVisibility(View.GONE);
-            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
 
             graphicsOverlay.getGraphics().clear();
             graphicsOverlay.getGraphics().add(new Graphic(point, pictureMarkerSymbol));
@@ -721,37 +735,9 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     private void showEditReviewFragment() {
         try {
 
-            if (selectedResult.getFeatureLayer().getName().matches(substationLayer.getName())) {
-                substationFragment = SubStationFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(substationFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(stationLayer.getName())) {
-                stationFragment = StationFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(stationFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(autoReCloserLayer.getName())) {
-                autoReCloserFragment = AutoReCloserFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(autoReCloserFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(fuseCutOutLayer.getName())) {
-                fuseCutOutFragment = FuseCutOutFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(fuseCutOutFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(linkBoxLayer.getName())) {
-                linkBoxFragment = LinkBoxFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(linkBoxFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(MV_MeteringLayer.getName())) {
-                mvMeteringFragment = MvMeteringFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(mvMeteringFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(PoleLayer.getName())) {
-                poleFragment = PoleFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(poleFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(OH_LinesLayer.getName())) {
-                ohLineFragment = OHLineFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(ohLineFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(MeterLayer.getName())) {
-                meterFragment = MeterFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(meterFragment);
-            } else if (selectedResult.getFeatureLayer().getName().matches(LVDistributionPanelLayer.getName())) {
-                lvDistributionPanelFragment = LVDistributionPanelFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
-                showCheckDataEditFragment(lvDistributionPanelFragment);
-            }
+            updateFragment = UpdateFragment.newInstance(mCurrent, presenter, selectedResult, onlineData);
+            showCheckDataEditFragment(updateFragment);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1441,24 +1427,23 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             } else if (drawShape) {
                 startDrawShape(point);
             } else if (!queryStatus) {
-
-                graphicsOverlay.getGraphics().clear();
-                selectedResult = null;
-                sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-                queryStatus = true;
-
-                Log.i(TAG, "onSingleTap(): callback is Called ");
-                Log.i(TAG, "onSingleTap(): taped point lat = " + point.getX() + " Lang = " + point.getY());
-
-                presenter.prepareQueryResult();
-                Utilities.showLoadingDialog(mCurrent);
-
-                if (onlineData) {
-//                    presenter.queryOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), FCL_DistributionBox_ServiceTable, FCL_DistributionBoxLayer);
-                    presenter.queryCheckDataOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), autoReCloserTable, autoReCloserLayer);
+                if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED || sheetBehavior.getState() == BottomSheetBehavior.STATE_HALF_EXPANDED) {
+                    Utilities.showToast(mCurrent, getString(R.string.please_cancel_and_select_again));
                 } else {
-                    presenter.queryCheckDataOffline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), autoReCloserOfflineTable, autoReCloserLayer);
 
+                    queryStatus = true;
+
+                    Log.i(TAG, "onSingleTap(): callback is Called ");
+                    Log.i(TAG, "onSingleTap(): taped point lat = " + point.getX() + " Lang = " + point.getY());
+
+                    presenter.prepareQueryResult();
+                    Utilities.showLoadingDialog(mCurrent);
+
+                    if (onlineData) {
+                        presenter.queryCheckDataOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), stationTable, stationLayer);
+                    } else {
+                        presenter.queryCheckDataOffline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), stationOfflineTable, stationLayer);
+                    }
                 }
             } else {
                 Utilities.showToast(mCurrent, getString(R.string.please_wait));
@@ -1472,58 +1457,52 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     @Override
     public void onQueryOnline(ArrayList<OnlineQueryResult> results, FeatureLayer featureLayer, Point point) {
         try {
-            /*if (featureLayer.equals(FCL_DistributionBoxLayer)) {
-                presenter.queryOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), FCL_POLES_ServiceTable, FCL_POLES_Layer);
-            } else if (featureLayer.equals(FCL_POLES_Layer)) {
-                presenter.queryOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), FCL_RMU_ServiceTable, FCL_RMU_Layer);
-            } else if (featureLayer.equals(FCL_RMU_Layer)) {
-                presenter.queryOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), FCL_Substation_ServiceTable, FCL_Substation_Layer);
-            } else if (featureLayer.equals(FCL_Substation_Layer)) {
-                presenter.queryOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), OCL_METER_ServiceTable, OCL_METER_Layer);
-            } else if (featureLayer.equals(OCL_METER_Layer)) {
-                presenter.queryOnline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), ServicePoint_ServiceTable, ServicePoint_Layer);
-            } else if (featureLayer.equals(ServicePoint_Layer)) {
-                showQueryResult(results, point);
-            } else */
-            if (featureLayer.equals(autoReCloserLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is sub station layer");
+            if (featureLayer.equals(stationLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is stationLayer layer");
                 presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), substationTable, substationLayer);
             } else if (featureLayer.equals(substationLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is sub station layer");
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), stationTable, stationLayer);
-            } else if (featureLayer.equals(stationLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is station layer");
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), linkBoxTable, linkBoxLayer);
-
-            } else if (featureLayer.equals(linkBoxLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is linkBoxLayer layer");
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), fuseCutOutTable, fuseCutOutLayer);
-
-            } else if (featureLayer.equals(fuseCutOutLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is fuseCutOutLayer layer");
-
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), MV_MeteringTable, MV_MeteringLayer);
-
-            } else if (featureLayer.equals(MV_MeteringLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is fuseCutOutLayer layer");
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), PoleTable, PoleLayer);
-
-            } else if (featureLayer.equals(PoleLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is PoleLayer layer");
-
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), OH_LinesTable, OH_LinesLayer);
-
-            } else if (featureLayer.equals(OH_LinesLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is OH_LinesLayer layer");
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), MeterTable, MeterLayer);
-            } else if (featureLayer.equals(MeterLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is MeterLayer layer");
-                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), LVDistributionPanelTable, LVDistributionPanelLayer);
-            } else if (featureLayer.equals(LVDistributionPanelLayer)) {
-                Log.i(TAG, "onQueryOnline(): featureLayer is LVDistributionPanelLayer layer");
+                Log.i(TAG, "onQueryOnline(): featureLayer is substationLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), TransFormersTable, TransFormersLayer);
+            } else if (featureLayer.equals(TransFormersLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is TransFormersLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), RingMainUnitTable, RingMainUnitLayer);
+            } else if (featureLayer.equals(RingMainUnitLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is RingMainUnitLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), VoltageRegulatorTable, VoltageRegulatorLayer);
+            } else if (featureLayer.equals(VoltageRegulatorLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is VoltageRegulatorLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), ServicePointTable, ServicePointLayer);
+            } else if (featureLayer.equals(ServicePointLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is ServicePointLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), SwitchTable, SwitchLayer);
+            } else if (featureLayer.equals(SwitchLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is SwitchLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), FCL_DistributionBoxTable, FCL_DistributionBoxLayer);
+            } else if (featureLayer.equals(FCL_DistributionBoxLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is FCL_DistributionBoxLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), FuseTable, FuseLayer);
+            } else if (featureLayer.equals(FuseLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is FuseLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), DynamicProtectiveDeviceTable, DynamicProtectiveDeviceLayer);
+            } else if (featureLayer.equals(DynamicProtectiveDeviceLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is DynamicProtectiveDeviceLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), FCL_POLESTable, FCL_POLES_Layer);
+            } else if (featureLayer.equals(FCL_POLES_Layer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is FCL_POLES_Layer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), LvOhCableTable, LvOhCableLayer);
+            } else if (featureLayer.equals(LvOhCableLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is LvOhCableLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), MvOhCableTable, MvOhCableLayer);
+            } else if (featureLayer.equals(MvOhCableLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is MvOhCableLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), LvdbAreaTable, LvdbAreaLayer);
+            } else if (featureLayer.equals(LvdbAreaLayer)) {
+                Log.i(TAG, "onQueryOnline(): featureLayer is LvdbAreaLayer layer");
+                presenter.queryCheckDataOnline(results, point, mapView.getSpatialReference(), SwitchgearAreaTable, SwitchgearAreaLayer);
+            } else {
+                Log.i(TAG, "onQueryOnline(): featureLayer is SwitchgearAreaTable");
                 showQueryResult(results, point);
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1532,56 +1511,50 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
     @Override
     public void onQueryOffline(ArrayList<OnlineQueryResult> results, FeatureLayer featureLayer, Point point) {
-//        if (featureLayer.equals(FCL_DistributionBoxLayer)) {
-//            presenter.queryOffline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), FCL_POLESTableOffline, FCL_POLES_Layer);
-//        } else if (featureLayer.equals(FCL_POLES_Layer)) {
-//            presenter.queryOffline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), FCL_RMUTableOffline, FCL_RMU_Layer);
-//        } else if (featureLayer.equals(FCL_RMU_Layer)) {
-//            presenter.queryOffline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), FCL_SubstationTableOffline, FCL_Substation_Layer);
-//        } else if (featureLayer.equals(FCL_Substation_Layer)) {
-//            presenter.queryOffline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), OCL_METERTableOffline, OCL_METER_Layer);
-//        } else if (featureLayer.equals(OCL_METER_Layer)) {
-//            presenter.queryOffline(presenter.getOnlineQueryResults(), point, mapView.getSpatialReference(), ServicePointTableOffline, ServicePoint_Layer);
-//        } else if (featureLayer.equals(ServicePoint_Layer)) {
-//            showOfflineQueryResult(results, point);
-//        }
-
-        if (featureLayer.equals(autoReCloserLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is sub station layer");
+        if (featureLayer.equals(stationLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
             presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), substationOfflineTable, substationLayer);
         } else if (featureLayer.equals(substationLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is sub station layer");
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), stationOfflineTable, stationLayer);
-        } else if (featureLayer.equals(stationLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is station layer");
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), linkBoxOfflineTable, linkBoxLayer);
-
-        } else if (featureLayer.equals(linkBoxLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is linkBoxLayer layer");
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), fuseCutOutOfflineTable, fuseCutOutLayer);
-
-        } else if (featureLayer.equals(fuseCutOutLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is fuseCutOutLayer layer");
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), mvMeteringOfflineTable, MV_MeteringLayer);
-
-        } else if (featureLayer.equals(MV_MeteringLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is MV_MeteringLayer layer");
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), poleOfflineTable, PoleLayer);
-        } else if (featureLayer.equals(PoleLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is PoleLayer layer");
-
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), OHLineOfflineTable, OH_LinesLayer);
-        } else if (featureLayer.equals(OH_LinesLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is OH_LinesLayer layer");
-
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), MeterOfflineTable, MeterLayer);
-        } else if (featureLayer.equals(MeterLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is MeterLayer layer");
-
-            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), LVDistributionPanelOfflineTable, LVDistributionPanelLayer);
-        } else if (featureLayer.equals(LVDistributionPanelLayer)) {
-            Log.i(TAG, "onQueryOffline(): featureLayer is LVDistributionPanelLayer layer");
-
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), TransFormersOfflineTable, TransFormersLayer);
+        } else if (featureLayer.equals(TransFormersLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), RingMainUnitOfflineTable, RingMainUnitLayer);
+        } else if (featureLayer.equals(RingMainUnitLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), VoltageRegulatorOfflineTable, VoltageRegulatorLayer);
+        } else if (featureLayer.equals(VoltageRegulatorLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), ServicePointOfflineTable, ServicePointLayer);
+        } else if (featureLayer.equals(ServicePointLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), SwitchOfflineTable, SwitchLayer);
+        } else if (featureLayer.equals(SwitchLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), FCL_DistributionBoxOfflineTable, FCL_DistributionBoxLayer);
+        } else if (featureLayer.equals(FCL_DistributionBoxLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), FuseOfflineTable, FuseLayer);
+        } else if (featureLayer.equals(FuseLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), DynamicProtectiveDeviceOfflineTable, DynamicProtectiveDeviceLayer);
+        } else if (featureLayer.equals(DynamicProtectiveDeviceLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), FCL_POLESOfflineTable, FCL_POLES_Layer);
+        } else if (featureLayer.equals(FCL_POLES_Layer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), LvOhCableOfflineTable, LvOhCableLayer);
+        } else if (featureLayer.equals(LvOhCableLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), MvOhCableOfflineTable, MvOhCableLayer);
+        } else if (featureLayer.equals(MvOhCableLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), LvdbAreaOfflineTable, LvdbAreaLayer);
+        } else if (featureLayer.equals(LvdbAreaLayer)) {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
+            presenter.queryCheckDataOffline(results, point, mapView.getSpatialReference(), switchgearAreaOfflineTable, SwitchgearAreaLayer);
+        } else {
+            Log.i(TAG, "onQueryOffline(): featureLayer is " + featureLayer.getName() + " layer");
             showOfflineQueryResult(results, point);
         }
     }
@@ -1679,6 +1652,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             Log.i(TAG, "resetAfterUpdate(): is called");
             selectedResult = null;
             presenter.resetOnlineQueryResults();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1699,72 +1673,28 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     private void showOfflineQueryResult(ArrayList<OnlineQueryResult> results, Point pointOnMap) {
         try {
             queryStatus = false;
-            if (results != null && !results.isEmpty()) {
-                Log.i(TAG, "showOnlineQueryResult(): there is feature");
-                Log.i(TAG, "showOnlineQueryResult(): listQueryResults size = " + results.size());
-
-
+            if (results.size() == 1) {
                 runOnUiThread(() -> {
                     try {
-                        double shortestDistance = 1000000000;
                         for (OnlineQueryResult result : results) {
-
-                            Point endPoint = (Point) result.getFeatureOffline().getGeometry();
-
-                            if (endPoint != null) {
-                                Log.i(TAG, "showOnlineQueryResult(): endPoint != null");
-                                Point edinburghGeographic = new Point(pointOnMap.getX(), pointOnMap.getY(), SpatialReferences.getWgs84());
-                                Point darEsSalaamGeographic = new Point(endPoint.getX(), endPoint.getY(), SpatialReferences.getWgs84());
-
-                                // Create a world equidistant cylindrical spatial reference for measuring planar distance.
-                                SpatialReference equidistantSpatialRef = SpatialReference.create(54002);
-
-                                // Project the points from geographic to the projected coordinate system.
-                                Point startP = (Point) GeometryEngine.project(edinburghGeographic, equidistantSpatialRef);
-                                Point endP = (Point) GeometryEngine.project(darEsSalaamGeographic, equidistantSpatialRef);
-
-                                // Get the planar distance between the points in the spatial reference unit (meters).
-                                double planarDistanceMeters = GeometryEngine.distanceBetween(startP, endP);
-                                // Result = 7,372,671.29511302 (around 7,372.67 kilometers)
-
-                                Log.i(TAG, "showOnlineQueryResult(): Start Point X = " + startP.getX() + " Start Point Y = " + startP.getY());
-                                Log.i(TAG, "showOnlineQueryResult(): End Point X = " + endP.getX() + " Enf Point Y = " + endP.getY());
-                                Log.i(TAG, "showOnlineQueryResult(): point id = " + result.getObjectID() + " distance = " + planarDistanceMeters);
-
-                                if (planarDistanceMeters <= shortestDistance) {
-                                    shortestDistance = planarDistanceMeters;
-                                    selectedResult = result;
-                                }
-                            } else {
-                                Log.i(TAG, "showOnlineQueryResult(): endPoint = null");
-
+                            if (result.getFeatureType().equals(POINT)) {
+                                handleSelectPoint(result, pointOnMap);
                             }
-                        }
-                        if (selectedResult != null) {
-
-                            graphicsOverlay.getGraphics().add(new Graphic(selectedResult.getFeatureOffline().getGeometry(), pictureMarkerSymbol));
-
-                            Utilities.dismissLoadingDialog();
-                            mAddPointLayout.setVisibility(View.GONE);
-                            mEditPointLayout.setVisibility(View.VISIBLE);
-                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-
-
-                        } else {
-                            Utilities.dismissLoadingDialog();
+                            else if (result.getFeatureType().equals(POLYLINE)) {
+                                handleSelectPolyLine(result);
+                            }
+                            else if (result.getFeatureType().equals(POLYGON)) {
+                                handleSelectPolygon(result);
+                            }
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Utilities.dismissLoadingDialog();
                     }
                 });
-
             } else {
-                runOnUiThread(() -> {
-                    Utilities.dismissLoadingDialog();
-                    Toast.makeText(mCurrent, getString(R.string.zoom_more), Toast.LENGTH_SHORT).show();
-                });
+                handleMultiOnlineQueryResult(results, pointOnMap);
             }
+
         } catch (
                 Exception e) {
             e.printStackTrace();
@@ -1777,78 +1707,28 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             Log.i(TAG, "showQueryResult():is called");
             queryStatus = false;
             if (results != null && !results.isEmpty()) {
-                Log.i(TAG, "processSelectQueryResultOnline(): there is feature");
-                Log.i(TAG, "processSelectQueryResultOnline(): listQueryResults size = " + results.size());
+                Log.i(TAG, "showQueryResult(): there is feature");
+                Log.i(TAG, "showQueryResult(): listQueryResults size = " + results.size());
 
-
-                runOnUiThread(() -> {
-                    try {
-                        double shortestDistance = 1000000000;
-                        for (OnlineQueryResult result : results) {
-
-                            Point endPoint = (Point) result.getFeature().getGeometry();
-
-                            if (endPoint != null) {
-                                Point edinburghGeographic = new Point(pointOnMap.getX(), pointOnMap.getY(), SpatialReferences.getWgs84());
-                                Point darEsSalaamGeographic = new Point(endPoint.getX(), endPoint.getY(), SpatialReferences.getWgs84());
-
-                                // Create a world equidistant cylindrical spatial reference for measuring planar distance.
-                                SpatialReference equidistantSpatialRef = SpatialReference.create(54002);
-
-                                // Project the points from geographic to the projected coordinate system.
-                                Point startP = (Point) GeometryEngine.project(edinburghGeographic, equidistantSpatialRef);
-                                Point endP = (Point) GeometryEngine.project(darEsSalaamGeographic, equidistantSpatialRef);
-
-                                // Get the planar distance between the points in the spatial reference unit (meters).
-                                double planarDistanceMeters = GeometryEngine.distanceBetween(startP, endP);
-                                // Result = 7,372,671.29511302 (around 7,372.67 kilometers)
-
-                                Log.i(TAG, "showOnlineQueryResult(): Start Point X = " + startP.getX() + " Start Point Y = " + startP.getY());
-                                Log.i(TAG, "showOnlineQueryResult(): End Point X = " + endP.getX() + " Enf Point Y = " + endP.getY());
-                                Log.i(TAG, "showOnlineQueryResult(): point id = " + result.getObjectID() + " distance = " + planarDistanceMeters);
-
-                                if (planarDistanceMeters <= shortestDistance) {
-                                    shortestDistance = planarDistanceMeters;
-                                    selectedResult = result;
+                if (results.size() == 1) {
+                    runOnUiThread(() -> {
+                        try {
+                            for (OnlineQueryResult result : results) {
+                                if (result.getFeatureType().equals(POINT)) {
+                                    handleSelectPoint(result, pointOnMap);
+                                } else if (result.getFeatureType().equals(POLYLINE)) {
+                                    handleSelectPolyLine(result);
+                                } else if (result.getFeatureType().equals(POLYGON)) {
+                                    handleSelectPolygon(result);
                                 }
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        if (selectedResult != null) {
-//                                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pin);
-//                                BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
-
-                            graphicsOverlay.getGraphics().add(new Graphic(selectedResult.getFeature().getGeometry(), pictureMarkerSymbol));
-                            selectedResult.getFeature().loadAsync();
-                            selectedResult.getFeature().addDoneLoadingListener(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Log.i(TAG, "showQueryResult(): feature is loaded");
-                                        Map<String, Object> attr = selectedResult.getFeature().getAttributes();
-                                        for (String key : attr.keySet()) {
-                                            try {
-                                                Log.i(TAG, "showQueryResult(): " + key + " = " + attr.get(key));
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                            Utilities.dismissLoadingDialog();
-                            mAddPointLayout.setVisibility(View.GONE);
-                            mEditPointLayout.setVisibility(View.VISIBLE);
-                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-
-                        } else {
-                            Utilities.dismissLoadingDialog();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+                    });
+                } else {
+                    handleMultiOnlineQueryResult(results, pointOnMap);
+                }
 
             } else {
                 runOnUiThread(() -> {
@@ -1856,6 +1736,151 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                     Toast.makeText(mCurrent, getString(R.string.zoom_more), Toast.LENGTH_SHORT).show();
                 });
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleSelectPoint(OnlineQueryResult result, Point pointOnMap) {
+        Point endPoint;
+        if (onlineData) {
+            endPoint = (Point) result.getFeature().getGeometry();
+        } else {
+            endPoint = (Point) result.getFeatureOffline().getGeometry();
+        }
+        double shortestDistance = 1000000000;
+
+        if (endPoint != null) {
+            Point edinburghGeographic = new Point(pointOnMap.getX(), pointOnMap.getY(), result.getFeatureLayer().getSpatialReference());
+            Point darEsSalaamGeographic = new Point(endPoint.getX(), endPoint.getY(), result.getFeatureLayer().getSpatialReference());
+
+            // Create a world equidistant cylindrical spatial reference for measuring planar distance.
+
+            // Project the points from geographic to the projected coordinate system.
+            Point startP = (Point) GeometryEngine.project(edinburghGeographic, result.getFeatureLayer().getSpatialReference());
+            Point endP = (Point) GeometryEngine.project(darEsSalaamGeographic, result.getFeatureLayer().getSpatialReference());
+
+            // Get the planar distance between the points in the spatial reference unit (meters).
+            double planarDistanceMeters = GeometryEngine.distanceBetween(startP, endP);
+            // Result = 7,372,671.29511302 (around 7,372.67 kilometers)
+
+            Log.i(TAG, "showOnlineQueryResult(): Start Point X = " + startP.getX() + " Start Point Y = " + startP.getY());
+            Log.i(TAG, "showOnlineQueryResult(): End Point X = " + endP.getX() + " Enf Point Y = " + endP.getY());
+            Log.i(TAG, "showOnlineQueryResult(): point id = " + result.getObjectID() + " distance = " + planarDistanceMeters);
+
+            if (planarDistanceMeters <= shortestDistance) {
+                shortestDistance = planarDistanceMeters;
+                selectedResult = result;
+            }
+        }
+        if (selectedResult != null) {
+            if (onlineData) {
+                graphicsOverlay.getGraphics().add(new Graphic(selectedResult.getFeature().getGeometry(), pictureMarkerSymbol));
+                selectedResult.getFeature().loadAsync();
+                selectedResult.getFeature().addDoneLoadingListener(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Log.i(TAG, "showQueryResult(): feature is loaded");
+                            Map<String, Object> attr = selectedResult.getFeature().getAttributes();
+                            for (String key : attr.keySet()) {
+                                try {
+                                    Log.i(TAG, "showQueryResult(): " + key + " = " + attr.get(key));
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            } else {
+                graphicsOverlay.getGraphics().add(new Graphic(selectedResult.getFeatureOffline().getGeometry(), pictureMarkerSymbol));
+            }
+
+
+            Utilities.dismissLoadingDialog();
+            mAddPointLayout.setVisibility(View.GONE);
+            mEditPointLayout.setVisibility(View.VISIBLE);
+            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+        } else {
+            Utilities.dismissLoadingDialog();
+        }
+    }
+
+    private void handleSelectPolyLine(OnlineQueryResult result) {
+        try {
+            if (result != null) {
+                selectedResult = result;
+                if (onlineData) {
+                    result.getFeatureLayer().selectFeature(result.getFeature());
+                } else {
+                    result.getFeatureLayer().selectFeature(result.getFeatureOffline());
+                }
+                Utilities.dismissLoadingDialog();
+                mAddPointLayout.setVisibility(View.GONE);
+                mEditPointLayout.setVisibility(View.VISIBLE);
+                sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleSelectPolygon(OnlineQueryResult result) {
+        try {
+            if (result != null) {
+                selectedResult = result;
+                if (onlineData) {
+                    result.getFeatureLayer().selectFeature(result.getFeature());
+                } else {
+                    result.getFeatureLayer().selectFeature(result.getFeatureOffline());
+                }
+                Utilities.dismissLoadingDialog();
+                mAddPointLayout.setVisibility(View.GONE);
+                mEditPointLayout.setVisibility(View.VISIBLE);
+                sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleMultiOnlineQueryResult(ArrayList<OnlineQueryResult> results, Point pointOnMap) {
+        try {
+            Log.i(TAG, "handleMultiOnlineQueryResult: results size = " + results.size());
+            hide(mAddPointLayout);
+            hide(mEditPointLayout);
+            show(mMultiResultContainer);
+            sheetBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+
+            mMultiResultCloseIV.setOnClickListener(v -> {
+                sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                if (selectedResult != null) {
+                    selectedResult.getFeatureLayer().clearSelection();
+                }
+                hide(mMultiResultContainer);
+
+            });
+
+            Utilities.dismissLoadingDialog();
+            showMultiResultRecyclerView(results);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showMultiResultRecyclerView(ArrayList<OnlineQueryResult> results) {
+        try {
+            mMultiResultRecAdapter = new MultiResultRecAdapter(results, mCurrent, onlineData, this);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(mCurrent);
+            mMultiResultRecyclerView.setNestedScrollingEnabled(true);
+            mMultiResultRecyclerView.setLayoutManager(layoutManager);
+            mMultiResultRecyclerView.setAdapter(mMultiResultRecAdapter);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1904,6 +1929,8 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         try {
             Log.i(TAG, "showEditingFragment(): is called");
             exitFullScreenMode();
+
+            selectedResult.getFeatureLayer().clearSelection();
 
             rlFragment.setVisibility(View.VISIBLE);
             fragmentManager.beginTransaction()
@@ -2232,6 +2259,43 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             mMeasureValueInKMLbl.setText(String.valueOf(Utilities.round((planarDistanceMeters / 1000), 2)));
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * -----------------------------Multi Result Callbacks----------------------------------------
+     */
+    @Override
+    public void onItemSelected(OnlineQueryResult onlineQueryResult, int position) {
+        try {
+            if (selectedResult != null) {
+                selectedResult.getFeatureLayer().clearSelection();
+            }
+            selectedResult = onlineQueryResult;
+            if (onlineData) {
+                selectedResult.getFeatureLayer().selectFeature(selectedResult.getFeature());
+            } else {
+                selectedResult.getFeatureLayer().selectFeature(selectedResult.getFeatureOffline());
+            }
+
+            mMultiResultRecAdapter.setSelectedResult(onlineQueryResult, position);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onEditItemSelected(OnlineQueryResult onlineQueryResult) {
+        try {
+
+            selectedResult = onlineQueryResult;
+            hide(mMultiResultContainer);
+            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+            selectedResult.getFeatureLayer().clearSelection();
+            updateFragment = UpdateFragment.newInstance(mCurrent, presenter, onlineQueryResult, onlineData);
+            showCheckDataEditFragment(updateFragment);
         } catch (Exception e) {
             e.printStackTrace();
         }

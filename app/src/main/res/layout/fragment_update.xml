@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4faff"
+    tools:context=".checkdata.view.fragments.updateFragment.UpdateFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_update_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/fragment_update_notes_et"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/custom_edittext_border_background"
+            android:gravity="start"
+            android:hint="@string/notes_hint"
+            android:inputType="textMultiLine"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_update_recycler_view"
+            app:layout_constraintStart_toStartOf="@+id/fragment_update_recycler_view"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_update_recycler_view" />
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fragment_update_take_picture_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            tools:targetApi="lollipop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_update_notes_et"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/offline_attachments_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:background="@drawable/custom_edittext_border_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_update_take_picture_fab" />
+
+        <Button
+            android:id="@+id/fragment_update_save_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:background="@drawable/update_btn_background"
+            android:elevation="4dp"
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingEnd="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_update_recycler_view"
+            app:layout_constraintStart_toStartOf="@+id/fragment_update_recycler_view"
+            app:layout_constraintTop_toBottomOf="@+id/offline_attachments_recycler_view"
+            tools:targetApi="lollipop" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
