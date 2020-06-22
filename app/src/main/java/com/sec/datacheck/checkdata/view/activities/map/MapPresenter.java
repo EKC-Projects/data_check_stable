@@ -191,11 +191,13 @@ public class MapPresenter {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    listener.onQueryOnline(mOnlineQueryResults, mFeatureLayer, point);
                 }
             });
 
         } catch (Exception e) {
             e.printStackTrace();
+            listener.onQueryOnline(mOnlineQueryResults, mFeatureLayer, point);
         }
     }
 
@@ -301,11 +303,13 @@ public class MapPresenter {
 
                     } catch (Exception e) {
                         e.printStackTrace();
+                        listener.onQueryOffline(mOnlineQueryResults, mFeatureLayer, point);
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
+            listener.onQueryOffline(mOnlineQueryResults, mFeatureLayer, point);
         }
     }
 
@@ -1161,7 +1165,13 @@ public class MapPresenter {
 
                 }
 
-                Log.i(TAG, "sortFields:       valid field = " + field.getTitle());
+                Log.i(TAG, "sortFields: valid field = " + field.getTitle());
+            }
+        }
+
+        for (FieldModel field : fields) {
+            if (field.getType() == 3) {
+                result.add(field);
             }
         }
         Log.i(TAG, "sortFields: result size = " + result.size());
@@ -1950,8 +1960,7 @@ public class MapPresenter {
     /**
      * --------------------------------update offline mode----------------------------------------
      */
-
-
+    
     public void updateOffline(OnlineQueryResult result, ArrayList<FieldModel> fieldModels, String note) {
         try {
             Log.i(TAG, "updateFeatureOffline(): is called");

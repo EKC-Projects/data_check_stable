@@ -309,27 +309,43 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
                         fieldModel.setTitle(field.getName());
                         fieldModel.setAlias(field.getAlias());
                         if (field.getDomain() != null && field.getDomain() instanceof CodedValueDomain) {
-                            if (isCheckDomain(field.getDomain())) {
-                                //Yes, No, N / A Domain
-                                CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
-                                fieldModel.setChoiceDomain(codedValueDomain);
-                                fieldModel.setType(1);
-                                fieldModel.setSelectedDomainIndex(selectedFeature.getAttributes().get(field.getName()));
+                            if (isCheckDomain(field.getDomain())) {//Yes, No, N / A Domain
+
+                                //if domain doesn't have data field
+                                if (!isDomainHasDataField(field.getName(), fieldList)) {//TODO Domain Must Have default value
+                                    CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
+                                    fieldModel.setChoiceDomain(codedValueDomain);
+                                    fieldModel.setType(3);//Domain hasn't data field to check
+                                    fieldModel.setSelectedDomainIndex(selectedFeature.getAttributes().get(field.getName()));
+                                } else {
+                                    //else if domain has data field
+                                    CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
+                                    fieldModel.setChoiceDomain(codedValueDomain);
+                                    fieldModel.setType(1);//Domain has data field to check
+                                    fieldModel.setSelectedDomainIndex(selectedFeature.getAttributes().get(field.getName()));
+                                }
                             } else {
                                 //any other Domain
-                                CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
-                                boolean founded = false;
-                                for (CodedValue codedValue : codedValueDomain.getCodedValues()) {
-                                    if (codedValue.getCode().equals(selectedFeature.getAttributes().get(field.getName()))) {
-                                        fieldModel.setTextValue(codedValue.getName());
-                                        founded = true;
-                                        break;
+                                if (hasCheckDomain(field.getName(), fieldList)) {
+                                    CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
+                                    boolean founded = false;
+                                    for (CodedValue codedValue : codedValueDomain.getCodedValues()) {
+                                        if (selectedFeature.getAttributes().get(field.getName()) != null && codedValue.getCode().equals(selectedFeature.getAttributes().get(field.getName()))) {
+                                            fieldModel.setTextValue(codedValue.getName());
+                                            founded = true;
+                                            break;
+                                        }
                                     }
+                                    if (!founded) {
+                                        fieldModel.setTextValue(mCurrent.getString(R.string.null_));
+                                    }
+                                    fieldModel.setType(2);
+                                } else {
+                                    CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
+                                    fieldModel.setChoiceDomain(codedValueDomain);
+                                    fieldModel.setType(3);//Domain hasn't data field to check
+                                    fieldModel.setSelectedDomainIndex(selectedFeature.getAttributes().get(field.getName()));
                                 }
-                                if (!founded) {
-                                    fieldModel.setTextValue(mCurrent.getString(R.string.null_));
-                                }
-                                fieldModel.setType(2);
                             }
                         } else {
                             fieldModel.setTextValue(String.valueOf(selectedFeature.getAttributes().get(field.getName())));
@@ -343,6 +359,33 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
         return fields;
+    }
+
+    private boolean hasCheckDomain(String name, List<Field> fieldList) {
+        name += "_Check";
+
+        for (Field field : fieldList) {
+            if (field.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isDomainHasDataField(String name, List<Field> fieldList) {
+        String[] nameSplit = name.split("_Check");
+        if (name.endsWith("_Check") && nameSplit != null && nameSplit.length > 0) {
+            String _name = nameSplit[0];
+            for (Field field : fieldList) {
+                if (field.getName().equals(_name)) {
+                    Log.e(TAG, "isDomainHasDataField: field " + _name + " has data field");
+                    return true;
+                }
+            }
+        } else {
+            Log.e(TAG, "isDomainHasDataField: field " + name + " hasn't data field");
+        }
+        return false;
     }
 
     private boolean isValidField(String name) {
@@ -370,21 +413,8 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
     private boolean isCheckDomain(Domain domain) {
         try {
             Log.i(TAG, "isCheckDomain: is called");
-            CodedValueDomain codedValueDomain = (CodedValueDomain) domain;
-            List<CodedValue> codedValues = codedValueDomain.getCodedValues();
-            int counter = 0;
-            for (CodedValue codedValue : codedValues) {
-                Log.i(TAG, "isCheckDomain: code = " + codedValue.getCode() + " value = " + codedValue.getName());
-                if (codedValue.getName().toLowerCase().equals(mCurrent.getString(R.string.yes).toLowerCase())
-                        || codedValue.getName().toLowerCase().equals(mCurrent.getString(R.string.no).toLowerCase())
-                        || codedValue.getName().toLowerCase().equals(mCurrent.getString(R.string.n_a).toLowerCase())
-                        || codedValue.getName().toLowerCase().equals(mCurrent.getString(R.string.naa).toLowerCase())) {
-                    counter++;
-//                    Log.i(TAG, "isCheckDomain: name = " + codedValue.getName());
-                }
-            }
-            Log.i(TAG, "isCheckDomain: counter = " + counter + " codedValues size = " + codedValues.size());
-            if (counter == 3 && codedValues.size() == counter) {
+
+            if (domain.getName().equals(getString(R.string.domain_check_name))) {
                 Log.i(TAG, "isCheckDomain: domain is check domain");
                 return true;
             }
@@ -420,6 +450,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
             for (Integer position : positions) {
 
                 FieldModel field = fields.get(position);
+                Log.e(TAG, "saveChanges: field " + field.getTitle() + " type = " + field.getType());
                 finalCheckFields.add(field);
             }
 //
@@ -459,19 +490,21 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
                         return (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png"));
                     }
                 });
-                Log.i(TAG, "loadImages(): images count = " + allFiles.length);
 
-                for (File file : allFiles) {
-                    if (file.getPath().contains("_" + mSelectedResult.getObjectID() + ".png") || file.getPath().contains("_" + mSelectedResult.getObjectID() + ".jpg") || file.getPath().contains("_" + mSelectedResult.getObjectID() + ".jpeg")) {
-                        Log.i(TAG, "loadImages(): image path = " + file.getPath() + " contains objectID = " + mSelectedResult.getObjectID());
-                        adapterData.add(file);
-                    } else {
-                        Log.i(TAG, "loadImages(): image path = " + file.getPath() + " doesn't contains objectID = " + mSelectedResult.getObjectID());
+                if (allFiles != null && allFiles.length > 0) {
+                    Log.i(TAG, "loadImages(): images count = " + allFiles.length);
+                    for (File file : allFiles) {
+                        if (file.getPath().contains("_" + mSelectedResult.getObjectID() + ".png") || file.getPath().contains("_" + mSelectedResult.getObjectID() + ".jpg") || file.getPath().contains("_" + mSelectedResult.getObjectID() + ".jpeg")) {
+                            Log.i(TAG, "loadImages(): image path = " + file.getPath() + " contains objectID = " + mSelectedResult.getObjectID());
+                            adapterData.add(file);
+                        } else {
+                            Log.i(TAG, "loadImages(): image path = " + file.getPath() + " doesn't contains objectID = " + mSelectedResult.getObjectID());
+                        }
                     }
-                }
 
-                for (File file : adapterData) {
-                    Log.i(TAG, "loadImages(): image path = " + file.getPath());
+                    for (File file : adapterData) {
+                        Log.i(TAG, "loadImages(): image path = " + file.getPath());
+                    }
                 }
             }
 
@@ -482,25 +515,6 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
 
     private File[] getFolders(File path) {
         return path.listFiles();
-    }
-
-    private void requestPermission() {
-        try {
-            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE);
-            }
-
-            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_TAKE_PICTURE);
-            }
-
-            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL_STORAGE);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void takePicture() {

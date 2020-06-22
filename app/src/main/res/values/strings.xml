@@ -283,4 +283,5 @@
     <string name="SWITCHGEAR_AREA_layer_name">SWITCHGEAR_AREA</string>
     <string name="transformers_layer_name">TRANSFORMER</string>
     <string name="switch_layer_name">SWITCH</string>
+    <string name="domain_check_name">Check</string>
 </resources>

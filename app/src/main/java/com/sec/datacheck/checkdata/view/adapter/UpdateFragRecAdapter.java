@@ -64,6 +64,10 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
             } else if (field.getType() == 2) {
                 holder.viewAnimator.setDisplayedChild(0);
                 setTextFieldViews(holder, field, position);
+            } else if (field.getType() == 3) {
+                holder.viewAnimator.setDisplayedChild(2);
+                setEditableDomainViews(holder, field, position);
+                domainCheckPositions.add(position);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,7 +109,7 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
             ArrayAdapter adapter = new ArrayAdapter<String>(mCurrent, android.R.layout.simple_spinner_dropdown_item, typesList);
             spinner.setAdapter(adapter);
 
-            if ((int) fieldModel.getSelectedDomainIndex() != 0) {
+            if (fieldModel.getSelectedDomainIndex() != null && (int) fieldModel.getSelectedDomainIndex() != 0) {
                 spinner.setSelection(((Integer) fieldModel.getSelectedDomainIndex()) - 1);
             } else {
                 spinner.setSelection(0);
@@ -125,6 +129,15 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
         }
     }
 
+    private void setEditableDomainViews(viewHolder holder, FieldModel field, int position) {
+        try {
+            holder.editableDomainTitle.setText(field.getTitle());
+            initSpinner(holder.editableDomainSpinner, field);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public int getItemCount() {
         return data.size();
@@ -135,9 +148,16 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
         @BindView(R.id.ufrri_view_animator)
         ViewAnimator viewAnimator;
 
-        //text field layout
+        //type 1
+        @BindView(R.id.ufrri_domain_field_title_lbl)
+        TextView domainFieldTitle;
+
+        @BindView(R.id.ufrri_text_field_spinner)
+        Spinner textFieldSpinner;
+
+        //type 2
         @BindView(R.id.text_field_container)
-        ConstraintLayout textFieldContainer;
+        ConstraintLayout textFieldContainer;//text field layout
 
         @BindView(R.id.ufrri_text_field_title_lbl)
         TextView textFieldTitle;
@@ -145,12 +165,12 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
         @BindView(R.id.ufrri_text_field_value_lbl)
         TextView textFieldValue;
 
-        @BindView(R.id.ufrri_domain_field_title_lbl)
-        TextView domainFieldTitle;
+        //type 3
+        @BindView(R.id.ufrri_domain_field_header_lbl)
+        TextView editableDomainTitle;
 
-        @BindView(R.id.ufrri_text_field_spinner)
-        Spinner textFieldSpinner;
-
+        @BindView(R.id.ufrri_domain_field_value_lbl)
+        Spinner editableDomainSpinner;
 
         viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -159,6 +179,7 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
                 ButterKnife.bind(this, itemView);
 
                 textFieldSpinner.setOnItemSelectedListener(this);
+                editableDomainSpinner.setOnItemSelectedListener(this);
             } catch (Exception e) {
                 e.printStackTrace();
             }

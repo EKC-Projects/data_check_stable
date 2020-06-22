@@ -104,8 +104,16 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     public static final String POLYGON = "Polygon";
     private static final String TAG = "MapActivity";
 
-    private static final int WRITE_EXTERNAL_STORAGE_REQUEST = 2;
-    final int MY_LOCATION_REQUEST_CODE = 2;
+    private static final int REQUEST_CODE_GALLERY = 1;
+    private static final int REQUEST_CODE_TAKE_PICTURE = 2;
+    private static final int WRITE_EXTERNAL_STORAGE = 3;
+    private static final int READ_EXTERNAL_STORAGE = 4;
+    private static final int REQUEST_CODE_VIDEO = 5;
+    private static final int REQUEST_CODE_AUDIO = 6;
+
+    private static final int WRITE_EXTERNAL_STORAGE_REQUEST = 7;
+    final int MY_LOCATION_REQUEST_CODE = 8;
+
 
     @BindView(R.id.mapView)
     public MapView mapView;
@@ -280,6 +288,8 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         try {
             mCurrent = MapActivity.this;
 
+            requestPermission();
+
             ButterKnife.bind(mCurrent);
 
             presenter = new MapPresenter(this, mCurrent);
@@ -313,6 +323,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 onlineData = false;
                 showOfflineMapsList(mCurrent, mapView);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -529,6 +540,31 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         return true;
     }
 
+    private void requestPermission() {
+        try {
+            Log.e(TAG, "requestPermission: is called");
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(mCurrent,
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE},
+                        MY_LOCATION_REQUEST_CODE);
+            }
+
+//            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_TAKE_PICTURE);
+//            }
+//
+//            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL_STORAGE);
+//            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     private void initSingleTap() {
         try {
@@ -638,12 +674,14 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
             try {
-                if ((permissions[0].equals(Manifest.permission.ACCESS_FINE_LOCATION) &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED) || (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION) &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    showDeviceLocation();
-                } else {
-                    Utilities.showToast(mCurrent, getString(R.string.please_open_gps_location));
+                if (permissions != null && permissions.length > 0) {
+                    if ((permissions[0].equals(Manifest.permission.ACCESS_FINE_LOCATION) &&
+                            grantResults[0] == PackageManager.PERMISSION_GRANTED) || (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION) &&
+                            grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                        showDeviceLocation();
+                    } else {
+                        Utilities.showToast(mCurrent, getString(R.string.please_open_gps_location));
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1679,11 +1717,9 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                         for (OnlineQueryResult result : results) {
                             if (result.getFeatureType().equals(POINT)) {
                                 handleSelectPoint(result, pointOnMap);
-                            }
-                            else if (result.getFeatureType().equals(POLYLINE)) {
+                            } else if (result.getFeatureType().equals(POLYLINE)) {
                                 handleSelectPolyLine(result);
-                            }
-                            else if (result.getFeatureType().equals(POLYGON)) {
+                            } else if (result.getFeatureType().equals(POLYGON)) {
                                 handleSelectPolygon(result);
                             }
                         }
