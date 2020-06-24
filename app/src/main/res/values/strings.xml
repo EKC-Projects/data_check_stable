@@ -29,6 +29,9 @@
     <string name="notes">Notes:</string>
 
     <!--Ali Ussama Update-->
+    <string name="open_street_map_url" translatable="false">http://5.9.13.170:7080/PBS/rest/services/OpenStreetMap/MapServer</string>
+    <string name="google_map_url" translatable="false">http://5.9.13.170:7080/PBS/rest/services/GoogleMapsImagery/MapServer</string>
+
     <string name="BaseMap" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_AllMap/MapServer</string>
     <string name="BaseMap2" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/MapServer</string>
 
@@ -284,4 +287,7 @@
     <string name="transformers_layer_name">TRANSFORMER</string>
     <string name="switch_layer_name">SWITCH</string>
     <string name="domain_check_name">Check</string>
+    <string name="load_map">Load Map</string>
+    <string name="open_street_map">Esri Open Street</string>
+    <string name="google_map">Google Map</string>
 </resources>

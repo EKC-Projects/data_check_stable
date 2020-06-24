@@ -1960,7 +1960,7 @@ public class MapPresenter {
     /**
      * --------------------------------update offline mode----------------------------------------
      */
-    
+
     public void updateOffline(OnlineQueryResult result, ArrayList<FieldModel> fieldModels, String note) {
         try {
             Log.i(TAG, "updateFeatureOffline(): is called");

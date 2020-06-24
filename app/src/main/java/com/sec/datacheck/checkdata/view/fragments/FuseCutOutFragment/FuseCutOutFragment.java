@@ -133,8 +133,7 @@ public class FuseCutOutFragment extends Fragment implements View.OnClickListener
 
             if (mCurrent.onlineData) {
                 loadFeature();
-            }
-            else {
+            } else {
                 loadFeatureOffline();
 
             }
@@ -151,7 +150,7 @@ public class FuseCutOutFragment extends Fragment implements View.OnClickListener
 
 
             init();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }
@@ -224,7 +223,7 @@ public class FuseCutOutFragment extends Fragment implements View.OnClickListener
             mCurrent.menuItemGoOfflineMode.setVisible(false);
             mCurrent.menuItemGoOnlineMode.setVisible(false);
             mCurrent.menuItemOverflow.setVisible(false);
-
+            mCurrent.loadMaps.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -282,9 +281,9 @@ public class FuseCutOutFragment extends Fragment implements View.OnClickListener
             CodedValueDomain typeDomain;
             List<CodedValue> codedValues;
             if (mCurrent.onlineData) {
-                 typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
+                typeDomain = (CodedValueDomain) mSelectedResult.getServiceFeatureTable().getField(columnName).getDomain();
                 codedValues = typeDomain.getCodedValues();
-            }else{
+            } else {
                 typeDomain = (CodedValueDomain) mSelectedResult.getGeodatabaseFeatureTable().getField(columnName).getDomain();
                 codedValues = typeDomain.getCodedValues();
             }
@@ -299,10 +298,10 @@ public class FuseCutOutFragment extends Fragment implements View.OnClickListener
             int code = 0;
 
             try {
-                if (selectedFeature.getAttributes() == null){
+                if (selectedFeature.getAttributes() == null) {
                     Log.i(TAG, "initSpinner(): selectedFeature.getAttributes() == null");
 
-                }else if (selectedFeature.getAttributes().get(columnName) == null){
+                } else if (selectedFeature.getAttributes().get(columnName) == null) {
                     Log.i(TAG, "initSpinner(): selectedFeature.getAttributes().get(columnName) == null");
 
                 }
@@ -345,7 +344,7 @@ public class FuseCutOutFragment extends Fragment implements View.OnClickListener
 
             if (mCurrent.onlineData) {
                 mPresenter.updateFuseCutOutOnline(mSelectedResult, fuseCutOutModel);
-            }else{
+            } else {
                 mPresenter.updateFuseCutOutOffline(mSelectedResult, fuseCutOutModel);
             }
         } catch (Exception e) {

@@ -172,6 +172,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
             mCurrent.menuItemGoOfflineMode.setVisible(false);
             mCurrent.menuItemGoOnlineMode.setVisible(false);
             mCurrent.menuItemOverflow.setVisible(false);
+            mCurrent.loadMaps.setVisible(false);
 
         } catch (Exception e) {
             e.printStackTrace();
