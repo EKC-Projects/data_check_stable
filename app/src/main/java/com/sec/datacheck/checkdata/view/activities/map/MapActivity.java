@@ -431,6 +431,11 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             mapView.setMap(baseMap);
 
+            if (mapView.getSpatialReference() == null) {
+                Log.e(TAG, "initMap: mapView SpatialReference is null");
+            } else {
+                Log.e(TAG, "initMap: mapView SpatialReference is " + mapView.getSpatialReference().getWkid());
+            }
             pointCollection = new PointCollection(mapView.getSpatialReference());
 
             // wraparound is enabled if layers within map support it
@@ -438,6 +443,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             graphicsOverlay = new GraphicsOverlay();
             pictureMarkerSymbol = new PictureMarkerSymbol((BitmapDrawable) getResources().getDrawable(R.drawable.ic_marker_64));
+            pictureMarkerSymbol.setOffsetY(10f);
             mapView.getGraphicsOverlays().add(graphicsOverlay);
 
         } catch (Exception e) {
@@ -1513,12 +1519,15 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         try {
             if (drawMeasure) {
                 if (shapeType.matches(POLYLINE)) {
-                    if (pointCollection.size() < 2) {
-                        pointCollection.add(point);
-                        drawLine(pointCollection);
-                    } else {
-                        Utilities.showToast(mCurrent, "Please undo, or press Done and remeasure again");
+                    if (pointCollection.getSpatialReference() == null) {
+                        pointCollection = new PointCollection(mapView.getSpatialReference());
                     }
+//                    if (pointCollection.size() < 2) {
+                    pointCollection.add(point);
+                    drawLine(pointCollection);
+//                    } else {
+//                        Utilities.showToast(mCurrent, "Please undo, or press Done and remeasure again");
+//                    }
                 }
 
             } else if (drawShape) {
@@ -2161,10 +2170,9 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         try {
             Log.i(TAG, "redo(): is called");
             if (pointCollection != null && lastPointStep != null) {
-                if (pointCollection.size() < 2) {
-                    pointCollection.add(lastPointStep);
-                    drawLine(pointCollection);
-                }
+                pointCollection.add(lastPointStep);
+                drawLine(pointCollection);
+                lastPointStep = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -2186,10 +2194,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
                         drawLine(pointCollection);
 
-                    } else if (shapeType.matches(POLYGON)) {
-
                     }
-                    //                    drawShape();
                 } else
                     graphicsOverlay.getGraphics().clear();
             } else {
@@ -2223,18 +2228,26 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             Graphic line = new Graphic(polyline, lineSymbol);
             drawGraphicLayer.getGraphics().add(line);
 
-            for (Point point : pointCollection) {
+            for (Point point : points) {
                 drawGraphicLayer.getGraphics().add(new Graphic(point, pictureMarkerSymbol));
             }
 
-            if (pointCollection.size() == 2) {
+            if (points.size() >= 2) {
+                mMeasureValueInKMLbl.setText("");
+                mMeasureValueInMeterLbl.setText("");
                 show(mMeasureLayerInfo);
                 show(mMeasureInMeterLbl);
                 show(mMeasureValueInMeterLbl);
                 show(mMeasureInKMLbl);
                 show(mMeasureValueInKMLbl);
-                calculateDistanceBetweenTwoPoints(pointCollection.get(0), pointCollection.get(1), mapView.getSpatialReference());
+                for (int i = 0; i < points.size(); i++) {
+                    if (i < points.size() - 1) {
+                        calculateDistanceBetweenTwoPoints(points.get(i), points.get(i + 1), mapView.getSpatialReference());
+                    }
+                }
             } else {
+                mMeasureValueInKMLbl.setText("");
+                mMeasureValueInMeterLbl.setText("");
                 hide(mMeasureLayerInfo);
                 hide(mMeasureInMeterLbl);
                 hide(mMeasureValueInMeterLbl);
@@ -2269,7 +2282,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     private void startDrawMode() {
         try {
             Log.i(TAG, "startDrawMode(): is called");
-            drawShape = true;
+            drawMeasure = true;
 
             drawGraphicLayer = new GraphicsOverlay();
             mapView.getGraphicsOverlays().add(drawGraphicLayer);
@@ -2340,9 +2353,22 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             Log.i(TAG, "calculateDistanceBetweenTwoPoints(): distance in Meter = " + planarDistanceMeters);
             Log.i(TAG, "calculateDistanceBetweenTwoPoints(): distance in KM = " + (planarDistanceMeters / 1000));
 
-            mMeasureValueInMeterLbl.setText(String.valueOf(Utilities.round(planarDistanceMeters, 2)));
+            if (mMeasureValueInMeterLbl.getText() != null && mMeasureValueInMeterLbl.getText().toString() != null && !mMeasureValueInMeterLbl.getText().toString().isEmpty()) {
+                double displayedMeterDistance = Double.parseDouble(mMeasureValueInMeterLbl.getText().toString()) + planarDistanceMeters;
+                double displayedKMDistance = Double.parseDouble(mMeasureValueInKMLbl.getText().toString()) + (planarDistanceMeters / 1000);
 
-            mMeasureValueInKMLbl.setText(String.valueOf(Utilities.round((planarDistanceMeters / 1000), 2)));
+
+                Log.i(TAG, "calculateDistanceBetweenTwoPoints(): lbl distance in Meter = " + Double.parseDouble(mMeasureValueInMeterLbl.getText().toString()) + " - displayedMeterDistance = " + displayedMeterDistance);
+                Log.i(TAG, "calculateDistanceBetweenTwoPoints(): lbl distance in KM = " + Double.parseDouble(mMeasureValueInKMLbl.getText().toString()) + " - displayedKMDistance = " + displayedKMDistance);
+
+                mMeasureValueInMeterLbl.setText(String.valueOf(Utilities.round(displayedMeterDistance, 2)));
+
+                mMeasureValueInKMLbl.setText(String.valueOf(Utilities.round(displayedKMDistance, 2)));
+            } else {
+                mMeasureValueInMeterLbl.setText(String.valueOf(Utilities.round(planarDistanceMeters, 2)));
+
+                mMeasureValueInKMLbl.setText(String.valueOf(Utilities.round((planarDistanceMeters / 1000), 2)));
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
