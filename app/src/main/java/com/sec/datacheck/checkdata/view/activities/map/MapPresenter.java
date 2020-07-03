@@ -1000,11 +1000,6 @@ public class MapPresenter {
                                                 mCurrent.menuItemOffline.setVisible(false);
                                                 mCurrent.menuItemSync.setVisible(true);
                                                 mCurrent.menuItemOnline.setVisible(true);
-                                                if (isLocalGeoDatabase()) {
-                                                    mCurrent.menuItemLoad.setVisible(false);
-                                                } else {
-                                                    mCurrent.menuItemLoad.setVisible(true);
-                                                }
 
                                                 Utilities.dismissLoadingDialog();
 
