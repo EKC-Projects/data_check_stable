@@ -60,7 +60,6 @@ import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.layers.ArcGISTiledLayer;
 import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
-import com.esri.arcgisruntime.mapping.ArcGISTiledElevationSource;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.Graphic;
@@ -263,6 +262,8 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     private boolean drawMeasure = false;
     private MapType selectedMapType;
 
+    private MenuItem mDefaultMapItem, mOpenStreetMapItem, mGoogleItem;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -309,8 +310,8 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             initSheetBehavior();
 
-            selectedMapType = MapType.OPEN_STREET_MAP;
-            initMap(MapType.OPEN_STREET_MAP);
+            selectedMapType = MapType.DEFAULT_MAP;
+            initMap(selectedMapType);
 
             initOnlineLayers(baseMap, mapView);
 
@@ -419,15 +420,20 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
             //Declaring baseMap
             ArcGISTiledLayer tiledLayer;
+            Basemap basemap = new Basemap();
 
             if (mapType == MapType.OPEN_STREET_MAP) {
                 tiledLayer = new ArcGISTiledLayer(getString(R.string.open_street_map_url));
-            } else {
+                basemap.getBaseLayers().add(tiledLayer);
+                baseMap = new ArcGISMap(basemap);
+            } else if (mapType == MapType.GOOGLE_MAP) {
                 tiledLayer = new ArcGISTiledLayer(getString(R.string.google_map_url));
+                basemap.getBaseLayers().add(tiledLayer);
+                baseMap = new ArcGISMap(basemap);
+            } else if (mapType == MapType.DEFAULT_MAP) {
+                baseMap = new ArcGISMap(Basemap.createOpenStreetMap());
+                baseMap.setMaxScale(100);
             }
-
-            Basemap basemap = new Basemap(tiledLayer);
-            baseMap = new ArcGISMap(basemap);
 
             mapView.setMap(baseMap);
 
@@ -1117,17 +1123,18 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             item_load_previous_offline = menu.findItem(R.id.item_load_previous_offline);
             menuItemOnline = menu.findItem(R.id.item_go_online);
             menuItemSync = menu.findItem(R.id.item_sync);
-            menuItemLoad = menu.findItem(R.id.item_load_previous);
             menuItemGoOfflineMode = menu.findItem(R.id.item_go_offline_mode);
             menuItemGoOnlineMode = menu.findItem(R.id.item_go_online_mode);
             menuItemOverflow = menu.findItem(R.id.overflow);
             loadMaps = menu.findItem(R.id.item_load_maps);
 
-            if (presenter.isLocalGeoDatabase() && Utilities.isNetworkAvailable(this)) {
-                menuItemLoad.setVisible(false);
-            } else {
-                menuItemLoad.setVisible(true);
-            }
+            mDefaultMapItem = menu.findItem(R.id.default_map);
+            mOpenStreetMapItem = menu.findItem(R.id.open_street_map);
+            mGoogleItem = menu.findItem(R.id.google_map);
+
+            mDefaultMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_done_24));
+            mOpenStreetMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
+            mGoogleItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
 
             if (!onlineData) {
                 item_load_previous_offline.setVisible(true);
@@ -1152,12 +1159,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-
-            case R.id.item_draw_polygon:
-
-
-                break;
-            case R.id.item_current_extent:
+            case R.id.item_go_offline:
                 // define permission to request
                 String[] reqPermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -1173,9 +1175,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return true;
-            case R.id.item_load_previous:
-                showOfflineMapsList(mCurrent, mapView);
                 return true;
             case R.id.item_load_previous_offline:
                 showOfflineMapsList(mCurrent, mapView);
@@ -1221,22 +1220,33 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             case R.id.google_map:
                 loadGoogleMap();
                 return true;
+            case R.id.default_map:
+                loadDefaultMap();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void loadGoogleMap() {
         try {
-            selectedMapType = MapType.GOOGLE_MAP;
-            currentViewPoint = mapView.getCurrentViewpoint(Viewpoint.Type.BOUNDING_GEOMETRY);
-            initMap(MapType.GOOGLE_MAP);
+            if (Utilities.isNetworkAvailable(mCurrent)) {
+                mDefaultMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
+                mOpenStreetMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
+                mGoogleItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_done_24));
 
-            if (onlineData) {
-                initOnlineLayers(baseMap, mapView);
+                selectedMapType = MapType.GOOGLE_MAP;
+                currentViewPoint = mapView.getCurrentViewpoint(Viewpoint.Type.BOUNDING_GEOMETRY);
+                initMap(selectedMapType);
+
+                if (onlineData) {
+                    initOnlineLayers(baseMap, mapView);
+                } else {
+                    presenter.addLocalLayers(mapView, baseMap, currentOfflineVersion, currentOfflineVersionTitle);
+                }
+                zoomToViewPoint(currentViewPoint);
             } else {
-                presenter.addLocalLayers(mapView, baseMap, currentOfflineVersion, currentOfflineVersionTitle);
+                Utilities.showAlertDialog(mCurrent, getString(R.string.no_internet), getString(R.string.ok));
             }
-            zoomToViewPoint(currentViewPoint);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1244,9 +1254,38 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
 
     private void loadOpenStreetMap() {
         try {
-            selectedMapType = MapType.OPEN_STREET_MAP;
+            if (Utilities.isNetworkAvailable(mCurrent)) {
+                mDefaultMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
+                mOpenStreetMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_done_24));
+                mGoogleItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
+
+                selectedMapType = MapType.OPEN_STREET_MAP;
+                currentViewPoint = mapView.getCurrentViewpoint(Viewpoint.Type.BOUNDING_GEOMETRY);
+                initMap(selectedMapType);
+
+                if (onlineData) {
+                    initOnlineLayers(baseMap, mapView);
+                } else {
+                    presenter.addLocalLayers(mapView, baseMap, currentOfflineVersion, currentOfflineVersionTitle);
+                }
+                zoomToViewPoint(currentViewPoint);
+            } else {
+                Utilities.showAlertDialog(mCurrent, getString(R.string.no_internet), getString(R.string.ok));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadDefaultMap() {
+        try {
+            mDefaultMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_done_24));
+            mOpenStreetMapItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
+            mGoogleItem.setIcon(getResources().getDrawable(R.drawable.ic_baseline_fiber_manual_record_24));
+
+            selectedMapType = MapType.DEFAULT_MAP;
             currentViewPoint = mapView.getCurrentViewpoint(Viewpoint.Type.BOUNDING_GEOMETRY);
-            initMap(MapType.OPEN_STREET_MAP);
+            initMap(selectedMapType);
 
             if (onlineData) {
                 initOnlineLayers(baseMap, mapView);
@@ -1258,6 +1297,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             e.printStackTrace();
         }
     }
+
 
     private void zoomToViewPoint(Viewpoint currentViewPoint) {
         try {
@@ -1685,11 +1725,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 menuItemOffline.setVisible(false);
                 menuItemSync.setVisible(true);
                 menuItemOnline.setVisible(true);
-                if (presenter.isLocalGeoDatabase()) {
-                    menuItemLoad.setVisible(false);
-                } else {
-                    menuItemLoad.setVisible(true);
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -2413,6 +2448,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     }
 
     enum MapType {
+        DEFAULT_MAP,
         GOOGLE_MAP,
         OPEN_STREET_MAP
     }

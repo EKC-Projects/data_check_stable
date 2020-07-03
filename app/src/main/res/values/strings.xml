@@ -290,4 +290,5 @@
     <string name="load_map">Load Map</string>
     <string name="open_street_map">Esri Open Street</string>
     <string name="google_map">Google Map</string>
+    <string name="default_map">Default Map</string>
 </resources>
