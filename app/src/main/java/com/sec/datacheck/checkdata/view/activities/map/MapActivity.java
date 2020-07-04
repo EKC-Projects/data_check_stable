@@ -432,7 +432,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 baseMap = new ArcGISMap(basemap);
             } else if (mapType == MapType.DEFAULT_MAP) {
                 baseMap = new ArcGISMap(Basemap.createOpenStreetMap());
-                baseMap.setMaxScale(100);
+                baseMap.setMaxScale(1);
             }
 
             mapView.setMap(baseMap);
