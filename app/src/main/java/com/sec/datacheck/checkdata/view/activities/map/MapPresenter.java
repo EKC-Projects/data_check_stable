@@ -60,7 +60,7 @@ import java.util.concurrent.ExecutionException;
 public class MapPresenter {
 
     private static final String ROOT_GEO_DATABASE_PATH = "geodatabase";
-    private final String IMAGE_FOLDER_NAME = "SEC_Check_Data";
+    private final String IMAGE_FOLDER_NAME = "SEC_Data_Check";
     private final String TAG = "MapPresenter";
     public static final String POINT = "Point";
     public static final String POLYLINE = "PolyLine";

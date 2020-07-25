@@ -120,7 +120,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
     private static final int READ_EXTERNAL_STORAGE = 4;
     private static final int REQUEST_CODE_VIDEO = 5;
     private static final int REQUEST_CODE_AUDIO = 6;
-    private final String IMAGE_FOLDER_NAME = "SEC_Check_Data";
+    private final String IMAGE_FOLDER_NAME = "SEC_Data_Check";
 
     private static final String JPG = "jpg";
     private static final String MP4 = "mp4";
