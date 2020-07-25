@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.service.autofill.RegexValidator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -313,7 +314,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
                             if (isCheckDomain(field.getDomain())) {//Yes, No, N / A Domain
 
                                 //if domain doesn't have data field
-                                if (!isDomainHasDataField(field.getName(), fieldList)) {//TODO Domain Must Have default value
+                                if (!isDomainHasDataField(field, fieldList)) {//TODO Domain Must Have default value
                                     CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
                                     fieldModel.setChoiceDomain(codedValueDomain);
                                     fieldModel.setType(3);//Domain hasn't data field to check
@@ -373,18 +374,18 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         return false;
     }
 
-    private boolean isDomainHasDataField(String name, List<Field> fieldList) {
-        String[] nameSplit = name.split("_Check");
-        if (name.endsWith("_Check") && nameSplit != null && nameSplit.length > 0) {
-            String _name = nameSplit[0];
+    private boolean isDomainHasDataField(Field originalField, List<Field> fieldList) {
+        String alias = originalField.getAlias();
+        if ((originalField.getAlias() != null && alias.toLowerCase().endsWith("_check"))) {
             for (Field field : fieldList) {
-                if (field.getName().equals(_name)) {
-                    Log.e(TAG, "isDomainHasDataField: field " + _name + " has data field");
+                if (alias.startsWith(field.getName())) {
+                    Log.e(TAG, "isDomainHasDataField: field " + alias + " has data field");
                     return true;
                 }
             }
+
         } else {
-            Log.e(TAG, "isDomainHasDataField: field " + name + " hasn't data field");
+            Log.e(TAG, "isDomainHasDataField: #2 field " + alias + " hasn't data field");
         }
         return false;
     }
@@ -755,7 +756,8 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         startActivityForResult(photoPickerIntent, REQUEST_CODE_GALLERY);
     }
 
-    public static Bitmap decodeScaledBitmapFromSdCard(String filePath, int reqWidth, int reqHeight) {
+    public static Bitmap decodeScaledBitmapFromSdCard(String filePath, int reqWidth,
+                                                      int reqHeight) {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -770,7 +772,8 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         return BitmapFactory.decodeFile(filePath, options);
     }
 
-    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth,
+                                            int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;
@@ -791,7 +794,8 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         return inSampleSize;
     }
 
-    private static File compressImage(String filePath, Context context, String imageClassType, String customerCode) {
+    private static File compressImage(String filePath, Context context, String
+            imageClassType, String customerCode) {
 
 //        String filePath = getRealPathFromURI(imageUri, context);
         Bitmap scaledBitmap = null;

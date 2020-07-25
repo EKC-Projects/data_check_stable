@@ -1143,12 +1143,14 @@ public class MapPresenter {
         ArrayList<FieldModel> result = new ArrayList<>();
 
         result.add(getField(fields, mCurrent.getString(R.string.objectid), 2));
+        result.add(getField(fields, mCurrent.getString(R.string.site_visit), 3));
         Log.i(TAG, "sortFields: fields size = " + fields.size());
         for (FieldModel field : fields) {
 
             Log.i(TAG, "sortFields: field title = " + field.getTitle());
 
-            if (field.getType() == 2 && !field.getTitle().toLowerCase().equals(mCurrent.getString(R.string.objectid).toLowerCase())
+            if (field.getType() == 2 &&
+                    !isObjectID(field, mCurrent)
                     && isValidField(field.getTitle())) {
 
                 result.add(field);
@@ -1165,7 +1167,7 @@ public class MapPresenter {
         }
 
         for (FieldModel field : fields) {
-            if (field.getType() == 3) {
+            if (field.getType() == 3 && !isSiteVisit(field, mCurrent)) {
                 result.add(field);
             }
         }
@@ -1195,6 +1197,13 @@ public class MapPresenter {
         return true;
     }
 
+    private boolean isObjectID(FieldModel field, MapActivity mCurrent) {
+        return field.getTitle().toLowerCase().equals(mCurrent.getString(R.string.objectid).toLowerCase());
+    }
+
+    private boolean isSiteVisit(FieldModel field, MapActivity mCurrent) {
+        return field.getTitle().toLowerCase().equals(mCurrent.getString(R.string.site_visit).toLowerCase());
+    }
     /**-----------------------------------Updates-------------------------------------------------**/
 
     /**

@@ -275,6 +275,7 @@
     <string name="naa">NAA</string>
     <string name="null_">Null</string>
     <string name="objectid">OBJECTID</string>
+    <string name="site_visit">Site_Visit</string>
     <string name="edit_feature">Edit Feature</string>
     <string name="DYNAMIC_PROTECTIVE_DEVICE_layer_name">DYNAMIC_PROTECTIVE_DEVICE</string>
     <string name="FUSE_layer_name">FUSE</string>

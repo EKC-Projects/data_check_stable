@@ -131,7 +131,12 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
 
     private void setEditableDomainViews(viewHolder holder, FieldModel field, int position) {
         try {
-            holder.editableDomainTitle.setText(field.getTitle());
+            if (field.getAlias().equals(mCurrent.getString(R.string.site_visit))) {
+                holder.editableDomainContainer.setBackgroundColor(mCurrent.getResources().getColor(R.color.orange));
+            } else {
+                holder.editableDomainContainer.setBackgroundColor(mCurrent.getResources().getColor(R.color.purple));
+            }
+            holder.editableDomainTitle.setText(field.getAlias());
             initSpinner(holder.editableDomainSpinner, field);
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,6 +171,9 @@ public class UpdateFragRecAdapter extends RecyclerView.Adapter<UpdateFragRecAdap
         TextView textFieldValue;
 
         //type 3
+        @BindView(R.id.domain_title_container)
+        ConstraintLayout editableDomainContainer;//Editable Domain layout
+
         @BindView(R.id.ufrri_domain_field_header_lbl)
         TextView editableDomainTitle;
 
