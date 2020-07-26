@@ -1814,37 +1814,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     private void showOfflineQueryResult(ArrayList<OnlineQueryResult> results, Point pointOnMap) {
         try {
             queryStatus = false;
-            if (results.size() == 1) {
-                runOnUiThread(() -> {
-                    try {
-                        for (OnlineQueryResult result : results) {
-                            if (result.getFeatureType().equals(POINT)) {
-                                handleSelectPoint(result, pointOnMap);
-                            } else if (result.getFeatureType().equals(POLYLINE)) {
-                                handleSelectPolyLine(result);
-                            } else if (result.getFeatureType().equals(POLYGON)) {
-                                handleSelectPolygon(result);
-                            }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-            } else {
-                handleMultiOnlineQueryResult(results, pointOnMap);
-            }
-
-        } catch (
-                Exception e) {
-            e.printStackTrace();
-            Utilities.dismissLoadingDialog();
-        }
-    }
-
-    private void showQueryResult(ArrayList<OnlineQueryResult> results, Point pointOnMap) {
-        try {
-            Log.i(TAG, "showQueryResult():is called");
-            queryStatus = false;
             if (results != null && !results.isEmpty()) {
                 Log.i(TAG, "showQueryResult(): there is feature");
                 Log.i(TAG, "showQueryResult(): listQueryResults size = " + results.size());
@@ -1865,7 +1834,49 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                             e.printStackTrace();
                         }
                     });
-                } else {
+                } else if (results != null && results.size() > 1){
+                    handleMultiOnlineQueryResult(results, pointOnMap);
+                }
+
+            } else {
+                runOnUiThread(() -> {
+                    Utilities.dismissLoadingDialog();
+                    Toast.makeText(mCurrent, getString(R.string.zoom_more), Toast.LENGTH_SHORT).show();
+                });
+            }
+
+        } catch (
+                Exception e) {
+            e.printStackTrace();
+            Utilities.dismissLoadingDialog();
+        }
+    }
+
+    private void showQueryResult(ArrayList<OnlineQueryResult> results, Point pointOnMap) {
+        try {
+            Log.i(TAG, "showQueryResult():is called");
+            queryStatus = false;
+            if (results != null && !results.isEmpty()) {
+                Log.i(TAG, "showQueryResult(): there is feature");
+                Log.i(TAG, "showQueryResult(): listQueryResults size = " + results.size());
+
+                if (results != null && results.size() == 1) {
+                    runOnUiThread(() -> {
+                        try {
+                            for (OnlineQueryResult result : results) {
+                                if (result.getFeatureType().equals(POINT)) {
+                                    handleSelectPoint(result, pointOnMap);
+                                } else if (result.getFeatureType().equals(POLYLINE)) {
+                                    handleSelectPolyLine(result);
+                                } else if (result.getFeatureType().equals(POLYGON)) {
+                                    handleSelectPolygon(result);
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                } else if (results != null && results.size() > 1){
                     handleMultiOnlineQueryResult(results, pointOnMap);
                 }
 
@@ -1877,6 +1888,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             }
         } catch (Exception e) {
             e.printStackTrace();
+            Utilities.dismissLoadingDialog();
         }
     }
 

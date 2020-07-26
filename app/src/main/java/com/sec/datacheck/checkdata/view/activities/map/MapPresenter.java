@@ -286,6 +286,14 @@ public class MapPresenter {
                                 mOnlineQueryResult.setGeodatabaseFeatureTable(mGeodatabaseFeatureTable);
                                 mOnlineQueryResult.setFeatureLayer(mFeatureLayer);
                                 mOnlineQueryResult.setObjectID(String.valueOf(feature.getAttributes().get(Columns.ObjectID)));
+                                if (isPolygon(mFeatureLayer)) {
+                                    mOnlineQueryResult.setFeatureType(POLYGON);
+                                } else if (isPolyline(mFeatureLayer)) {
+                                    mOnlineQueryResult.setFeatureType(POLYLINE);
+                                } else {
+                                    mOnlineQueryResult.setFeatureType(POINT);
+                                }
+
                                 // select the feature
 //                        mFeatureLayer.selectFeature(feature);
                                 Log.i(TAG, "queryCheckDataOffline(): Feature founded with id = " + feature.getAttributes().get(Columns.ObjectID));
