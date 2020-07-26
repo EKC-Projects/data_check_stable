@@ -121,6 +121,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
     private static final int REQUEST_CODE_VIDEO = 5;
     private static final int REQUEST_CODE_AUDIO = 6;
     private final String IMAGE_FOLDER_NAME = "SEC_Data_Check";
+    private final String IMAGE_FOLDER_NAME_COMPRESSED = "SEC_Data_Check_Compressed";
 
     private static final String JPG = "jpg";
     private static final String MP4 = "mp4";
@@ -482,7 +483,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
             Date d = new Date();
             String date = new SimpleDateFormat("dd_MM_yyyy", Locale.ENGLISH).format(d);
 
-            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + File.separator + "AJC_Collector_COMPRESSED_Images" + File.separator;
+            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + File.separator + IMAGE_FOLDER_NAME_COMPRESSED + File.separator;
 //            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + File.separator + IMAGE_FOLDER_NAME + File.separator;
             Log.i(TAG, "loadImages(): path = " + path);
             File folder = new File(path);
@@ -794,7 +795,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         return inSampleSize;
     }
 
-    private static File compressImage(String filePath, Context context, String
+    private File compressImage(String filePath, Context context, String
             imageClassType, String customerCode) {
 
 //        String filePath = getRealPathFromURI(imageUri, context);
@@ -915,14 +916,13 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         return mImageFile;
     }
 
-    private static File getImageFile() {
-        final String IMAGES_FOLDER_NAME = "AJC_Collector_COMPRESSED_Images";
+    private File getImageFile() {
         File mediaStorageDir = null;
 
         try {
 
             mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DCIM), IMAGES_FOLDER_NAME);
+                    Environment.DIRECTORY_DCIM), IMAGE_FOLDER_NAME_COMPRESSED);
 
             if (!mediaStorageDir.exists())
                 mediaStorageDir.mkdir();
