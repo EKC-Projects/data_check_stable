@@ -376,17 +376,20 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
     }
 
     private boolean isDomainHasDataField(Field originalField, List<Field> fieldList) {
-        String alias = originalField.getAlias();
-        if ((originalField.getAlias() != null && alias.toLowerCase().endsWith("_check"))) {
-            for (Field field : fieldList) {
-                if (alias.startsWith(field.getName())) {
-                    Log.e(TAG, "isDomainHasDataField: field " + alias + " has data field");
+        String domainName = originalField.getName();
+        for (Field field : fieldList) {
+            if (domainName.startsWith(field.getName())) {
+                if ((field.getDomain() != null && field.getDomain() instanceof CodedValueDomain && !field.getDomain().getName().equals(getString(R.string.domain_check_name)))) {
+                    Log.e(TAG, "isDomainHasDataField: #2 field " + domainName + " has data field - domain name = " + field.getDomain().getName());
                     return true;
+                } else if (field.getDomain() == null) {
+                    Log.e(TAG, "isDomainHasDataField: #3 field " + domainName + " has data field");
+                    return true;
+                } else {
+                    Log.e(TAG, "isDomainHasDataField: #! field " + domainName + " hasn't data field");
+                    return false;
                 }
             }
-
-        } else {
-            Log.e(TAG, "isDomainHasDataField: #2 field " + alias + " hasn't data field");
         }
         return false;
     }
