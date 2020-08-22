@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sec.datacheck.R;
 import com.sec.datacheck.checkdata.model.PrefManager;
+import com.sec.datacheck.checkdata.view.activities.map.MainActivity;
 import com.sec.datacheck.checkdata.view.activities.map.MapActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -21,13 +22,13 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //If user not logged in before open login activity
-                Intent intent ;
+                Intent intent;
 //                if (isLoggedInBefore()) {
 //                intent =new Intent(SplashActivity.this, MapActivity.class);
 //                }else{
 //                    intent =new Intent(SplashActivity.this, LoginActivity.class);
 //                }
-                intent =new Intent(SplashActivity.this, MapActivity.class);
+                intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

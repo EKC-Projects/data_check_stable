@@ -16,7 +16,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.service.autofill.RegexValidator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,6 +46,7 @@ import com.esri.arcgisruntime.data.GeodatabaseFeatureTable;
 import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.github.clans.fab.FloatingActionButton;
 import com.sec.datacheck.R;
+import com.sec.datacheck.checkdata.model.Enums;
 import com.sec.datacheck.checkdata.model.models.Columns;
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult;
 import com.sec.datacheck.checkdata.view.POJO.FieldModel;
@@ -318,13 +318,13 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
                                 if (!isDomainHasDataField(field, fieldList)) {//TODO Domain Must Have default value
                                     CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
                                     fieldModel.setChoiceDomain(codedValueDomain);
-                                    fieldModel.setType(3);//Domain hasn't data field to check
+                                    fieldModel.setType(Enums.FieldType.DomainWithNoDataField.getType());//Domain hasn't data field to check
                                     fieldModel.setSelectedDomainIndex(selectedFeature.getAttributes().get(field.getName()));
                                 } else {
                                     //else if domain has data field
                                     CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
                                     fieldModel.setChoiceDomain(codedValueDomain);
-                                    fieldModel.setType(1);//Domain has data field to check
+                                    fieldModel.setType(Enums.FieldType.DomainWithDataField.getType());//Domain has data field to check
                                     fieldModel.setSelectedDomainIndex(selectedFeature.getAttributes().get(field.getName()));
                                 }
                             } else {
@@ -342,17 +342,17 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
                                     if (!founded) {
                                         fieldModel.setTextValue(mCurrent.getString(R.string.null_));
                                     }
-                                    fieldModel.setType(2);
+                                    fieldModel.setType(Enums.FieldType.DataField.getType());
                                 } else {
                                     CodedValueDomain codedValueDomain = (CodedValueDomain) field.getDomain();
                                     fieldModel.setChoiceDomain(codedValueDomain);
-                                    fieldModel.setType(3);//Domain hasn't data field to check
+                                    fieldModel.setType(Enums.FieldType.DomainWithNoDataField.getType());//Domain hasn't data field to check
                                     fieldModel.setSelectedDomainIndex(selectedFeature.getAttributes().get(field.getName()));
                                 }
                             }
                         } else {
                             fieldModel.setTextValue(String.valueOf(selectedFeature.getAttributes().get(field.getName())));
-                            fieldModel.setType(2);
+                            fieldModel.setType(Enums.FieldType.DataField.getType());
                         }
                         fields.add(fieldModel);
                     }

@@ -1,5 +1,8 @@
 package com.sec.datacheck.checkdata.model.models;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.HashMap;
 
 public class OConstants {
@@ -7,6 +10,7 @@ public class OConstants {
 
 //    public static final String LAYER_SERVICE_POINT = "EKC_Collector.DBO.Service_Point";
 
+    public static final int MY_LOCATION_REQUEST_CODE = 8;
 
     public static final String LAYER_Station = "station";
     public static final String LAYER_Substation = "Substation";
@@ -27,4 +31,12 @@ public class OConstants {
     public static final String LAYER_LVDB_AREA = "LVDB_AREA";
     public static final String LAYER_SWITCH = "SWITCH";
 
+    public static final String CHECK_DOMAIN_NAME = "Check";
+    @Nullable
+    public static final String null_ = "Null";
+
+    public static final String IMAGE_FOLDER_NAME = "SEC_Data_Check";
+    public static final String IMAGE_FOLDER_NAME_COMPRESSED = "SEC_Data_Check_Compressed";
+    @NotNull
+    public static final String SITE_VISITE = "Site_Visit";
 }

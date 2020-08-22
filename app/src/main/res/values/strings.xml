@@ -168,8 +168,6 @@
     <string name="service_point">Service Point</string>
     <string name="please_wait">Please Wait, Loading</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="overflow">overflow</string>
     <string name="required">مطلوب</string>
     <string name="cancel">Cancel</string>
@@ -292,4 +290,20 @@
     <string name="open_street_map">Esri Open Street</string>
     <string name="google_map">Google Map</string>
     <string name="default_map">Default Map</string>
+    <string name="compass">compass</string>
+    <string name="distance_in_km">المسافة بالكيلومتر</string>
+    <string name="equal">=</string>
+    <string name="distance_in_meter">المسافة بالمتـــــــر</string>
+
+    <string name="yes_choice">Yes</string>
+    <string name="no_choice">No</string>
+    <string name="nan_choice">N/A</string>
+    <string name="fields">Fields</string>
+    <string name="features">Features</string>
+    <string name="pictures">Pictures</string>
+    <string-array name="check_domain_list">
+        <item>@string/yes_choice</item>
+        <item>@string/no_choice</item>
+        <item>@string/nan_choice</item>
+    </string-array>
 </resources>

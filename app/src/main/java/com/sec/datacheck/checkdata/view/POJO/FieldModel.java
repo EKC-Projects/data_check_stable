@@ -23,6 +23,10 @@ public class FieldModel {
 
     private Object selectedDomainIndex;
 
+    private FieldModel checkDomain;
+
+    private Boolean hasCheckDomain;
+
     public FieldModel() {
     }
 
@@ -80,5 +84,21 @@ public class FieldModel {
 
     public void setChoiceDomain(CodedValueDomain choiceDomain) {
         this.choiceDomain = choiceDomain;
+    }
+
+    public FieldModel getCheckDomain() {
+        return checkDomain;
+    }
+
+    public void setCheckDomain(FieldModel checkDomain) {
+        this.checkDomain = checkDomain;
+    }
+
+    public Boolean isHasCheckDomain() {
+        return hasCheckDomain;
+    }
+
+    public void setHasCheckDomain(Boolean hasCheckDomain) {
+        this.hasCheckDomain = hasCheckDomain;
     }
 }

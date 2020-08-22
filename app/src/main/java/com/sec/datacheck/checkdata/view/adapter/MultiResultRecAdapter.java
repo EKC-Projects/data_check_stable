@@ -120,10 +120,10 @@ public class MultiResultRecAdapter extends RecyclerView.Adapter<MultiResultRecAd
         @BindView(R.id.edit_mulit_result_row_item_feature_container)
         LinearLayout mContainer;
 
-        @BindView(R.id.edit_mulit_result_row_item_feature_edit_ic)
+        @BindView(R.id.edit_multi_result_row_item_feature_edit_ic)
         ImageView editIV;
 
-        @BindView(R.id.edit_mulit_result_row_item_feature_title)
+        @BindView(R.id.edit_multi_result_row_item_feature_title)
         TextView mFeatureTitleTV;
 
         viewHolder(@NonNull View itemView) {
