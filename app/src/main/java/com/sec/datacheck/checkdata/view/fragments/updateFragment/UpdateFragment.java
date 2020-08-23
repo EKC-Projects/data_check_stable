@@ -709,7 +709,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
             mOfflineAttachmentsRV.setVisibility(View.VISIBLE);
             if (mFileTemp != null && mFileTemp.getPath() != null) {
                 Log.i(TAG, "addAttachmentToRecyclerView(): mFile Temp != null");
-                File newFile = compressImage(mFileTemp.getPath(), mCurrent, "", "");
+                File newFile = compressImage(mFileTemp.getPath());
                 mOfflineAttachmentRVAdapter.addImageBitmap(newFile);
                 mOfflineAttachmentRVAdapter.notifyDataSetChanged();
             } else {
@@ -798,8 +798,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         return inSampleSize;
     }
 
-    private File compressImage(String filePath, Context context, String
-            imageClassType, String customerCode) {
+    private File compressImage(String filePath) {
 
 //        String filePath = getRealPathFromURI(imageUri, context);
         Bitmap scaledBitmap = null;
@@ -903,7 +902,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         FileOutputStream out = null;
 
         File file = getImageFile();
-        String filename = getFilename(imageClassType, context, customerCode);
+        String filename = getFilename();
 
         File mImageFile = new File(file.getPath(), filename);
 
@@ -936,7 +935,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener {
         return mediaStorageDir;
     }
 
-    private static String getFilename(String type, Context context, String customerCode) {
+    private static String getFilename() {
         String uriSting = null;
 
 

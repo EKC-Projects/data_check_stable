@@ -2,9 +2,11 @@ package com.sec.datacheck.checkdata.view.activities.map
 
 import android.app.Application
 import android.content.Context
+import android.graphics.*
 import android.os.Environment
 import android.util.Log
 import androidx.core.content.res.ResourcesCompat
+import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.esri.arcgisruntime.concurrent.ListenableFuture
@@ -22,9 +24,16 @@ import com.sec.datacheck.checkdata.model.models.Columns
 import com.sec.datacheck.checkdata.model.models.OConstants
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult
 import com.sec.datacheck.checkdata.view.POJO.FieldModel
+import com.sec.datacheck.checkdata.view.fragments.updateFragment.UpdateFragment
 import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MapViewModel(application: Application) : AndroidViewModel(application) {
+    private val TAG = "MapViewModel"
     lateinit var currentOfflineVersionTitle: String
     var currentOfflineVersion: Int = -1
     lateinit var shapeType: Enums.SHAPE
@@ -36,12 +45,15 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     var onlineData = true
     var fields: ArrayList<FieldModel> = ArrayList()
     val featuresList: ArrayList<OnlineQueryResult> = ArrayList()
+    val liveDataFields = MutableLiveData<ArrayList<FieldModel>>()
     val imagesList: ArrayList<File> = ArrayList()
     lateinit var selectedFeature: Feature
     lateinit var selectedLayer: FeatureLayer
     lateinit var selectedTable: ServiceFeatureTable
     lateinit var selectedOfflineFeatureTable: GeodatabaseFeatureTable
     lateinit var objectID: String
+    lateinit var mFileTemp: File
+
     fun prepareQueryResult() {
         mOnlineQueryResults = ArrayList()
     }
@@ -288,7 +300,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                         }
 
                                         if (layer.featureLayer.name.equals("SERVICE_POINT", ignoreCase = true)) {
-//                                            queryRelatedOCLMETER(mOnlineQueryResults, mOnlineQueryResult, layer.featureLayer, point)
+                                            queryRelatedOCLMETER(mOnlineQueryResult, point)
                                         }
                                         mOnlineQueryResults.add(mOnlineQueryResult)
                                     }
@@ -305,6 +317,56 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 }
             }
+        }
+    }
+
+    private fun queryRelatedOCLMETER(mOnlineQueryResult: OnlineQueryResult, point: Point?) {
+        try {
+            val servicePoint = mOnlineQueryResult.feature
+            servicePoint.loadAsync()
+            servicePoint.addDoneLoadingListener {
+                if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
+                    val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
+                    val oclMeterTable = ServiceFeatureTable("http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/15")
+                    oclMeterTable.addDoneLoadingListener {
+                        val relatedQueryParameters = QueryConfig.getRelatedQuery(servicePointNo, Columns.OCL_METER.OCL_METER_FOREIGN_KEY, point)
+                        //                                    FeatureLayer layer = new FeatureLayer(oclMeterTable);
+                        val queryResults = oclMeterTable.queryFeaturesAsync(relatedQueryParameters)
+                        queryResults.addDoneListener {
+                            try {// call get on the future to get the result
+
+                                // call get on the future to get the result
+                                val mResult = queryResults.get()
+                                // check there are some results
+                                // check there are some results
+                                val mResultIterator: Iterator<Feature> = mResult.iterator()
+                                if (mResultIterator.hasNext()) {
+                                    mOnlineQueryResult.isHasRelatedFeatures = true
+                                    val onlineQueryResults = java.util.ArrayList<OnlineQueryResult>()
+                                    while (mResultIterator.hasNext()) {
+                                        val onlineQueryResult = OnlineQueryResult()
+                                        // get the extent of the first feature in the result to zoom to
+                                        val mFeature = mResultIterator.next() as ArcGISFeature
+                                        mFeature.loadAsync()
+                                        onlineQueryResult.feature = mFeature
+                                        onlineQueryResult.serviceFeatureTable = oclMeterTable
+                                        onlineQueryResult.objectID = mFeature.attributes[Columns.ObjectID].toString()
+                                        onlineQueryResult.featureType = Enums.SHAPE.POINT
+                                        onlineQueryResults.add(onlineQueryResult)
+                                        mOnlineQueryResult.relatedFeatures = onlineQueryResults
+
+                                    }
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+                    oclMeterTable.loadAsync()
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -329,7 +391,9 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     fun prepareSelectedFeature() {
         if (onlineData) {
             selectedFeature = selectedResult?.feature!!
-            selectedLayer = selectedResult?.featureLayer!!
+            selectedResult?.featureLayer?.let { layer ->
+                selectedLayer = layer
+            }
             selectedTable = selectedResult?.serviceFeatureTable!!
             objectID = selectedResult?.objectID!!
             selectedResult?.feature?.loadAsync()
@@ -343,7 +407,9 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             }
         } else {
             selectedFeature = selectedResult?.featureOffline!!
-            selectedLayer = selectedResult?.featureLayer!!
+            selectedResult?.featureLayer?.let { layer ->
+                selectedLayer = layer
+            }
             selectedOfflineFeatureTable = selectedResult?.geodatabaseFeatureTable!!
             objectID = selectedResult?.objectID!!
             extractData()
@@ -392,13 +458,13 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                     val codedValueDomain = field.domain as CodedValueDomain
                                     fieldModel.choiceDomain = codedValueDomain
                                     fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
-                                    fieldModel.selectedDomainIndex = selectedFeature.attributes[field.name]
+                                    fieldModel.selectedDomainIndex = codedValueDomain.codedValues.indexOf(selectedFeature.attributes[field.name])
                                 } else {
                                     //else if domain has data field
                                     val codedValueDomain = field.domain as CodedValueDomain
                                     fieldModel.choiceDomain = codedValueDomain
                                     fieldModel.type = Enums.FieldType.DomainWithDataField.type //Domain has data field to check
-                                    fieldModel.selectedDomainIndex = selectedFeature.attributes[field.name]
+                                    fieldModel.selectedDomainIndex = codedValueDomain.codedValues.indexOf(selectedFeature.attributes[field.name])
                                 }
                             } else {
                                 //any other Domain
@@ -420,7 +486,18 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                     val codedValueDomain = field.domain as CodedValueDomain
                                     fieldModel.choiceDomain = codedValueDomain
                                     fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
-                                    fieldModel.selectedDomainIndex = selectedFeature.attributes[field.name]
+                                    fieldModel.selectedDomainIndex = selectedFeature.attributes[field.name].toString()
+                                    codedValueDomain.codedValues?.let {
+                                        val fieldValue = selectedFeature.attributes[field.name].toString()
+                                        for (i in 0 until it.size) {
+                                            val name = it[i].name
+                                            val code = it[i].code
+                                            if (code == fieldValue) {
+                                                fieldModel.textValue = name
+                                                break
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         } else {
@@ -437,6 +514,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                 }
                 if (fields.isNotEmpty()) {
                     fields = sortFields(fields)
+                    liveDataFields.value = fields
                 }
             }
         } catch (e: Exception) {
@@ -526,10 +604,15 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         return null
     }
 
-    fun sortFields(fields: ArrayList<FieldModel>): ArrayList<FieldModel> {
+    private fun sortFields(fields: ArrayList<FieldModel>): ArrayList<FieldModel> {
         val result = java.util.ArrayList<FieldModel>()
-        result.add(getField(fields, Columns.ObjectID, Enums.FieldType.DataField.type)!!)
-        result.add(getField(fields, Columns.SiteVisit, Enums.FieldType.DomainWithNoDataField.type)!!)
+        getField(fields, Columns.ObjectID, Enums.FieldType.DataField.type)?.let {
+            result.add(it)
+        }
+
+        getField(fields, Columns.SiteVisit, Enums.FieldType.DomainWithNoDataField.type)?.let {
+            result.add(it)
+        }
 
         for (field in fields) {
 
@@ -557,6 +640,181 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun isSiteVisit(field: FieldModel): Boolean {
         return field.title.toLowerCase() == Columns.SiteVisit.toLowerCase()
+    }
+
+    fun createFile(name: String, layerFolderName: String, extension: String, type: String) {
+
+        try {
+            val d = Date()
+            val rootFolder = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), OConstants.IMAGE_FOLDER_NAME)
+            if (!rootFolder.exists()) {
+                rootFolder.mkdir()
+            }
+            val dateFolderName = File(rootFolder, SimpleDateFormat("dd_MM_yyyy", Locale.ENGLISH).format(d))
+            if (!dateFolderName.exists()) {
+                dateFolderName.mkdir()
+            }
+
+            val layerFolder = File(dateFolderName.path, layerFolderName)
+            if (!layerFolder.exists()) {
+                layerFolder.mkdir()
+            }
+            val pointFolder = File(layerFolder.path, name)
+            if (!pointFolder.exists()) {
+                pointFolder.mkdir()
+            }
+            mFileTemp = File(pointFolder.path + File.separator + type + "_" + SimpleDateFormat("dd_MM_yyyy_hh_mm_ss", Locale.ENGLISH).format(d) + layerFolderName + "_" + name + "." + extension.trim { it <= ' ' })
+
+            Log.e(TAG, "file createFile " + mFileTemp.path)
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun compressImage(filePath: String): File? {
+
+//        String filePath = getRealPathFromURI(imageUri, context);
+        var scaledBitmap: Bitmap? = null
+        val options = BitmapFactory.Options()
+
+//      by setting this field as true, the actual bitmap pixels are not loaded in the memory. Just the bounds are loaded. If
+//      you try the use the bitmap here, you will get null.
+        options.inJustDecodeBounds = true
+        var bmp = BitmapFactory.decodeFile(filePath, options)
+        var actualHeight = options.outHeight
+        var actualWidth = options.outWidth
+
+//      max Height and width values of the compressed image is taken as 816x612
+        val maxHeight = 816.0f
+        val maxWidth = 612.0f
+        var imgRatio = actualWidth / actualHeight.toFloat()
+        val maxRatio = maxWidth / maxHeight
+
+//      width and height values are set maintaining the aspect ratio of the image
+        if (actualHeight > maxHeight || actualWidth > maxWidth) {
+            if (imgRatio < maxRatio) {
+                imgRatio = maxHeight / actualHeight
+                actualWidth = (imgRatio * actualWidth).toInt()
+                actualHeight = maxHeight.toInt()
+            } else if (imgRatio > maxRatio) {
+                imgRatio = maxWidth / actualWidth
+                actualHeight = (imgRatio * actualHeight).toInt()
+                actualWidth = maxWidth.toInt()
+            } else {
+                actualHeight = maxHeight.toInt()
+                actualWidth = maxWidth.toInt()
+            }
+        }
+
+//      setting inSampleSize value allows to load a scaled down version of the original image
+        options.inSampleSize = UpdateFragment.calculateInSampleSize(options, actualWidth, actualHeight)
+
+//      inJustDecodeBounds set to false to load the actual bitmap
+        options.inJustDecodeBounds = false
+
+//      this options allow android to claim the bitmap memory if it runs low on memory
+        options.inPurgeable = true
+        options.inInputShareable = true
+        options.inTempStorage = ByteArray(16 * 1024)
+        try {
+//          load the bitmap from its path
+            bmp = BitmapFactory.decodeFile(filePath, options)
+        } catch (exception: OutOfMemoryError) {
+            exception.printStackTrace()
+        }
+        try {
+            scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888)
+        } catch (exception: OutOfMemoryError) {
+            exception.printStackTrace()
+        }
+        val ratioX = actualWidth / options.outWidth.toFloat()
+        val ratioY = actualHeight / options.outHeight.toFloat()
+        val middleX = actualWidth / 2.0f
+        val middleY = actualHeight / 2.0f
+        val scaleMatrix = Matrix()
+        scaleMatrix.setScale(ratioX, ratioY, middleX, middleY)
+        try {
+            val canvas = Canvas(scaledBitmap!!)
+            canvas.setMatrix(scaleMatrix)
+            canvas.drawBitmap(bmp, middleX - bmp.width / 2, middleY - bmp.height / 2, Paint(Paint.FILTER_BITMAP_FLAG))
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+        //      check the rotation of the image and display it properly
+        val exif: ExifInterface
+        try {
+            exif = ExifInterface(filePath)
+            val orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION, 0)
+            Log.d("EXIF", "Exif: $orientation")
+            val matrix = Matrix()
+            if (orientation == 6) {
+                matrix.postRotate(90f)
+                Log.d("EXIF", "Exif: $orientation")
+            } else if (orientation == 3) {
+                matrix.postRotate(180f)
+                Log.d("EXIF", "Exif: $orientation")
+            } else if (orientation == 8) {
+                matrix.postRotate(270f)
+                Log.d("EXIF", "Exif: $orientation")
+            }
+            scaledBitmap = Bitmap.createBitmap(scaledBitmap!!, 0, 0,
+                    scaledBitmap.width, scaledBitmap.height, matrix,
+                    true)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        var out: FileOutputStream? = null
+        val file = getImageFile()
+        val filename = getFilename()
+        val mImageFile = File(file!!.path, filename)
+        try {
+            out = FileOutputStream(mImageFile)
+
+//          write the compressed bitmap at the destination specified by filename.
+            scaledBitmap?.compress(Bitmap.CompressFormat.PNG, 80, out)
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+        return mImageFile
+    }
+
+    private fun getImageFile(): File? {
+        var mediaStorageDir: File? = null
+        try {
+            mediaStorageDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), OConstants.IMAGE_FOLDER_NAME_COMPRESSED)
+            if (!mediaStorageDir.exists()) mediaStorageDir.mkdir()
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+        return mediaStorageDir
+    }
+
+    private fun getFilename(): String? {
+        var uriSting: String? = null
+        try {
+            val d = Date()
+            uriSting = "Image_" + SimpleDateFormat("dd_MM_yyyy_HH_mm_ss", Locale.ENGLISH).format(d) + "_" + selectedResult?.objectID + ".png"
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+        return uriSting
+    }
+
+    fun writeBitmapInFile(bmp: Bitmap) {
+        var out: FileOutputStream? = null
+        try {
+            out = FileOutputStream(mFileTemp)
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, out)
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        } finally {
+            try {
+                out?.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
     }
 
     lateinit var substationTable: ServiceFeatureTable

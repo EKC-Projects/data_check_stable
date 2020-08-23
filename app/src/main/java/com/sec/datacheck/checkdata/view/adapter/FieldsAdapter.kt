@@ -72,8 +72,8 @@ class FieldsAdapter(private val items: ArrayList<FieldModel>,
                 }
                 val adapter: ArrayAdapter<*> = ArrayAdapter(context, R.layout.support_simple_spinner_dropdown_item, typesList)
                 binding.checkListSpinner.adapter = adapter
-                if (fieldModel.selectedDomainIndex != null && fieldModel.selectedDomainIndex as Int != 0) {
-                    binding.checkListSpinner.setSelection(fieldModel.selectedDomainIndex as Int - 1)
+                if (fieldModel.selectedDomainIndex != null && fieldModel.selectedDomainIndex != null && codeList.indexOf(fieldModel.selectedDomainIndex) > 0) {
+                    binding.checkListSpinner.setSelection(codeList.indexOf(fieldModel.selectedDomainIndex) - 1)
                 } else {
                     binding.checkListSpinner.setSelection(0)
                 }

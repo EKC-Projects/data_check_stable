@@ -11,6 +11,13 @@ public class OConstants {
 //    public static final String LAYER_SERVICE_POINT = "EKC_Collector.DBO.Service_Point";
 
     public static final int MY_LOCATION_REQUEST_CODE = 8;
+    public static final int REQUEST_CODE_GALLERY = 1;
+    public static final int REQUEST_CODE_TAKE_PICTURE = 2;
+    public static final int WRITE_EXTERNAL_STORAGE = 3;
+    public static final int READ_EXTERNAL_STORAGE = 4;
+    public static final String JPG = "jpg";
+    public static final String PNG = "png";
+    public static final String MP4 = "mp4";
 
     public static final String LAYER_Station = "station";
     public static final String LAYER_Substation = "Substation";

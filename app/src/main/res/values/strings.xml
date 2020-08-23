@@ -301,6 +301,7 @@
     <string name="fields">Fields</string>
     <string name="features">Features</string>
     <string name="pictures">Pictures</string>
+    <string name="images">images_description</string>
     <string-array name="check_domain_list">
         <item>@string/yes_choice</item>
         <item>@string/no_choice</item>

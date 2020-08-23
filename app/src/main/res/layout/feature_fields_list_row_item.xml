@@ -44,9 +44,9 @@
                 android:id="@+id/check_list_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/field_title"
+                app:layout_constraintBottom_toBottomOf="@+id/field_value"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/field_title"
+                app:layout_constraintTop_toTopOf="@+id/field_value"
                 android:prompt="@string/yes_choice"
                 android:entries="@array/check_domain_list"/>
 
