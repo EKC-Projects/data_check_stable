@@ -11,6 +11,7 @@ import android.graphics.Color
 import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -59,6 +60,7 @@ import com.sec.datacheck.checkdata.view.utils.Utilities
 import com.sec.datacheck.databinding.ActivityMain2Binding
 import com.sec.datacheck.databinding.MapSelectPointBottomSheetBinding
 import kotlinx.android.synthetic.main.map_select_point_bottom_sheet.view.*
+import java.io.File
 import java.util.*
 import java.util.concurrent.ExecutionException
 
@@ -167,7 +169,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                     viewModel.onlineData = false
                     viewModel.currentOfflineVersion = selectedVersion // TODO un comment
                     viewModel.currentOfflineVersionTitle = selectedTitle
-                    viewModel.addLocalLayers(baseMap, selectedVersion, selectedTitle)
+                    val databasePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).path + File.separator + OConstants.IMAGE_FOLDER_NAME + File.separator + OConstants.ROOT_GEO_DATABASE_PATH + File.separator + selectedTitle + ".geodatabase"
+
+                    viewModel.loadGeodatabase(databasePath, binding.mapView, baseMap, this)
+                    handleOfflineMenu()
+
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -200,6 +206,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                     }
                     viewModel.queryFinished.value = false
                     queryStatus = false
+                }
+            })
+
+            viewModel.databasePath.observe(this, Observer { databasePath ->
+                if (!databasePath.isNullOrEmpty()) {
+                    viewModel.onlineData = false
+                    viewModel.loadGeodatabase(databasePath, binding.mapView, baseMap, this)
+                    handleOfflineMenu()
                 }
             })
         } catch (e: Exception) {
@@ -328,7 +342,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
         }
     }
 
-    fun initMapRotation() {
+    private fun initMapRotation() {
         try {
             mMatrix.reset()
             val viewpointSetFuture: ListenableFuture<Boolean> = binding.mapView.setViewpointRotationAsync(0.0)
@@ -722,10 +736,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                         menuItemGoOnlineMode!!.isVisible = true
                         materialDialog.dismiss()
                         //Async task
-                        baseMap.operationalLayers.clear()
                         graphicsOverlay!!.graphics.clear()
                         Utilities.showLoadingDialog(this)
-//                        presenter.downloadAndSaveDatabase(MapActivity.DOWNLOAD_GEO_DATABASE, localDatabaseTitle, mapView.getVisibleArea().getExtent())
+                        currentViewPoint = binding.mapView.getCurrentViewpoint(Viewpoint.Type.BOUNDING_GEOMETRY)
+                        viewModel.downloadAndSaveDatabase(getString(R.string.gcs_feature_server), currentViewPoint!!, localDatabaseTitle, binding.mapView.visibleArea.extent)
                     } catch (e: java.lang.Exception) {
                         e.printStackTrace()
                     }
@@ -1061,8 +1075,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
 
     override fun onEditItemSelected(onlineQueryResult: OnlineQueryResult?) {
         onlineQueryResult?.let { item ->
-            viewModel.selectedResult = item
+            selectedResult?.featureLayer?.clearSelection()
             selectedResult = item
+            viewModel.selectedResult = item
             //hide bottomSheet
             hide(bottomSheetBinding.mapSelectBottomSheetEditMultiResultContainer)
             item.featureLayer.clearSelection()

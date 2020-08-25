@@ -9,27 +9,36 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.esri.arcgisruntime.concurrent.Job
 import com.esri.arcgisruntime.concurrent.ListenableFuture
 import com.esri.arcgisruntime.data.*
+import com.esri.arcgisruntime.geometry.Envelope
 import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReference
 import com.esri.arcgisruntime.layers.FeatureLayer
+import com.esri.arcgisruntime.loadable.LoadStatus
 import com.esri.arcgisruntime.mapping.ArcGISMap
+import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.MapView
+import com.esri.arcgisruntime.tasks.geodatabase.GeodatabaseSyncTask
 import com.sec.datacheck.R
 import com.sec.datacheck.checkdata.model.Enums
 import com.sec.datacheck.checkdata.model.QueryConfig
 import com.sec.datacheck.checkdata.model.models.Columns
+import com.sec.datacheck.checkdata.model.models.DataCollectionApplication
 import com.sec.datacheck.checkdata.model.models.OConstants
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult
+import com.sec.datacheck.checkdata.model.showToast
 import com.sec.datacheck.checkdata.view.POJO.FieldModel
 import com.sec.datacheck.checkdata.view.fragments.updateFragment.UpdateFragment
+import com.sec.datacheck.checkdata.view.utils.Utilities
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.ExecutionException
 import kotlin.collections.ArrayList
 
 class MapViewModel(application: Application) : AndroidViewModel(application) {
@@ -53,7 +62,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     lateinit var selectedOfflineFeatureTable: GeodatabaseFeatureTable
     lateinit var objectID: String
     lateinit var mFileTemp: File
-
+    val databasePath = MutableLiveData<String>()
     fun prepareQueryResult() {
         mOnlineQueryResults = ArrayList()
     }
@@ -106,6 +115,8 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             SwitchTable = ServiceFeatureTable(context.getString(R.string.SWITCH))
             SwitchLayer = FeatureLayer(SwitchTable)
 
+            OCL_METERTable = ServiceFeatureTable(context.getString(R.string.OCL_METER))
+
             // add the layer to the map
             mapView.map.operationalLayers.add(LvdbAreaLayer)
             baseMap.operationalLayers.add(SwitchgearAreaLayer)
@@ -127,118 +138,59 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             baseMap.operationalLayers.add(ServicePointLayer)
             baseMap.operationalLayers.add(SwitchLayer)
 
-            val station = OnlineQueryResult()
-            station.featureLayer = stationLayer
-            station.serviceFeatureTable = stationTable
-            station.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_station, context.resources.newTheme())
-            station.layerType = Enums.LayerType.STATION
-            val subStation = OnlineQueryResult()
-            subStation.featureLayer = substationLayer
-            subStation.serviceFeatureTable = substationTable
-            subStation.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_substation, context.resources.newTheme())
-            subStation.layerType = Enums.LayerType.SUBSTATION
-
-            val distributionBox = OnlineQueryResult()
-            distributionBox.featureLayer = FCL_DistributionBoxLayer
-            distributionBox.serviceFeatureTable = FCL_DistributionBoxTable
-            distributionBox.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_dist_box, context.resources.newTheme())
-            distributionBox.layerType = Enums.LayerType.DistributionBox
-
-            val dynamicProtectiveDevice = OnlineQueryResult()
-            dynamicProtectiveDevice.featureLayer = DynamicProtectiveDeviceLayer
-            dynamicProtectiveDevice.serviceFeatureTable = DynamicProtectiveDeviceTable
-            dynamicProtectiveDevice.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_dynamic_protection_device, context.resources.newTheme())
-            dynamicProtectiveDevice.layerType = Enums.LayerType.DynamicProtectiveDevice
-
-            val fuse = OnlineQueryResult()
-            fuse.featureLayer = FuseLayer
-            fuse.serviceFeatureTable = FuseTable
-            fuse.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_meter, context.resources.newTheme())
-            fuse.layerType = Enums.LayerType.Fuse
-
-            val poles = OnlineQueryResult()
-            poles.featureLayer = FCL_POLES_Layer
-            poles.serviceFeatureTable = FCL_POLESTable
-            poles.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_rmu, context.resources.newTheme())
-            poles.layerType = Enums.LayerType.Pole
-
-            val lvOhCable = OnlineQueryResult()
-            lvOhCable.featureLayer = LvOhCableLayer
-            lvOhCable.serviceFeatureTable = LvOhCableTable
-            lvOhCable.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_lv_oh_cable, context.resources.newTheme())
-            lvOhCable.layerType = Enums.LayerType.LvOhCable
-
-            val mvOhCable = OnlineQueryResult()
-            mvOhCable.featureLayer = MvOhCableLayer
-            mvOhCable.serviceFeatureTable = MvOhCableTable
-            mvOhCable.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_mv_oh_cable, context.resources.newTheme())
-            mvOhCable.layerType = Enums.LayerType.MvOhCable
-
-            val lvDbArea = OnlineQueryResult()
-            lvDbArea.featureLayer = LvdbAreaLayer
-            lvDbArea.serviceFeatureTable = LvdbAreaTable
-            lvDbArea.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_lvdb_area, context.resources.newTheme())
-            lvDbArea.layerType = Enums.LayerType.LvdbArea
-
-            val switchGearArea = OnlineQueryResult()
-            switchGearArea.featureLayer = SwitchgearAreaLayer
-            switchGearArea.serviceFeatureTable = SwitchgearAreaTable
-            switchGearArea.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_swtich_gear_area, context.resources.newTheme())
-            switchGearArea.layerType = Enums.LayerType.SwitchgearArea
-
-            val transformers = OnlineQueryResult()
-            transformers.featureLayer = TransFormersLayer
-            transformers.serviceFeatureTable = TransFormersTable
-            transformers.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_transformer, context.resources.newTheme())
-            transformers.layerType = Enums.LayerType.TransFormers
-
-            val ringMainUnit = OnlineQueryResult()
-            ringMainUnit.featureLayer = RingMainUnitLayer
-            ringMainUnit.serviceFeatureTable = RingMainUnitTable
-            ringMainUnit.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_ring_main_unit, context.resources.newTheme())
-            ringMainUnit.layerType = Enums.LayerType.RingMainUnit
-
-            val voltageRegulator = OnlineQueryResult()
-            voltageRegulator.featureLayer = VoltageRegulatorLayer
-            voltageRegulator.serviceFeatureTable = VoltageRegulatorTable
-            voltageRegulator.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_voltage_regulator, context.resources.newTheme())
-            voltageRegulator.layerType = Enums.LayerType.VoltageRegulator
-
-            val servicePoint = OnlineQueryResult()
-            servicePoint.featureLayer = ServicePointLayer
-            servicePoint.serviceFeatureTable = ServicePointTable
-            servicePoint.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_service_point, context.resources.newTheme())
-            servicePoint.layerType = Enums.LayerType.ServicePoint
-
-            val switch = OnlineQueryResult()
-            switch.featureLayer = SwitchLayer
-            switch.serviceFeatureTable = SwitchTable
-            switch.drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_ic_swtich, context.resources.newTheme())
-            switch.layerType = Enums.LayerType.Switch
-
-            layers.add(station)
-            layers.add(subStation)
-            layers.add(distributionBox)
-            layers.add(dynamicProtectiveDevice)
-            layers.add(fuse)
-            layers.add(poles)
-            layers.add(lvOhCable)
-            layers.add(mvOhCable)
-            layers.add(lvDbArea)
-            layers.add(switchGearArea)
-            layers.add(transformers)
-            layers.add(ringMainUnit)
-            layers.add(voltageRegulator)
-            layers.add(servicePoint)
-            layers.add(switch)
-
-            // set the map to be displayed in the mapView
-
             // set the map to be displayed in the mapView
             mapView.map = baseMap
+
+            fillLayerList(context)
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    private fun fillLayerList(context: Context) {
+
+        val station = getLayerInfo(stationLayer, stationTable, stationOfflineTable, Enums.LayerType.STATION, R.drawable.rounded_ic_station, context)
+        val subStation = getLayerInfo(substationLayer, substationTable, substationOfflineTable, Enums.LayerType.SUBSTATION, R.drawable.rounded_ic_substation, context)
+        val distributionBox = getLayerInfo(FCL_DistributionBoxLayer, FCL_DistributionBoxTable, FCL_DistributionBoxOfflineTable, Enums.LayerType.DistributionBox, R.drawable.rounded_ic_dist_box, context)
+        val dynamicProtectiveDevice = getLayerInfo(DynamicProtectiveDeviceLayer, DynamicProtectiveDeviceTable, DynamicProtectiveDeviceOfflineTable, Enums.LayerType.DynamicProtectiveDevice, R.drawable.rounded_ic_dynamic_protection_device, context)
+        val fuse = getLayerInfo(FuseLayer, FuseTable, FuseOfflineTable, Enums.LayerType.Fuse, R.drawable.rounded_ic_meter, context)
+        val poles = getLayerInfo(FCL_POLES_Layer, FCL_POLESTable, FCL_POLESOfflineTable, Enums.LayerType.Pole, R.drawable.rounded_ic_rmu, context)
+        val lvOhCable = getLayerInfo(LvOhCableLayer, LvOhCableTable, LvOhCableOfflineTable, Enums.LayerType.LvOhCable, R.drawable.rounded_ic_lv_oh_cable, context)
+        val mvOhCable = getLayerInfo(MvOhCableLayer, MvOhCableTable, MvOhCableOfflineTable, Enums.LayerType.MvOhCable, R.drawable.rounded_ic_mv_oh_cable, context)
+        val lvDbArea = getLayerInfo(LvdbAreaLayer, LvdbAreaTable, LvdbAreaOfflineTable, Enums.LayerType.LvdbArea, R.drawable.rounded_ic_lvdb_area, context)
+        val switchGearArea = getLayerInfo(SwitchgearAreaLayer, SwitchgearAreaTable, SwitchOfflineTable, Enums.LayerType.SwitchgearArea, R.drawable.rounded_ic_swtich_gear_area, context)
+        val transformers = getLayerInfo(TransFormersLayer, TransFormersTable, TransFormersOfflineTable, Enums.LayerType.TransFormers, R.drawable.rounded_ic_transformer, context)
+        val ringMainUnit = getLayerInfo(RingMainUnitLayer, RingMainUnitTable, RingMainUnitOfflineTable, Enums.LayerType.RingMainUnit, R.drawable.rounded_ic_ring_main_unit, context)
+        val voltageRegulator = getLayerInfo(VoltageRegulatorLayer, VoltageRegulatorTable, VoltageRegulatorOfflineTable, Enums.LayerType.VoltageRegulator, R.drawable.rounded_ic_voltage_regulator, context)
+        val servicePoint = getLayerInfo(ServicePointLayer, ServicePointTable, ServicePointOfflineTable, Enums.LayerType.ServicePoint, R.drawable.rounded_ic_service_point, context)
+        val switch = getLayerInfo(SwitchLayer, SwitchTable, SwitchOfflineTable, Enums.LayerType.Switch, R.drawable.rounded_ic_swtich, context)
+
+        layers.add(station)
+        layers.add(subStation)
+        layers.add(distributionBox)
+        layers.add(dynamicProtectiveDevice)
+        layers.add(fuse)
+        layers.add(poles)
+        layers.add(lvOhCable)
+        layers.add(mvOhCable)
+        layers.add(lvDbArea)
+        layers.add(switchGearArea)
+        layers.add(transformers)
+        layers.add(ringMainUnit)
+        layers.add(voltageRegulator)
+        layers.add(servicePoint)
+        layers.add(switch)
+
+    }
+
+    private fun getLayerInfo(substationLayer: FeatureLayer?, serviceFeatureTable: ServiceFeatureTable?, geoDatabaseFeatureTable: GeodatabaseFeatureTable?, layerType: Enums.LayerType, resource: Int, context: Context): OnlineQueryResult {
+        val layerInfo = OnlineQueryResult()
+        layerInfo.featureLayer = substationLayer
+        layerInfo.serviceFeatureTable = serviceFeatureTable
+        layerInfo.geodatabaseFeatureTable = geoDatabaseFeatureTable
+        layerInfo.drawable = ResourcesCompat.getDrawable(context.resources, resource, context.resources.newTheme())
+        layerInfo.layerType = layerType
+        return layerInfo
     }
 
     fun calculateDistanceBetweenTwoPoints(edinburghGeographic: Point, darEsSalaamGeographic: Point, equidistantSpatialRef: SpatialReference): Double {
@@ -300,7 +252,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                         }
 
                                         if (layer.featureLayer.name.equals("SERVICE_POINT", ignoreCase = true)) {
-                                            queryRelatedOCLMETER(mOnlineQueryResult, point)
+                                            queryRelatedOclMeter(mOnlineQueryResult, point)
                                         }
                                         mOnlineQueryResults.add(mOnlineQueryResult)
                                     }
@@ -320,49 +272,90 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    private fun queryRelatedOCLMETER(mOnlineQueryResult: OnlineQueryResult, point: Point?) {
+    private fun queryRelatedOclMeter(mOnlineQueryResult: OnlineQueryResult, point: Point?) {
         try {
-            val servicePoint = mOnlineQueryResult.feature
-            servicePoint.loadAsync()
-            servicePoint.addDoneLoadingListener {
-                if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
-                    val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
-                    val oclMeterTable = ServiceFeatureTable("http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/15")
-                    oclMeterTable.addDoneLoadingListener {
-                        val relatedQueryParameters = QueryConfig.getRelatedQuery(servicePointNo, Columns.OCL_METER.OCL_METER_FOREIGN_KEY, point)
-                        //                                    FeatureLayer layer = new FeatureLayer(oclMeterTable);
-                        val queryResults = oclMeterTable.queryFeaturesAsync(relatedQueryParameters)
-                        queryResults.addDoneListener {
-                            try {// call get on the future to get the result
+            if (onlineData) {
+                val servicePoint = mOnlineQueryResult.feature
 
-                                // call get on the future to get the result
-                                val mResult = queryResults.get()
-                                // check there are some results
-                                // check there are some results
-                                val mResultIterator: Iterator<Feature> = mResult.iterator()
-                                if (mResultIterator.hasNext()) {
-                                    mOnlineQueryResult.isHasRelatedFeatures = true
-                                    val onlineQueryResults = java.util.ArrayList<OnlineQueryResult>()
-                                    while (mResultIterator.hasNext()) {
-                                        val onlineQueryResult = OnlineQueryResult()
-                                        // get the extent of the first feature in the result to zoom to
-                                        val mFeature = mResultIterator.next() as ArcGISFeature
-                                        mFeature.loadAsync()
-                                        onlineQueryResult.feature = mFeature
-                                        onlineQueryResult.serviceFeatureTable = oclMeterTable
-                                        onlineQueryResult.objectID = mFeature.attributes[Columns.ObjectID].toString()
-                                        onlineQueryResult.featureType = Enums.SHAPE.POINT
-                                        onlineQueryResults.add(onlineQueryResult)
-                                        mOnlineQueryResult.relatedFeatures = onlineQueryResults
-
-                                    }
-                                }
-                            } catch (e: Exception) {
-                                e.printStackTrace()
+                servicePoint.loadAsync()
+                servicePoint.addDoneLoadingListener {
+                    if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
+                        val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
+                        if (onlineData) {
+                            OCL_METERTable?.addDoneLoadingListener {
+                                handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
                             }
+                            OCL_METERTable?.loadAsync()
+                        } else {
+                            OCL_METER_OfflineTable?.addDoneLoadingListener {
+                                handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
+                            }
+                            OCL_METER_OfflineTable?.loadAsync()
                         }
                     }
-                    oclMeterTable.loadAsync()
+                }
+            } else {
+                val servicePoint = mOnlineQueryResult.featureOffline
+
+                if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
+                    val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
+                    if (onlineData) {
+                        OCL_METERTable?.addDoneLoadingListener {
+                            handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
+                        }
+                        OCL_METERTable?.loadAsync()
+                    } else {
+                        OCL_METER_OfflineTable?.addDoneLoadingListener {
+                            handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
+                        }
+                        OCL_METER_OfflineTable?.loadAsync()
+                    }
+                }
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun handleMeterTableLoading(servicePointNo: String, mOnlineQueryResult: OnlineQueryResult, point: Point?) {
+        try {
+            val relatedQueryParameters = QueryConfig.getRelatedQuery(servicePointNo, Columns.OCL_METER.OCL_METER_FOREIGN_KEY, point)
+            val queryResults = if (onlineData) OCL_METERTable?.queryFeaturesAsync(relatedQueryParameters) else
+                OCL_METER_OfflineTable?.queryFeaturesAsync(relatedQueryParameters)
+            queryResults?.addDoneListener {
+                try {// call get on the future to get the result
+
+                    // call get on the future to get the result
+                    val mResult = queryResults.get()
+                    // check there are some results
+                    // check there are some results
+                    val mResultIterator: Iterator<Feature> = mResult.iterator()
+                    if (mResultIterator.hasNext()) {
+                        mOnlineQueryResult.isHasRelatedFeatures = true
+                        val onlineQueryResults = java.util.ArrayList<OnlineQueryResult>()
+                        while (mResultIterator.hasNext()) {
+                            val onlineQueryResult = OnlineQueryResult()
+                            // get the extent of the first feature in the result to zoom to
+                            val mFeature = mResultIterator.next() as ArcGISFeature
+                            mFeature.loadAsync()
+
+                            if (onlineData) {
+                                onlineQueryResult.feature = mFeature
+                                onlineQueryResult.serviceFeatureTable = OCL_METERTable
+                            } else {
+                                onlineQueryResult.featureOffline = mFeature
+                                onlineQueryResult.geodatabaseFeatureTable = OCL_METER_OfflineTable
+                            }
+                            onlineQueryResult.objectID = mFeature.attributes[Columns.ObjectID].toString()
+                            onlineQueryResult.featureType = Enums.SHAPE.POINT
+                            onlineQueryResults.add(onlineQueryResult)
+                            mOnlineQueryResult.relatedFeatures = onlineQueryResults
+
+                        }
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         } catch (e: Exception) {
@@ -380,12 +373,68 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun addLocalLayers(baseMap: ArcGISMap, selectedVersion: Int, selectedTitle: String) {
-
-    }
-
     fun queryOffline(point: Point?, spatialReference: SpatialReference?) {
+        point?.let { mPoint ->
+            spatialReference?.let { sp ->
+                for (i in layers.indices) {
+                    try {
+                        val layer = layers[i]
+                        val query = QueryConfig.getQuery(mPoint, sp, true)
+                        layer.geodatabaseFeatureTable?.let { geodatabaseFeatureTable ->
+                            val future: ListenableFuture<FeatureQueryResult> = geodatabaseFeatureTable.queryFeaturesAsync(query)
+                            // add done loading listener to fire when the selection returns
+                            future.addDoneListener {
+                                try {
+                                    // call get on the future to get the result
+                                    val result = future.get()
+                                    // check there are some results
+                                    val resultIterator: Iterator<Feature> = result.iterator()
+                                    if (resultIterator.hasNext()) {
+                                        while (resultIterator.hasNext()) {
+                                            // get the extent of the first feature in the result to zoom to
+                                            val feature = resultIterator.next() as ArcGISFeature
+                                            feature.loadAsync()
+                                            val mOnlineQueryResult = OnlineQueryResult()
+                                            mOnlineQueryResult.featureOffline = feature
+                                            mOnlineQueryResult.geodatabaseFeatureTable = geodatabaseFeatureTable
+                                            mOnlineQueryResult.featureLayer = layer.featureLayer
+                                            mOnlineQueryResult.objectID = feature.attributes[Columns.ObjectID].toString()
+                                            mOnlineQueryResult.layerType = layer.layerType
+                                            mOnlineQueryResult.drawable = layer.drawable
 
+                                            when {
+                                                isPolygon(layer.featureLayer) -> {
+                                                    mOnlineQueryResult.featureType = Enums.SHAPE.POLYGON
+                                                }
+                                                isPolyline(layer.featureLayer) -> {
+                                                    mOnlineQueryResult.featureType = Enums.SHAPE.POLYLINE
+                                                }
+                                                else -> {
+                                                    mOnlineQueryResult.featureType = Enums.SHAPE.POINT
+                                                }
+                                            }
+
+                                            if (layer.featureLayer.name.equals("SERVICE_POINT", ignoreCase = true)) {
+                                                queryRelatedOclMeter(mOnlineQueryResult, point)
+                                            }
+                                            mOnlineQueryResults.add(mOnlineQueryResult)
+                                        }
+                                    }
+
+                                    if (i == layers.size - 1)
+                                        queryFinished.value = true
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            }
+                        }
+
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+        }
     }
 
     fun prepareSelectedFeature() {
@@ -817,21 +866,239 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    lateinit var substationTable: ServiceFeatureTable
-    lateinit var stationTable: ServiceFeatureTable
-    lateinit var LvOhCableTable: ServiceFeatureTable
-    lateinit var MvOhCableTable: ServiceFeatureTable
-    lateinit var LvdbAreaTable: ServiceFeatureTable
-    lateinit var SwitchgearAreaTable: ServiceFeatureTable
-    lateinit var FCL_DistributionBoxTable: ServiceFeatureTable
-    lateinit var FCL_POLESTable: ServiceFeatureTable
-    lateinit var DynamicProtectiveDeviceTable: ServiceFeatureTable
-    lateinit var FuseTable: ServiceFeatureTable
-    lateinit var TransFormersTable: ServiceFeatureTable
-    lateinit var RingMainUnitTable: ServiceFeatureTable
-    lateinit var VoltageRegulatorTable: ServiceFeatureTable
-    lateinit var ServicePointTable: ServiceFeatureTable
-    lateinit var SwitchTable: ServiceFeatureTable
+
+    fun downloadAndSaveDatabase(serverUrl: String, currentViewpoint: Viewpoint, localDatabaseTitle: String, extent: Envelope?) {
+        try {
+            // create a geodatabase sync task
+            val geodatabaseSyncTask = GeodatabaseSyncTask(serverUrl)
+            geodatabaseSyncTask.loadAsync()
+            geodatabaseSyncTask.addDoneLoadingListener {
+                // create generate geodatabase parameters for the current extent
+                val defaultParameters = geodatabaseSyncTask.createDefaultGenerateGeodatabaseParametersAsync(extent)
+                defaultParameters.addDoneListener {
+                    try {
+                        // set parameters and don't include attachments
+                        val parameters = defaultParameters.get()
+                        parameters.isReturnAttachments = false
+
+                        // define the local path where the geodatabase will be stored
+                        val rootFolder = File(Environment.getExternalStoragePublicDirectory(
+                                Environment.DIRECTORY_DCIM), OConstants.IMAGE_FOLDER_NAME)
+                        if (!rootFolder.exists()) rootFolder.mkdirs()
+                        val file1 = File(rootFolder.path, "geodatabase")
+                        if (!file1.exists()) {
+                            file1.mkdirs()
+                        }
+                        val databaseFile = File(file1.path, "$localDatabaseTitle.geodatabase")
+                        val localGeodatabasePath = databaseFile.path
+
+                        // create and start the job
+                        val generateGeodatabaseJob = geodatabaseSyncTask.generateGeodatabaseAsync(parameters, localGeodatabasePath)
+                        generateGeodatabaseJob.start()
+
+                        // get geodatabase when done
+                        generateGeodatabaseJob.addJobDoneListener {
+                            if (generateGeodatabaseJob.status == Job.Status.SUCCEEDED) {
+                                val geodatabase = generateGeodatabaseJob.result
+                                geodatabase.loadAsync()
+                                geodatabase.addDoneLoadingListener {
+                                    if (geodatabase.loadStatus == LoadStatus.LOADED) {
+                                        for (geodatabaseFeatureTable in geodatabase
+                                                .geodatabaseFeatureTables) {
+                                            geodatabaseFeatureTable.loadAsync()
+                                        }
+                                        val dbNum = DataCollectionApplication.getDatabaseNumber()
+                                        DataCollectionApplication.setLocalDatabaseTitle(localDatabaseTitle, dbNum)
+                                        DataCollectionApplication.incrementDatabaseNumber()
+                                        Log.i(TAG, "Local geodatabase stored at: $localGeodatabasePath")
+                                        databasePath.value = databaseFile.path
+                                        DataCollectionApplication.addBookMark(currentViewpoint.toJson(), localDatabaseTitle)
+                                        Utilities.dismissLoadingDialog()
+                                    } else {
+                                        Log.e(TAG, "Error loading geodatabase: " + geodatabase.loadError.message)
+                                    }
+                                }
+                            } else if (generateGeodatabaseJob.error != null) {
+                                Log.e(TAG, "Error generating geodatabase: " + generateGeodatabaseJob.error.message)
+                                generateGeodatabaseJob.error.printStackTrace()
+                                Utilities.dismissLoadingDialog()
+                            } else {
+                                Log.e(TAG, "Unknown Error generating geodatabase")
+                            }
+                        }
+                    } catch (e: InterruptedException) {
+                        Log.e(TAG, "Error generating geodatabase parameters : " + e.message)
+                        Utilities.dismissLoadingDialog()
+                    } catch (e: ExecutionException) {
+                        Log.e(TAG, "Error generating geodatabase parameters : " + e.message)
+                        Utilities.dismissLoadingDialog()
+                    }
+                }
+            }
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun loadGeodatabase(databasePath: String?, mapView: MapView, map: ArcGISMap, context: Context?) {
+
+        try {// create a new geodatabase from local path
+            val geodatabase = Geodatabase(databasePath)
+
+            // load the geodatabase
+            geodatabase.loadAsync()
+
+            // create feature layer from geodatabase and add to the map
+            geodatabase.addDoneLoadingListener {
+                if (geodatabase.loadStatus == LoadStatus.LOADED) {
+                    map.operationalLayers.clear()
+                    geodatabase.geodatabaseFeatureTables.forEach { geodatabaseFeatureTable ->
+                        geodatabaseFeatureTable.loadAsync()
+                        // create a layer from the geodatabase feature table and add to map
+                        associateOfflineTables(geodatabaseFeatureTable, map)
+                    }
+                    mapView.map = map
+                    context?.let {
+                        fillLayerList(it)
+                    }
+                } else {
+                    context?.let {
+                        (it as MainActivity).showToast("Geodatabase failed to load!")
+                    }
+                }
+                mapView.setViewpointAsync(Viewpoint(geodatabase.generateGeodatabaseGeometry.extent), 0.5f)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun associateOfflineTables(table: GeodatabaseFeatureTable?, baseMap: ArcGISMap) {
+        when (table?.serviceLayerId) {
+            Enums.TableId.Station.id -> {
+                stationOfflineTable = table
+                stationLayer = FeatureLayer(stationOfflineTable)
+                baseMap.operationalLayers.add(stationLayer)
+                stationLayer.loadAsync()
+            }
+            Enums.TableId.SubStation.id -> {
+                substationOfflineTable = table
+                substationLayer = FeatureLayer(substationOfflineTable)
+                baseMap.operationalLayers.add(substationLayer)
+                substationLayer.loadAsync()
+            }
+            Enums.TableId.DistributionBox.id -> {
+                FCL_DistributionBoxOfflineTable = table
+                FCL_DistributionBoxLayer = FeatureLayer(FCL_DistributionBoxOfflineTable)
+                baseMap.operationalLayers.add(FCL_DistributionBoxLayer)
+                FCL_DistributionBoxLayer.loadAsync()
+            }
+            Enums.TableId.TransFormers.id -> {
+                TransFormersOfflineTable = table
+                TransFormersLayer = FeatureLayer(TransFormersOfflineTable)
+                baseMap.operationalLayers.add(TransFormersLayer)
+                TransFormersLayer.loadAsync()
+            }
+            Enums.TableId.RingMainUnit.id -> {
+                RingMainUnitOfflineTable = table
+                RingMainUnitLayer = FeatureLayer(RingMainUnitOfflineTable)
+                baseMap.operationalLayers.add(RingMainUnitLayer)
+                RingMainUnitLayer.loadAsync()
+            }
+            Enums.TableId.Pole.id -> {
+                FCL_POLESOfflineTable = table
+                FCL_POLES_Layer = FeatureLayer(FCL_POLESOfflineTable)
+                baseMap.operationalLayers.add(FCL_POLES_Layer)
+                FCL_POLES_Layer.loadAsync()
+            }
+            Enums.TableId.VoltageRegulator.id -> {
+                VoltageRegulatorOfflineTable = table
+                VoltageRegulatorLayer = FeatureLayer(VoltageRegulatorOfflineTable)
+                baseMap.operationalLayers.add(VoltageRegulatorLayer)
+                VoltageRegulatorLayer.loadAsync()
+            }
+            Enums.TableId.ServicePoint.id -> {
+                ServicePointOfflineTable = table
+                ServicePointLayer = FeatureLayer(ServicePointOfflineTable)
+                baseMap.operationalLayers.add(ServicePointLayer)
+                ServicePointLayer.loadAsync()
+            }
+            Enums.TableId.Switch.id -> {
+                SwitchOfflineTable = table
+                SwitchLayer = FeatureLayer(SwitchOfflineTable)
+                baseMap.operationalLayers.add(SwitchLayer)
+                SwitchLayer.loadAsync()
+            }
+            Enums.TableId.Fuse.id -> {
+                FuseOfflineTable = table
+                FuseLayer = FeatureLayer(FuseOfflineTable)
+                baseMap.operationalLayers.add(FuseLayer)
+                FuseLayer.loadAsync()
+            }
+            Enums.TableId.DynamicProtectiveDevice.id -> {
+                DynamicProtectiveDeviceOfflineTable = table
+                DynamicProtectiveDeviceLayer = FeatureLayer(DynamicProtectiveDeviceOfflineTable)
+                baseMap.operationalLayers.add(DynamicProtectiveDeviceLayer)
+                DynamicProtectiveDeviceLayer.loadAsync()
+            }
+            Enums.TableId.MvOhCable.id -> {
+                MvOhCableOfflineTable = table
+                MvOhCableLayer = FeatureLayer(MvOhCableOfflineTable)
+                baseMap.operationalLayers.add(MvOhCableLayer)
+                MvOhCableLayer.loadAsync()
+            }
+            Enums.TableId.LvOhCable.id -> {
+                LvOhCableOfflineTable = table
+                LvOhCableLayer = FeatureLayer(LvOhCableOfflineTable)
+                baseMap.operationalLayers.add(LvOhCableLayer)
+                LvOhCableLayer.loadAsync()
+            }
+            Enums.TableId.LvdbArea.id -> {
+                LvdbAreaOfflineTable = table
+                LvdbAreaLayer = FeatureLayer(LvdbAreaOfflineTable)
+                baseMap.operationalLayers.add(LvdbAreaLayer)
+                LvdbAreaLayer.loadAsync()
+            }
+            Enums.TableId.SwitchgearArea.id -> {
+                SwitchgearAreaOfflineTable = table
+                SwitchgearAreaLayer = FeatureLayer(SwitchgearAreaOfflineTable)
+                baseMap.operationalLayers.add(SwitchgearAreaLayer)
+                SwitchgearAreaLayer.loadAsync()
+            }
+            Enums.TableId.OCLMeter.id -> {
+                OCL_METER_OfflineTable = table
+                OCL_METER_OfflineTable?.loadAsync()
+            }
+        }
+    }
+
+    private fun isValidLayer(tableId: Long): Boolean {
+        return when (tableId) {
+            Enums.TableId.OCLMeter.id -> {
+                false
+            }
+            else -> {
+                true
+            }
+        }
+    }
+
+    var substationTable: ServiceFeatureTable? = null
+    var stationTable: ServiceFeatureTable? = null
+    var LvOhCableTable: ServiceFeatureTable? = null
+    var MvOhCableTable: ServiceFeatureTable? = null
+    var LvdbAreaTable: ServiceFeatureTable? = null
+    var SwitchgearAreaTable: ServiceFeatureTable? = null
+    var FCL_DistributionBoxTable: ServiceFeatureTable? = null
+    var FCL_POLESTable: ServiceFeatureTable? = null
+    var DynamicProtectiveDeviceTable: ServiceFeatureTable? = null
+    var FuseTable: ServiceFeatureTable? = null
+    var TransFormersTable: ServiceFeatureTable? = null
+    var RingMainUnitTable: ServiceFeatureTable? = null
+    var VoltageRegulatorTable: ServiceFeatureTable? = null
+    var ServicePointTable: ServiceFeatureTable? = null
+    var SwitchTable: ServiceFeatureTable? = null
+    var OCL_METERTable: ServiceFeatureTable? = null
 
     lateinit var substationLayer: FeatureLayer
     lateinit var stationLayer: FeatureLayer
@@ -849,19 +1116,20 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     lateinit var ServicePointLayer: FeatureLayer
     lateinit var SwitchLayer: FeatureLayer
 
-    lateinit var substationOfflineTable: GeodatabaseFeatureTable
-    lateinit var stationOfflineTable: GeodatabaseFeatureTable
-    lateinit var LvOhCableOfflineTable: GeodatabaseFeatureTable
-    lateinit var MvOhCableOfflineTable: GeodatabaseFeatureTable
-    lateinit var LvdbAreaOfflineTable: GeodatabaseFeatureTable
-    lateinit var SwitchgearAreaOfflineTable: GeodatabaseFeatureTable
-    lateinit var FCL_DistributionBoxOfflineTable: GeodatabaseFeatureTable
-    lateinit var FCL_POLESOfflineTable: GeodatabaseFeatureTable
-    lateinit var DynamicProtectiveDeviceOfflineTable: GeodatabaseFeatureTable
-    lateinit var FuseOfflineTable: GeodatabaseFeatureTable
-    lateinit var TransFormersOfflineTable: GeodatabaseFeatureTable
-    lateinit var RingMainUnitOfflineTable: GeodatabaseFeatureTable
-    lateinit var VoltageRegulatorOfflineTable: GeodatabaseFeatureTable
-    lateinit var ServicePointOfflineTable: GeodatabaseFeatureTable
-    lateinit var SwitchOfflineTable: GeodatabaseFeatureTable
+    var substationOfflineTable: GeodatabaseFeatureTable? = null
+    var stationOfflineTable: GeodatabaseFeatureTable? = null
+    var LvOhCableOfflineTable: GeodatabaseFeatureTable? = null
+    var MvOhCableOfflineTable: GeodatabaseFeatureTable? = null
+    var LvdbAreaOfflineTable: GeodatabaseFeatureTable? = null
+    var SwitchgearAreaOfflineTable: GeodatabaseFeatureTable? = null
+    var FCL_DistributionBoxOfflineTable: GeodatabaseFeatureTable? = null
+    var FCL_POLESOfflineTable: GeodatabaseFeatureTable? = null
+    var DynamicProtectiveDeviceOfflineTable: GeodatabaseFeatureTable? = null
+    var FuseOfflineTable: GeodatabaseFeatureTable? = null
+    var TransFormersOfflineTable: GeodatabaseFeatureTable? = null
+    var RingMainUnitOfflineTable: GeodatabaseFeatureTable? = null
+    var VoltageRegulatorOfflineTable: GeodatabaseFeatureTable? = null
+    var ServicePointOfflineTable: GeodatabaseFeatureTable? = null
+    var SwitchOfflineTable: GeodatabaseFeatureTable? = null
+    var OCL_METER_OfflineTable: GeodatabaseFeatureTable? = null
 }

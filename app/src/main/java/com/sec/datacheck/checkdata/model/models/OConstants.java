@@ -46,4 +46,6 @@ public class OConstants {
     public static final String IMAGE_FOLDER_NAME_COMPRESSED = "SEC_Data_Check_Compressed";
     @NotNull
     public static final String SITE_VISITE = "Site_Visit";
+    @NotNull
+    public static final String ROOT_GEO_DATABASE_PATH = "geodatabase";
 }
