@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -23,7 +22,7 @@ import com.sec.datacheck.checkdata.model.requestPermissions
 import com.sec.datacheck.checkdata.view.POJO.FieldModel
 import com.sec.datacheck.checkdata.view.activities.map.MapViewModel
 import com.sec.datacheck.checkdata.view.adapter.*
-import com.sec.datacheck.checkdata.view.fragments.updateFragment.UpdateFragment
+import com.sec.datacheck.checkdata.view.utils.Utilities
 import com.sec.datacheck.databinding.DefaultFeatureBinding
 import com.sec.datacheck.databinding.FragmentNewUpdateBinding
 import kotlinx.android.synthetic.main.default_feature.view.*
@@ -39,11 +38,7 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
     lateinit var imagesAdapter: ImagesAdapter
     lateinit var binding: FragmentNewUpdateBinding
     lateinit var defaultBinding: DefaultFeatureBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
+    var selectedFieldsPosition = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -89,14 +84,14 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
                 val pointName = viewModel.objectID
 
                 val pointFolderName: String = if (viewModel.selectedLayer != null) {
-                    viewModel.selectedLayer.name
+                    viewModel.selectedLayer?.name!!
                 } else if (viewModel.onlineData) {
-                    viewModel.selectedTable.displayName
+                    viewModel.selectedTable?.displayName!!
                 } else {
-                    viewModel.selectedOfflineFeatureTable.displayName
+                    viewModel.selectedOfflineFeatureTable?.displayName!!
                 }
 
-                viewModel.createFile(pointName, pointFolderName, OConstants.PNG, "IMG")
+                viewModel.createFile(pointName!!, pointFolderName, OConstants.PNG, "IMG")
                 val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 val photoURI = FileProvider.getUriForFile(requireContext(), getString(R.string.app_package_name), viewModel.mFileTemp)
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
@@ -132,6 +127,9 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
             headsAdapter = FeatureHeadsAdapter(viewModel.featuresList, this, requireContext(), viewModel.onlineData)
             defaultBinding.featuresHeadsRecyclerView.adapter = headsAdapter
             defaultBinding.featuresHeadsRecyclerView.isNestedScrollingEnabled = true
+            if (viewModel.featuresList.isNullOrEmpty()) {
+                headsAdapter.setSelectedItem(viewModel.featuresList[0])
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -140,10 +138,15 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
     private fun displayFields() {
         try {
             viewModel.liveDataFields.observe(viewLifecycleOwner, Observer {
-                fieldsAdapter = FieldsAdapter(it, this, requireContext())
-                defaultBinding.fieldsRecyclerView.adapter = fieldsAdapter
-                defaultBinding.fieldsRecyclerView.isNestedScrollingEnabled = true
-
+                try {
+                    if (!it.isNullOrEmpty() && !it[selectedFieldsPosition].isNullOrEmpty()) {
+                        fieldsAdapter = FieldsAdapter(viewModel.fields[selectedFieldsPosition], this, requireContext())
+                        defaultBinding.fieldsRecyclerView.adapter = fieldsAdapter
+                        defaultBinding.fieldsRecyclerView.isNestedScrollingEnabled = true
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             })
         } catch (e: Exception) {
             e.printStackTrace()
@@ -152,8 +155,8 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
 
     private fun displayNotes() {
         try {
-            if (viewModel.selectedFeature.attributes[Columns.Notes] != null && viewModel.selectedFeature.attributes[Columns.Notes].toString().isNotEmpty()) {
-                defaultBinding.notesEt.setText(viewModel.selectedFeature.attributes[Columns.Notes].toString())
+            if (viewModel.selectedFeature?.attributes?.get(Columns.Notes) != null && viewModel.selectedFeature?.attributes?.get(Columns.Notes).toString().isNotEmpty()) {
+                defaultBinding.notesEt.setText(viewModel.selectedFeature?.attributes?.get(Columns.Notes).toString())
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -172,26 +175,46 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_save) {
-//            saveChanges()
+            saveChanges()
             return true
         } else if (item.itemId == R.id.menu_gallery) {
 //            openGallery()
         } else if (item.itemId == R.id.menu_camera) {
-//            takePicture()
+            takePicture()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onFeatureHeadSelected(selectedFeature: OnlineQueryResult) {
+    private fun saveChanges() {
+        try {
+            val notes = if (defaultBinding.notesEt.text != null && defaultBinding.notesEt.text.toString().isNotEmpty()) {
+                defaultBinding.notesEt.text.toString()
+            } else {
+                ""
+            }
+            if (viewModel.onlineData) {
+                Utilities.showLoadingDialog(requireActivity())
+                viewModel.updateOnline(notes)
+            }else{
+
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onFeatureHeadSelected(selectedFeature: OnlineQueryResult, position: Int) {
         if ((headsAdapter.getSelectedItem() != null && headsAdapter.getSelectedItem() != selectedFeature)
                 || (headsAdapter.getSelectedItem() == null)) {
             headsAdapter.setSelectedItem(selectedFeature)
             viewModel.selectedResult = selectedFeature
-            viewModel.prepareSelectedFeature()
+            selectedFieldsPosition = position
+            displayFields()
         }
     }
 
-    override fun onItemSelectedSelected(selectedField: FieldModel) {
+    override fun onItemSelectedSelected(selectedField: FieldModel, value: String) {
+        viewModel.updateDomainField(selectedField, value, selectedFieldsPosition)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

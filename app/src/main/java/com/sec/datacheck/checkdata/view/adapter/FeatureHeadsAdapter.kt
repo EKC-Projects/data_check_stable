@@ -54,7 +54,7 @@ class FeatureHeadsAdapter(private val items: ArrayList<OnlineQueryResult>,
                 }
             }
             binding.featureHeadContainer.setOnClickListener {
-                listener?.onFeatureHeadSelected(item)
+                listener?.onFeatureHeadSelected(item,adapterPosition)
             }
         }
 
@@ -62,5 +62,5 @@ class FeatureHeadsAdapter(private val items: ArrayList<OnlineQueryResult>,
 }
 
 interface FeatureHeadClickListener {
-    fun onFeatureHeadSelected(selectedFeature: OnlineQueryResult)
+    fun onFeatureHeadSelected(selectedFeature: OnlineQueryResult,position: Int)
 }

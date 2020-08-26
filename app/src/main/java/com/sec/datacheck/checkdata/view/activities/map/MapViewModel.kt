@@ -1,9 +1,11 @@
 package com.sec.datacheck.checkdata.view.activities.map
 
 import android.app.Application
+import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.*
 import android.os.Environment
+import android.os.Handler
 import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import androidx.exifinterface.media.ExifInterface
@@ -22,6 +24,8 @@ import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.MapView
 import com.esri.arcgisruntime.tasks.geodatabase.GeodatabaseSyncTask
+import com.esri.arcgisruntime.tasks.geodatabase.SyncGeodatabaseParameters
+import com.esri.arcgisruntime.tasks.geodatabase.SyncLayerOption
 import com.sec.datacheck.R
 import com.sec.datacheck.checkdata.model.Enums
 import com.sec.datacheck.checkdata.model.QueryConfig
@@ -52,17 +56,21 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     var selectedPointOnMap: Point? = null
     var selectedResult: OnlineQueryResult? = null
     var onlineData = true
-    var fields: ArrayList<FieldModel> = ArrayList()
+    var fields: ArrayList<ArrayList<FieldModel>> = ArrayList()
     val featuresList: ArrayList<OnlineQueryResult> = ArrayList()
-    val liveDataFields = MutableLiveData<ArrayList<FieldModel>>()
+    val liveDataFields = MutableLiveData<ArrayList<ArrayList<FieldModel>>>()
     val imagesList: ArrayList<File> = ArrayList()
-    lateinit var selectedFeature: Feature
-    lateinit var selectedLayer: FeatureLayer
-    lateinit var selectedTable: ServiceFeatureTable
-    lateinit var selectedOfflineFeatureTable: GeodatabaseFeatureTable
-    lateinit var objectID: String
+    var selectedFeature: Feature? = null
+    var selectedLayer: FeatureLayer? = null
+    var selectedTable: ServiceFeatureTable? = null
+    var selectedOfflineFeatureTable: GeodatabaseFeatureTable? = null
+    var objectID: String? = null
     lateinit var mFileTemp: File
     val databasePath = MutableLiveData<String>()
+    val syncStatus = MutableLiveData<Enums.SyncStatus>().apply {
+        value = Enums.SyncStatus.STOPPED
+    }
+    val isUpdated = MutableLiveData<Boolean>()
     fun prepareQueryResult() {
         mOnlineQueryResults = ArrayList()
     }
@@ -76,53 +84,53 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             substationTable = ServiceFeatureTable(context.getString(R.string.substations))
             substationLayer = FeatureLayer(substationTable)
 
-            FCL_DistributionBoxTable = ServiceFeatureTable(context.getString(R.string.FCL_DISTRIBUTIONBOX))
-            FCL_DistributionBoxLayer = FeatureLayer(FCL_DistributionBoxTable)
+            distributionBoxTable = ServiceFeatureTable(context.getString(R.string.FCL_DISTRIBUTIONBOX))
+            FCL_DistributionBoxLayer = FeatureLayer(distributionBoxTable)
 
-            DynamicProtectiveDeviceTable = ServiceFeatureTable(context.getString(R.string.DYNAMIC_PROTECTIVE_DEVICE))
-            DynamicProtectiveDeviceLayer = FeatureLayer(DynamicProtectiveDeviceTable)
+            dynamicProtectiveDeviceTable = ServiceFeatureTable(context.getString(R.string.DYNAMIC_PROTECTIVE_DEVICE))
+            DynamicProtectiveDeviceLayer = FeatureLayer(dynamicProtectiveDeviceTable)
 
-            FuseTable = ServiceFeatureTable(context.getString(R.string.FUSE))
-            FuseLayer = FeatureLayer(FuseTable)
+            fuseTable = ServiceFeatureTable(context.getString(R.string.FUSE))
+            FuseLayer = FeatureLayer(fuseTable)
 
-            FCL_POLESTable = ServiceFeatureTable(context.getString(R.string.FCL_POLES))
-            FCL_POLES_Layer = FeatureLayer(FCL_POLESTable)
+            polesTable = ServiceFeatureTable(context.getString(R.string.FCL_POLES))
+            FCL_POLES_Layer = FeatureLayer(polesTable)
 
-            LvOhCableTable = ServiceFeatureTable(context.getString(R.string.lv_oh_cable))
-            LvOhCableLayer = FeatureLayer(LvOhCableTable)
+            lvOhCableTable = ServiceFeatureTable(context.getString(R.string.lv_oh_cable))
+            lvOhCableLayer = FeatureLayer(lvOhCableTable)
 
-            MvOhCableTable = ServiceFeatureTable(context.getString(R.string.mv_oh_cable))
-            MvOhCableLayer = FeatureLayer(MvOhCableTable)
+            mvOhCableTable = ServiceFeatureTable(context.getString(R.string.mv_oh_cable))
+            mvOhCableLayer = FeatureLayer(mvOhCableTable)
 
-            LvdbAreaTable = ServiceFeatureTable(context.getString(R.string.lvdb_area))
-            LvdbAreaLayer = FeatureLayer(LvdbAreaTable)
+            lvDbAreaTable = ServiceFeatureTable(context.getString(R.string.lvdb_area))
+            LvdbAreaLayer = FeatureLayer(lvDbAreaTable)
 
-            SwitchgearAreaTable = ServiceFeatureTable(context.getString(R.string.switch_gear_area))
-            SwitchgearAreaLayer = FeatureLayer(SwitchgearAreaTable)
+            switchGearAreaTable = ServiceFeatureTable(context.getString(R.string.switch_gear_area))
+            SwitchgearAreaLayer = FeatureLayer(switchGearAreaTable)
 
-            TransFormersTable = ServiceFeatureTable(context.getString(R.string.TRANSFORMER))
-            TransFormersLayer = FeatureLayer(TransFormersTable)
+            transFormersTable = ServiceFeatureTable(context.getString(R.string.TRANSFORMER))
+            TransFormersLayer = FeatureLayer(transFormersTable)
 
-            RingMainUnitTable = ServiceFeatureTable(context.getString(R.string.RING_MAIN_UNIT))
-            RingMainUnitLayer = FeatureLayer(RingMainUnitTable)
+            ringMainUnitTable = ServiceFeatureTable(context.getString(R.string.RING_MAIN_UNIT))
+            RingMainUnitLayer = FeatureLayer(ringMainUnitTable)
 
-            VoltageRegulatorTable = ServiceFeatureTable(context.getString(R.string.VOLTAGE_REGULATOR))
-            VoltageRegulatorLayer = FeatureLayer(VoltageRegulatorTable)
+            voltageRegulatorTable = ServiceFeatureTable(context.getString(R.string.VOLTAGE_REGULATOR))
+            VoltageRegulatorLayer = FeatureLayer(voltageRegulatorTable)
 
-            ServicePointTable = ServiceFeatureTable(context.getString(R.string.SERVICE_POINT))
-            ServicePointLayer = FeatureLayer(ServicePointTable)
+            servicePointTable = ServiceFeatureTable(context.getString(R.string.SERVICE_POINT))
+            ServicePointLayer = FeatureLayer(servicePointTable)
 
-            SwitchTable = ServiceFeatureTable(context.getString(R.string.SWITCH))
-            SwitchLayer = FeatureLayer(SwitchTable)
+            switchTable = ServiceFeatureTable(context.getString(R.string.SWITCH))
+            SwitchLayer = FeatureLayer(switchTable)
 
-            OCL_METERTable = ServiceFeatureTable(context.getString(R.string.OCL_METER))
+            meterTable = ServiceFeatureTable(context.getString(R.string.OCL_METER))
 
             // add the layer to the map
             mapView.map.operationalLayers.add(LvdbAreaLayer)
             baseMap.operationalLayers.add(SwitchgearAreaLayer)
 
-            baseMap.operationalLayers.add(LvOhCableLayer)
-            baseMap.operationalLayers.add(MvOhCableLayer)
+            baseMap.operationalLayers.add(lvOhCableLayer)
+            baseMap.operationalLayers.add(mvOhCableLayer)
 
             baseMap.operationalLayers.add(stationLayer)
             baseMap.operationalLayers.add(substationLayer)
@@ -151,19 +159,19 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
         val station = getLayerInfo(stationLayer, stationTable, stationOfflineTable, Enums.LayerType.STATION, R.drawable.rounded_ic_station, context)
         val subStation = getLayerInfo(substationLayer, substationTable, substationOfflineTable, Enums.LayerType.SUBSTATION, R.drawable.rounded_ic_substation, context)
-        val distributionBox = getLayerInfo(FCL_DistributionBoxLayer, FCL_DistributionBoxTable, FCL_DistributionBoxOfflineTable, Enums.LayerType.DistributionBox, R.drawable.rounded_ic_dist_box, context)
-        val dynamicProtectiveDevice = getLayerInfo(DynamicProtectiveDeviceLayer, DynamicProtectiveDeviceTable, DynamicProtectiveDeviceOfflineTable, Enums.LayerType.DynamicProtectiveDevice, R.drawable.rounded_ic_dynamic_protection_device, context)
-        val fuse = getLayerInfo(FuseLayer, FuseTable, FuseOfflineTable, Enums.LayerType.Fuse, R.drawable.rounded_ic_meter, context)
-        val poles = getLayerInfo(FCL_POLES_Layer, FCL_POLESTable, FCL_POLESOfflineTable, Enums.LayerType.Pole, R.drawable.rounded_ic_rmu, context)
-        val lvOhCable = getLayerInfo(LvOhCableLayer, LvOhCableTable, LvOhCableOfflineTable, Enums.LayerType.LvOhCable, R.drawable.rounded_ic_lv_oh_cable, context)
-        val mvOhCable = getLayerInfo(MvOhCableLayer, MvOhCableTable, MvOhCableOfflineTable, Enums.LayerType.MvOhCable, R.drawable.rounded_ic_mv_oh_cable, context)
-        val lvDbArea = getLayerInfo(LvdbAreaLayer, LvdbAreaTable, LvdbAreaOfflineTable, Enums.LayerType.LvdbArea, R.drawable.rounded_ic_lvdb_area, context)
-        val switchGearArea = getLayerInfo(SwitchgearAreaLayer, SwitchgearAreaTable, SwitchOfflineTable, Enums.LayerType.SwitchgearArea, R.drawable.rounded_ic_swtich_gear_area, context)
-        val transformers = getLayerInfo(TransFormersLayer, TransFormersTable, TransFormersOfflineTable, Enums.LayerType.TransFormers, R.drawable.rounded_ic_transformer, context)
-        val ringMainUnit = getLayerInfo(RingMainUnitLayer, RingMainUnitTable, RingMainUnitOfflineTable, Enums.LayerType.RingMainUnit, R.drawable.rounded_ic_ring_main_unit, context)
-        val voltageRegulator = getLayerInfo(VoltageRegulatorLayer, VoltageRegulatorTable, VoltageRegulatorOfflineTable, Enums.LayerType.VoltageRegulator, R.drawable.rounded_ic_voltage_regulator, context)
-        val servicePoint = getLayerInfo(ServicePointLayer, ServicePointTable, ServicePointOfflineTable, Enums.LayerType.ServicePoint, R.drawable.rounded_ic_service_point, context)
-        val switch = getLayerInfo(SwitchLayer, SwitchTable, SwitchOfflineTable, Enums.LayerType.Switch, R.drawable.rounded_ic_swtich, context)
+        val distributionBox = getLayerInfo(FCL_DistributionBoxLayer, distributionBoxTable, FCL_DistributionBoxOfflineTable, Enums.LayerType.DistributionBox, R.drawable.rounded_ic_dist_box, context)
+        val dynamicProtectiveDevice = getLayerInfo(DynamicProtectiveDeviceLayer, dynamicProtectiveDeviceTable, DynamicProtectiveDeviceOfflineTable, Enums.LayerType.DynamicProtectiveDevice, R.drawable.rounded_ic_dynamic_protection_device, context)
+        val fuse = getLayerInfo(FuseLayer, fuseTable, FuseOfflineTable, Enums.LayerType.Fuse, R.drawable.rounded_ic_meter, context)
+        val poles = getLayerInfo(FCL_POLES_Layer, polesTable, FCL_POLESOfflineTable, Enums.LayerType.Pole, R.drawable.rounded_ic_rmu, context)
+        val lvOhCable = getLayerInfo(lvOhCableLayer, lvOhCableTable, lvOhCableOfflineTable, Enums.LayerType.LvOhCable, R.drawable.rounded_ic_lv_oh_cable, context)
+        val mvOhCable = getLayerInfo(mvOhCableLayer, mvOhCableTable, mvOhCableOfflineTable, Enums.LayerType.MvOhCable, R.drawable.rounded_ic_mv_oh_cable, context)
+        val lvDbArea = getLayerInfo(LvdbAreaLayer, lvDbAreaTable, LvdbAreaOfflineTable, Enums.LayerType.LvdbArea, R.drawable.rounded_ic_lvdb_area, context)
+        val switchGearArea = getLayerInfo(SwitchgearAreaLayer, switchGearAreaTable, SwitchOfflineTable, Enums.LayerType.SwitchgearArea, R.drawable.rounded_ic_swtich_gear_area, context)
+        val transformers = getLayerInfo(TransFormersLayer, transFormersTable, TransFormersOfflineTable, Enums.LayerType.TransFormers, R.drawable.rounded_ic_transformer, context)
+        val ringMainUnit = getLayerInfo(RingMainUnitLayer, ringMainUnitTable, RingMainUnitOfflineTable, Enums.LayerType.RingMainUnit, R.drawable.rounded_ic_ring_main_unit, context)
+        val voltageRegulator = getLayerInfo(VoltageRegulatorLayer, voltageRegulatorTable, VoltageRegulatorOfflineTable, Enums.LayerType.VoltageRegulator, R.drawable.rounded_ic_voltage_regulator, context)
+        val servicePoint = getLayerInfo(ServicePointLayer, servicePointTable, ServicePointOfflineTable, Enums.LayerType.ServicePoint, R.drawable.rounded_ic_service_point, context)
+        val switch = getLayerInfo(SwitchLayer, switchTable, SwitchOfflineTable, Enums.LayerType.Switch, R.drawable.rounded_ic_swtich, context)
 
         layers.add(station)
         layers.add(subStation)
@@ -282,10 +290,10 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                     if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
                         val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
                         if (onlineData) {
-                            OCL_METERTable?.addDoneLoadingListener {
+                            meterTable?.addDoneLoadingListener {
                                 handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
                             }
-                            OCL_METERTable?.loadAsync()
+                            meterTable?.loadAsync()
                         } else {
                             OCL_METER_OfflineTable?.addDoneLoadingListener {
                                 handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
@@ -300,10 +308,10 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                 if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
                     val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
                     if (onlineData) {
-                        OCL_METERTable?.addDoneLoadingListener {
+                        meterTable?.addDoneLoadingListener {
                             handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
                         }
-                        OCL_METERTable?.loadAsync()
+                        meterTable?.loadAsync()
                     } else {
                         OCL_METER_OfflineTable?.addDoneLoadingListener {
                             handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
@@ -321,7 +329,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     private fun handleMeterTableLoading(servicePointNo: String, mOnlineQueryResult: OnlineQueryResult, point: Point?) {
         try {
             val relatedQueryParameters = QueryConfig.getRelatedQuery(servicePointNo, Columns.OCL_METER.OCL_METER_FOREIGN_KEY, point)
-            val queryResults = if (onlineData) OCL_METERTable?.queryFeaturesAsync(relatedQueryParameters) else
+            val queryResults = if (onlineData) meterTable?.queryFeaturesAsync(relatedQueryParameters) else
                 OCL_METER_OfflineTable?.queryFeaturesAsync(relatedQueryParameters)
             queryResults?.addDoneListener {
                 try {// call get on the future to get the result
@@ -333,7 +341,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                     val mResultIterator: Iterator<Feature> = mResult.iterator()
                     if (mResultIterator.hasNext()) {
                         mOnlineQueryResult.isHasRelatedFeatures = true
-                        val onlineQueryResults = java.util.ArrayList<OnlineQueryResult>()
+                        val onlineQueryResults = ArrayList<OnlineQueryResult>()
                         while (mResultIterator.hasNext()) {
                             val onlineQueryResult = OnlineQueryResult()
                             // get the extent of the first feature in the result to zoom to
@@ -342,17 +350,17 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
                             if (onlineData) {
                                 onlineQueryResult.feature = mFeature
-                                onlineQueryResult.serviceFeatureTable = OCL_METERTable
+                                onlineQueryResult.serviceFeatureTable = meterTable
                             } else {
                                 onlineQueryResult.featureOffline = mFeature
                                 onlineQueryResult.geodatabaseFeatureTable = OCL_METER_OfflineTable
                             }
                             onlineQueryResult.objectID = mFeature.attributes[Columns.ObjectID].toString()
                             onlineQueryResult.featureType = Enums.SHAPE.POINT
+                            onlineQueryResult.layerType = Enums.LayerType.Meter
                             onlineQueryResults.add(onlineQueryResult)
-                            mOnlineQueryResult.relatedFeatures = onlineQueryResults
-
                         }
+                        mOnlineQueryResult.relatedFeatures = onlineQueryResults
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -364,7 +372,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun isPolyline(featureLayer: FeatureLayer?): Boolean {
-        return featureLayer == MvOhCableLayer || featureLayer == LvOhCableLayer
+        return featureLayer == mvOhCableLayer || featureLayer == lvOhCableLayer
 
     }
 
@@ -448,7 +456,8 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             selectedResult?.feature?.loadAsync()
             selectedResult?.feature?.addDoneLoadingListener {
                 try {
-                    extractData()
+                    fields.clear()
+                    extractData(selectedResult)
                     loadImages()
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
@@ -461,7 +470,8 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             }
             selectedOfflineFeatureTable = selectedResult?.geodatabaseFeatureTable!!
             objectID = selectedResult?.objectID!!
-            extractData()
+            fields.clear()
+            extractData(selectedResult)
             loadImages()
         }
     }
@@ -469,28 +479,34 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     fun fillFeatureList() {
         featuresList.clear()
         selectedResult?.let { result ->
+            featuresList.add(result)
             if (result.isHasRelatedFeatures) {
-                featuresList.add(result)
                 if (!result.relatedFeatures.isNullOrEmpty()) {
                     result.relatedFeatures.forEach { relatedFeature ->
                         featuresList.add(relatedFeature)
+                        extractData(relatedFeature)
                     }
+                    liveDataFields.value = fields
                 }
             } else if (!result.isHasRelatedFeatures) {
-                featuresList.add(result)
+                liveDataFields.value = fields
             }
         }
     }
 
-    private fun extractData() {
+    private fun extractData(feature: OnlineQueryResult?) {
         try {
-            fields.clear()
+            var mFields = ArrayList<FieldModel>()
             var fieldList: List<Field?>? = null
-
-            fieldList = if (onlineData) {
-                selectedResult?.serviceFeatureTable?.fields
+            val mFeature: Feature
+            if (onlineData) {
+                fieldList = feature?.serviceFeatureTable?.fields
+                mFeature = feature?.feature!!
+                mFeature.loadAsync()
             } else {
-                selectedResult?.geodatabaseFeatureTable?.fields
+                fieldList = feature?.geodatabaseFeatureTable?.fields
+                feature?.feature?.loadAsync()
+                mFeature = feature?.featureOffline!!
             }
 
             if (!fieldList.isNullOrEmpty()) {
@@ -507,13 +523,13 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                     val codedValueDomain = field.domain as CodedValueDomain
                                     fieldModel.choiceDomain = codedValueDomain
                                     fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
-                                    fieldModel.selectedDomainIndex = codedValueDomain.codedValues.indexOf(selectedFeature.attributes[field.name])
+                                    fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
                                 } else {
                                     //else if domain has data field
                                     val codedValueDomain = field.domain as CodedValueDomain
                                     fieldModel.choiceDomain = codedValueDomain
                                     fieldModel.type = Enums.FieldType.DomainWithDataField.type //Domain has data field to check
-                                    fieldModel.selectedDomainIndex = codedValueDomain.codedValues.indexOf(selectedFeature.attributes[field.name])
+                                    fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
                                 }
                             } else {
                                 //any other Domain
@@ -521,7 +537,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                     val codedValueDomain = field.domain as CodedValueDomain
                                     var founded = false
                                     for (codedValue in codedValueDomain.codedValues) {
-                                        if (selectedFeature.attributes[field.name] != null && codedValue.code == selectedFeature.attributes[field.name]) {
+                                        if (mFeature.attributes[field.name] != null && codedValue.code == mFeature.attributes[field.name]) {
                                             fieldModel.textValue = codedValue.name
                                             founded = true
                                             break
@@ -535,9 +551,9 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                     val codedValueDomain = field.domain as CodedValueDomain
                                     fieldModel.choiceDomain = codedValueDomain
                                     fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
-                                    fieldModel.selectedDomainIndex = selectedFeature.attributes[field.name].toString()
+                                    fieldModel.selectedDomainIndex = mFeature.attributes[field.name].toString()
                                     codedValueDomain.codedValues?.let {
-                                        val fieldValue = selectedFeature.attributes[field.name].toString()
+                                        val fieldValue = mFeature.attributes[field.name].toString()
                                         for (i in 0 until it.size) {
                                             val name = it[i].name
                                             val code = it[i].code
@@ -550,20 +566,20 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                 }
                             }
                         } else {
-                            fieldModel.textValue = selectedFeature.attributes[field.name].toString()
+                            fieldModel.textValue = mFeature.attributes[field.name].toString()
                             fieldModel.type = Enums.FieldType.DataField.type
                         }
                         if (fieldModel.type == Enums.FieldType.DomainWithDataField.type) {
-                            associateDataFieldWithDomain(fieldModel)
+                            associateDataFieldWithDomain(fieldModel, mFields)
                         } else {
                             fieldModel.isHasCheckDomain = false
-                            fields.add(fieldModel)
+                            mFields.add(fieldModel)
                         }
                     }
                 }
-                if (fields.isNotEmpty()) {
-                    fields = sortFields(fields)
-                    liveDataFields.value = fields
+                if (mFields.isNotEmpty()) {
+                    mFields = sortFields(mFields)
+                    fields.add(mFields)
                 }
             }
         } catch (e: Exception) {
@@ -571,7 +587,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    private fun associateDataFieldWithDomain(fieldModel: FieldModel) {
+    private fun associateDataFieldWithDomain(fieldModel: FieldModel, fields: ArrayList<FieldModel>) {
         fields.forEach { field ->
             if (fieldModel.title.startsWith(field.title) && field.title != fieldModel.title && !isCheckDomain(field.domain)) {
                 field.checkDomain = fieldModel
@@ -654,7 +670,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun sortFields(fields: ArrayList<FieldModel>): ArrayList<FieldModel> {
-        val result = java.util.ArrayList<FieldModel>()
+        val result = ArrayList<FieldModel>()
         getField(fields, Columns.ObjectID, Enums.FieldType.DataField.type)?.let {
             result.add(it)
         }
@@ -681,7 +697,6 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
         return result
     }
-
 
     private fun isObjectID(field: FieldModel): Boolean {
         return field.title.toLowerCase() == Columns.ObjectID.toLowerCase()
@@ -866,7 +881,6 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
     fun downloadAndSaveDatabase(serverUrl: String, currentViewpoint: Viewpoint, localDatabaseTitle: String, extent: Envelope?) {
         try {
             // create a geodatabase sync task
@@ -1042,16 +1056,16 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                 DynamicProtectiveDeviceLayer.loadAsync()
             }
             Enums.TableId.MvOhCable.id -> {
-                MvOhCableOfflineTable = table
-                MvOhCableLayer = FeatureLayer(MvOhCableOfflineTable)
-                baseMap.operationalLayers.add(MvOhCableLayer)
-                MvOhCableLayer.loadAsync()
+                mvOhCableOfflineTable = table
+                mvOhCableLayer = FeatureLayer(mvOhCableOfflineTable)
+                baseMap.operationalLayers.add(mvOhCableLayer)
+                mvOhCableLayer.loadAsync()
             }
             Enums.TableId.LvOhCable.id -> {
-                LvOhCableOfflineTable = table
-                LvOhCableLayer = FeatureLayer(LvOhCableOfflineTable)
-                baseMap.operationalLayers.add(LvOhCableLayer)
-                LvOhCableLayer.loadAsync()
+                lvOhCableOfflineTable = table
+                lvOhCableLayer = FeatureLayer(lvOhCableOfflineTable)
+                baseMap.operationalLayers.add(lvOhCableLayer)
+                lvOhCableLayer.loadAsync()
             }
             Enums.TableId.LvdbArea.id -> {
                 LvdbAreaOfflineTable = table
@@ -1083,53 +1097,271 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    var substationTable: ServiceFeatureTable? = null
-    var stationTable: ServiceFeatureTable? = null
-    var LvOhCableTable: ServiceFeatureTable? = null
-    var MvOhCableTable: ServiceFeatureTable? = null
-    var LvdbAreaTable: ServiceFeatureTable? = null
-    var SwitchgearAreaTable: ServiceFeatureTable? = null
-    var FCL_DistributionBoxTable: ServiceFeatureTable? = null
-    var FCL_POLESTable: ServiceFeatureTable? = null
-    var DynamicProtectiveDeviceTable: ServiceFeatureTable? = null
-    var FuseTable: ServiceFeatureTable? = null
-    var TransFormersTable: ServiceFeatureTable? = null
-    var RingMainUnitTable: ServiceFeatureTable? = null
-    var VoltageRegulatorTable: ServiceFeatureTable? = null
-    var ServicePointTable: ServiceFeatureTable? = null
-    var SwitchTable: ServiceFeatureTable? = null
-    var OCL_METERTable: ServiceFeatureTable? = null
+    fun syncData(dbTitle: String, serviceUrl: String, context: Context) {
+        val mGeodatabaseSyncTask = GeodatabaseSyncTask(serviceUrl)
 
-    lateinit var substationLayer: FeatureLayer
-    lateinit var stationLayer: FeatureLayer
-    lateinit var LvOhCableLayer: FeatureLayer
-    lateinit var MvOhCableLayer: FeatureLayer
-    lateinit var LvdbAreaLayer: FeatureLayer
-    lateinit var SwitchgearAreaLayer: FeatureLayer
-    lateinit var FCL_DistributionBoxLayer: FeatureLayer
-    lateinit var FCL_POLES_Layer: FeatureLayer
-    lateinit var DynamicProtectiveDeviceLayer: FeatureLayer
-    lateinit var FuseLayer: FeatureLayer
-    lateinit var TransFormersLayer: FeatureLayer
-    lateinit var RingMainUnitLayer: FeatureLayer
-    lateinit var VoltageRegulatorLayer: FeatureLayer
-    lateinit var ServicePointLayer: FeatureLayer
-    lateinit var SwitchLayer: FeatureLayer
+        val databasePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).path + File.separator + OConstants.IMAGE_FOLDER_NAME + File.separator + OConstants.ROOT_GEO_DATABASE_PATH + File.separator + dbTitle + ".geodatabase"
+        val mGeodatabase = Geodatabase(databasePath)
+        mGeodatabase.loadAsync()
+        mGeodatabase.addDoneLoadingListener {
+            // create parameters for the sync task
+            val syncGeodatabaseParameters = SyncGeodatabaseParameters()
+            syncGeodatabaseParameters.syncDirection = SyncGeodatabaseParameters.SyncDirection.BIDIRECTIONAL
+            syncGeodatabaseParameters.isRollbackOnFailure = false
 
-    var substationOfflineTable: GeodatabaseFeatureTable? = null
-    var stationOfflineTable: GeodatabaseFeatureTable? = null
-    var LvOhCableOfflineTable: GeodatabaseFeatureTable? = null
-    var MvOhCableOfflineTable: GeodatabaseFeatureTable? = null
-    var LvdbAreaOfflineTable: GeodatabaseFeatureTable? = null
-    var SwitchgearAreaOfflineTable: GeodatabaseFeatureTable? = null
-    var FCL_DistributionBoxOfflineTable: GeodatabaseFeatureTable? = null
-    var FCL_POLESOfflineTable: GeodatabaseFeatureTable? = null
-    var DynamicProtectiveDeviceOfflineTable: GeodatabaseFeatureTable? = null
-    var FuseOfflineTable: GeodatabaseFeatureTable? = null
-    var TransFormersOfflineTable: GeodatabaseFeatureTable? = null
-    var RingMainUnitOfflineTable: GeodatabaseFeatureTable? = null
-    var VoltageRegulatorOfflineTable: GeodatabaseFeatureTable? = null
-    var ServicePointOfflineTable: GeodatabaseFeatureTable? = null
-    var SwitchOfflineTable: GeodatabaseFeatureTable? = null
-    var OCL_METER_OfflineTable: GeodatabaseFeatureTable? = null
+            // get the layer ID for each feature table in the geodatabase, then add to the sync job
+            for (geodatabaseFeatureTable in mGeodatabase.geodatabaseFeatureTables) {
+                val serviceLayerId = geodatabaseFeatureTable.serviceLayerId
+                val syncLayerOption = SyncLayerOption(serviceLayerId)
+                syncGeodatabaseParameters.layerOptions.add(syncLayerOption)
+            }
+
+            val syncGeodatabaseJob = mGeodatabaseSyncTask.syncGeodatabase(syncGeodatabaseParameters, mGeodatabase)
+            syncGeodatabaseJob.start()
+            createProgressDialog(syncGeodatabaseJob, context)
+            syncGeodatabaseJob.addJobDoneListener {
+                if (syncGeodatabaseJob.status == Job.Status.SUCCEEDED) {
+                    syncStatus.value = Enums.SyncStatus.Synced
+                } else {
+                    syncStatus.value = Enums.SyncStatus.FAILED
+                }
+            }
+        }
+    }
+
+    private fun createProgressDialog(job: Job, context: Context) {
+        try {
+            val syncProgressDialog = ProgressDialog(context)
+            syncProgressDialog.setTitle("Sync Geodatabase Job")
+            syncProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
+            syncProgressDialog.setCanceledOnTouchOutside(false)
+            syncProgressDialog.show()
+            job.addProgressChangedListener { syncProgressDialog.progress = job.progress }
+            job.addJobDoneListener { syncProgressDialog.dismiss() }
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    //-------------------------------------- Update ---------------------------------------------//
+
+    fun updateOnline(notes: String) {
+        if (!featuresList.isNullOrEmpty()) {
+            for (i in 0.until(featuresList.size)) {
+                val featureResult = featuresList[i]
+                var feature: ArcGISFeature? = null
+                val fields = fields[i]
+//                MapPresenter.updateOnline(featureResult, fields, notes)
+                featureResult.feature.loadAsync()
+                featureResult.serviceFeatureTable.loadAsync()
+                featureResult.serviceFeatureTable.addDoneLoadingListener {
+
+                    try {
+                        if (featureResult.serviceFeatureTable.loadStatus == LoadStatus.LOADED) {
+                            if (featureResult.serviceFeatureTable.serviceLayerId != Enums.TableId.OCLMeter.id) {
+                                val featureLayer = featureResult.serviceFeatureTable.featureLayer
+                                featureLayer.selectFeature(featureResult.feature)
+                                val future = featureLayer.selectedFeaturesAsync
+                                var result: FeatureQueryResult
+                                future.addDoneListener {
+                                    try {
+                                        result = future.get()
+                                        if (result.iterator().hasNext()) {
+                                            feature = result.iterator().next() as ArcGISFeature
+                                        }
+                                        feature?.let { mFeature ->
+                                            mFeature.loadAsync()
+                                            mFeature.addDoneLoadingListener {
+                                                if (mFeature.loadStatus == LoadStatus.LOADED) {
+                                                    try {
+                                                        fields.forEach { field ->
+                                                            if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
+                                                                if (field.title == Columns.Notes) {
+                                                                    mFeature.attributes[field.title] = notes
+                                                                } else if (field.isHasCheckDomain) {
+                                                                    mFeature.attributes[field.checkDomain.title] = field.checkDomain.selectedDomainIndex
+                                                                }
+
+                                                            } else if (field.type == Enums.FieldType.DomainWithNoDataField.type && isValidField(field.title)) {
+                                                                mFeature.attributes[field.title] = field.selectedDomainIndex
+
+                                                            }
+                                                        }
+                                                        featureResult.serviceFeatureTable.updateFeatureAsync(mFeature)
+                                                        Log.e(TAG, "update: serviceFeatureTable applyEdits")
+                                                        featureResult.serviceFeatureTable.applyEditsAsync().get()!!
+                                                    } catch (e: Exception) {
+                                                        e.printStackTrace()
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } catch (e: Exception) {
+                                        e.printStackTrace()
+                                    }
+                                }
+                            } else {
+                                val mFeatureLayer = FeatureLayer(ServiceFeatureTable("http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/16"))
+                                mFeatureLayer.loadAsync()
+                                mFeatureLayer.selectFeature(featureResult.feature)
+                                val future = mFeatureLayer.selectedFeaturesAsync
+                                var result: FeatureQueryResult
+                                future.addDoneListener {
+                                    try {
+                                        result = future.get()
+                                        if (result.iterator().hasNext()) {
+                                            feature = result.iterator().next() as ArcGISFeature
+                                        }
+                                        feature?.let { mFeature ->
+                                            mFeature.loadAsync()
+                                            mFeature.addDoneLoadingListener {
+                                                if (mFeature.loadStatus == LoadStatus.LOADED) {
+                                                    try {
+                                                        fields.forEach { field ->
+                                                            if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
+                                                                if (field.title == Columns.Notes) {
+                                                                    mFeature.attributes[field.title] = notes
+                                                                } else if (field.isHasCheckDomain) {
+                                                                    mFeature.attributes[field.checkDomain.title] = field.checkDomain.selectedDomainIndex
+                                                                }
+
+                                                            } else if (field.type == Enums.FieldType.DomainWithNoDataField.type && isValidField(field.title)) {
+                                                                mFeature.attributes[field.title] = field.selectedDomainIndex
+
+                                                            }
+                                                        }
+                                                        featureResult.serviceFeatureTable.updateFeatureAsync(mFeature)
+                                                        Log.e(TAG, "update: serviceFeatureTable applyEdits")
+                                                        featureResult.serviceFeatureTable.applyEditsAsync().get()!!
+                                                    } catch (e: Exception) {
+                                                        e.printStackTrace()
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } catch (e: Exception) {
+                                        e.printStackTrace()
+                                    }
+                                }
+                            }
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            Handler().postDelayed({
+                isUpdated.value = true
+            }, 2000)
+        }
+    }
+
+    fun updateDomainField(fieldModel: FieldModel, value: String, fieldsListPosition: Int) {
+        if (fieldModel.type == Enums.FieldType.DomainWithNoDataField.type || fieldModel.type == Enums.FieldType.DomainWithDataField.type) {
+            val typesList = ArrayList<String>()
+            val codeList = ArrayList<String>()
+            val typeDomain: CodedValueDomain = fieldModel.choiceDomain
+            val codedValues: List<CodedValue> = typeDomain.codedValues
+            for (codedValue in codedValues) {
+                typesList.add(codedValue.name)
+                codeList.add(codedValue.code.toString())
+                val name = codedValue.name
+                val code = codedValue.code
+                if (name == value) {
+                    fieldModel.selectedDomainIndex = code
+                    break
+                }
+            }
+        } else if (fieldModel.type == Enums.FieldType.DataField.type && isEditableField(fieldModel)) {
+            fieldModel.textValue = value
+        }
+
+        for (field in fields[fieldsListPosition]) {
+            if (field.type == fieldModel.type && field.title == fieldModel.title) {
+                val fieldIndex = fields[fieldsListPosition].indexOf(field)
+                fields[fieldsListPosition][fieldIndex] = fieldModel
+                break
+            }
+        }
+    }
+
+    private fun isEditableField(fieldModel: FieldModel): Boolean {
+        return when (fieldModel.title) {
+            Columns.Notes -> {
+                true
+            }
+            else -> {
+                false
+            }
+        }
+    }
+
+    fun clearData() {
+        try {
+            isUpdated.value = false
+            databasePath.value = null
+            selectedResult = null
+            selectedFeature = null
+            selectedLayer = null
+            selectedTable = null
+            selectedOfflineFeatureTable = null
+            selectedPointOnMap
+            fields.clear()
+            liveDataFields.value?.clear()
+            imagesList.clear()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    //-------------------------------------- Layers / Tables ---------------------------------------------//
+    private var substationTable: ServiceFeatureTable? = null
+    private var stationTable: ServiceFeatureTable? = null
+    private var lvOhCableTable: ServiceFeatureTable? = null
+    private var mvOhCableTable: ServiceFeatureTable? = null
+    private var lvDbAreaTable: ServiceFeatureTable? = null
+    private var switchGearAreaTable: ServiceFeatureTable? = null
+    private var distributionBoxTable: ServiceFeatureTable? = null
+    private var polesTable: ServiceFeatureTable? = null
+    private var dynamicProtectiveDeviceTable: ServiceFeatureTable? = null
+    private var fuseTable: ServiceFeatureTable? = null
+    private var transFormersTable: ServiceFeatureTable? = null
+    private var ringMainUnitTable: ServiceFeatureTable? = null
+    private var voltageRegulatorTable: ServiceFeatureTable? = null
+    private var servicePointTable: ServiceFeatureTable? = null
+    private var switchTable: ServiceFeatureTable? = null
+    private var meterTable: ServiceFeatureTable? = null
+
+    private lateinit var substationLayer: FeatureLayer
+    private lateinit var stationLayer: FeatureLayer
+    private lateinit var lvOhCableLayer: FeatureLayer
+    private lateinit var mvOhCableLayer: FeatureLayer
+    private lateinit var LvdbAreaLayer: FeatureLayer
+    private lateinit var SwitchgearAreaLayer: FeatureLayer
+    private lateinit var FCL_DistributionBoxLayer: FeatureLayer
+    private lateinit var FCL_POLES_Layer: FeatureLayer
+    private lateinit var DynamicProtectiveDeviceLayer: FeatureLayer
+    private lateinit var FuseLayer: FeatureLayer
+    private lateinit var TransFormersLayer: FeatureLayer
+    private lateinit var RingMainUnitLayer: FeatureLayer
+    private lateinit var VoltageRegulatorLayer: FeatureLayer
+    private lateinit var ServicePointLayer: FeatureLayer
+    private lateinit var SwitchLayer: FeatureLayer
+
+    private var substationOfflineTable: GeodatabaseFeatureTable? = null
+    private var stationOfflineTable: GeodatabaseFeatureTable? = null
+    private var lvOhCableOfflineTable: GeodatabaseFeatureTable? = null
+    private var mvOhCableOfflineTable: GeodatabaseFeatureTable? = null
+    private var LvdbAreaOfflineTable: GeodatabaseFeatureTable? = null
+    private var SwitchgearAreaOfflineTable: GeodatabaseFeatureTable? = null
+    private var FCL_DistributionBoxOfflineTable: GeodatabaseFeatureTable? = null
+    private var FCL_POLESOfflineTable: GeodatabaseFeatureTable? = null
+    private var DynamicProtectiveDeviceOfflineTable: GeodatabaseFeatureTable? = null
+    private var FuseOfflineTable: GeodatabaseFeatureTable? = null
+    private var TransFormersOfflineTable: GeodatabaseFeatureTable? = null
+    private var RingMainUnitOfflineTable: GeodatabaseFeatureTable? = null
+    private var VoltageRegulatorOfflineTable: GeodatabaseFeatureTable? = null
+    private var ServicePointOfflineTable: GeodatabaseFeatureTable? = null
+    private var SwitchOfflineTable: GeodatabaseFeatureTable? = null
+    private var OCL_METER_OfflineTable: GeodatabaseFeatureTable? = null
 }

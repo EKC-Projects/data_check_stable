@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.esri.arcgisruntime.data.CodedValue
@@ -24,39 +25,42 @@ class FieldsAdapter(private val items: ArrayList<FieldModel>,
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-        ), listener)
+        ), listener, items)
     }
 
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items[position], context)
-    fun setSelectedItem(selectedFeature: OnlineQueryResult) {
 
-    }
-
-    class ViewHolder(private val binding: FeatureFieldsListRowItemBinding, private val listener: FeatureFieldClickListener?) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: FeatureFieldsListRowItemBinding, private val listener: FeatureFieldClickListener?,
+                     private val items: ArrayList<FieldModel>) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FieldModel, context: Context) {
-            if (item.type == Enums.FieldType.DataField.type) {
-                binding.fieldValue.visibility = View.VISIBLE
-                binding.fieldTitle.text = item.alias
-                binding.fieldValue.text = item.textValue
+            try {
+                if (item.type == Enums.FieldType.DataField.type) {
+                    binding.fieldValue.visibility = View.VISIBLE
+                    binding.fieldTitle.text = item.alias
+                    binding.fieldValue.text = item.textValue
 
-                if (item.isHasCheckDomain && item.checkDomain != null && item.checkDomain.type == Enums.FieldType.DomainWithDataField.type) {
+                    if (item.isHasCheckDomain && item.checkDomain != null && item.checkDomain.type == Enums.FieldType.DomainWithDataField.type) {
+                        binding.checkListSpinner.visibility = View.VISIBLE
+                        initSpinner(item.checkDomain, context)
+                    } else {
+                        binding.checkListSpinner.visibility = View.GONE
+                    }
+                } else if (item.type == Enums.FieldType.DomainWithNoDataField.type) {
                     binding.checkListSpinner.visibility = View.VISIBLE
-                    initSpinner(item.checkDomain, context)
-                } else {
-                    binding.checkListSpinner.visibility = View.GONE
+                    binding.fieldTitle.text = item.alias
+                    binding.fieldValue.visibility = View.INVISIBLE
+                    initSpinner(item, context)
+
+                    if (item.title == OConstants.SITE_VISITE) {
+                        binding.fieldTitle.setTextColor(context.resources.getColor(R.color.orange))
+                    } else {
+                        binding.fieldTitle.setTextColor(context.resources.getColor(R.color.purple))
+                    }
                 }
-            } else if (item.type == Enums.FieldType.DomainWithNoDataField.type) {
-                binding.checkListSpinner.visibility = View.VISIBLE
-                binding.fieldTitle.text = item.alias
-                binding.fieldValue.visibility = View.INVISIBLE
-                initSpinner(item, context)
-                if (item.title == OConstants.SITE_VISITE) {
-                    binding.fieldTitle.setTextColor(context.resources.getColor(R.color.orange))
-                } else {
-                    binding.fieldTitle.setTextColor(context.resources.getColor(R.color.purple))
-                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 
@@ -72,10 +76,29 @@ class FieldsAdapter(private val items: ArrayList<FieldModel>,
                 }
                 val adapter: ArrayAdapter<*> = ArrayAdapter(context, R.layout.support_simple_spinner_dropdown_item, typesList)
                 binding.checkListSpinner.adapter = adapter
-                if (fieldModel.selectedDomainIndex != null && fieldModel.selectedDomainIndex != null && codeList.indexOf(fieldModel.selectedDomainIndex) > 0) {
-                    binding.checkListSpinner.setSelection(codeList.indexOf(fieldModel.selectedDomainIndex) - 1)
+                if (fieldModel.selectedDomainIndex != null && fieldModel.selectedDomainIndex != null) {
+                    binding.checkListSpinner.setSelection(codeList.indexOf(fieldModel.selectedDomainIndex.toString()))
                 } else {
                     binding.checkListSpinner.setSelection(0)
+                }
+
+                binding.checkListSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        try {
+                            if (items[adapterPosition].type == Enums.FieldType.DataField.type && items[adapterPosition].isHasCheckDomain) {
+                                listener?.onItemSelectedSelected(items[adapterPosition].checkDomain, binding.checkListSpinner.selectedItem.toString())
+                            } else {
+                                listener?.onItemSelectedSelected(items[adapterPosition], binding.checkListSpinner.selectedItem.toString())
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -85,5 +108,5 @@ class FieldsAdapter(private val items: ArrayList<FieldModel>,
 }
 
 interface FeatureFieldClickListener {
-    fun onItemSelectedSelected(selectedField: FieldModel)
+    fun onItemSelectedSelected(selectedField: FieldModel, value: String)
 }

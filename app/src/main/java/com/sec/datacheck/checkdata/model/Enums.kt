@@ -27,7 +27,8 @@ object Enums {
         RingMainUnit,
         VoltageRegulator,
         ServicePoint,
-        Switch
+        Switch,
+        Meter
     }
 
     enum class FieldType(val type: Int) {
@@ -54,5 +55,11 @@ object Enums {
         ServicePoint(8),
         Switch(9),
         OCLMeter(16)
+    }
+
+    enum class SyncStatus{
+        Synced,
+        FAILED,
+        STOPPED
     }
 }

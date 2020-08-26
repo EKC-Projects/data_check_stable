@@ -216,6 +216,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                     handleOfflineMenu()
                 }
             })
+
+            viewModel.syncStatus.observe(this, Observer {
+                when (it) {
+                    Enums.SyncStatus.Synced -> {
+                        showToast(getString(R.string.sync_completed))
+                        if (syncAndGoOnline) {
+                            goOnline()
+                        }
+                    }
+                    Enums.SyncStatus.FAILED -> {
+                        showToast(getString(R.string.sync_failed_retrying))
+                    }
+                }
+            })
+
+            viewModel.isUpdated.observe(this, Observer {
+                if (it) {
+                    Utilities.dismissLoadingDialog()
+                    viewModel.clearData()
+                    selectedResult = null
+                    hideFragment()
+                    showActivityViews()
+                    showToast(getString(R.string.updated_successfuly))
+                }
+            })
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -712,7 +737,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
     private fun syncData() {
         try {
             if (Utilities.isNetworkAvailable(this)) {
-//                viewModel.syncData(currentOfflineVersionTitle)
+                viewModel.syncData(viewModel.currentOfflineVersionTitle, getString(R.string.gcs_feature_server), this)
             } else {
                 showInfoDialog(getString(R.string.network_connection_failed), getString(R.string.please_your_network_connect))
             }
