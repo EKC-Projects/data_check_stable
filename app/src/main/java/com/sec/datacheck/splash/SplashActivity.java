@@ -24,25 +24,29 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        TextView desc_1 = findViewById(R.id.description_1);
-        TextView desc_2 = findViewById(R.id.description_2);
-        ImageView imageView = findViewById(R.id.splash_logo);
+        try {
+            TextView desc_1 = findViewById(R.id.description_1);
+            TextView desc_2 = findViewById(R.id.description_2);
+            ImageView imageView = findViewById(R.id.splash_logo);
 
-        Typeface nexaFontBold = Typeface.createFromAsset(this.getAssets(), "fonts/Nexa-Bold.otf");
-        desc_1.setTypeface(nexaFontBold);
-        desc_2.setTypeface(nexaFontBold);
+            Typeface nexaFontBold = Typeface.createFromAsset(this.getAssets(), "fonts/Nexa-Bold.otf");
+            desc_1.setTypeface(nexaFontBold);
+            desc_2.setTypeface(nexaFontBold);
 
-        Animation imageAnimation = new TranslateAnimation(0, 0, -500, 0);
-        imageAnimation.setDuration(1000);
-        imageAnimation.setFillAfter(true);
+            Animation imageAnimation = new TranslateAnimation(0, 0, -500, 0);
+            imageAnimation.setDuration(1000);
+            imageAnimation.setFillAfter(true);
 
-        Animation animation = new TranslateAnimation(-1000, 0, 0, 0);
-        animation.setDuration(1000);
-        animation.setFillAfter(true);
+            Animation animation = new TranslateAnimation(-1000, 0, 0, 0);
+            animation.setDuration(1000);
+            animation.setFillAfter(true);
 
-        imageView.setAnimation(imageAnimation);
-        desc_1.startAnimation(animation);
-        desc_2.startAnimation(animation);
+            imageView.setAnimation(imageAnimation);
+            desc_1.startAnimation(animation);
+            desc_2.startAnimation(animation);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         new Handler().postDelayed(() -> {
             //If user not logged in before open login activity
