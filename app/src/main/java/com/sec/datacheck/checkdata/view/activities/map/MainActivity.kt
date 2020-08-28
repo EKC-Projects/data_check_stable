@@ -425,6 +425,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
             item_load_previous_offline!!.isVisible = true
             menuItemGoOfflineMode!!.isVisible = true
             menuItemGoOnlineMode!!.isVisible = false
+            if (isFragmentShown) {
+                hideActivityViews()
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -438,6 +441,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
             menuItemOnline!!.isVisible = true
             menuItemGoOfflineMode!!.isVisible = false
             menuItemGoOnlineMode!!.isVisible = true
+            if (isFragmentShown) {
+                hideActivityViews()
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -454,12 +460,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
 
             item_load_previous_offline!!.isVisible = false
             menuItemOffline!!.isVisible = false
-            menuItemSync!!.isVisible = false
-            menuItemOnline!!.isVisible = false
             menuItemGoOfflineMode!!.isVisible = false
             menuItemGoOnlineMode!!.isVisible = false
             menuItemOverflow!!.isVisible = false
             loadMaps!!.isVisible = false
+            menuItemSync!!.isVisible = false
+            menuItemOnline!!.isVisible = false
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -483,12 +489,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                 menuItemOffline!!.isVisible = true
                 loadMaps!!.isVisible = true
             } else {
-                item_load_previous_offline!!.isVisible = true
                 menuItemOffline!!.isVisible = false
-                menuItemSync!!.isVisible = true
-                menuItemOnline!!.isVisible = true
                 menuItemGoOfflineMode!!.isVisible = false
                 menuItemGoOnlineMode!!.isVisible = true
+                menuItemSync!!.isVisible = true
+                menuItemOnline!!.isVisible = true
+                item_load_previous_offline!!.isVisible = true
                 loadMaps!!.isVisible = true
             }
         } catch (e: java.lang.Exception) {
@@ -763,6 +769,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                         //Async task
                         graphicsOverlay!!.graphics.clear()
                         Utilities.showLoadingDialog(this)
+                        viewModel.currentOfflineVersionTitle = localDatabaseTitle
                         currentViewPoint = binding.mapView.getCurrentViewpoint(Viewpoint.Type.BOUNDING_GEOMETRY)
                         viewModel.downloadAndSaveDatabase(getString(R.string.gcs_feature_server), currentViewPoint!!, localDatabaseTitle, binding.mapView.visibleArea.extent)
                     } catch (e: java.lang.Exception) {
@@ -1138,7 +1145,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                     .addToBackStack(null)
                     .commit()
             isFragmentShown = true
-            hideActivityViews()
+//            hideActivityViews()
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }

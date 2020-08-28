@@ -71,8 +71,11 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         value = Enums.SyncStatus.STOPPED
     }
     val isUpdated = MutableLiveData<Boolean>()
+    private lateinit var meterInfo: OnlineQueryResult
+
     fun prepareQueryResult() {
         mOnlineQueryResults = ArrayList()
+        mOnlineQueryResults.clear()
     }
 
     fun prepareOnlineLayers(baseMap: ArcGISMap, mapView: MapView, context: Context) {
@@ -124,6 +127,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             SwitchLayer = FeatureLayer(switchTable)
 
             meterTable = ServiceFeatureTable(context.getString(R.string.OCL_METER))
+            meterLayer = FeatureLayer(meterTable)
 
             // add the layer to the map
             mapView.map.operationalLayers.add(LvdbAreaLayer)
@@ -172,7 +176,9 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         val voltageRegulator = getLayerInfo(VoltageRegulatorLayer, voltageRegulatorTable, VoltageRegulatorOfflineTable, Enums.LayerType.VoltageRegulator, R.drawable.rounded_ic_voltage_regulator, context)
         val servicePoint = getLayerInfo(ServicePointLayer, servicePointTable, ServicePointOfflineTable, Enums.LayerType.ServicePoint, R.drawable.rounded_ic_service_point, context)
         val switch = getLayerInfo(SwitchLayer, switchTable, SwitchOfflineTable, Enums.LayerType.Switch, R.drawable.rounded_ic_swtich, context)
+        meterInfo = getLayerInfo(meterLayer, meterTable, OCL_METER_OfflineTable, Enums.LayerType.Meter, R.drawable.rounded_ic_swtich, context)
 
+        layers.clear()
         layers.add(station)
         layers.add(subStation)
         layers.add(distributionBox)
@@ -284,22 +290,14 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         try {
             if (onlineData) {
                 val servicePoint = mOnlineQueryResult.feature
-
                 servicePoint.loadAsync()
                 servicePoint.addDoneLoadingListener {
                     if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
                         val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
-                        if (onlineData) {
-                            meterTable?.addDoneLoadingListener {
-                                handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
-                            }
-                            meterTable?.loadAsync()
-                        } else {
-                            OCL_METER_OfflineTable?.addDoneLoadingListener {
-                                handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
-                            }
-                            OCL_METER_OfflineTable?.loadAsync()
+                        meterTable?.addDoneLoadingListener {
+                            handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
                         }
+                        meterTable?.loadAsync()
                     }
                 }
             } else {
@@ -307,17 +305,10 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
                 if (servicePoint != null && servicePoint.attributes != null && servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO] != null) {
                     val servicePointNo = servicePoint.attributes[Columns.SERVICE_POINT.SERVICE_POINT_NO].toString()
-                    if (onlineData) {
-                        meterTable?.addDoneLoadingListener {
-                            handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
-                        }
-                        meterTable?.loadAsync()
-                    } else {
-                        OCL_METER_OfflineTable?.addDoneLoadingListener {
-                            handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
-                        }
-                        OCL_METER_OfflineTable?.loadAsync()
+                    OCL_METER_OfflineTable?.addDoneLoadingListener {
+                        handleMeterTableLoading(servicePointNo, mOnlineQueryResult, point)
                     }
+                    OCL_METER_OfflineTable?.loadAsync()
                 }
             }
 
@@ -350,10 +341,14 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
                             if (onlineData) {
                                 onlineQueryResult.feature = mFeature
+                                onlineQueryResult.feature.loadAsync()
                                 onlineQueryResult.serviceFeatureTable = meterTable
+                                onlineQueryResult.serviceFeatureTable.loadAsync()
+                                onlineQueryResult.featureLayer = meterLayer
                             } else {
                                 onlineQueryResult.featureOffline = mFeature
                                 onlineQueryResult.geodatabaseFeatureTable = OCL_METER_OfflineTable
+                                onlineQueryResult.featureLayer = meterLayer
                             }
                             onlineQueryResult.objectID = mFeature.attributes[Columns.ObjectID].toString()
                             onlineQueryResult.featureType = Enums.SHAPE.POINT
@@ -422,7 +417,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                                 }
                                             }
 
-                                            if (layer.featureLayer.name.equals("SERVICE_POINT", ignoreCase = true)) {
+                                            if (layer.featureLayer.name.equals(OConstants.LAYER_SERVICE_POINT, ignoreCase = true)) {
                                                 queryRelatedOclMeter(mOnlineQueryResult, point)
                                             }
                                             mOnlineQueryResults.add(mOnlineQueryResult)
@@ -459,7 +454,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                     fields.clear()
                     extractData(selectedResult)
                     loadImages()
-                } catch (e: java.lang.Exception) {
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
@@ -497,91 +492,169 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     private fun extractData(feature: OnlineQueryResult?) {
         try {
             var mFields = ArrayList<FieldModel>()
-            var fieldList: List<Field?>? = null
             val mFeature: Feature
             if (onlineData) {
-                fieldList = feature?.serviceFeatureTable?.fields
+                feature?.serviceFeatureTable?.loadAsync()
+                val fieldList: List<Field?>? = feature?.serviceFeatureTable?.fields
                 mFeature = feature?.feature!!
                 mFeature.loadAsync()
-            } else {
-                fieldList = feature?.geodatabaseFeatureTable?.fields
-                feature?.feature?.loadAsync()
-                mFeature = feature?.featureOffline!!
-            }
+                feature.serviceFeatureTable?.addDoneLoadingListener {
+                    mFeature.addDoneLoadingListener {
+                        if (!fieldList.isNullOrEmpty()) {
+                            for (field in fieldList) {
+                                if (field != null && isValidField(field.name)) {
+                                    val fieldModel = FieldModel()
+                                    fieldModel.title = field.name
+                                    fieldModel.alias = field.alias
+                                    if (field.domain != null && field.domain is CodedValueDomain) {
+                                        if (isCheckDomain(field.domain)) { //Yes, No, N / A Domain
 
-            if (!fieldList.isNullOrEmpty()) {
-                for (field in fieldList) {
-                    if (field != null && isValidField(field.name)) {
-                        val fieldModel = FieldModel()
-                        fieldModel.title = field.name
-                        fieldModel.alias = field.alias
-                        if (field.domain != null && field.domain is CodedValueDomain) {
-                            if (isCheckDomain(field.domain)) { //Yes, No, N / A Domain
-
-                                //if domain doesn't have data field
-                                if (!isDomainHasDataField(field, fieldList)) { //TODO Domain Must Have default value
-                                    val codedValueDomain = field.domain as CodedValueDomain
-                                    fieldModel.choiceDomain = codedValueDomain
-                                    fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
-                                    fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
-                                } else {
-                                    //else if domain has data field
-                                    val codedValueDomain = field.domain as CodedValueDomain
-                                    fieldModel.choiceDomain = codedValueDomain
-                                    fieldModel.type = Enums.FieldType.DomainWithDataField.type //Domain has data field to check
-                                    fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
-                                }
-                            } else {
-                                //any other Domain
-                                if (hasCheckDomain(field.name, fieldList)) {
-                                    val codedValueDomain = field.domain as CodedValueDomain
-                                    var founded = false
-                                    for (codedValue in codedValueDomain.codedValues) {
-                                        if (mFeature.attributes[field.name] != null && codedValue.code == mFeature.attributes[field.name]) {
-                                            fieldModel.textValue = codedValue.name
-                                            founded = true
-                                            break
+                                            //if domain doesn't have data field
+                                            if (!isDomainHasDataField(field, fieldList)) { //TODO Domain Must Have default value
+                                                val codedValueDomain = field.domain as CodedValueDomain
+                                                fieldModel.choiceDomain = codedValueDomain
+                                                fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
+                                                fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
+                                            } else {
+                                                //else if domain has data field
+                                                val codedValueDomain = field.domain as CodedValueDomain
+                                                fieldModel.choiceDomain = codedValueDomain
+                                                fieldModel.type = Enums.FieldType.DomainWithDataField.type //Domain has data field to check
+                                                fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
+                                            }
+                                        } else {
+                                            //any other Domain
+                                            if (hasCheckDomain(field.name, fieldList)) {
+                                                val codedValueDomain = field.domain as CodedValueDomain
+                                                var founded = false
+                                                for (codedValue in codedValueDomain.codedValues) {
+                                                    if (mFeature.attributes[field.name] != null && codedValue.code == mFeature.attributes[field.name]) {
+                                                        fieldModel.textValue = codedValue.name
+                                                        founded = true
+                                                        break
+                                                    }
+                                                }
+                                                if (!founded) {
+                                                    fieldModel.textValue = OConstants.null_
+                                                }
+                                                fieldModel.type = Enums.FieldType.DataField.type
+                                            } else {
+                                                val codedValueDomain = field.domain as CodedValueDomain
+                                                fieldModel.choiceDomain = codedValueDomain
+                                                fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
+                                                fieldModel.selectedDomainIndex = mFeature.attributes[field.name].toString()
+                                                codedValueDomain.codedValues?.let {
+                                                    val fieldValue = mFeature.attributes[field.name].toString()
+                                                    for (i in 0 until it.size) {
+                                                        val name = it[i].name
+                                                        val code = it[i].code
+                                                        if (code == fieldValue) {
+                                                            fieldModel.textValue = name
+                                                            break
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
+                                    } else {
+                                        fieldModel.textValue = mFeature.attributes[field.name].toString()
+                                        fieldModel.type = Enums.FieldType.DataField.type
                                     }
-                                    if (!founded) {
-                                        fieldModel.textValue = OConstants.null_
+                                    if (fieldModel.type == Enums.FieldType.DomainWithDataField.type) {
+                                        associateDataFieldWithDomain(fieldModel, mFields)
+                                    } else {
+                                        fieldModel.isHasCheckDomain = false
+                                        mFields.add(fieldModel)
                                     }
-                                    fieldModel.type = Enums.FieldType.DataField.type
+                                }
+                            }
+                            if (mFields.isNotEmpty()) {
+                                mFields = sortFields(mFields)
+                                fields.add(mFields)
+                            }
+                        }
+                    }
+                }
+            } else {
+                feature?.geodatabaseFeatureTable?.loadAsync()
+                val fieldList: List<Field?>? = feature?.geodatabaseFeatureTable?.fields
+                mFeature = feature?.featureOffline!!
+
+                if (!fieldList.isNullOrEmpty()) {
+                    for (field in fieldList) {
+                        if (field != null && isValidField(field.name)) {
+                            val fieldModel = FieldModel()
+                            fieldModel.title = field.name
+                            fieldModel.alias = field.alias
+                            if (field.domain != null && field.domain is CodedValueDomain) {
+                                if (isCheckDomain(field.domain)) { //Yes, No, N / A Domain
+
+                                    //if domain doesn't have data field
+                                    if (!isDomainHasDataField(field, fieldList)) { //TODO Domain Must Have default value
+                                        val codedValueDomain = field.domain as CodedValueDomain
+                                        fieldModel.choiceDomain = codedValueDomain
+                                        fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
+                                        fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
+                                    } else {
+                                        //else if domain has data field
+                                        val codedValueDomain = field.domain as CodedValueDomain
+                                        fieldModel.choiceDomain = codedValueDomain
+                                        fieldModel.type = Enums.FieldType.DomainWithDataField.type //Domain has data field to check
+                                        fieldModel.selectedDomainIndex = mFeature.attributes[field.name]
+                                    }
                                 } else {
-                                    val codedValueDomain = field.domain as CodedValueDomain
-                                    fieldModel.choiceDomain = codedValueDomain
-                                    fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
-                                    fieldModel.selectedDomainIndex = mFeature.attributes[field.name].toString()
-                                    codedValueDomain.codedValues?.let {
-                                        val fieldValue = mFeature.attributes[field.name].toString()
-                                        for (i in 0 until it.size) {
-                                            val name = it[i].name
-                                            val code = it[i].code
-                                            if (code == fieldValue) {
-                                                fieldModel.textValue = name
+                                    //any other Domain
+                                    if (hasCheckDomain(field.name, fieldList)) {
+                                        val codedValueDomain = field.domain as CodedValueDomain
+                                        var founded = false
+                                        for (codedValue in codedValueDomain.codedValues) {
+                                            if (mFeature.attributes[field.name] != null && codedValue.code == mFeature.attributes[field.name]) {
+                                                fieldModel.textValue = codedValue.name
+                                                founded = true
                                                 break
+                                            }
+                                        }
+                                        if (!founded) {
+                                            fieldModel.textValue = OConstants.null_
+                                        }
+                                        fieldModel.type = Enums.FieldType.DataField.type
+                                    } else {
+                                        val codedValueDomain = field.domain as CodedValueDomain
+                                        fieldModel.choiceDomain = codedValueDomain
+                                        fieldModel.type = Enums.FieldType.DomainWithNoDataField.type //Domain hasn't data field to check
+                                        fieldModel.selectedDomainIndex = mFeature.attributes[field.name].toString()
+                                        codedValueDomain.codedValues?.let {
+                                            val fieldValue = mFeature.attributes[field.name].toString()
+                                            for (i in 0 until it.size) {
+                                                val name = it[i].name
+                                                val code = it[i].code
+                                                if (code == fieldValue) {
+                                                    fieldModel.textValue = name
+                                                    break
+                                                }
                                             }
                                         }
                                     }
                                 }
+                            } else {
+                                fieldModel.textValue = mFeature.attributes[field.name].toString()
+                                fieldModel.type = Enums.FieldType.DataField.type
                             }
-                        } else {
-                            fieldModel.textValue = mFeature.attributes[field.name].toString()
-                            fieldModel.type = Enums.FieldType.DataField.type
-                        }
-                        if (fieldModel.type == Enums.FieldType.DomainWithDataField.type) {
-                            associateDataFieldWithDomain(fieldModel, mFields)
-                        } else {
-                            fieldModel.isHasCheckDomain = false
-                            mFields.add(fieldModel)
+                            if (fieldModel.type == Enums.FieldType.DomainWithDataField.type) {
+                                associateDataFieldWithDomain(fieldModel, mFields)
+                            } else {
+                                fieldModel.isHasCheckDomain = false
+                                mFields.add(fieldModel)
+                            }
                         }
                     }
-                }
-                if (mFields.isNotEmpty()) {
-                    mFields = sortFields(mFields)
-                    fields.add(mFields)
+                    if (mFields.isNotEmpty()) {
+                        mFields = sortFields(mFields)
+                        fields.add(mFields)
+                    }
                 }
             }
+
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -596,23 +669,32 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    private fun hasCheckDomain(name: String, fieldList: List<Field>): Boolean {
+    private fun hasCheckDomain(name: String, fieldList: List<Field?>?): Boolean {
         val mName = name + "_Check"
-        for (field in fieldList) {
-            if (field.name == mName) {
-                return true
+        if (!fieldList.isNullOrEmpty()) {
+            for (field in fieldList) {
+                field?.let {mField->
+                    if (mField.name == mName) {
+                        return true
+                    }
+                }
+
             }
         }
         return false
     }
 
-    private fun isDomainHasDataField(originalField: Field, fieldList: List<Field>): Boolean {
+    private fun isDomainHasDataField(originalField: Field, fieldList: List<Field?>?): Boolean {
         val domainName = originalField.name
-        for (field in fieldList) {
-            if (domainName.startsWith(field.name)) {
-                return if (field.domain != null && field.domain is CodedValueDomain && field.domain.name != OConstants.CHECK_DOMAIN_NAME) {
-                    true
-                } else field.domain == null
+        if (!fieldList.isNullOrEmpty()) {
+            for (field in fieldList) {
+                field?.let { mField ->
+                    if (domainName.startsWith(mField.name)) {
+                        return if (mField.domain != null && mField.domain is CodedValueDomain && mField.domain.name != OConstants.CHECK_DOMAIN_NAME) {
+                            true
+                        } else mField.domain == null
+                    }
+                }
             }
         }
         return false
@@ -1082,6 +1164,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             Enums.TableId.OCLMeter.id -> {
                 OCL_METER_OfflineTable = table
                 OCL_METER_OfflineTable?.loadAsync()
+                meterLayer = FeatureLayer(OCL_METER_OfflineTable)
             }
         }
     }
@@ -1106,8 +1189,8 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         mGeodatabase.addDoneLoadingListener {
             // create parameters for the sync task
             val syncGeodatabaseParameters = SyncGeodatabaseParameters()
-            syncGeodatabaseParameters.syncDirection = SyncGeodatabaseParameters.SyncDirection.BIDIRECTIONAL
-            syncGeodatabaseParameters.isRollbackOnFailure = false
+            syncGeodatabaseParameters.syncDirection = SyncGeodatabaseParameters.SyncDirection.UPLOAD
+//            syncGeodatabaseParameters.isRollbackOnFailure = false
 
             // get the layer ID for each feature table in the geodatabase, then add to the sync job
             for (geodatabaseFeatureTable in mGeodatabase.geodatabaseFeatureTables) {
@@ -1151,7 +1234,6 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                 val featureResult = featuresList[i]
                 var feature: ArcGISFeature? = null
                 val fields = fields[i]
-//                MapPresenter.updateOnline(featureResult, fields, notes)
                 featureResult.feature.loadAsync()
                 featureResult.serviceFeatureTable.loadAsync()
                 featureResult.serviceFeatureTable.addDoneLoadingListener {
@@ -1201,48 +1283,8 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                     }
                                 }
                             } else {
-                                val mFeatureLayer = FeatureLayer(ServiceFeatureTable("http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/16"))
-                                mFeatureLayer.loadAsync()
-                                mFeatureLayer.selectFeature(featureResult.feature)
-                                val future = mFeatureLayer.selectedFeaturesAsync
-                                var result: FeatureQueryResult
-                                future.addDoneListener {
-                                    try {
-                                        result = future.get()
-                                        if (result.iterator().hasNext()) {
-                                            feature = result.iterator().next() as ArcGISFeature
-                                        }
-                                        feature?.let { mFeature ->
-                                            mFeature.loadAsync()
-                                            mFeature.addDoneLoadingListener {
-                                                if (mFeature.loadStatus == LoadStatus.LOADED) {
-                                                    try {
-                                                        fields.forEach { field ->
-                                                            if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
-                                                                if (field.title == Columns.Notes) {
-                                                                    mFeature.attributes[field.title] = notes
-                                                                } else if (field.isHasCheckDomain) {
-                                                                    mFeature.attributes[field.checkDomain.title] = field.checkDomain.selectedDomainIndex
-                                                                }
+                                updateMeterOnline(featureResult, fields, notes)
 
-                                                            } else if (field.type == Enums.FieldType.DomainWithNoDataField.type && isValidField(field.title)) {
-                                                                mFeature.attributes[field.title] = field.selectedDomainIndex
-
-                                                            }
-                                                        }
-                                                        featureResult.serviceFeatureTable.updateFeatureAsync(mFeature)
-                                                        Log.e(TAG, "update: serviceFeatureTable applyEdits")
-                                                        featureResult.serviceFeatureTable.applyEditsAsync().get()!!
-                                                    } catch (e: Exception) {
-                                                        e.printStackTrace()
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    } catch (e: Exception) {
-                                        e.printStackTrace()
-                                    }
-                                }
                             }
                         }
                     } catch (e: Exception) {
@@ -1253,6 +1295,154 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             Handler().postDelayed({
                 isUpdated.value = true
             }, 2000)
+        }
+    }
+
+    private fun updateMeterOnline(featureResult: OnlineQueryResult, fields: ArrayList<FieldModel>, notes: String) {
+        var feature: ArcGISFeature? = null
+        val mFeatureLayer = FeatureLayer(ServiceFeatureTable(OConstants.MeterUrl))
+        mFeatureLayer.loadAsync()
+        mFeatureLayer.selectFeature(featureResult.feature)
+        val future = mFeatureLayer.selectedFeaturesAsync
+        var result: FeatureQueryResult
+        future.addDoneListener {
+            try {
+                result = future.get()
+                if (result.iterator().hasNext()) {
+                    feature = result.iterator().next() as ArcGISFeature
+                }
+                feature?.let { mFeature ->
+                    mFeature.loadAsync()
+                    mFeature.addDoneLoadingListener {
+                        if (mFeature.loadStatus == LoadStatus.LOADED) {
+                            try {
+                                fields.forEach { field ->
+                                    if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
+                                        if (field.title == Columns.Notes) {
+                                            mFeature.attributes[field.title] = notes
+                                        } else if (field.isHasCheckDomain) {
+                                            mFeature.attributes[field.checkDomain.title] = field.checkDomain.selectedDomainIndex
+                                        }
+
+                                    } else if (field.type == Enums.FieldType.DomainWithNoDataField.type && isValidField(field.title)) {
+                                        mFeature.attributes[field.title] = field.selectedDomainIndex
+
+                                    }
+                                }
+                                featureResult.serviceFeatureTable.updateFeatureAsync(mFeature)
+                                Log.e(TAG, "update: serviceFeatureTable applyEdits")
+                                featureResult.serviceFeatureTable.applyEditsAsync().get()!!
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun updateOffline(notes: String) {
+        if (!featuresList.isNullOrEmpty()) {
+            for (i in 0.until(featuresList.size)) {
+                val featureResult = featuresList[i]
+                var feature: Feature? = null
+                val fields = fields[i]
+                featureResult.geodatabaseFeatureTable.loadAsync()
+                featureResult.geodatabaseFeatureTable.addDoneLoadingListener {
+
+                    try {
+                        if (featureResult.geodatabaseFeatureTable.loadStatus == LoadStatus.LOADED) {
+                            if (featureResult.geodatabaseFeatureTable.serviceLayerId != Enums.TableId.OCLMeter.id) {
+                                val featureLayer = featureResult.geodatabaseFeatureTable.featureLayer
+                                featureLayer.selectFeature(featureResult.featureOffline)
+                                val future = featureLayer.selectedFeaturesAsync
+                                var result: FeatureQueryResult
+                                future.addDoneListener {
+                                    try {
+                                        result = future.get()
+                                        if (result.iterator().hasNext()) {
+                                            feature = result.iterator().next() as Feature
+                                        }
+                                        feature?.let { mFeature ->
+                                            try {
+                                                fields.forEach { field ->
+                                                    if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
+                                                        if (field.title == Columns.Notes) {
+                                                            mFeature.attributes[field.title] = notes
+                                                        } else if (field.isHasCheckDomain) {
+                                                            mFeature.attributes[field.checkDomain.title] = field.checkDomain.selectedDomainIndex
+                                                        }
+
+                                                    } else if (field.type == Enums.FieldType.DomainWithNoDataField.type && isValidField(field.title)) {
+                                                        mFeature.attributes[field.title] = field.selectedDomainIndex
+
+                                                    }
+                                                }
+                                                featureResult.geodatabaseFeatureTable.updateFeatureAsync(mFeature)
+                                                Log.e(TAG, "update: serviceFeatureTable applyEdits")
+                                            } catch (e: Exception) {
+                                                e.printStackTrace()
+                                            }
+                                        }
+                                    } catch (e: Exception) {
+                                        e.printStackTrace()
+                                    }
+                                }
+                            } else {
+                                updateMeterOffline(featureResult, fields, notes)
+                            }
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            Handler().postDelayed({
+                isUpdated.value = true
+            }, 2000)
+        }
+    }
+
+    private fun updateMeterOffline(featureResult: OnlineQueryResult, fields: ArrayList<FieldModel>, notes: String) {
+        var feature: Feature? = null
+        val mFeatureLayer = meterLayer
+        mFeatureLayer.loadAsync()
+        mFeatureLayer.selectFeature(featureResult.featureOffline)
+        val future = mFeatureLayer.selectedFeaturesAsync
+        var result: FeatureQueryResult
+        future.addDoneListener {
+            try {
+                result = future.get()
+                if (result.iterator().hasNext()) {
+                    feature = result.iterator().next() as ArcGISFeature
+                }
+                feature?.let { mFeature ->
+                    try {
+                        fields.forEach { field ->
+                            if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
+                                if (field.title == Columns.Notes) {
+                                    mFeature.attributes[field.title] = notes
+                                } else if (field.isHasCheckDomain) {
+                                    mFeature.attributes[field.checkDomain.title] = field.checkDomain.selectedDomainIndex
+                                }
+
+                            } else if (field.type == Enums.FieldType.DomainWithNoDataField.type && isValidField(field.title)) {
+                                mFeature.attributes[field.title] = field.selectedDomainIndex
+
+                            }
+                        }
+                        featureResult.geodatabaseFeatureTable.updateFeatureAsync(mFeature)
+                        Log.e(TAG, "update: geodatabaseFeatureTable applyEdits")
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -1347,6 +1537,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var VoltageRegulatorLayer: FeatureLayer
     private lateinit var ServicePointLayer: FeatureLayer
     private lateinit var SwitchLayer: FeatureLayer
+    private lateinit var meterLayer: FeatureLayer
 
     private var substationOfflineTable: GeodatabaseFeatureTable? = null
     private var stationOfflineTable: GeodatabaseFeatureTable? = null

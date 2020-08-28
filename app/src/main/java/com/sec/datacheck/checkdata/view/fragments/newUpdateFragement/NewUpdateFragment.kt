@@ -164,13 +164,8 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
+//        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_fragment_edit, menu)
-
-        try {
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -196,6 +191,8 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
                 Utilities.showLoadingDialog(requireActivity())
                 viewModel.updateOnline(notes)
             }else{
+                Utilities.showLoadingDialog(requireActivity())
+                viewModel.updateOffline(notes)
 
             }
         } catch (e: Exception) {

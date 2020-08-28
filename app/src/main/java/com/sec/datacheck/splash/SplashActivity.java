@@ -1,8 +1,14 @@
 package com.sec.datacheck.splash;
 
+import android.animation.AnimatorSet;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,20 +24,37 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //If user not logged in before open login activity
-                Intent intent;
+        TextView desc_1 = findViewById(R.id.description_1);
+        TextView desc_2 = findViewById(R.id.description_2);
+        ImageView imageView = findViewById(R.id.splash_logo);
+
+        Typeface nexaFontBold = Typeface.createFromAsset(this.getAssets(), "fonts/Nexa-Bold.otf");
+        desc_1.setTypeface(nexaFontBold);
+        desc_2.setTypeface(nexaFontBold);
+
+        Animation imageAnimation = new TranslateAnimation(0, 0, -500, 0);
+        imageAnimation.setDuration(1000);
+        imageAnimation.setFillAfter(true);
+
+        Animation animation = new TranslateAnimation(-1000, 0, 0, 0);
+        animation.setDuration(1000);
+        animation.setFillAfter(true);
+
+        imageView.setAnimation(imageAnimation);
+        desc_1.startAnimation(animation);
+        desc_2.startAnimation(animation);
+
+        new Handler().postDelayed(() -> {
+            //If user not logged in before open login activity
+            Intent intent;
 //                if (isLoggedInBefore()) {
 //                intent =new Intent(SplashActivity.this, MapActivity.class);
 //                }else{
 //                    intent =new Intent(SplashActivity.this, LoginActivity.class);
 //                }
-                intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+            intent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }, 3000);
     }
 
