@@ -113,18 +113,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
     }
 
     private fun init() {
-        requestPermissions()
-        handleCompass()
-        initSheetBehavior()
-        initMap(selectedMapType)
-        viewModel.prepareOnlineLayers(baseMap, binding.mapView, baseContext)
-        // displaying user location on map
-        showDeviceLocation()
-        initSingleTap()
-        initObservers()
-        handleFab()
-        handleClickActions()
-        handleOnlineStatus()
+        try {
+            requestPermissions()
+            handleCompass()
+            initSheetBehavior()
+            initMap(selectedMapType)
+            viewModel.prepareOnlineLayers(baseMap, binding.mapView, baseContext)
+            // displaying user location on map
+            showDeviceLocation()
+            initSingleTap()
+            initObservers()
+            handleFab()
+            handleClickActions()
+            handleOnlineStatus()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun handleOnlineStatus() {
@@ -1138,6 +1142,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
 
             exitFullScreenMode()
             selectedResult!!.featureLayer.clearSelection()
+            hide(binding.mapView)
             show(binding.fragment)
             supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_down)
@@ -1155,6 +1160,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
         try {
             supportFragmentManager.findFragmentById(R.id.fragment)?.let { supportFragmentManager.beginTransaction().remove(it).commit() }
             binding.fragment.visibility = View.INVISIBLE
+            show(binding.mapView)
             isFragmentShown = false
             val actionBar: ActionBar? = supportActionBar
             actionBar?.let {
