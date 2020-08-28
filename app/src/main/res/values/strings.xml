@@ -42,21 +42,22 @@
     <string name="polygon_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/2</string>
     <string name="index_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/3</string>
 
-    <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/0</string>
-    <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/1</string>
-    <string name="TRANSFORMER" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/2</string>
-    <string name="RING_MAIN_UNIT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/3</string>
-    <string name="FCL_POLES" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/4</string>
-    <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/5</string>
-    <string name="VOLTAGE_REGULATOR" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/6</string>
-    <string name="SERVICE_POINT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/7</string>
-    <string name="SWITCH" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/8</string>
-    <string name="FUSE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/9</string>
-    <string name="DYNAMIC_PROTECTIVE_DEVICE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/10</string>
-    <string name="mv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/11</string>
-    <string name="lv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/12</string>
-    <string name="lvdb_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/13</string>
-    <string name="switch_gear_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/14</string>
+    <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/1</string>
+    <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/2</string>
+    <string name="TRANSFORMER" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/3</string>
+    <string name="RING_MAIN_UNIT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/4</string>
+    <string name="FCL_POLES" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/5</string>
+    <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/6</string>
+    <string name="VOLTAGE_REGULATOR" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/7</string>
+    <string name="SERVICE_POINT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/8</string>
+    <string name="SWITCH" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/9</string>
+    <string name="FUSE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/10</string>
+    <string name="DYNAMIC_PROTECTIVE_DEVICE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/11</string>
+    <string name="mv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/12</string>
+    <string name="lv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/13</string>
+    <string name="lvdb_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/14</string>
+    <string name="switch_gear_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/15</string>
+    <string name="OCL_METER" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/16</string>
 
     <!--Ali Ussama Update-->
 
@@ -168,8 +169,6 @@
     <string name="service_point">Service Point</string>
     <string name="please_wait">Please Wait, Loading</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="overflow">overflow</string>
     <string name="required">مطلوب</string>
     <string name="cancel">Cancel</string>
@@ -292,4 +291,24 @@
     <string name="open_street_map">Esri Open Street</string>
     <string name="google_map">Google Map</string>
     <string name="default_map">Default Map</string>
+    <string name="compass">compass</string>
+    <string name="distance_in_km">المسافة بالكيلومتر</string>
+    <string name="equal">=</string>
+    <string name="distance_in_meter">المسافة بالمتـــــــر</string>
+
+    <string name="yes_choice">Yes</string>
+    <string name="no_choice">No</string>
+    <string name="nan_choice">N/A</string>
+    <string name="fields">Fields</string>
+    <string name="features">Features</string>
+    <string name="pictures">Pictures</string>
+    <string name="images">images_description</string>
+    <string name="sync_failed_retrying">Sync Failed... retrying</string>
+    <string name="splash_lbl_1">فريق تطوير الانظمة بالشرق الأوسط</string>
+    <string name="splash_lbl_2">نظم المعلومات الجغرافية GIS</string>
+    <string-array name="check_domain_list">
+        <item>@string/yes_choice</item>
+        <item>@string/no_choice</item>
+        <item>@string/nan_choice</item>
+    </string-array>
 </resources>

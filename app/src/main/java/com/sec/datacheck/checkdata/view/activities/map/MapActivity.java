@@ -37,6 +37,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -73,6 +74,7 @@ import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sec.datacheck.R;
+import com.sec.datacheck.checkdata.model.Enums;
 import com.sec.datacheck.checkdata.model.models.BookMark;
 import com.sec.datacheck.checkdata.model.models.Columns;
 import com.sec.datacheck.checkdata.model.models.DataCollectionApplication;
@@ -263,6 +265,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     private MapType selectedMapType;
 
     private MenuItem mDefaultMapItem, mOpenStreetMapItem, mGoogleItem;
+    private MapViewModel viewModel;
 
     @Override
     protected void onResume() {
@@ -283,7 +286,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             setContentView(R.layout.activity_home_check_data);
 
             init();
-
+            viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MapViewModel.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -313,7 +316,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             selectedMapType = MapType.DEFAULT_MAP;
             initMap(selectedMapType);
 
-            initOnlineLayers(baseMap, mapView);
+            viewModel.prepareOnlineLayers(baseMap, mapView, getBaseContext());
 
             if (checkLocationPermissions()) {
 
@@ -373,7 +376,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             sheetBehavior = BottomSheetBehavior.from(mBottomSheet);
             sheetBehavior.setPeekHeight(150, true);
             sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-//            mBottomSheet.setVisibility(View.GONE);
 
             mCancelBtn.setOnClickListener(this);
             mUpdateBtn.setOnClickListener(this);
@@ -457,85 +459,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         }
     }
 
-    private void initOnlineLayers(ArcGISMap baseMap, MapView mapView) {
-        try {
-
-            // create the feature layer using the service feature table
-            stationTable = new ServiceFeatureTable(getString(R.string.stations));
-            stationLayer = new FeatureLayer(stationTable);
-
-            substationTable = new ServiceFeatureTable(getString(R.string.substations));
-            substationLayer = new FeatureLayer(substationTable);
-
-            FCL_DistributionBoxTable = new ServiceFeatureTable(getString(R.string.FCL_DISTRIBUTIONBOX));
-            FCL_DistributionBoxLayer = new FeatureLayer(FCL_DistributionBoxTable);
-
-            DynamicProtectiveDeviceTable = new ServiceFeatureTable(getString(R.string.DYNAMIC_PROTECTIVE_DEVICE));
-            DynamicProtectiveDeviceLayer = new FeatureLayer(DynamicProtectiveDeviceTable);
-
-            FuseTable = new ServiceFeatureTable(getString(R.string.FUSE));
-            FuseLayer = new FeatureLayer(FuseTable);
-
-            FCL_POLESTable = new ServiceFeatureTable(getString(R.string.FCL_POLES));
-            FCL_POLES_Layer = new FeatureLayer(FCL_POLESTable);
-
-            LvOhCableTable = new ServiceFeatureTable(getString(R.string.lv_oh_cable));
-            LvOhCableLayer = new FeatureLayer(LvOhCableTable);
-
-            MvOhCableTable = new ServiceFeatureTable(getString(R.string.mv_oh_cable));
-            MvOhCableLayer = new FeatureLayer(MvOhCableTable);
-
-            LvdbAreaTable = new ServiceFeatureTable(getString(R.string.lvdb_area));
-            LvdbAreaLayer = new FeatureLayer(LvdbAreaTable);
-
-            SwitchgearAreaTable = new ServiceFeatureTable(getString(R.string.switch_gear_area));
-            SwitchgearAreaLayer = new FeatureLayer(SwitchgearAreaTable);
-
-            TransFormersTable = new ServiceFeatureTable(getString(R.string.TRANSFORMER));
-            TransFormersLayer = new FeatureLayer(TransFormersTable);
-
-            RingMainUnitTable = new ServiceFeatureTable(getString(R.string.RING_MAIN_UNIT));
-            RingMainUnitLayer = new FeatureLayer(RingMainUnitTable);
-
-            VoltageRegulatorTable = new ServiceFeatureTable(getString(R.string.VOLTAGE_REGULATOR));
-            VoltageRegulatorLayer = new FeatureLayer(VoltageRegulatorTable);
-
-            ServicePointTable = new ServiceFeatureTable(getString(R.string.SERVICE_POINT));
-            ServicePointLayer = new FeatureLayer(ServicePointTable);
-
-            SwitchTable = new ServiceFeatureTable(getString(R.string.SWITCH));
-            SwitchLayer = new FeatureLayer(SwitchTable);
-
-            // add the layer to the map
-
-            mapView.getMap().getOperationalLayers().add(LvdbAreaLayer);
-            baseMap.getOperationalLayers().add(SwitchgearAreaLayer);
-
-            baseMap.getOperationalLayers().add(LvOhCableLayer);
-            baseMap.getOperationalLayers().add(MvOhCableLayer);
-
-            baseMap.getOperationalLayers().add(stationLayer);
-            baseMap.getOperationalLayers().add(substationLayer);
-            baseMap.getOperationalLayers().add(FCL_DistributionBoxLayer);
-            baseMap.getOperationalLayers().add(DynamicProtectiveDeviceLayer);
-
-            baseMap.getOperationalLayers().add(FuseLayer);
-            baseMap.getOperationalLayers().add(FCL_POLES_Layer);
-            baseMap.getOperationalLayers().add(TransFormersLayer);
-            baseMap.getOperationalLayers().add(RingMainUnitLayer);
-
-            baseMap.getOperationalLayers().add(VoltageRegulatorLayer);
-            baseMap.getOperationalLayers().add(ServicePointLayer);
-            baseMap.getOperationalLayers().add(SwitchLayer);
-
-            // set the map to be displayed in the mapView
-            mapView.setMap(baseMap);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private void zoomToCurrentLocation() {
         try {
             mapView.setViewpoint(new Viewpoint(mCurrentLocation, 16.0));
@@ -573,14 +496,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                         MY_LOCATION_REQUEST_CODE);
             }
 
-//            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_TAKE_PICTURE);
-//            }
-//
-//            if (ActivityCompat.checkSelfPermission(mCurrent, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL_STORAGE);
-//            }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -589,7 +504,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
     @SuppressLint("ClickableViewAccessibility")
     private void initSingleTap() {
         try {
-            mapSingleTapListener = new MapSingleTapListener(mCurrent, mapView, this);
+//            mapSingleTapListener = new MapSingleTapListener(mCurrent, mapView, this);
             mapView.setOnTouchListener(mapSingleTapListener);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1169,12 +1084,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 } else {
                     goOffline();
                 }
-                try {
-//                    menuItemGoOfflineMode.setVisible(false);
-//                    menuItemGoOnlineMode.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
                 return true;
             case R.id.item_load_previous_offline:
                 showOfflineMapsList(mCurrent, mapView);
@@ -1202,8 +1111,6 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 return true;
             case R.id.item_go_online_mode:
                 try {
-//                    menuItemGoOfflineMode.setVisible(true);
-//                    menuItemGoOnlineMode.setVisible(false);
                     if (Utilities.isNetworkAvailable(mCurrent)) {
                         goOnline();
                     } else {
@@ -1239,7 +1146,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 initMap(selectedMapType);
 
                 if (onlineData) {
-                    initOnlineLayers(baseMap, mapView);
+                    viewModel.prepareOnlineLayers(baseMap,mapView,getBaseContext());
                 } else {
                     presenter.addLocalLayers(mapView, baseMap, currentOfflineVersion, currentOfflineVersionTitle);
                 }
@@ -1264,7 +1171,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                 initMap(selectedMapType);
 
                 if (onlineData) {
-                    initOnlineLayers(baseMap, mapView);
+                    viewModel.prepareOnlineLayers(baseMap,mapView,getBaseContext());
                 } else {
                     presenter.addLocalLayers(mapView, baseMap, currentOfflineVersion, currentOfflineVersionTitle);
                 }
@@ -1288,7 +1195,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
             initMap(selectedMapType);
 
             if (onlineData) {
-                initOnlineLayers(baseMap, mapView);
+                viewModel.prepareOnlineLayers(baseMap,mapView,getBaseContext());
             } else {
                 presenter.addLocalLayers(mapView, baseMap, currentOfflineVersion, currentOfflineVersionTitle);
             }
@@ -1389,7 +1296,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         if (Utilities.isNetworkAvailable(mCurrent)) {
             currentViewPoint = mapView.getCurrentViewpoint(Viewpoint.Type.BOUNDING_GEOMETRY);
             initMap(selectedMapType);
-            initOnlineLayers(baseMap, mapView);
+            viewModel.prepareOnlineLayers(baseMap,mapView,getBaseContext());
             zoomToViewPoint(currentViewPoint);
             onlineData = true;
             showViews();
@@ -1598,6 +1505,11 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void applyRotation(double rotationAngle) {
+
     }
 
     @Override
@@ -1822,11 +1734,11 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                     runOnUiThread(() -> {
                         try {
                             for (OnlineQueryResult result : results) {
-                                if (result.getFeatureType().equals(POINT)) {
+                                if (result.getFeatureType().equals(Enums.SHAPE.POINT)) {
                                     handleSelectPoint(result, pointOnMap);
-                                } else if (result.getFeatureType().equals(POLYLINE)) {
+                                } else if (result.getFeatureType().equals(Enums.SHAPE.POLYLINE)) {
                                     handleSelectPolyLine(result);
-                                } else if (result.getFeatureType().equals(POLYGON)) {
+                                } else if (result.getFeatureType().equals(Enums.SHAPE.POLYGON)) {
                                     handleSelectPolygon(result);
                                 }
                             }
@@ -1834,7 +1746,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                             e.printStackTrace();
                         }
                     });
-                } else if (results != null && results.size() > 1){
+                } else if (results != null && results.size() > 1) {
                     handleMultiOnlineQueryResult(results, pointOnMap);
                 }
 
@@ -1864,11 +1776,11 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                     runOnUiThread(() -> {
                         try {
                             for (OnlineQueryResult result : results) {
-                                if (result.getFeatureType().equals(POINT)) {
+                                if (result.getFeatureType().equals(Enums.SHAPE.POINT)) {
                                     handleSelectPoint(result, pointOnMap);
-                                } else if (result.getFeatureType().equals(POLYLINE)) {
+                                } else if (result.getFeatureType().equals(Enums.SHAPE.POLYLINE)) {
                                     handleSelectPolyLine(result);
-                                } else if (result.getFeatureType().equals(POLYGON)) {
+                                } else if (result.getFeatureType().equals(Enums.SHAPE.POLYGON)) {
                                     handleSelectPolygon(result);
                                 }
                             }
@@ -1876,7 +1788,7 @@ public class MapActivity extends AppCompatActivity implements SingleTapListener,
                             e.printStackTrace();
                         }
                     });
-                } else if (results != null && results.size() > 1){
+                } else if (results != null && results.size() > 1) {
                     handleMultiOnlineQueryResult(results, pointOnMap);
                 }
 

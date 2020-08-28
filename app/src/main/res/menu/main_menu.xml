@@ -7,29 +7,29 @@
         android:icon="@drawable/ic_layers_white_24dp"
         android:title="@string/load_map"
         android:visible="true"
-        app:showAsAction="ifRoom">
+        app:showAsAction="always">
 
         <menu>
             <item
                 android:id="@+id/default_map"
+                android:icon="@drawable/ic_baseline_done_24"
                 android:title="@string/default_map"
                 android:visible="true"
-                android:icon="@drawable/ic_baseline_done_24"
                 app:actionViewClass="android.widget.ImageView"
                 app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/open_street_map"
+                android:icon="@drawable/ic_baseline_fiber_manual_record_24"
                 android:title="@string/open_street_map"
                 android:visible="true"
-                android:icon="@drawable/ic_baseline_fiber_manual_record_24"
                 app:actionViewClass="android.widget.ImageView"
                 app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/google_map"
-                android:title="@string/google_map"
                 android:icon="@drawable/ic_baseline_fiber_manual_record_24"
+                android:title="@string/google_map"
                 android:visible="true"
                 app:actionViewClass="android.widget.ImageView"
                 app:showAsAction="ifRoom" />
@@ -41,15 +41,15 @@
         android:id="@+id/item_load_previous_offline"
         android:icon="@drawable/ic_database"
         android:title="@string/load_previous_downloaded_map"
-        android:visible="false"
-        app:showAsAction="ifRoom" />
+        android:visible="true"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/item_go_offline"
         android:icon="@drawable/ic_action_offline"
         android:title="@string/download_current_map_area"
         android:visible="true"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/item_go_online"
@@ -72,7 +72,7 @@
         android:visible="true"
         app:showAsAction="ifRoom">
 
-        <menu android:visible="true">
+        <menu>
             <item
                 android:id="@+id/item_go_offline_mode"
                 android:icon="@drawable/ic_layers_black_24dp"

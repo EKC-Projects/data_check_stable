@@ -1,6 +1,8 @@
 package com.sec.datacheck.checkdata.model;
 
+import com.esri.arcgisruntime.arcgisservices.RelationshipInfo;
 import com.esri.arcgisruntime.data.QueryParameters;
+import com.esri.arcgisruntime.data.RelatedQueryParameters;
 import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
@@ -21,6 +23,17 @@ public class QueryConfig {
         query.setOutSpatialReference(sp);
         query.setGeometry(geometry);
 
+        return query;
+    }
+
+    public static QueryParameters getRelatedQuery(String primaryKey, String foreignKeyColumnName,Point point) {
+
+        QueryParameters query = new QueryParameters();
+        // make search case insensitive
+        query.setWhereClause(foreignKeyColumnName.concat("=").concat("'"+primaryKey+"'"));
+        query.setReturnGeometry(false);
+//        query.setOutSpatialReference(sp);
+//        query.setGeometry(point);
         return query;
     }
 }

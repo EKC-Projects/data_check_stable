@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener;
 import com.esri.arcgisruntime.mapping.view.MapView;
+import com.sec.datacheck.checkdata.view.activities.map.MainActivity;
 import com.sec.datacheck.checkdata.view.activities.map.MapActivity;
 import com.sec.datacheck.checkdata.view.callbacks.mapCallbacks.SingleTapListener;
 
@@ -13,13 +14,12 @@ public class MapSingleTapListener extends DefaultMapViewOnTouchListener {
 
     private static final String TAG = "MapSingleTapListener";
     private MapView mapView;
-    private MapActivity context;
+    private MainActivity context;
     private SingleTapListener listener;
 
-    public MapSingleTapListener(MapActivity context, MapView mapView, SingleTapListener listener) {
+    public MapSingleTapListener(MainActivity context, MapView mapView, SingleTapListener listener) {
         super(context, mapView);
         try {
-
             this.mapView = mapView;
             this.context = context;
             this.listener = listener;
@@ -46,9 +46,9 @@ public class MapSingleTapListener extends DefaultMapViewOnTouchListener {
     @Override
     public boolean onRotate(MotionEvent event, double rotationAngle) {
         try {
-            context.mMatrix.reset();
-            context.mMatrix.postRotate(-(float) rotationAngle, context.mBitmap.getHeight() / 2, context.mBitmap.getWidth() / 2);
-            context.mCompass.setImageMatrix(context.mMatrix);
+            if (listener != null) {
+                listener.applyRotation(rotationAngle);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

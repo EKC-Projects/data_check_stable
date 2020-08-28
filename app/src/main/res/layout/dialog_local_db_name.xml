@@ -12,6 +12,7 @@
         android:layout_height="?actionBarSize"
         android:background="@drawable/custom_edittext_border_background"
         android:gravity="center"
+        android:imeOptions="actionDone"
         android:hint="@string/enter_database_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

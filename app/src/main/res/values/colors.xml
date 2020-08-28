@@ -9,6 +9,7 @@
 
     <color name="orange">#ff9800</color>
     <color name="orangeDark">#c66900</color>
+    <color name="logoOrange">#F58F3D</color>
     <color name="backgroundFieldName">#eaf1f7</color>
     <color name="textColorFieldName">#000000</color>
 
@@ -24,6 +25,7 @@
     <color name="yellow">#FFFF00</color>
     <color name="red">#FF0000</color>
     <color name="blue">#0070FF</color>
+    <color name="logoBlue">#0436B3</color>
     <color name="purple">#4a148c</color>
 
     <color name="station_color">#44656B</color>

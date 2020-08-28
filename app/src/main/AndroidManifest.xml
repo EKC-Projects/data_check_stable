@@ -24,23 +24,27 @@
         android:required="true" />
 
     <application
-        android:name="com.sec.datacheck.checkdata.model.models.DataCollectionApplication"
+        android:name=".checkdata.model.models.DataCollectionApplication"
         android:allowBackup="true"
-        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="M">
-
         <activity
-            android:name="com.sec.datacheck.NavigateActivity"
+            android:name=".checkdata.view.activities.map.MainActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
+            android:label="@string/home"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".NavigateActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
-            android:name="com.sec.datacheck.splash.SplashActivity"
+            android:name=".splash.SplashActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter android:label="singleInstance">
@@ -64,10 +68,10 @@
         </provider>
 
         <activity
-            android:name="com.sec.datacheck.checkdata.view.activities.map.MapActivity"
+            android:name=".checkdata.view.activities.map.MapActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|fontScale|navigation"
             android:label="@string/home"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
