@@ -733,7 +733,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                 if (allFiles != null && allFiles.isNotEmpty()) {
 
                     for (file in allFiles) {
-                        if (file.path.contains("_$objectID.png") || file.path.contains("_$objectID.jpg") || file.path.contains("_$objectID.jpeg")) {
+                        if (file.path.endsWith("_$objectID.png") || file.path.endsWith("_$objectID.jpg") || file.path.endsWith("_$objectID.jpeg")) {
                             imagesList.add(file)
                         }
                     }
@@ -921,7 +921,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
 
 //          write the compressed bitmap at the destination specified by filename.
             scaledBitmap?.compress(Bitmap.CompressFormat.PNG, 80, out)
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         return mImageFile
@@ -942,7 +942,11 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         var uriSting: String? = null
         try {
             val d = Date()
-            uriSting = "Image_" + SimpleDateFormat("dd_MM_yyyy_HH_mm_ss", Locale.ENGLISH).format(d) + "_" + selectedResult?.objectID + ".png"
+            if (!featuresList.isNullOrEmpty()) {
+                uriSting = "Image_" + SimpleDateFormat("dd_MM_yyyy_HH_mm_ss", Locale.ENGLISH).format(d) + "_" + featuresList[0].objectID + ".png"
+            }else{
+                uriSting = "Image_" + SimpleDateFormat("dd_MM_yyyy_HH_mm_ss", Locale.ENGLISH).format(d) + "_" + selectedResult?.objectID + ".png"
+            }
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -1259,7 +1263,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                                 if (mFeature.loadStatus == LoadStatus.LOADED) {
                                                     try {
                                                         fields.forEach { field ->
-                                                            if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
+                                                            if (field.type == Enums.FieldType.DataField.type && !isObjectID(field)) {
                                                                 if (field.title == Columns.Notes) {
                                                                     mFeature.attributes[field.title] = notes
                                                                 } else if (field.isHasCheckDomain) {
@@ -1371,7 +1375,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                         feature?.let { mFeature ->
                                             try {
                                                 fields.forEach { field ->
-                                                    if (field.type == Enums.FieldType.DataField.type && isValidField(field.title) && !isObjectID(field)) {
+                                                    if (field.type == Enums.FieldType.DataField.type && !isObjectID(field)) {
                                                         if (field.title == Columns.Notes) {
                                                             mFeature.attributes[field.title] = notes
                                                         } else if (field.isHasCheckDomain) {

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sec.datacheck.R
+import com.sec.datacheck.checkdata.model.Enums
 import com.sec.datacheck.checkdata.model.models.Columns
 import com.sec.datacheck.checkdata.model.models.OConstants
 import com.sec.datacheck.checkdata.model.models.OnlineQueryResult
@@ -22,13 +24,16 @@ import com.sec.datacheck.checkdata.model.requestPermissions
 import com.sec.datacheck.checkdata.view.POJO.FieldModel
 import com.sec.datacheck.checkdata.view.activities.map.MapViewModel
 import com.sec.datacheck.checkdata.view.adapter.*
+import com.sec.datacheck.checkdata.view.fragments.displayImageFragment.DisplayImageFragment
+import com.sec.datacheck.checkdata.view.fragments.updateFragment.UpdateFragment
 import com.sec.datacheck.checkdata.view.utils.Utilities
 import com.sec.datacheck.databinding.DefaultFeatureBinding
 import com.sec.datacheck.databinding.FragmentNewUpdateBinding
 import kotlinx.android.synthetic.main.default_feature.view.*
+import java.io.File
 import java.io.IOException
 
-class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClickListener {
+class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClickListener, ImageAdapterListener {
 
     val viewModel by lazy {
         ViewModelProvider(requireActivity()).get(MapViewModel::class.java)
@@ -81,14 +86,14 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
                 requestPermissions()
             } else {
 
-                val pointName = viewModel.objectID
+                val pointName = viewModel.selectedResult?.objectID
 
-                val pointFolderName: String = if (viewModel.selectedLayer != null) {
-                    viewModel.selectedLayer?.name!!
-                } else if (viewModel.onlineData) {
-                    viewModel.selectedTable?.displayName!!
+                val pointFolderName: String = /*if (viewModel.selectedResult?.featureLayer != null) {
+                    viewModel.selectedResult?.featureLayer?.name!!
+                } else */if (viewModel.onlineData) {
+                    viewModel.selectedResult?.serviceFeatureTable?.displayName!!
                 } else {
-                    viewModel.selectedOfflineFeatureTable?.displayName!!
+                    viewModel.selectedResult?.geodatabaseFeatureTable?.displayName!!
                 }
 
                 viewModel.createFile(pointName!!, pointFolderName, OConstants.PNG, "IMG")
@@ -111,8 +116,32 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
         }
     }
 
+    private fun openGallery() {
+        try {
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions()
+            } else {
+                val pointName = viewModel.objectID
+                var pointFolderName: String = if (viewModel.selectedLayer != null) {
+                    viewModel.selectedLayer?.name!!
+                } else if (viewModel.onlineData) {
+                    viewModel.selectedTable?.displayName!!
+                } else {
+                    viewModel.selectedOfflineFeatureTable?.displayName!!
+                }
+                viewModel.createFile(pointName!!, pointFolderName, OConstants.PNG, "IMG")
+                val photoPickerIntent = Intent(Intent.ACTION_PICK)
+                photoPickerIntent.type = "image/PNG"
+                startActivityForResult(photoPickerIntent, OConstants.REQUEST_CODE_GALLERY)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
     private fun displayImages() {
-        imagesAdapter = ImagesAdapter(viewModel.imagesList)
+        imagesAdapter = ImagesAdapter(viewModel.imagesList, this)
         defaultBinding.imagesRecyclerView.adapter = imagesAdapter
         defaultBinding.imagesRecyclerView.isNestedScrollingEnabled = true
         if (viewModel.imagesList.isNotEmpty()) {
@@ -173,7 +202,7 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
             saveChanges()
             return true
         } else if (item.itemId == R.id.menu_gallery) {
-//            openGallery()
+            openGallery()
         } else if (item.itemId == R.id.menu_camera) {
             takePicture()
         }
@@ -187,10 +216,18 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
             } else {
                 ""
             }
+            val noteField = FieldModel()
+            noteField.isHasCheckDomain = false
+            noteField.title = Columns.Notes
+            noteField.textValue = notes
+            noteField.type = Enums.FieldType.DataField.type
+            if (viewModel.fields.isNotEmpty() && !viewModel.fields[0].isNullOrEmpty()) {
+                viewModel.fields[0].add(noteField)
+            }
             if (viewModel.onlineData) {
                 Utilities.showLoadingDialog(requireActivity())
                 viewModel.updateOnline(notes)
-            }else{
+            } else {
                 Utilities.showLoadingDialog(requireActivity())
                 viewModel.updateOffline(notes)
 
@@ -231,10 +268,18 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
                                 e.printStackTrace()
                             }
                         }
-                    } catch (e: java.lang.Exception) {
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     } finally {
                     }
+                }
+            }
+        } else if (resultCode == 0) {
+            if (requestCode == OConstants.REQUEST_CODE_TAKE_PICTURE || requestCode == OConstants.REQUEST_CODE_GALLERY) {
+                try {
+                    viewModel.mFileTemp.parentFile?.delete()
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }
@@ -245,11 +290,16 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
             viewModel.compressImage(viewModel.mFileTemp.path)?.let { image ->
                 imagesAdapter.addImage(image)
                 if (defaultBinding.imagesRecyclerView.visibility == View.GONE) {
-                    defaultBinding.imagesRecyclerView.visibility == View.VISIBLE
+                    defaultBinding.imagesRecyclerView.visibility = View.VISIBLE
                 }
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    override fun onImageSelected(image: File) {
+        val fragment = DisplayImageFragment(image)
+        fragment.show(requireActivity().supportFragmentManager, "DisplayImageFragment")
     }
 }
