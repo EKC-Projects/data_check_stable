@@ -54,6 +54,7 @@ import com.sec.datacheck.checkdata.model.models.OnlineQueryResult
 import com.sec.datacheck.checkdata.view.activities.MapSingleTapListener
 import com.sec.datacheck.checkdata.view.adapter.BookMarkAdapter
 import com.sec.datacheck.checkdata.view.adapter.MultiResultAdapter
+import com.sec.datacheck.checkdata.view.callbacks.mapCallbacks.GpsListener
 import com.sec.datacheck.checkdata.view.callbacks.mapCallbacks.SingleTapListener
 import com.sec.datacheck.checkdata.view.fragments.newUpdateFragement.NewUpdateFragment
 import com.sec.datacheck.checkdata.view.utils.Utilities
@@ -113,18 +114,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
     }
 
     private fun init() {
-        requestPermissions()
-        handleCompass()
-        initSheetBehavior()
-        initMap(selectedMapType)
-        viewModel.prepareOnlineLayers(baseMap, binding.mapView, baseContext)
-        // displaying user location on map
-        showDeviceLocation()
-        initSingleTap()
-        initObservers()
-        handleFab()
-        handleClickActions()
-        handleOnlineStatus()
+        try {
+            requestPermissions()
+            handleCompass()
+            initSheetBehavior()
+            initMap(selectedMapType)
+            viewModel.prepareOnlineLayers(baseMap, binding.mapView, baseContext)
+            // displaying user location on map
+            showDeviceLocation()
+            initSingleTap()
+            initObservers()
+            handleFab()
+            handleClickActions()
+            handleOnlineStatus()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun handleOnlineStatus() {
@@ -249,29 +254,62 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
     private fun showDeviceLocation() {
 
         try {
-            val locationDisplay: LocationDisplay = binding.mapView.locationDisplay
-            locationDisplay.autoPanMode = LocationDisplay.AutoPanMode.NAVIGATION
+            if (!checkGPSProvider()) {
+                setUpLocationRequest(object : GpsListener {
+                    override fun onResponse(status: Boolean) {
+                        if (status) {
+                            val locationDisplay: LocationDisplay = binding.mapView.locationDisplay
+                            locationDisplay.autoPanMode = LocationDisplay.AutoPanMode.NAVIGATION
 
-            locationDisplay.addLocationChangedListener { locationChangedEvent -> //reading location changing
-                mCurrentLocation = locationChangedEvent.location.position
-                if (mCurrentLocation != null) {
-                    var accuracy = locationChangedEvent.location.horizontalAccuracy
-                    val mAccuracy = (accuracy * 100).toInt()
-                    accuracy = mAccuracy.toDouble() / 100
-                    val latLang = "Lat: " + Utilities.round(mCurrentLocation!!.x, 4) + " Lan: " + Utilities.round(mCurrentLocation!!.y, 4) + " Accuracy = " + accuracy
-                    binding.tvLatLong.text = latLang
-                }
-                mMatrix.reset()
-                mMatrix.postRotate(-binding.mapView.rotation, mCompassBitmap.height / 2.toFloat(), mCompassBitmap.width / 2.toFloat())
-                binding.compass.imageMatrix = mMatrix
-            }
+                            locationDisplay.addLocationChangedListener { locationChangedEvent -> //reading location changing
+                                mCurrentLocation = locationChangedEvent.location.position
+                                if (mCurrentLocation != null) {
+                                    var accuracy = locationChangedEvent.location.horizontalAccuracy
+                                    val mAccuracy = (accuracy * 100).toInt()
+                                    accuracy = mAccuracy.toDouble() / 100
+                                    val latLang = "Lat: " + Utilities.round(mCurrentLocation!!.x, 4) + " Lan: " + Utilities.round(mCurrentLocation!!.y, 4) + " Accuracy = " + accuracy
+                                    binding.tvLatLong.text = latLang
+                                }
+                                mMatrix.reset()
+                                mMatrix.postRotate(-binding.mapView.rotation, mCompassBitmap.height / 2.toFloat(), mCompassBitmap.width / 2.toFloat())
+                                binding.compass.imageMatrix = mMatrix
+                            }
 
-            locationDisplay.addDataSourceStatusChangedListener { dataSourceStatusChangedEvent: DataSourceStatusChangedEvent ->
-                if (dataSourceStatusChangedEvent.source.locationDataSource.error != null) {
-                    dataSourceStatusChangedEvent.source.locationDataSource.error.printStackTrace()
+                            locationDisplay.addDataSourceStatusChangedListener { dataSourceStatusChangedEvent: DataSourceStatusChangedEvent ->
+                                if (dataSourceStatusChangedEvent.source.locationDataSource.error != null) {
+                                    dataSourceStatusChangedEvent.source.locationDataSource.error.printStackTrace()
+                                }
+                            }
+                            locationDisplay.startAsync()
+                        }
+                    }
+
+                })
+            }else{
+                val locationDisplay: LocationDisplay = binding.mapView.locationDisplay
+                locationDisplay.autoPanMode = LocationDisplay.AutoPanMode.NAVIGATION
+
+                locationDisplay.addLocationChangedListener { locationChangedEvent -> //reading location changing
+                    mCurrentLocation = locationChangedEvent.location.position
+                    if (mCurrentLocation != null) {
+                        var accuracy = locationChangedEvent.location.horizontalAccuracy
+                        val mAccuracy = (accuracy * 100).toInt()
+                        accuracy = mAccuracy.toDouble() / 100
+                        val latLang = "Lat: " + Utilities.round(mCurrentLocation!!.x, 4) + " Lan: " + Utilities.round(mCurrentLocation!!.y, 4) + " Accuracy = " + accuracy
+                        binding.tvLatLong.text = latLang
+                    }
+                    mMatrix.reset()
+                    mMatrix.postRotate(-binding.mapView.rotation, mCompassBitmap.height / 2.toFloat(), mCompassBitmap.width / 2.toFloat())
+                    binding.compass.imageMatrix = mMatrix
                 }
+
+                locationDisplay.addDataSourceStatusChangedListener { dataSourceStatusChangedEvent: DataSourceStatusChangedEvent ->
+                    if (dataSourceStatusChangedEvent.source.locationDataSource.error != null) {
+                        dataSourceStatusChangedEvent.source.locationDataSource.error.printStackTrace()
+                    }
+                }
+                locationDisplay.startAsync()
             }
-            locationDisplay.startAsync()
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -563,8 +601,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
             }
             android.R.id.home -> {
                 if (isFragmentShown) {
-                    hideFragment()
-                    showActivityViews()
+                    onBackPressed()
                 }
             }
         }
@@ -573,10 +610,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
 
     override fun onBackPressed() {
         try {
-            if (binding.fragment.visibility == View.VISIBLE) {
+            if (isFragmentShown) {
                 Utilities.showConfirmDialog(this, "", "هل انت متأكد من الرجوع ؟") { dialog, which ->
                     if (which == -1) {
                         selectedResult = null
+                        viewModel.clearData()
                         hideFragment()
                         showActivityViews()
                     }
@@ -590,7 +628,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                     }
                 }
             }
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -816,6 +854,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
                 binding.fabLocation -> {
                     if (mCurrentLocation != null) {
                         zoomToCurrentLocation()
+                    }else{
+                        showDeviceLocation()
                     }
                 }
                 binding.tvMoreLayerInfo -> {
@@ -1138,6 +1178,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
 
             exitFullScreenMode()
             selectedResult!!.featureLayer.clearSelection()
+            hide(binding.mapView)
             show(binding.fragment)
             supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_down)
@@ -1155,6 +1196,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
         try {
             supportFragmentManager.findFragmentById(R.id.fragment)?.let { supportFragmentManager.beginTransaction().remove(it).commit() }
             binding.fragment.visibility = View.INVISIBLE
+            show(binding.mapView)
             isFragmentShown = false
             val actionBar: ActionBar? = supportActionBar
             actionBar?.let {
