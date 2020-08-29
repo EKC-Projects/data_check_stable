@@ -247,7 +247,9 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                                         feature.loadAsync()
                                         val mOnlineQueryResult = OnlineQueryResult()
                                         mOnlineQueryResult.feature = feature
+                                        mOnlineQueryResult.feature.loadAsync()
                                         mOnlineQueryResult.serviceFeatureTable = layer.serviceFeatureTable
+                                        mOnlineQueryResult.serviceFeatureTable.loadAsync()
                                         mOnlineQueryResult.featureLayer = layer.featureLayer
                                         mOnlineQueryResult.objectID = feature.attributes[Columns.ObjectID].toString()
                                         mOnlineQueryResult.layerType = layer.layerType
@@ -673,7 +675,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         val mName = name + "_Check"
         if (!fieldList.isNullOrEmpty()) {
             for (field in fieldList) {
-                field?.let {mField->
+                field?.let { mField ->
                     if (mField.name == mName) {
                         return true
                     }

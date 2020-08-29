@@ -127,7 +127,7 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
             headsAdapter = FeatureHeadsAdapter(viewModel.featuresList, this, requireContext(), viewModel.onlineData)
             defaultBinding.featuresHeadsRecyclerView.adapter = headsAdapter
             defaultBinding.featuresHeadsRecyclerView.isNestedScrollingEnabled = true
-            if (viewModel.featuresList.isNullOrEmpty()) {
+            if (!viewModel.featuresList.isNullOrEmpty()) {
                 headsAdapter.setSelectedItem(viewModel.featuresList[0])
             }
         } catch (e: Exception) {
