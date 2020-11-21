@@ -130,7 +130,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             meterLayer = FeatureLayer(meterTable)
 
             // add the layer to the map
-            mapView.map.operationalLayers.add(LvdbAreaLayer)
+            baseMap.operationalLayers.add(LvdbAreaLayer)
             baseMap.operationalLayers.add(SwitchgearAreaLayer)
 
             baseMap.operationalLayers.add(lvOhCableLayer)
