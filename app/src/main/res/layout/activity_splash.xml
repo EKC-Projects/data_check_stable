@@ -16,7 +16,7 @@
         android:layout_centerInParent="true"
         android:adjustViewBounds="true"
         android:layout_marginBottom="@dimen/_16sdp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".2"
         app:layout_constraintStart_toStartOf="parent"

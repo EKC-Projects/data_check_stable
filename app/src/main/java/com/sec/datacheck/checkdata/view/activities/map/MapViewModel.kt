@@ -1068,7 +1068,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
                         (it as MainActivity).showToast("Geodatabase failed to load!")
                     }
                 }
-                mapView.setViewpointAsync(Viewpoint(geodatabase.generateGeodatabaseGeometry.extent), 0.5f)
+                mapView.setViewpointAsync(Viewpoint(geodatabase.generateGeodatabaseExtent.extent), 0.5f)
             }
         } catch (e: Exception) {
             e.printStackTrace()

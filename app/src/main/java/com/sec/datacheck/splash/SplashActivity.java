@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.sec.datacheck.R;
 import com.sec.datacheck.checkdata.model.PrefManager;
@@ -29,18 +31,18 @@ public class SplashActivity extends AppCompatActivity {
             TextView desc_2 = findViewById(R.id.description_2);
             ImageView imageView = findViewById(R.id.splash_logo);
 
-            Typeface nexaFontBold = Typeface.createFromAsset(this.getAssets(), "fonts/Nexa-Bold.otf");
+          Typeface nexaFontBold =  ResourcesCompat.getFont(this, R.font.nexa_bold);
             desc_1.setTypeface(nexaFontBold);
             desc_2.setTypeface(nexaFontBold);
 
             Animation imageAnimation = new TranslateAnimation(0, 0, -500, 0);
-            imageAnimation.setDuration(1000);
+            imageAnimation.setDuration(2000);
             imageAnimation.setFillAfter(true);
 
             Animation animation = new TranslateAnimation(-1000, 0, 0, 0);
-            animation.setDuration(1000);
+            animation.setDuration(2000);
             animation.setFillAfter(true);
-
+            Log.e("splash screen", "onCreate: " );
             imageView.setAnimation(imageAnimation);
             desc_1.startAnimation(animation);
             desc_2.startAnimation(animation);

@@ -305,7 +305,7 @@
     <string name="pictures">Pictures</string>
     <string name="images">images_description</string>
     <string name="sync_failed_retrying">Sync Failed... retrying</string>
-    <string name="splash_lbl_1">فريق تطوير الانظمة بالشرق الأوسط</string>
+    <string name="splash_lbl_1">فريق تطوير الانظمة بالقطاع الأوسط</string>
     <string name="splash_lbl_2">نظم المعلومات الجغرافية GIS</string>
     <string name="arrow_back">back</string>
     <string-array name="check_domain_list">
