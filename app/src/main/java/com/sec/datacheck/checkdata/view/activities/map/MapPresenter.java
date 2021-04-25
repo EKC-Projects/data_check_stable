@@ -150,7 +150,7 @@ public class MapPresenter {
                 servicePoint.addDoneLoadingListener(() -> {
                     if (servicePoint != null && servicePoint.getAttributes() != null && servicePoint.getAttributes().get(Columns.SERVICE_POINT.SERVICE_POINT_NO) != null) {
                         String  servicePointNo = servicePoint.getAttributes().get(Columns.SERVICE_POINT.SERVICE_POINT_NO).toString();
-                        final ServiceFeatureTable oclMeterTable = new ServiceFeatureTable("http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/15");
+                        final ServiceFeatureTable oclMeterTable = new ServiceFeatureTable("http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/15");
                         oclMeterTable.addDoneLoadingListener(() -> {
                             try {
                                 Log.e(TAG, "queryRelatedOCLMETER: table Name = " + oclMeterTable.getTableName() +

@@ -10,7 +10,7 @@ public class OConstants {
 
 //    public static final String LAYER_SERVICE_POINT = "EKC_Collector.DBO.Service_Point";
 
-    public static final String MeterUrl = "http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/16";
+    public static final String MeterUrl = "http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/16";
     public static final int MY_LOCATION_REQUEST_CODE = 8;
     public static final int REQUEST_CODE_GALLERY = 1;
     public static final int REQUEST_CODE_TAKE_PICTURE = 2;

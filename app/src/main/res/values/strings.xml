@@ -29,35 +29,36 @@
     <string name="notes">Notes:</string>
 
     <!--Ali Ussama Update-->
-    <string name="open_street_map_url" translatable="false">http://5.9.13.170:7080/PBS/rest/services/OpenStreetMap/MapServer</string>
-    <string name="google_map_url" translatable="false">http://5.9.13.170:7080/PBS/rest/services/GoogleMapsImagery/MapServer</string>
+    <!-- Mahmoud Diaa update change the old 5.9.13.170 to 62.135.109.58 -->
+    <string name="open_street_map_url" translatable="false">http://62.135.109.58:7080/PBS/rest/services/OpenStreetMap/MapServer</string>
+    <string name="google_map_url" translatable="false">http://62.135.109.58:7080/PBS/rest/services/GoogleMapsImagery/MapServer</string>
 
     <string name="BaseMap" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_AllMap/MapServer</string>
     <string name="BaseMap2" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/MapServer</string>
 
-    <string name="gcs_feature_server" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/</string>
+    <string name="gcs_feature_server" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/</string>
 
     <string name="point_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/0</string>
     <string name="line_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/1</string>
     <string name="polygon_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/2</string>
     <string name="index_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/3</string>
 
-    <string name="stations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/1</string>
-    <string name="substations" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/2</string>
-    <string name="TRANSFORMER" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/3</string>
-    <string name="RING_MAIN_UNIT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/4</string>
-    <string name="FCL_POLES" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/5</string>
-    <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/6</string>
-    <string name="VOLTAGE_REGULATOR" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/7</string>
-    <string name="SERVICE_POINT" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/8</string>
-    <string name="SWITCH" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/9</string>
-    <string name="FUSE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/10</string>
-    <string name="DYNAMIC_PROTECTIVE_DEVICE" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/11</string>
-    <string name="mv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/12</string>
-    <string name="lv_oh_cable" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/13</string>
-    <string name="lvdb_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/14</string>
-    <string name="switch_gear_area" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/15</string>
-    <string name="OCL_METER" translatable="false">http://5.9.13.170:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/16</string>
+    <string name="stations" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/1</string>
+    <string name="substations" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/2</string>
+    <string name="TRANSFORMER" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/3</string>
+    <string name="RING_MAIN_UNIT" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/4</string>
+    <string name="FCL_POLES" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/5</string>
+    <string name="FCL_DISTRIBUTIONBOX" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/6</string>
+    <string name="VOLTAGE_REGULATOR" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/7</string>
+    <string name="SERVICE_POINT" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/8</string>
+    <string name="SWITCH" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/9</string>
+    <string name="FUSE" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/10</string>
+    <string name="DYNAMIC_PROTECTIVE_DEVICE" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/11</string>
+    <string name="mv_oh_cable" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/12</string>
+    <string name="lv_oh_cable" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/13</string>
+    <string name="lvdb_area" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/14</string>
+    <string name="switch_gear_area" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/15</string>
+    <string name="OCL_METER" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/16</string>
 
     <!--Ali Ussama Update-->
 
