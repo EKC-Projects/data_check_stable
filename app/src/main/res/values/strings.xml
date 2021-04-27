@@ -33,15 +33,16 @@
     <string name="open_street_map_url" translatable="false">http://62.135.109.58:7080/PBS/rest/services/OpenStreetMap/MapServer</string>
     <string name="google_map_url" translatable="false">http://62.135.109.58:7080/PBS/rest/services/GoogleMapsImagery/MapServer</string>
 
-    <string name="BaseMap" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_AllMap/MapServer</string>
-    <string name="BaseMap2" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/MapServer</string>
+<!--    <string name="BaseMap" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_AllMap/MapServer</string>-->
+<!--    <string name="BaseMap2" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/TEST/TEST_EKC/MapServer</string>-->
 
     <string name="gcs_feature_server" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/</string>
 
-    <string name="point_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/0</string>
-    <string name="line_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/1</string>
-    <string name="polygon_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/2</string>
-    <string name="index_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/3</string>
+<!--  removed in the last version not used Mahmoud Diaa 2.0.2
+  <string name="point_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/0</string>-->
+<!--    <string name="line_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/1</string>-->
+<!--    <string name="polygon_feature_layer_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/2</string>-->
+<!--    <string name="index_services" translatable="false">http://196.218.181.250:6080/arcgis/rest/services/GCS_3857/FeatureServer/3</string>-->
 
     <string name="stations" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/1</string>
     <string name="substations" translatable="false">http://62.135.109.58:6080/arcgis/rest/services/EKC/NEW_CheckData/FeatureServer/2</string>
@@ -305,7 +306,7 @@
     <string name="features">Features</string>
     <string name="pictures">Pictures</string>
     <string name="images">images_description</string>
-    <string name="sync_failed_retrying">Sync Failed... retrying</string>
+    <string name="sync_failed_retrying">Sync Failed… retrying</string>
     <string name="splash_lbl_1">فريق تطوير الانظمة بالقطاع الأوسط</string>
     <string name="splash_lbl_2">نظم المعلومات الجغرافية GIS</string>
     <string name="arrow_back">back</string>
