@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -376,6 +377,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
              * we are changing button text when sheet changed state
              */
             sheetBehavior?.isHideable = true
+            sheetBehavior?.isDraggable = false
             sheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
             sheetBehavior?.addBottomSheetCallback(object : BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -821,6 +823,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == OConstants.MY_LOCATION_REQUEST_CODE) {
             try {
                 if (!permissions.isNullOrEmpty()) {
@@ -1124,9 +1127,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SingleTapListene
     private fun showMultiResultRecyclerView() {
         try {
             mMultiResultRecAdapter = MultiResultAdapter(viewModel.mOnlineQueryResults, this, this)
-            bottomSheetBinding.mapSelectBottomSheetMultiResultRecyclerview.isNestedScrollingEnabled = true
+            bottomSheetBinding.mapSelectBottomSheetMultiResultRecyclerview.isNestedScrollingEnabled = false
             bottomSheetBinding.mapSelectBottomSheetMultiResultRecyclerview.layoutManager = LinearLayoutManager(this)
             bottomSheetBinding.mapSelectBottomSheetMultiResultRecyclerview.adapter = mMultiResultRecAdapter
+            ViewCompat.setNestedScrollingEnabled(bottomSheetBinding.mapSelectBottomSheetMultiResultRecyclerview, false)
         } catch (e: Exception) {
             e.printStackTrace()
         }

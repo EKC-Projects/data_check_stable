@@ -1501,7 +1501,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
             selectedLayer = null
             selectedTable = null
             selectedOfflineFeatureTable = null
-            selectedPointOnMap
+            selectedPointOnMap = null
             fields.clear()
             liveDataFields.value?.clear()
             imagesList.clear()
