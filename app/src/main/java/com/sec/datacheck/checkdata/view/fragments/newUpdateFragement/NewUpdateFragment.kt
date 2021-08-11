@@ -74,6 +74,7 @@ class NewUpdateFragment : Fragment(), FeatureHeadClickListener, FeatureFieldClic
             defaultBinding.takePictureFab.setOnClickListener {
                 takePicture()
             }
+
         } catch (e: Exception) {
             e.printStackTrace()
         }
